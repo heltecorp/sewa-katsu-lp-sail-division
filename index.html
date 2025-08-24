@@ -67,7 +67,7 @@
         <section id="form-section" class="bg-white py-16 md:py-24 px-6">
             <div class="container mx-auto max-w-2xl text-center">
                 <h2 class="text-3xl md:text-4xl font-black mb-4">さあ、未来への第一歩を踏み出そう</h2>
-                <p class="text-gray-600 mb-12">まずは下のフォームから、あなたのことを教えてください。<br>内容を確認後、担当者よりご連絡し、キャリア相談の日程を調整します。</p>
+                <p class="text-gray-600 mb-12">まずは下のフォームから、あなたのことを教えてください。<br>日本語能力 N1・N2の皆さんへホテル業界のお仕事を紹介します！</p>
                 <div id="custom-form-container" class="bg-white p-8 rounded-xl shadow-2xl text-left">
                     <div class="mb-8"><div class="flex justify-between mb-2 text-sm font-bold text-gray-600"><p>ステップ <span id="current-step">1</span> / 3</p><p id="step-name">基本情報</p></div><div class="progress-bar-bg w-full h-2 rounded-full"><div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div></div></div>
                     <form id="sewakatsu-form">
@@ -82,7 +82,7 @@
                     <h3 class="text-2xl font-bold mb-4">ありがとうございます！</h3>
                     <p>ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...</p>
                 </div>
-                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます。</h3><p>ご応募を受け付けました。<br>内容を確認の上、担当者より3営業日以内にご連絡いたしますので、今しばらくお待ちください。</p></div>
+                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます。</h3><p>ご応募を受け付けました。<br>内容を確認の上、担当者よりご連絡いたしますので、今しばらくお待ちください。</p></div>
             </div>
         </section>
         <section class="py-16 md:py-24 px-6"><div class="container mx-auto max-w-3xl"><h2 class="text-3xl md:text-4xl font-black text-center mb-12">よくあるご質問</h2><div class="space-y-4"><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">サービスの利用に料金はかかりますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">いいえ、かかりません。キャリア相談から求人紹介、内定、入社後のサポートまで、すべてのサービスを無料でご利用いただけますので、ご安心ください。</p></details><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">まだ転職するか決めていなくても、相談できますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">はい、もちろんです。「まずは情報収集したい」「自分の市場価値を知りたい」といった段階でも大歓迎です。あなたのキャリアの可能性を一緒に探しましょう。</p></details><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">どんな仕事を紹介してもらえますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">私たちは、ホテル・飲食業界を中心に、外国籍の方が安心して長く働ける優良企業の求人を多数扱っています。あなたのスキルや希望を詳しくお伺いした上で、最適な求人をご提案します。</p></details></div></div></section>
@@ -184,8 +184,8 @@
             // ▼▼▼【追加】リダイレクト用メッセージの要素を取得 ▼▼▼
             const redirectMessage = document.getElementById('form-redirect-message');
             
-            // ★★★ 自分のGASのURLに書き換えるのを忘れないでください ★★★
-            const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzSIoXbf_jOq3SRE3ZxUQxF2WQ-Cy_ewZgdcAk_N3ceXDjlKACxN-NfF8YulIQ3Tzt7/exec';
+            // ★★★ 自分のGASのURLに書き換える ★★★
+            const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwVpVcQpPiLhVj8v6hm7krVTY7FWg7gdxAVRuqWYaz7cszuGvFbINsMNbkfGX4jq9Ut/exec';
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
