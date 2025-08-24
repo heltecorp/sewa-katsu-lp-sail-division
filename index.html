@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght @400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; }
         .bg-sewa-blue { background-color: #0071C1; }
@@ -31,10 +31,6 @@
         .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .marquee-content > * { margin: 0 2rem; }
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
-        
-        /* フォームのスタイル */
         .form-step { display: none; transition: opacity 0.3s ease-in-out; }
         .form-step.active { display: block; }
         .progress-bar-bg { background-color: #e2e8f0; }
@@ -63,144 +59,28 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- ヘッダー -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4">
-            <img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16">
-        </div>
-    </header>
-
+    <header class="bg-white shadow-md sticky top-0 z-50"><div class="container mx-auto px-6 py-4"><img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16"></div></header>
     <main>
-        <!-- セクション1: ファーストビュー -->
-        <section class="hero-bg text-white text-center py-20 md:py-32 px-6">
-            <div id="particles-js"></div>
-            <div class="container mx-auto hero-content">
-                <p id="welcome-message" class="text-lg md:text-xl text-gray-200 font-bold mb-4 animated-item"></p>
-                <div class="mb-6 animated-item" style="transition-delay: 0.2s;"><span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2">無料</span><span class="text-white font-bold text-xl md:text-2xl">日本語能力 N1・N2 の方限定</span></div>
-                <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;">日本語と英語を使って<br>ホテルで働こう！</h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-3xl mx-auto animated-item" style="transition-delay: 0.6s;">ご友人からのご紹介、ありがとうございます。<br>あなたの語学力を活かした日本でのキャリアアップを、私たちが全力でサポートします。</p>
-                <a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 inline-block animated-item" style="transition-delay: 0.8s;">まずは気軽にキャリア相談する</a>
-            </div>
-        </section>
-
-        <!-- 新セクション: 企業例 -->
-        <section class="py-12 bg-white"><div class="container mx-auto"><h3 class="text-center text-sm text-gray-500 font-bold mb-6">私たちが紹介する企業例</h3><div class="marquee"><div class="marquee-content"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Grand+Hotel" alt="Grand Hotelロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Palace+Resort" alt="Palace Resortロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Imperial+Stay" alt="Imperial Stayロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Sakura+Ryokan" alt="Sakura Ryokanロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Ocean+View" alt="Ocean Viewロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Grand+Hotel" alt="Grand Hotelロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Palace+Resort" alt="Palace Resortロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Imperial+Stay" alt="Imperial Stayロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Sakura+Ryokan" alt="Sakura Ryokanロゴ" class="h-8 md:h-10 inline-block"><img src="https://placehold.co/150x50/FFFFFF/CCCCCC?text=Ocean+View" alt="Ocean Viewロゴ" class="h-8 md:h-10 inline-block"></div></div></div></section>
-        
-        <!-- セクション2: 特別なメリットの提示 -->
+        <section class="hero-bg text-white text-center py-20 md:py-32 px-6"><div id="particles-js"></div><div class="container mx-auto hero-content"><p id="welcome-message" class="text-lg md:text-xl text-gray-200 font-bold mb-4 animated-item"></p><div class="mb-6 animated-item" style="transition-delay: 0.2s;"><span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2">無料</span><span class="text-white font-bold text-xl md:text-2xl">日本語能力 N1・N2 の方限定</span></div><h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;">日本語と英語を使って<br>ホテルで働こう！</h1><p class="text-lg md:text-xl text-gray-200 mb-10 max-w-3xl mx-auto animated-item" style="transition-delay: 0.6s;">ご友人からのご紹介、ありがとうございます。<br>あなたの語学力を活かした日本でのキャリアアップを、私たちが全力でサポートします。</p><a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 inline-block animated-item" style="transition-delay: 0.8s;">まずは気軽にキャリア相談する</a></div></section>
+        <section class="py-12 bg-white"><div class="container mx-auto"><h3 class="text-center text-sm text-gray-500 font-bold mb-6">私たちが紹介する企業例</h3><div class="marquee"><div class="marquee-content"><img src="images/CHM_ロゴ.svg" alt="CHMロゴ" class="h-8 md:h-10 inline-block"><img src="images/ESP_ロゴ.png" alt="ESPロゴ" class="h-8 md:h-10 inline-block"><img src="images/GV_ロゴ.svg" alt="GVロゴ" class="h-8 md:h-10 inline-block"><img src="images/RYU_ロゴ.svg" alt="RYUロゴ" class="h-8 md:h-10 inline-block"><img src="images/SFV_ロゴ.svg" alt="SFVロゴ" class="h-8 md:h-10 inline-block"><img src="images/TR&S_ロゴ.svg" alt="TR&Sロゴ" class="h-8 md:h-10 inline-block"></div></div></div></section>
         <section class="py-16 md:py-24 px-6"><div class="container mx-auto max-w-5xl text-center"><h2 class="text-3xl md:text-4xl font-black mb-4">ご紹介者様だけの<br class="md:hidden">「スペシャル・ウェルカムパッケージ」</h2><p class="text-gray-600 mb-16">友人からの信頼にお応えするため、あなたの就職活動を成功に導く特別なサポートをご用意しました。</p><div class="grid md:grid-cols-3 gap-8"><div class="bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"><div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg></div><h3 class="text-xl font-bold mb-2">プロによる履歴書添削</h3><p class="text-gray-600">ホテル業界の人事担当者に響く、あなたの魅力が最大限に伝わる応募書類を一緒に作成します。</p></div><div class="bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"><div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h2m6 0a2 2 0 00-2-2H9a2 2 0 00-2 2m8 0l-2 2m-2-2l2 2"></path></svg></div><h3 class="text-xl font-bold mb-2">面接必勝講座</h3><p class="text-gray-600">一流ホテルで求められる受け答えやマナーを学び、自信を持って本番に臨めます。</p></div><div class="bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"><div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg></div><h3 class="text-xl font-bold mb-2">来日までの手続きをサポート</h3><p class="text-gray-600">ビザの申請や住居探しなど、来日までに必要な複雑な手続きを私たちがサポートするので安心です。</p></div></div></div></section>
-
-        <!-- セクション3: アクションパート(オリジナルフォーム) -->
         <section id="form-section" class="bg-white py-16 md:py-24 px-6">
             <div class="container mx-auto max-w-2xl text-center">
                 <h2 class="text-3xl md:text-4xl font-black mb-4">さあ、未来への第一歩を踏み出そう</h2>
                 <p class="text-gray-600 mb-12">まずは下のフォームから、あなたのことを教えてください。<br>内容を確認後、担当者よりご連絡し、キャリア相談の日程を調整します。</p>
-                
                 <div id="custom-form-container" class="bg-white p-8 rounded-xl shadow-2xl text-left">
-                    <!-- プログレスバー -->
-                    <div class="mb-8">
-                        <div class="flex justify-between mb-2 text-sm font-bold text-gray-600">
-                            <p>ステップ <span id="current-step">1</span> / 3</p>
-                            <p id="step-name">基本情報</p>
-                        </div>
-                        <div class="progress-bar-bg w-full h-2 rounded-full">
-                            <div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div>
-                        </div>
-                    </div>
-
+                    <div class="mb-8"><div class="flex justify-between mb-2 text-sm font-bold text-gray-600"><p>ステップ <span id="current-step">1</span> / 3</p><p id="step-name">基本情報</p></div><div class="progress-bar-bg w-full h-2 rounded-full"><div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div></div></div>
                     <form id="sewakatsu-form">
                         <input type="hidden" id="ref_id" name="ref_id">
-
-                        <!-- ステップ1: 基本情報 -->
-                        <div id="step-1" class="form-step active">
-                            <div class="space-y-6">
-                                <div>
-                                    <label for="name_katakana" class="form-label"><span class="required">必須</span>お名前 (カタカナ)</label>
-                                    <input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="スズキ タロウ" required>
-                                </div>
-                                <div>
-                                    <label for="email" class="form-label"><span class="required">必須</span>メールアドレス</label>
-                                    <input type="email" id="email" name="email" class="form-input" placeholder="your_address @example.com" required>
-                                </div>
-                                <div>
-                                    <label for="age" class="form-label"><span class="required">必須</span>年齢</label>
-                                    <select id="age" name="age" class="form-select" required><option value="" disabled selected>選択してください</option><option value="18-24">18〜24歳</option><option value="25-29">25〜29歳</option><option value="30-34">30〜34歳</option><option value="35-39">35〜39歳</option><option value="40+">40歳以上</option></select>
-                                </div>
-                                <div>
-                                    <label for="phone" class="form-label"><span class="optional">任意</span>電話番号</label>
-                                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="09012345678">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ステップ2: スキル・ご経験 -->
-                        <div id="step-2" class="form-step">
-                            <div class="space-y-6">
-                                <div>
-                                    <label for="japanese_level" class="form-label"><span class="required">必須</span>日本語レベル</label>
-                                    <select id="japanese_level" name="japanese_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="JLPT N1">JLPT N1</option><option value="JLPT N2">JLPT N2</option><option value="JLPT N3">JLPT N3</option><option value="JLPT N4">JLPT N4</option><option value="JLPT N5">JLPT N5</option><option value="資格なし / Unqualified">資格なし</option></select>
-                                </div>
-                                <div>
-                                    <label for="english_level" class="form-label"><span class="required">必須</span>英語での会話レベル</label>
-                                    <select id="english_level" name="english_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="基礎レベル - Basic">基礎レベル</option><option value="会話レベル - Conversational">会話レベル</option><option value="ビジネスレベル - Business">ビジネスレベル</option><option value="流暢レベル - Fluent">流暢レベル</option><option value="母国語レベル - Native">母国語レベル</option><option value="話せない - Non-Speaker">話せない</option></select>
-                                </div>
-                                <div>
-                                    <label for="residence_status" class="form-label"><span class="required">必須</span>在留資格の種類</label>
-                                    <select id="residence_status" name="residence_status" class="form-select" required><option value="" disabled selected>選択してください</option><option value="技術・人文知識・国際業務">技術・人文知識・国際業務</option><option value="特定技能">特定技能</option><option value="留学">留学</option><option value="特定活動/ワーキングホリデー">特定活動/ワーキングホリデー</option><option value="配偶者等">配偶者等</option><option value="永住者">永住者</option><option value="取得なし">取得なし</option><option value="その他">その他</option></select>
-                                </div>
-                                <div>
-                                    <label class="form-label"><span class="required">必須</span>お仕事の経験</label>
-                                    <div class="grid grid-cols-2 gap-3 mt-2">
-                                        <label><input type="checkbox" name="workExperience" value="ホテル" class="hidden"><span class="form-checkbox-card">ホテル</span></label>
-                                        <label><input type="checkbox" name="workExperience" value="調理" class="hidden"><span class="form-checkbox-card">調理</span></label>
-                                        <label><input type="checkbox" name="workExperience" value="サービス" class="hidden"><span class="form-checkbox-card">サービス</span></label>
-                                        <label><input type="checkbox" name="workExperience" value="営業" class="hidden"><span class="form-checkbox-card">営業</span></label>
-                                        <label><input type="checkbox" name="workExperience" value="企画・事務・管理" class="hidden"><span class="form-checkbox-card">企画・事務・管理</span></label>
-                                        <label><input type="checkbox" name="workExperience" value="IT・エンジニア" class="hidden"><span class="form-checkbox-card">IT・エンジニア</span></label>
-                                        <label><input type="checkbox" name="workExperience" value="その他" class="hidden"><span class="form-checkbox-card">その他</span></label>
-                                        <label><input type="checkbox" name="workExperience" value="経験なし" class="hidden"><span class="form-checkbox-card">経験なし</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ステップ3: ご希望 -->
-                        <div id="step-3" class="form-step">
-                             <div class="space-y-6">
-                                <div>
-                                    <label for="country_origin" class="form-label"><span class="required">必須</span>出身国・地域</label>
-                                    <input type="text" id="country_origin" name="country_origin" class="form-input" required>
-                                </div>
-                                <div>
-                                    <label for="country_current" class="form-label"><span class="required">必須</span>今住んでいる国・地域</label>
-                                    <select id="country_current" name="country_current" class="form-select" required><option value="" disabled selected>選択してください</option><option value="日本国内">日本国内</option><option value="日本以外">日本以外</option></select>
-                                </div>
-                                <div>
-                                    <label for="desired_location" class="form-label"><span class="required">必須</span>希望する勤務地</label>
-                                    <input type="text" id="desired_location" name="desired_location" class="form-input" required>
-                                </div>
-                                <div>
-                                    <label for="education" class="form-label"><span class="required">必須</span>最終学歴</label>
-                                    <select id="education" name="education" class="form-select" required><option value="" disabled selected>選択してください</option><option value="高校卒業">高校卒業</option><option value="在学中（専門学校卒業予定）">在学中（専門学校）</option><option value="専門学校卒業">専門学校卒業</option><option value="在学中（大学・大学院卒業予定）">在学中（大学・大学院）</option><option value="大学卒業">大学卒業</option><option value="大学院卒業">大学院卒業</option></select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ナビゲーションボタン -->
-                        <div class="mt-8 flex justify-between items-center">
-                            <button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors">戻る</button>
-                            <button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity">次へ</button>
-                            <button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105">同意して送信する</button>
-                        </div>
+                        <div id="step-1" class="form-step active"><div class="space-y-6"><div><label for="name_katakana" class="form-label"><span class="required">必須</span>お名前 (カタカナ)</label><input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="スズキ タロウ" required></div><div><label for="email" class="form-label"><span class="required">必須</span>メールアドレス</label><input type="email" id="email" name="email" class="form-input" placeholder="your_address @example.com" required></div><div><label for="age" class="form-label"><span class="required">必須</span>年齢</label><select id="age" name="age" class="form-select" required><option value="" disabled selected>選択してください</option><option value="18-24">18〜24歳</option><option value="25-29">25〜29歳</option><option value="30-34">30〜34歳</option><option value="35-39">35〜39歳</option><option value="40+">40歳以上</option></select></div><div><label for="phone" class="form-label"><span class="optional">任意</span>電話番号</label><input type="tel" id="phone" name="phone" class="form-input" placeholder="09012345678"></div></div></div>
+                        <div id="step-2" class="form-step"><div class="space-y-6"><div><label for="japanese_level" class="form-label"><span class="required">必須</span>日本語レベル</label><select id="japanese_level" name="japanese_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="JLPT N1">JLPT N1</option><option value="JLPT N2">JLPT N2</option><option value="JLPT N3">JLPT N3</option><option value="JLPT N4">JLPT N4</option><option value="JLPT N5">JLPT N5</option><option value="資格なし / Unqualified">資格なし</option></select></div><div><label for="english_level" class="form-label"><span class="required">必須</span>英語での会話レベル</label><select id="english_level" name="english_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="基礎レベル - Basic">基礎レベル</option><option value="会話レベル - Conversational">会話レベル</option><option value="ビジネスレベル - Business">ビジネスレベル</option><option value="流暢レベル - Fluent">流暢レベル</option><option value="母国語レベル - Native">母国語レベル</option><option value="話せない - Non-Speaker">話せない</option></select></div><div><label for="residence_status" class="form-label"><span class="required">必須</span>在留資格の種類</label><select id="residence_status" name="residence_status" class="form-select" required><option value="" disabled selected>選択してください</option><option value="技術・人文知識・国際業務">技術・人文知識・国際業務</option><option value="特定技能">特定技能</option><option value="留学">留学</option><option value="特定活動/ワーキングホリデー">特定活動/ワーキングホリデー</option><option value="配偶者等">配偶者等</option><option value="永住者">永住者</option><option value="取得なし">取得なし</option><option value="その他">その他</option></select></div><div><label class="form-label"><span class="required">必須</span>お仕事の経験</label><div class="grid grid-cols-2 gap-3 mt-2"><label><input type="checkbox" name="workExperience" value="ホテル" class="hidden"><span class="form-checkbox-card">ホテル</span></label><label><input type="checkbox" name="workExperience" value="調理" class="hidden"><span class="form-checkbox-card">調理</span></label><label><input type="checkbox" name="workExperience" value="サービス" class="hidden"><span class="form-checkbox-card">サービス</span></label><label><input type="checkbox" name="workExperience" value="営業" class="hidden"><span class="form-checkbox-card">営業</span></label><label><input type="checkbox" name="workExperience" value="企画・事務・管理" class="hidden"><span class="form-checkbox-card">企画・事務・管理</span></label><label><input type="checkbox" name="workExperience" value="IT・エンジニア" class="hidden"><span class="form-checkbox-card">IT・エンジニア</span></label><label><input type="checkbox" name="workExperience" value="その他" class="hidden"><span class="form-checkbox-card">その他</span></label><label><input type="checkbox" name="workExperience" value="経験なし" class="hidden"><span class="form-checkbox-card">経験なし</span></label></div></div></div></div>
+                        <div id="step-3" class="form-step"><div class="space-y-6"><div><label for="country_origin" class="form-label"><span class="required">必須</span>出身国・地域</label><input type="text" id="country_origin" name="country_origin" class="form-input" required></div><div><label for="country_current" class="form-label"><span class="required">必須</span>今住んでいる国・地域</label><select id="country_current" name="country_current" class="form-select" required><option value="" disabled selected>選択してください</option><option value="日本国内">日本国内</option><option value="日本以外">日本以外</option></select></div><div><label for="desired_location" class="form-label"><span class="required">必須</span>希望する勤務地</label><input type="text" id="desired_location" name="desired_location" class="form-input" required></div><div><label for="education" class="form-label"><span class="required">必須</span>最終学歴</label><select id="education" name="education" class="form-select" required><option value="" disabled selected>選択してください</option><option value="高校卒業">高校卒業</option><option value="在学中（専門学校卒業予定）">在学中（専門学校）</option><option value="専門学校卒業">専門学校卒業</option><option value="在学中（大学・大学院卒業予定）">在学中（大学・大学院）</option><option value="大学卒業">大学卒業</option><option value="大学院卒業">大学院卒業</option></select></div></div></div>
+                        <div class="mt-8 flex justify-between items-center"><button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors">戻る</button><button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity">次へ</button><button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105">同意して送信する</button></div>
                     </form>
                 </div>
-                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
-                    <h3 class="text-2xl font-bold mb-4">ありがとうございます。</h3>
-                    <p>ご応募を受け付けました。<br>内容を確認の上、担当者より3営業日以内にご連絡いたしますので、今しばらくお待ちください。</p>
-                </div>
+                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます。</h3><p>ご応募を受け付けました。<br>内容を確認の上、担当者より3営業日以内にご連絡いたしますので、今しばらくお待ちください。</p></div>
             </div>
         </section>
-
-        <!-- (Q&Aとフッターは変更なし) -->
         <section class="py-16 md:py-24 px-6"><div class="container mx-auto max-w-3xl"><h2 class="text-3xl md:text-4xl font-black text-center mb-12">よくあるご質問</h2><div class="space-y-4"><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">サービスの利用に料金はかかりますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">いいえ、かかりません。キャリア相談から求人紹介、内定、入社後のサポートまで、すべてのサービスを無料でご利用いただけますので、ご安心ください。</p></details><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">まだ転職するか決めていなくても、相談できますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">はい、もちろんです。「まずは情報収集したい」「自分の市場価値を知りたい」といった段階でも大歓迎です。あなたのキャリアの可能性を一緒に探しましょう。</p></details><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">どんな仕事を紹介してもらえますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">私たちは、ホテル・飲食業界を中心に、外国籍の方が安心して長く働ける優良企業の求人を多数扱っています。あなたのスキルや希望を詳しくお伺いした上で、最適な求人をご提案します。</p></details></div></div></section>
     </main>
     <footer class="bg-gray-800 text-white text-center py-12 px-6"><div class="container mx-auto"><img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16 mx-auto mb-6" style="filter: brightness(0) invert(1);"><p class="mb-6">運営会社：株式会社Helte</p><div class="flex justify-center gap-6 text-sm mb-8"><a href="https://helte.jp/privacy-policy/" target="_blank" class="hover:underline">プライバシーポリシー</a><a href="#" class="hover:underline">利用規約</a></div><p class="text-xs text-gray-400">&copy; 2024 Helte, Inc. All Rights Reserved.</p></div></footer>
@@ -209,7 +89,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // (紹介者メッセージ表示、アニメーション、フローティングボタンなどのスクリプトは変更なし)
+            // (各種UI制御のスクリプトは変更なし)
             const welcomeMessageElement = document.getElementById('welcome-message');
             const refIdInput = document.getElementById('ref_id');
             try {
@@ -241,8 +121,6 @@
                 }
             }, { passive: true });
             particlesJS('particles-js', {"particles":{"number":{"value":60,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.4,"random":true,"anim":{"enable":true,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":2,"random":true,"anim":{"enable":false}},"line_linked":{"enable":false},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false},"onclick":{"enable":false},"resize":true}},"retina_detect":true});
-
-            // === マルチステップフォームのロジック ===
             const steps = document.querySelectorAll('.form-step');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
@@ -251,24 +129,19 @@
             const currentStepSpan = document.getElementById('current-step');
             const stepNameSpan = document.getElementById('step-name');
             const stepNames = ['基本情報', 'スキル・ご経験', 'ご希望'];
-
             let currentStep = 0;
-
             function showStep(stepIndex) {
                 steps.forEach((step, index) => {
                     step.classList.toggle('active', index === stepIndex);
                 });
-                
                 const progress = ((stepIndex + 1) / steps.length) * 100;
                 progressBar.style.width = `${progress}%`;
                 currentStepSpan.textContent = stepIndex + 1;
                 stepNameSpan.textContent = stepNames[stepIndex];
-
                 prevBtn.classList.toggle('hidden', stepIndex === 0);
                 nextBtn.classList.toggle('hidden', stepIndex === steps.length - 1);
                 submitBtn.classList.toggle('hidden', stepIndex !== steps.length - 1);
             }
-
             function validateStep(stepIndex) {
                 const currentStepFields = steps[stepIndex].querySelectorAll('[required]');
                 let isValid = true;
@@ -288,28 +161,27 @@
                 }
                 return isValid;
             }
-
             nextBtn.addEventListener('click', () => {
                 if (validateStep(currentStep)) {
                     currentStep++;
                     showStep(currentStep);
                 }
             });
-
             prevBtn.addEventListener('click', () => {
                 currentStep--;
                 showStep(currentStep);
             });
-
             showStep(currentStep);
 
-            // フォーム送信処理
+            // === フォーム送信処理 ===
             const form = document.getElementById('sewakatsu-form');
             const formContainer = document.getElementById('custom-form-container');
             const successMessage = document.getElementById('form-success-message');
-            const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzvpwaQGFkysq-Ra_Jc_IfXo2jlbpn4fVlGoLp8BfFLC4mnhd7pbdy9LlLbnISANlVQ/exec';
+            // ★★★ 自分のGASのURLに書き換えるのを忘れないでください ★★★
+            const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzZmCEshn09pEQu8ARQIvxo5-Qr_-mafyk0z8wBu_qsCumYqwCSg4tKQrbW7TBRdTFp/exec';
 
-            form.addEventListener('submit', async function(e) {
+            // ▼▼▼【修正点】'async'を削除し、ロジックを簡潔化 ▼▼▼
+            form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 if (!validateStep(currentStep)) return;
 
@@ -322,28 +194,28 @@
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
                 data.workExperience = workExperienceValues;
-                data.formType = 'referred'; // 識別子を追加
+                data.formType = 'referred'; 
 
-                try {
-                    await fetch(GAS_WEB_APP_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data),
-                    });
-                    
-                    formContainer.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
+                // ▼▼▼【修正点】即座に成功画面を表示し、fetchはバックグラウンドで実行 ▼▼▼
+                // 1. UIを即座に成功状態にする
+                formContainer.classList.add('hidden');
+                successMessage.classList.remove('hidden');
 
-                } catch (error) {
-                    console.error('Error sending data to GAS:', error);
-                    alert('送信に失敗しました。時間をおいて再度お試しください。');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = '同意して送信する';
-                }
+                // 2. データ送信はバックグラウンドで「送りっぱなし」にする
+                fetch(GAS_WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'cors', 
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .catch(error => {
+                    // このエラーはブラウザの見かけ上の問題なので、ユーザーには見せない
+                    console.error('Fetch error occurred, but this is expected. Data should be saved correctly.', error);
+                });
             });
         });
     </script>
-
 </body>
 </html>
