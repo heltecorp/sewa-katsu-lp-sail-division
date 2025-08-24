@@ -78,6 +78,10 @@
                         <div class="mt-8 flex justify-between items-center"><button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors">戻る</button><button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity">次へ</button><button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105">同意して送信する</button></div>
                     </form>
                 </div>
+                <div id="form-redirect-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
+                    <h3 class="text-2xl font-bold mb-4">ありがとうございます！</h3>
+                    <p>ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...</p>
+                </div>
                 <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます。</h3><p>ご応募を受け付けました。<br>内容を確認の上、担当者より3営業日以内にご連絡いたしますので、今しばらくお待ちください。</p></div>
             </div>
         </section>
@@ -177,10 +181,12 @@
             const form = document.getElementById('sewakatsu-form');
             const formContainer = document.getElementById('custom-form-container');
             const successMessage = document.getElementById('form-success-message');
+            // ▼▼▼【追加】リダイレクト用メッセージの要素を取得 ▼▼▼
+            const redirectMessage = document.getElementById('form-redirect-message');
+            
             // ★★★ 自分のGASのURLに書き換えるのを忘れないでください ★★★
             const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzZmCEshn09pEQu8ARQIvxo5-Qr_-mafyk0z8wBu_qsCumYqwCSg4tKQrbW7TBRdTFp/exec';
 
-            // ▼▼▼【修正点】'async'を削除し、ロジックを簡潔化 ▼▼▼
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 if (!validateStep(currentStep)) return;
@@ -196,24 +202,39 @@
                 data.workExperience = workExperienceValues;
                 data.formType = 'referred'; 
 
-                // ▼▼▼【修正点】即座に成功画面を表示し、fetchはバックグラウンドで実行 ▼▼▼
-                // 1. UIを即座に成功状態にする
-                formContainer.classList.add('hidden');
-                successMessage.classList.remove('hidden');
+                // ▼▼▼【修正点】ここからロジックを修正 ▼▼▼
 
-                // 2. データ送信はバックグラウンドで「送りっぱなし」にする
+                // 1. バックグラウンドでデータを送信
                 fetch(GAS_WEB_APP_URL, {
                     method: 'POST',
                     mode: 'cors', 
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8',
-                    },
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(data),
-                })
-                .catch(error => {
-                    // このエラーはブラウザの見かけ上の問題なので、ユーザーには見せない
+                }).catch(error => {
+                    // 見かけ上のエラーはコンソールにのみ記録
                     console.error('Fetch error occurred, but this is expected. Data should be saved correctly.', error);
                 });
+
+                // 2. 日本語レベルに応じて、UIの表示を即座に切り替え
+                const japaneseLevel = data.japanese_level;
+                const redirectUrl = 'https://www.jicoo.com/t/helte/e/l18IvvwC9O_u';
+
+                if (japaneseLevel === 'JLPT N1' || japaneseLevel === 'JLPT N2') {
+                    // N1/N2の場合：リダイレクトメッセージを表示
+                    formContainer.classList.add('hidden');
+                    redirectMessage.classList.remove('hidden');
+                    
+                    // わずかな遅延の後、ページをリダイレクト
+                    setTimeout(() => {
+                        window.location.href = redirectUrl;
+                    }, 1500); // 1.5秒待ってから移動
+
+                } else {
+                    // それ以外の場合：通常の完了メッセージを表示
+                    formContainer.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                }
+                // ▲▲▲【修正点】ここまでロジックを修正 ▲▲▲
             });
         });
     </script>
