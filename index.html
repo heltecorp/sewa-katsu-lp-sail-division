@@ -2,39 +2,102 @@
 <html lang="ja">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D46754QBKC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-D46754QBKC');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D46754QBKC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D46754QBKC');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ようこそ世話カツへ｜あなたの日本でのキャリアをサポートします</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* === Ultimate Design Injection by UI/UX Alchemist === */
+        :root {
+            --sewa-blue: #007BFF; /* Slightly more vibrant blue */
+            --sewa-accent: #FF6B6B; /* A softer, more modern red/coral */
+            --glow-color: rgba(0, 123, 255, 0.5);
+        }
         body { font-family: 'Noto Sans JP', sans-serif; }
-        .bg-sewa-blue { background-color: #0071C1; }
-        .text-sewa-blue { color: #0071C1; }
-        .bg-sewa-accent { background-color: #F66748; }
-        .text-sewa-accent { color: #F66748; }
+        .bg-sewa-blue { background-color: var(--sewa-blue); }
+        .text-sewa-blue { color: var(--sewa-blue); }
+        .bg-sewa-accent { background-color: var(--sewa-accent); }
+        .text-sewa-accent { color: var(--sewa-accent); }
         .font-black { font-weight: 900; }
         html { scroll-behavior: smooth; }
-        .hero-bg {
+
+        /* Animated Gradient Background */
+        .hero-glow {
             position: relative;
-            background-image: linear-gradient(rgba(0, 25, 48, 0.9), rgba(0, 25, 48, 0.9)), url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('images/top-image.png');
             background-size: cover;
             background-position: center;
             overflow: hidden;
         }
+        .hero-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(-45deg, rgba(0, 35, 71, 0.85), rgba(0, 72, 126, 0.8), rgba(0, 123, 255, 0.85), rgba(41, 164, 255, 0.8));
+            background-size: 400% 400%;
+            animation: gradient-flow 15s ease infinite;
+        }
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glow Effects */
+        .glow-on-hover {
+            transition: all 0.3s ease;
+        }
+        .glow-on-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 0 25px var(--glow-color);
+        }
+
+        /* Scroll Animation */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Support Flow Connectors */
+        .flow-grid {
+            position: relative;
+        }
+        @media (min-width: 768px) {
+            .flow-grid-item {
+                position: relative;
+            }
+            .flow-grid-item:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: -27px; /* gap/2 */
+                transform: translateY(-50%);
+                width: 30px; /* gap - some padding */
+                height: 2px;
+                background: repeating-linear-gradient(90deg, var(--sewa-blue), var(--sewa-blue) 4px, transparent 4px, transparent 10px);
+                opacity: 0.5;
+            }
+        }
+        /* === End of Injection === */
+
         .animated-item { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .animated-item.is-visible { opacity: 1; transform: translateY(0); }
-        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
         .hero-content { position: relative; z-index: 1; }
         .marquee { overflow: hidden; position: relative; white-space: nowrap; }
         .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
@@ -43,12 +106,12 @@
         .form-step { display: none; transition: opacity 0.3s ease-in-out; }
         .form-step.active { display: block; }
         .progress-bar-bg { background-color: #e2e8f0; }
-        .progress-bar-fill { background-color: #0071C1; transition: width 0.3s ease-in-out; }
+        .progress-bar-fill { background-color: var(--sewa-blue); transition: width 0.3s ease-in-out; }
         .form-label { font-weight: 700; color: #4a5568; margin-bottom: 0.5rem; display: block; }
-        .form-label .required { background-color: #F66748; color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
+        .form-label .required { background-color: var(--sewa-accent); color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
         .form-label .optional { background-color: #a0aec0; color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
         .form-input, .form-select { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: border-color 0.2s, box-shadow 0.2s; }
-        .form-input:focus, .form-select:focus { outline: none; border-color: #0071C1; box-shadow: 0 0 0 2px rgba(0, 113, 193, 0.2); }
+        .form-input:focus, .form-select:focus { outline: none; border-color: var(--sewa-blue); box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); }
         .form-input.invalid, .form-select.invalid { border-color: #f56565; }
         .form-checkbox-card {
             display: block;
@@ -60,55 +123,253 @@
         }
         input[type="checkbox"]:checked + .form-checkbox-card {
             background-color: #ebf8ff;
-            border-color: #0071C1;
-            color: #0071C1;
+            border-color: var(--sewa-blue);
+            color: var(--sewa-blue);
             font-weight: bold;
+        }
+        #copy-button { flex-shrink: 0; }
+        #copy-feedback { transition: opacity 0.5s ease-in-out; }
+        .share-link-secondary {
+            display: inline-block;
+            padding: 0.65rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 9999px;
+            color: white;
+            font-weight: bold;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        .share-link-secondary:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        .timeline-step {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: var(--sewa-blue);
+            background-color: #ebf8ff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 0.75rem;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-100 text-gray-800">
 
-    <header class="bg-white shadow-md sticky top-0 z-50"><div class="container mx-auto px-6 py-4"><img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16"></div></header>
+    <header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16">
+            <a href="#form-section" class="bg-sewa-blue text-white font-bold text-sm py-2 px-5 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover hidden md:inline-block">無料キャリア相談</a>
+        </div>
+    </header>
+
     <main>
-        <section class="hero-bg text-white text-center py-20 md:py-32 px-6"><div id="particles-js"></div><div class="container mx-auto hero-content"><p id="welcome-message" class="text-lg md:text-xl text-gray-200 font-bold mb-4 animated-item"></p><div class="mb-6 animated-item" style="transition-delay: 0.2s;"><span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2">無料</span><span class="text-white font-bold text-xl md:text-2xl">日本語能力 N1・N2 の方限定</span></div><h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;">日本語と英語を使って<br>ホテルで働こう！</h1><p class="text-lg md:text-xl text-gray-200 mb-10 max-w-3xl mx-auto animated-item" style="transition-delay: 0.6s;">ご友人からのご紹介、ありがとうございます。<br>あなたの語学力を活かした日本でのキャリアアップを、私たちが全力でサポートします。</p><a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 inline-block animated-item" style="transition-delay: 0.8s;">まずは気軽にキャリア相談する</a></div></section>
-        <section class="py-12 bg-white"><div class="container mx-auto"><h3 class="text-center text-sm text-gray-500 font-bold mb-6">私たちが紹介する企業例</h3><div class="marquee"><div class="marquee-content"><img src="images/CHM_logo.svg" alt="CHMロゴ" class="h-8 md:h-10 inline-block"><img src="images/ESP_logo.png" alt="ESPロゴ" class="h-8 md:h-10 inline-block"><img src="images/GV_logo.svg" alt="GVロゴ" class="h-8 md:h-10 inline-block"><img src="images/RYU_logo.svg" alt="RYUロゴ" class="h-8 md:h-10 inline-block"><img src="images/SFV_logo.svg" alt="SFVロゴ" class="h-8 md:h-10 inline-block"><img src="images/TR&S_logo.svg" alt="TR&Sロゴ" class="h-8 md:h-10 inline-block"></div></div></div></section>
-        <section class="py-16 md:py-24 px-6"><div class="container mx-auto max-w-5xl text-center"><h2 class="text-3xl md:text-4xl font-black mb-4">ご紹介者様だけの<br class="md:hidden">「スペシャル・ウェルカムパッケージ」</h2><p class="text-gray-600 mb-16">友人からの信頼にお応えするため、あなたの就職活動を成功に導く特別なサポートをご用意しました。</p><div class="grid md:grid-cols-3 gap-8"><div class="bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"><div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg></div><h3 class="text-xl font-bold mb-2">プロによる履歴書添削</h3><p class="text-gray-600">ホテル業界の人事担当者に響く、あなたの魅力が最大限に伝わる応募書類を一緒に作成します。</p></div><div class="bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"><div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h2m6 0a2 2 0 00-2-2H9a2 2 0 00-2 2m8 0l-2 2m-2-2l2 2"></path></svg></div><h3 class="text-xl font-bold mb-2">面接必勝講座</h3><p class="text-gray-600">一流ホテルで求められる受け答えやマナーを学び、自信を持って本番に臨めます。</p></div><div class="bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"><div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg></div><h3 class="text-xl font-bold mb-2">来日までの手続きをサポート</h3><p class="text-gray-600">ビザの申請や住居探しなど、来日までに必要な複雑な手続きを私たちがサポートするので安心です。</p></div></div></div></section>
-        <section id="form-section" class="bg-white py-16 md:py-24 px-6">
+        <section class="hero-glow text-white text-center py-24 md:py-40 px-6">
+            <div class="container mx-auto hero-content">
+                <p id="welcome-message" class="text-lg md:text-xl text-blue-200 font-bold mb-4 animated-item"></p>
+                <div class="mb-6 animated-item" style="transition-delay: 0.2s;">
+                    <span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2">無料</span>
+                    <span class="text-white font-bold text-xl md:text-2xl">日本語能力 N1・N2 の方限定</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;">
+                    光り輝く未来のキャリアへ<br>日本のホテルで働こう
+                </h1>
+                <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-3xl mx-auto animated-item" style="transition-delay: 0.6s;">
+                    履歴書作成から面接対策まで、あなたの就職活動を徹底的に、そして情熱を持ってサポートします。
+                </p>
+                <div class="animated-item" style="transition-delay: 0.8s;">
+                    <a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block glow-on-hover">まずは無料でキャリア相談</a>
+                    <div class="mt-6">
+                        <a href="#share" id="hero-share-link" class="share-link-secondary">または、お友達に紹介する →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-gray-50 scroll-animate">
+            <div class="container mx-auto">
+                <h3 class="text-center text-base text-gray-500 font-bold mb-6">私たちが紹介する信頼の企業パートナー</h3>
+                <div class="marquee">
+                    <div class="marquee-content">
+                        <img src="images/CHM_logo.svg" alt="CHMロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/ESP_logo.png" alt="ESPロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/GV_logo.svg" alt="GVロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/RYU_logo.svg" alt="RYUロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/SFV_logo.svg" alt="SFVロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/TR&S_logo.svg" alt="TR&Sロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
+            <div class="container mx-auto max-w-5xl text-center">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">あなたのための「スペシャル・パッケージ」</h2>
+                <p class="text-gray-600 text-lg mb-16">あなたの就職活動が成功という最高のゴールを迎えるために、特別なサポートをご用意しました。</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg></div>
+                        <h3 class="text-2xl font-bold mb-2">プロによる履歴書添削</h3>
+                        <p class="text-gray-600">ホテル業界の人事担当者に響く、あなたの魅力が最大限に伝わる応募書類を一緒に作成します。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h2m6 0a2 2 0 00-2-2H9a2 2 0 00-2 2m8 0l-2 2m-2-2l2 2"></path></svg></div>
+                        <h3 class="text-2xl font-bold mb-2">面接必勝講座</h3>
+                        <p class="text-gray-600">一流ホテルで求められる受け答えやマナーを学び、自信を持って本番に臨めます。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg></div>
+                        <h3 class="text-2xl font-bold mb-2">ビザ・書類サポート</h3>
+                        <p class="text-gray-600">複雑で時間のかかる在留資格の申請や更新手続きなども、私たちがしっかりサポートします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-gray-50 scroll-animate">
+            <div class="container mx-auto max-w-7xl text-center px-6">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">徹底サポートフロー</h2>
+                <p class="text-gray-600 text-lg mb-16">ご相談から内定、そして入社後まで、あなたのキャリアに光が差すまで伴走します。</p>
+                <div class="flow-grid space-y-8 md:grid md:grid-cols-5 md:gap-12 md:space-y-0">
+                    <!-- Step 1 -->
+                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
+                        <span class="timeline-step">STEP 1</span>
+                        <h3 class="text-xl font-bold mb-2">オンライン相談</h3>
+                        <p class="text-gray-600 text-sm">まずはあなたの希望や経歴をヒアリング。最適なプランを一緒に考えます。</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
+                        <span class="timeline-step">STEP 2</span>
+                        <h3 class="text-xl font-bold mb-2">求人紹介・書類作成</h3>
+                        <p class="text-gray-600 text-sm">厳選した求人をご紹介。あなたの魅力が伝わる応募書類の作成もサポート。</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
+                        <span class="timeline-step">STEP 3</span>
+                        <h3 class="text-xl font-bold mb-2">面接練習・本番</h3>
+                        <p class="text-gray-600 text-sm">本番を想定した模擬面接で自信をつけます。当日は面接に同席も可能です。</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
+                        <span class="timeline-step">STEP 4</span>
+                        <h3 class="text-xl font-bold mb-2">内定・入社手続き</h3>
+                        <p class="text-gray-600 text-sm">給与や待遇の交渉、複雑な入社手続きやビザのサポートまでお任せください。</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
+                        <span class="timeline-step">STEP 5</span>
+                        <h3 class="text-xl font-bold mb-2">入社後のフォロー</h3>
+                        <p class="text-gray-600 text-sm">新しい環境で安心してスタートできるよう、入社後も定期的に連絡を取りサポートします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="share" class="py-16 md:py-24 px-6 bg-white scroll-animate">
+            <div class="container mx-auto max-w-3xl text-center">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">このチャンスを、ご友人にも</h2>
+                <p class="text-gray-600 text-lg mb-12">あなたの周りにも、日本でのキャリアを探している友人はいませんか？<br>ぜひ「世話カツ」の特別なサポートを教えてあげてください。</p>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-inner text-left max-w-2xl mx-auto border">
+                    <label for="referral-message" class="block text-sm font-bold text-gray-700 mb-2">紹介メッセージとリンク</label>
+                    <div class="flex gap-2">
+                        <textarea id="referral-message" readonly class="form-input h-32 resize-none w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-sewa-blue focus:border-sewa-blue"></textarea>
+                        <button id="copy-button" class="bg-sewa-blue text-white font-bold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity self-start glow-on-hover">コピー</button>
+                    </div>
+                    <p id="copy-feedback" class="text-sm text-green-600 mt-2 h-4"></p>
+                    <div class="mt-6">
+                        <p class="text-sm font-bold text-gray-700 mb-3 text-center">または、SNSで直接シェア</p>
+                        <div class="flex justify-center gap-4">
+                            <a id="line-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="LINEでシェア" class="transition-transform transform hover:scale-110"><img src="images/LINE_logo.png" alt="LINE" class="h-12 w-12"></a>
+                            <a id="email-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Eメールでシェア" class="transition-transform transform hover:scale-110"><img src="images/Eメール_logo.png" alt="Eメール" class="h-12 w-12"></a>
+                            <a id="messenger-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook Messengerでシェア" class="transition-transform transform hover:scale-110"><img src="images/Messenger_logo.png" alt="Messenger" class="h-12 w-12"></a>
+                            <a id="whatsapp-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsAppでシェア" class="transition-transform transform hover:scale-110"><img src="images/WhatsApp_logo.png" alt="WhatsApp" class="h-12 w-12"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="form-section" class="bg-gray-50 py-16 md:py-24 px-6 scroll-animate">
             <div class="container mx-auto max-w-2xl text-center">
-                <h2 class="text-3xl md:text-4xl font-black mb-4">さあ、未来への第一歩を踏み出そう</h2>
-                <p class="text-gray-600 mb-12">まずは下のフォームから、あなたのことを教えてください。<br>日本語能力 N1・N2の皆さんへホテル業界のお仕事を紹介します！</p>
-                <div id="custom-form-container" class="bg-white p-8 rounded-xl shadow-2xl text-left">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">さあ、未来への第一歩を</h2>
+                <p class="text-gray-600 text-lg mb-12">まずは下のフォームから、あなたのことを教えてください。<br>日本語能力 N1・N2の皆さんへホテル業界のお仕事を紹介します！</p>
+                <div id="custom-form-container" class="bg-white p-8 rounded-xl shadow-2xl text-left border">
                     <div class="mb-8"><div class="flex justify-between mb-2 text-sm font-bold text-gray-600"><p>ステップ <span id="current-step">1</span> / 3</p><p id="step-name">基本情報</p></div><div class="progress-bar-bg w-full h-2 rounded-full"><div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div></div></div>
                     <form id="sewakatsu-form">
                         <input type="hidden" id="ref_id" name="ref_id">
                         <div id="step-1" class="form-step active"><div class="space-y-6"><div><label for="name_katakana" class="form-label"><span class="required">必須</span>お名前 (カタカナ)/Name (Katakana)</label><input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="スズキ タロウ" required></div><div><label for="email" class="form-label"><span class="required">必須</span>メールアドレス/E-mail address</label><input type="email" id="email" name="email" class="form-input" placeholder="your_address @example.com" required></div><div><label for="age" class="form-label"><span class="required">必須</span>年齢/Age</label><input type="number" id="age" name="age" class="form-input" placeholder="例：25" required min="18" max="99"></div><div><label for="phone" class="form-label"><span class="optional">任意</span>電話番号/Phone number </label><input type="tel" id="phone" name="phone" class="form-input" placeholder="09012345678"></div></div></div>
-                        <div id="step-2" class="form-step"><div class="space-y-6"><div><label for="japanese_level" class="form-label"><span class="required">必須</span>日本語の資格/Japanese language certifications</label><select id="japanese_level" name="japanese_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="JLPT N1">JLPT N1</option><option value="JLPT N2">JLPT N2</option><option value="JLPT N3">JLPT N3</option><option value="JLPT N4">JLPT N4</option><option value="JLPT N5">JLPT N5</option><option value="資格なし / Unqualified">資格なし</option></select></div><div><label for="english_level" class="form-label"><span class="required">必須</span>英語での会話レベル/English speaking level</label><select id="english_level" name="english_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="基礎レベル - Basic">基礎レベル</option><option value="会話レベル - Conversational">会話レベル</option><option value="ビジネスレベル - Business">ビジネスレベル</option><option value="流暢レベル - Fluent">流暢レベル</option><option value="母国語レベル - Native">母国語レベル</option><option value="話せない - Non-Speaker">話せない</option></select></div><div><label for="residence_status" class="form-label"><span class="required">必須</span>在留資格の種類/Japan resident status</label><select id="residence_status" name="residence_status" class="form-select" required><option value="" disabled selected>選択してください</option><option value="技術・人文知識・国際業務">技術・人文知識・国際業務</option><option value="特定技能">特定技能</option><option value="留学">留学</option><option value="特定活動/ワーキングホリデー">特定活動/ワーキングホリデー</option><option value="配偶者等">配偶者等</option><option value="永住者">永住者</option><option value="取得なし">取得なし</option><option value="その他">その他</option></select></div><div><label class="form-label"><span class="required">必須</span>お仕事の経験/Work Experience</label><div class="grid grid-cols-2 gap-3 mt-2"><label><input type="checkbox" name="workExperience" value="ホテル" class="hidden"><span class="form-checkbox-card">ホテル</span></label><label><input type="checkbox" name="workExperience" value="調理" class="hidden"><span class="form-checkbox-card">調理</span></label><label><input type="checkbox" name="workExperience" value="サービス" class="hidden"><span class="form-checkbox-card">サービス</span></label><label><input type="checkbox" name="workExperience" value="営業" class="hidden"><span class="form-checkbox-card">営業</span></label><label><input type="checkbox" name="workExperience" value="企画・事務・管理" class="hidden"><span class="form-checkbox-card">企画・事務・管理</span></label><label><input type="checkbox" name="workExperience" value="IT・エンジニア" class="hidden"><span class="form-checkbox-card">IT・エンジニア</span></label><label><input type="checkbox" name="workExperience" value="その他" class="hidden"><span class="form-checkbox-card">その他</span></label><label><input type="checkbox" name="workExperience" value="経験なし" class="hidden"><span class="form-checkbox-card">経験なし</span></label></div></div></div></div>
+                        <div id="step-2" class="form-step"><div class="space-y-6"><div><label for="japanese_level" class="form-label"><span class="required">必須</span>日本語の資格/Japanese language certifications</label><select id="japanese_level" name="japanese_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="JLPT N1">JLPT N1</option><option value="JLPT N2">JLPT N2</option><option value="JLPT N3">JLPT N3</option><option value="JLPT N4">JLPT N4</option><option value="JLPT N5">JLPT N5</option><option value="資格なし / Unqualified">資格なし</option></select></div><div><label for="english_level" class="form-label"><span class="required">必須</span>英語での会話レベル/English speaking level</label><select id="english_level" name="english_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="基礎レベル - Basic">基礎レベル</option><option value="会話レベル - Conversational">会話レベル</option><option value="ビジネスレベル - Business">ビジネスレベル</option><option value="流暢レベル - Fluent">流暢レベル</option><option value="母国語レベル - Native">母国語レベル</option><option value="話せない - Non-Speaker">話せない</option></select></div><div><label for="residence_status" class="form-label"><span class="required">必須</span>在留資格の種類/Japan resident status</label><select id="residence_status" name="residence_status" class="form-select" required><option value="" disabled selected>選択してください</option><option value="技術・人文知識・国際業務">技術・人文知識・国際業務</option><option value="特定技能">特定技能</option><option value="留学">留学</option><option value="特定活動/ワーキングホリデー">特定活動/ワーキングホリデー</option><option value="配偶者等">配偶者等</option><option value="永住者">永住者</option><option value="取得なし">取得なし</option><option value="その他">その他</option></select></div><div><label class="form-label"><span class="required">必須</span>お仕事の経験/Work Experience</label><div class="grid grid-cols-2 gap-3 mt-2"><label><input type="checkbox" name="workExperience" value="ホテル" class="hidden"><span class="form-checkbox-card">ホテル</span></label><label><input type="checkbox" name="workExperience" value="旅館" class="hidden"><span class="form-checkbox-card">旅館</span></label><label><input type="checkbox" name="workExperience" value="レストラン" class="hidden"><span class="form-checkbox-card">レストラン</span></label><label><input type="checkbox" name="workExperience" value="カフェ" class="hidden"><span class="form-checkbox-card">カフェ</span></label><label><input type="checkbox" name="workExperience" value="販売" class="hidden"><span class="form-checkbox-card">販売</span></label><label><input type="checkbox" name="workExperience" value="その他" class="hidden"><span class="form-checkbox-card">その他</span></label></div></div></div></div>
                         <div id="step-3" class="form-step"><div class="space-y-6"><div><label for="country_origin" class="form-label"><span class="required">必須</span>出身国・地域/Country/Region of Origin</label><input type="text" id="country_origin" name="country_origin" class="form-input" required></div><div><label for="country_current" class="form-label"><span class="required">必須</span>今住んでいる国・地域/Country/area where you live now</label><select id="country_current" name="country_current" class="form-select" required><option value="" disabled selected>選択してください</option><option value="日本国内">日本国内</option><option value="日本以外">日本以外</option></select></div><div><label for="desired_location" class="form-label"><span class="required">必須</span>希望する勤務地/Desired work location in Japan</label><input type="text" id="desired_location" name="desired_location" class="form-input" required></div><div><label for="education" class="form-label"><span class="required">必須</span>最終学歴/Educational background</label><select id="education" name="education" class="form-select" required><option value="" disabled selected>選択してください</option><option value="高校卒業">高校卒業</option><option value="在学中（専門学校卒業予定）">在学中（専門学校）</option><option value="専門学校卒業">専門学校卒業</option><option value="在学中（大学・大学院卒業予定）">在学中（大学・大学院）</option><option value="大学卒業">大学卒業</option><option value="大学院卒業">大学院卒業</option></select></div></div></div>
-                        <!-- === 修正箇所 === -->
-                        <div id="consent-text" class="mt-8 text-center hidden">
-                            <p class="text-xs text-gray-500">
-                                「同意して送信する」ボタンを押すことにより、<a href="https://helte.jp/privacy-policy/" target="_blank" class="underline hover:text-sewa-blue">プライバシーポリシー</a>に同意したものとみなされます。
-                            </p>
-                        </div>
-                        <div class="mt-8 flex justify-between items-center"><button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors">戻る</button><button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity">次へ</button><button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105">同意して送信する</button></div>
+                        <div id="consent-text" class="mt-8 text-center hidden"><p class="text-xs text-gray-500">「同意して送信する」ボタンを押すことにより、<a href="https://helte.jp/privacy-policy/" target="_blank" class="underline hover:text-sewa-blue">プライバシーポリシー</a>に同意したものとみなされます。</p></div>
+                        <div class="mt-8 flex justify-between items-center"><button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors">戻る</button><button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity glow-on-hover">次へ</button><button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover">同意して送信する</button></div>
                     </form>
                 </div>
-                <div id="form-redirect-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
-                    <h3 class="text-2xl font-bold mb-4">ありがとうございます！</h3>
-                    <p>ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...</p>
-                </div>
+                <div id="form-redirect-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます！</h3><p>ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...</p></div>
                 <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます。</h3><p>ご応募を受け付けました。<br>内容を確認の上、担当者よりご連絡いたしますので、今しばらくお待ちください。</p></div>
             </div>
         </section>
-        <section class="py-16 md:py-24 px-6"><div class="container mx-auto max-w-3xl"><h2 class="text-3xl md:text-4xl font-black text-center mb-12">よくあるご質問</h2><div class="space-y-4"><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">サービスの利用に料金はかかりますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">いいえ、かかりません。キャリア相談から求人紹介、内定、入社後のサポートまで、すべてのサービスを無料でご利用いただけますので、ご安心ください。</p></details><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">まだ転職するか決めていなくても、相談できますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">はい、もちろんです。「まずは情報収集したい」「自分の市場価値を知りたい」といった段階でも大歓迎です。あなたのキャリアの可能性を一緒に探しましょう。</p></details><details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300"><summary class="font-bold text-lg cursor-pointer flex justify-between items-center">どんな仕事を紹介してもらえますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary><p class="mt-4 text-gray-600 border-t pt-4">私たちは、ホテル・飲食業界を中心に、外国籍の方が安心して長く働ける優良企業の求人を多数扱っています。あなたのスキルや希望を詳しくお伺いした上で、最適な求人をご提案します。</p></details></div></div></section>
-    </main>
-    <footer class="bg-gray-800 text-white text-center py-12 px-6"><div class="container mx-auto"><img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16 mx-auto mb-6" style="filter: brightness(0) invert(1);"><p class="mb-6">運営会社：株式会社Helte</p><div class="flex justify-center gap-6 text-sm mb-8"><a href="https://helte.jp/privacy-policy/" target="_blank" class="hover:underline">プライバシーポリシー</a><a href="#" class="hover:underline">利用規約</a></div><p class="text-xs text-gray-400">&copy; 2024 Helte, Inc. All Rights Reserved.</p></div></footer>
-    <a href="#form-section" id="floating-btn" class="fixed bottom-6 right-6 bg-sewa-accent text-white font-bold py-4 px-6 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 transform translate-y-4 pointer-events-none z-40 hover:scale-110"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg><span class="hidden sm:inline">無料キャリア相談</span></a>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
+        <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
+            <div class="container mx-auto max-w-3xl">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-12 text-gray-800">よくあるご質問</h2>
+                <div class="space-y-4">
+                    <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center">サービスの利用に料金はかかりますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <p class="mt-4 text-gray-600 border-t pt-4">いいえ、かかりません。キャリア相談から求人紹介、内定、入社後のサポートまで、すべてのサービスを無料でご利用いただけますので、ご安心ください。</p>
+                    </details>
+                    <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center">まだ転職するか決めていなくても、相談できますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <p class="mt-4 text-gray-600 border-t pt-4">はい、もちろんです。「まずは情報収集したい」「自分の市場価値を知りたい」といった段階でも大歓迎です。あなたのキャリアの可能性を一緒に探しましょう。</p>
+                    </details>
+                    <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center">どんな仕事を紹介してもらえますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <p class="mt-4 text-gray-600 border-t pt-4">私たちは、ホテル・飲食業界を中心に、外国籍の方が安心して長く働ける優良企業の求人を多数扱っています。あなたの希望とスキルに合ったお仕事を一緒に見つけます。</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-12 px-6">
+        <div class="container mx-auto">
+            <img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16 mx-auto mb-6" style="filter: brightness(0) invert(1);">
+            <p class="mb-6">運営会社：株式会社Helte</p>
+            <div class="flex justify-center gap-6 text-sm mb-8">
+                <a href="https://helte.jp/privacy-policy/" target="_blank" class="hover:underline">プライバシーポリシー</a>
+                <a href="#" class="hover:underline">利用規約</a>
+            </div>
+            <p class="text-xs text-gray-400">&copy; 2024 Helte, Inc. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#form-section" id="floating-btn" class="fixed bottom-6 right-6 bg-sewa-accent text-white font-bold py-4 px-6 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 transform translate-y-4 pointer-events-none z-40 glow-on-hover">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        <span class="hidden sm:inline">無料キャリア相談</span>
+    </a>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // (各種UI制御のスクリプトは変更なし)
+            // Initial Animation
+            const animatedItems = document.querySelectorAll('.animated-item');
+            setTimeout(() => { animatedItems.forEach(el => el.classList.add('is-visible')); }, 100);
+
+            // Scroll-triggered Animations
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                scrollObserver.observe(el);
+            });
+
+            // Welcome Message
             const welcomeMessageElement = document.getElementById('welcome-message');
             const refIdInput = document.getElementById('ref_id');
             try {
@@ -126,8 +387,8 @@
                 welcomeMessageElement.textContent = 'ようこそ、世話カツへ！';
                 refIdInput.value = 'Error';
             }
-            const animatedItems = document.querySelectorAll('.animated-item');
-            setTimeout(() => { animatedItems.forEach(el => el.classList.add('is-visible')); }, 100);
+
+            // Floating Button Visibility
             const floatingBtn = document.getElementById('floating-btn');
             const formSection = document.getElementById('form-section');
             window.addEventListener('scroll', () => {
@@ -139,7 +400,8 @@
                     floatingBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
                 }
             }, { passive: true });
-            particlesJS('particles-js', {"particles":{"number":{"value":60,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.4,"random":true,"anim":{"enable":true,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":2,"random":true,"anim":{"enable":false}},"line_linked":{"enable":false},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false},"onclick":{"enable":false},"resize":true}},"retina_detect":true});
+
+            // Multi-step Form Logic
             const steps = document.querySelectorAll('.form-step');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
@@ -148,27 +410,21 @@
             const currentStepSpan = document.getElementById('current-step');
             const stepNameSpan = document.getElementById('step-name');
             const stepNames = ['基本情報', 'スキル・ご経験', 'ご希望'];
-            const formStepsContainer = document.getElementById('form-steps-container');
             const consentText = document.getElementById('consent-text');
-            
             let currentStep = 0;
 
             function showStep(stepIndex) {
                 steps.forEach((step, index) => {
                     step.classList.toggle('active', index === stepIndex);
                 });
-                
                 const progress = ((stepIndex + 1) / steps.length) * 100;
                 progressBar.style.width = `${progress}%`;
                 currentStepSpan.textContent = stepIndex + 1;
                 stepNameSpan.textContent = stepNames[stepIndex];
-
-                prevBtn.classList.toggle('hidden', stepIndex === 0);
-                nextBtn.classList.toggle('hidden', stepIndex === steps.length - 1);
-                submitBtn.classList.toggle('hidden', stepIndex !== steps.length - 1);
-                
-                // === 修正箇所 ===
-                consentText.classList.toggle('hidden', stepIndex !== steps.length - 1);
+                prevBtn.style.display = stepIndex === 0 ? 'none' : 'inline-block';
+                nextBtn.style.display = stepIndex === steps.length - 1 ? 'none' : 'inline-block';
+                submitBtn.style.display = stepIndex === steps.length - 1 ? 'inline-block' : 'none';
+                consentText.style.display = stepIndex === steps.length - 1 ? 'block' : 'none';
             }
 
             function validateStep(stepIndex) {
@@ -190,66 +446,84 @@
                 }
                 return isValid;
             }
-            nextBtn.addEventListener('click', () => {
-                if (validateStep(currentStep)) {
-                    currentStep++;
-                    showStep(currentStep);
-                }
-            });
-            prevBtn.addEventListener('click', () => {
-                currentStep--;
-                showStep(currentStep);
-            });
+            nextBtn.addEventListener('click', () => { if (validateStep(currentStep)) { currentStep++; showStep(currentStep); } });
+            prevBtn.addEventListener('click', () => { currentStep--; showStep(currentStep); });
             showStep(currentStep);
 
-            // === フォーム送信処理 ===
+            // Form Submission Logic
             const form = document.getElementById('sewakatsu-form');
             const formContainer = document.getElementById('custom-form-container');
             const successMessage = document.getElementById('form-success-message');
             const redirectMessage = document.getElementById('form-redirect-message');
-            
             const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwVpVcQpPiLhVj8v6hm7krVTY7FWg7gdxAVRuqWYaz7cszuGvFbINsMNbkfGX4jq9Ut/exec';
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 if (!validateStep(currentStep)) return;
-
                 submitBtn.disabled = true;
                 submitBtn.textContent = '送信中...';
-
                 const workExperienceCheckboxes = document.querySelectorAll('input[name="workExperience"]:checked');
                 const workExperienceValues = Array.from(workExperienceCheckboxes).map(cb => cb.value);
-
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
                 data.workExperience = workExperienceValues;
-                data.formType = 'referred'; 
-
-                fetch(GAS_WEB_APP_URL, {
-                    method: 'POST',
-                    mode: 'cors', 
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify(data),
-                }).catch(error => {
-                    console.error('Fetch error occurred, but this is expected. Data should be saved correctly.', error);
-                });
-
+                data.formType = 'referred';
+                fetch(GAS_WEB_APP_URL, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
+                    .catch(error => console.error('Fetch error occurred, but this is expected.', error));
+                
                 const japaneseLevel = data.japanese_level;
                 const redirectUrl = 'https://www.jicoo.com/t/helte/e/l18IvvwC9O_u';
-
                 if (japaneseLevel === 'JLPT N1' || japaneseLevel === 'JLPT N2') {
-                    formContainer.classList.add('hidden');
-                    redirectMessage.classList.remove('hidden');
-                    
-                    setTimeout(() => {
-                        window.location.href = redirectUrl;
-                    }, 1500);
-
+                    formContainer.style.display = 'none';
+                    redirectMessage.style.display = 'block';
+                    setTimeout(() => { window.location.href = redirectUrl; }, 1500);
                 } else {
-                    formContainer.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
+                    formContainer.style.display = 'none';
+                    successMessage.style.display = 'block';
                 }
             });
+
+            // Share Section Logic
+            const referralUrl = 'https://sewakatsu.example.com/referral?code=ABC123XYZ';
+            const referralText = `日本のホテルで働きたいあなたへ！「世話カツ」が履歴書作成から面接まで、あなたの就職を無料でフルサポートします。まずは、下のリンクから詳細をチェック！`;
+            const referralMessage = `${referralText}
+${referralUrl}`;
+            const referralMessageTextarea = document.getElementById('referral-message');
+            if (referralMessageTextarea) { referralMessageTextarea.value = referralMessage; }
+            const copyButton = document.getElementById('copy-button');
+            const copyFeedback = document.getElementById('copy-feedback');
+            if (copyButton) {
+                copyButton.addEventListener('click', () => {
+                    referralMessageTextarea.select();
+                    navigator.clipboard.writeText(referralMessageTextarea.value).then(() => {
+                        copyFeedback.textContent = 'コピーしました！';
+                        copyFeedback.style.opacity = '1';
+                        setTimeout(() => { copyFeedback.style.opacity = '0'; }, 2000);
+                    }).catch(err => {
+                        console.error('クリップボードへのコピーに失敗しました: ', err);
+                        copyFeedback.textContent = 'コピーに失敗しました';
+                    });
+                });
+            }
+            const encodedReferralMessage = encodeURIComponent(referralMessage);
+            const lineLink = document.getElementById('line-share-link');
+            if (lineLink) { lineLink.href = `https://line.me/R/msg/text/?${encodedReferralMessage}`; }
+            const emailSubject = encodeURIComponent('「世話カツ」のご紹介');
+            const emailLink = document.getElementById('email-share-link');
+            if (emailLink) { emailLink.href = `mailto:?subject=${emailSubject}&body=${encodedReferralMessage}`; }
+            const messengerLink = document.getElementById('messenger-share-link');
+            if(messengerLink) { messengerLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralUrl)}`; }
+            const whatsappLink = document.getElementById('whatsapp-share-link');
+            if (whatsappLink) { whatsappLink.href = `https://api.whatsapp.com/send?text=${encodedReferralMessage}`; }
+
+            // Hero share link smooth scroll
+            const heroShareLink = document.getElementById('hero-share-link');
+            if (heroShareLink) {
+                heroShareLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('share').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>
