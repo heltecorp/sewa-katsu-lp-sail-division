@@ -21,11 +21,32 @@
     <style>
         /* === Ultimate Design Injection by UI/UX Alchemist === */
         :root {
-            --sewa-blue: #007BFF; /* Slightly more vibrant blue */
-            --sewa-accent: #FF6B6B; /* A softer, more modern red/coral */
+            --sewa-blue: #007BFF; /* Primary action blue */
+            --sewa-accent: #FF6B6B; /* Secondary action/highlight red */
+            --sewa-dark-blue: #003366; /* Dark blue for main text/headings */
+            --sewa-light-gray: #F8F9FA; /* Light gray for subtle backgrounds */
             --glow-color: rgba(0, 123, 255, 0.5);
         }
-        body { font-family: 'Noto Sans JP', sans-serif; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 16px; /* Base font size */
+            line-height: 1.6; /* Base line height */
+            color: var(--sewa-dark-blue); /* Default text color */
+        }
+        h1 {
+            font-weight: 900; /* Ensure black weight */
+            line-height: 1.2;
+        }
+        h2 {
+            font-weight: 900; /* Ensure black weight */
+            line-height: 1.3;
+            color: var(--sewa-dark-blue); /* Ensure consistent color */
+        }
+        h3 {
+            font-weight: 700; /* Bold weight */
+            line-height: 1.4;
+            color: var(--sewa-dark-blue); /* Ensure consistent color */
+        }
         .bg-sewa-blue { background-color: var(--sewa-blue); }
         .text-sewa-blue { color: var(--sewa-blue); }
         .bg-sewa-accent { background-color: var(--sewa-accent); }
@@ -96,6 +117,30 @@
             }
         }
         /* === End of Injection === */
+        .hero-content h1, .hero-content p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for readability */
+        }
+        .marquee-content img {
+            object-fit: contain;
+            width: auto; /* Allow natural width based on height */
+            max-height: 48px; /* Max height for consistency, matching md:h-12 */
+        }
+        .grid > div.bg-white.p-8.rounded-xl {
+            min-height: 320px; /* Adjust as needed for content */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .grid > div.bg-white.p-8.rounded-xl p {
+            flex-grow: 1; /* Allow paragraphs to take available space */
+        }
+        .grid.md\:grid-cols-3 > div.bg-white.p-8.rounded-xl { /* Target testimonial cards */
+            text-align: center; /* Ensure all content is centered */
+        }
+        .grid.md\:grid-cols-3 > div.bg-white.p-8.rounded-xl p.italic {
+            text-align: left; /* Keep quote left-aligned for readability */
+        }
 
         .animated-item { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .animated-item.is-visible { opacity: 1; transform: translateY(0); }
@@ -112,7 +157,7 @@
         .form-label .required { background-color: var(--sewa-accent); color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
         .form-label .optional { background-color: #a0aec0; color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
         .form-input, .form-select { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: border-color 0.2s, box-shadow 0.2s; }
-        .form-input:focus, .form-select:focus { outline: none; border-color: var(--sewa-blue); box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); }
+        .form-input:focus, .form-select:focus { outline: none; border-color: var(--sewa-blue); box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); }
         .form-input.invalid, .form-select.invalid { border-color: #f56565; }
         .form-checkbox-card {
             display: block;
@@ -175,10 +220,10 @@
                     <span class="text-white font-bold text-xl md:text-2xl">日本語能力 N1・N2 の方限定</span>
                 </div>
                 <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;">
-                    光り輝く未来のキャリアへ<br>日本のホテルで働こう
+                    ホテル業界の外国人材採用を知り尽くしたプロが<br>あなたの友人の最高のキャリア実現を徹底サポート
                 </h1>
                 <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-3xl mx-auto animated-item" style="transition-delay: 0.6s;">
-                    履歴書作成から面接対策まで、あなたの就職活動を徹底的に、そして情熱を持ってサポートします。
+                    N1/N2人材専門。私たちは、言葉の壁だけでなく、文化の壁も乗り越える転職を支援する唯一無二のパートナーです。
                 </p>
                 <div class="animated-item" style="transition-delay: 0.8s;">
                     <a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block glow-on-hover">まずは無料でキャリア相談</a>
@@ -191,15 +236,16 @@
 
         <section class="py-16 bg-gray-50 scroll-animate">
             <div class="container mx-auto">
-                <h3 class="text-center text-base text-gray-500 font-bold mb-6">私たちが紹介する信頼の企業パートナー</h3>
+                <h3 class="text-center text-base text-gray-500 font-bold mb-6">「世話カツ」がご紹介する信頼のホテルパートナー（一部）</h3>
+                <p class="text-center text-gray-600 text-sm mb-8">外資系ラグジュアリーホテルから全国展開のシティホテルチェーンまで、幅広い優良企業と提携しています。</p>
                 <div class="marquee">
                     <div class="marquee-content">
-                        <img src="images/CHM_logo.svg" alt="CHMロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/ESP_logo.png" alt="ESPロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/GV_logo.svg" alt="GVロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/RYU_logo.svg" alt="RYUロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/SFV_logo.svg" alt="SFVロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/TR&S_logo.svg" alt="TR&Sロゴ" class="h-9 md:h-12 inline-block mx-8 filter grayscale opacity-60 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/CHM_logo.svg" alt="CHMロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/ESP_logo.png" alt="ESPロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/GV_logo.svg" alt="GVロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/RYU_logo.svg" alt="RYUロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/SFV_logo.svg" alt="SFVロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/TR&S_logo.svg" alt="TR&Sロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
                     </div>
                 </div>
             </div>
@@ -207,23 +253,64 @@
 
         <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-5xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">あなたのための「スペシャル・パッケージ」</h2>
-                <p class="text-gray-600 text-lg mb-16">あなたの就職活動が成功という最高のゴールを迎えるために、特別なサポートをご用意しました。</p>
-                <div class="grid md:grid-cols-3 gap-8">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">紹介されるご友人にとってのメリット</h2>
+                <p class="text-gray-600 text-lg mb-16">「世話カツ」は、あなたの友人の日本でのキャリアを成功に導くための、特別なサポートを提供します。</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2v5a2 2 0 01-2 2H9a2 2 0 01-2-2V9a2 2 0 012-2h6zM12 14h.01M12 17h.01"></path></svg></div>
+                        <h3 class="text-2xl font-bold mb-2">限定非公開求人</h3>
+                        <p class="text-gray-600">一般には出回らない、優良ホテルの非公開求人へのアクセスを提供します。</p>
+                    </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
                         <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg></div>
-                        <h3 class="text-2xl font-bold mb-2">プロによる履歴書添削</h3>
-                        <p class="text-gray-600">ホテル業界の人事担当者に響く、あなたの魅力が最大限に伝わる応募書類を一緒に作成します。</p>
+                        <h3 class="text-2xl font-bold mb-2">プロによる書類添削</h3>
+                        <p class="text-gray-600">外国人材の強みを最大限に活かす履歴書・職務経歴書作成をサポートします。</p>
                     </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
                         <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h2m6 0a2 2 0 00-2-2H9a2 2 0 00-2 2m8 0l-2 2m-2-2l2 2"></path></svg></div>
-                        <h3 class="text-2xl font-bold mb-2">面接必勝講座</h3>
-                        <p class="text-gray-600">一流ホテルで求められる受け答えやマナーを学び、自信を持って本番に臨めます。</p>
+                        <h3 class="text-2xl font-bold mb-2">徹底した面接対策</h3>
+                        <p class="text-gray-600">日本のホテルならではの面接スタイルを熟知したコンサルタントによる模擬面接で自信をつけます。</p>
                     </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
                         <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg></div>
-                        <h3 class="text-2xl font-bold mb-2">ビザ・書類サポート</h3>
-                        <p class="text-gray-600">複雑で時間のかかる在留資格の申請や更新手続きなども、私たちがしっかりサポートします。</p>
+                        <h3 class="text-2xl font-bold mb-2">安心の入社後フォロー</h3>
+                        <p class="text-gray-600">新しい環境で安心してスタートできるよう、入社後も定期的に連絡を取りサポートします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
+            <div class="container mx-auto max-w-5xl text-center">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">「世話カツ」で夢を叶えた先輩たちの声</h2>
+                <p class="text-gray-600 text-lg mb-16">実際に「世話カツ」を利用し、日本でのキャリアを掴んだ方々の生の声をお届けします。</p>
+                <div class="grid md:grid-cols-3 gap-8 justify-items-center">
+                    <!-- Testimonial 1: シンさん -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
+                        <img src="images/Korea.png" alt="シンさん" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
+                        <p class="text-gray-700 italic mb-4">「日本で働きたい」と思い、インターネットで検索していた時に「世話カツ」を見つけました。他にもいくつか転職サイトはありましたが、ホームページのデザインがとても綺麗で、細部まで情報がしっかり載っていたので、「ここなら信頼できる」と感じて利用を決めました。</p>
+                        <p class="font-bold text-sewa-blue">シンさん (韓国出身)</p>
+                        <a href="https://note.com/helte/n/na975c6b92581" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
+                            noteで詳しく読む <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                    <!-- Testimonial 2: ルミアさん -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
+                        <img src="images/Malaysia.png" alt="ルミアさん" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
+                        <p class="text-gray-700 italic mb-4">キャリアアドバイザーの方と何度も面接練習をしました。私は話が長くなる癖があったのですが、「ビジネスでは簡潔さが重要」だと、どこを短くすれば良いか具体的にアドバイスをいただけたのが本当に助かりました。自分一人では気づけないことだったので、とても勉強になりました。</p>
+                        <p class="font-bold text-sewa-blue">ルミアさん (マレーシア出身)</p>
+                        <a href="https://note.com/helte/n/n2245606aa43c" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
+                            noteで詳しく読む <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                    <!-- Testimonial 3: クラウディアさん -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
+                        <img src="images/Slovakia.png" alt="クラウディアさん" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
+                        <p class="text-gray-700 italic mb-4">初めての日本での就職活動で、何もかもが分かりませんでした。特にヨーロッパとは全く違う履歴書の書き方を丁寧に教えてもらえたのが心強かったです。入社後の住まい探しや手続きまでサポートしていただき、不安がどんどん解消されていきました。おかげで安心して就職活動に臨めました。</p>
+                        <p class="font-bold text-sewa-blue">クラウディアさん (スロバキア出身)</p>
+                        <a href="https://note.com/helte/n/n537b7d4b5cb5" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
+                            noteで詳しく読む <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -233,7 +320,7 @@
             <div class="container mx-auto max-w-7xl text-center px-6">
                 <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">徹底サポートフロー</h2>
                 <p class="text-gray-600 text-lg mb-16">ご相談から内定、そして入社後まで、あなたのキャリアに光が差すまで伴走します。</p>
-                <div class="flow-grid space-y-8 md:grid md:grid-cols-5 md:gap-12 md:space-y-0">
+                <div class="flow-grid space-y-8 md:grid md:grid-cols-5 md:gap-12 md:space-y-0 justify-items-center">
                     <!-- Step 1 -->
                     <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
                         <span class="timeline-step">STEP 1</span>
@@ -263,6 +350,24 @@
                         <span class="timeline-step">STEP 5</span>
                         <h3 class="text-xl font-bold mb-2">入社後のフォロー</h3>
                         <p class="text-gray-600 text-sm">新しい環境で安心してスタートできるよう、入社後も定期的に連絡を取りサポートします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
+            <div class="container mx-auto max-w-5xl text-center">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">あなたのキャリアを支えるプロフェッショナル</h2>
+                <p class="text-gray-600 text-lg mb-16">「世話カツ」のコンサルタントは、ホテル業界と外国人材のキャリア支援に情熱を燃やすプロフェッショナル集団です。</p>
+                <div class="grid md:grid-cols-1 gap-8">
+                    <!-- Consultant 1 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg glow-on-hover border border-gray-100 flex flex-col md:flex-row items-center md:items-start text-center md:text-left mx-auto w-full md:w-1/2">
+                        <img src="images/stuff.png" alt="Shingo Ono" class="rounded-full w-32 h-32 mb-6 md:mb-0 md:mr-6 object-cover flex-shrink-0">
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold mb-2">Shingo Ono</h3>
+                            <p class="text-sewa-blue font-semibold mb-4">日本語会話力レベルアップのためのプログラム開発や、世話カツでキャリアアドバイザーを担当</p>
+                            <p class="text-gray-600">大学卒業後、大手製薬会社に就職し、アレルギーやがん免疫療法など営業職及び新規プロジェクトのリーダーを経験。在職中にMBAを取得。</p>
+                        </div>
                     </div>
                 </div>
             </div>
