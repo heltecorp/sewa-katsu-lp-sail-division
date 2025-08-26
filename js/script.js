@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const CONFIG = {
         stepNames: ['基本情報', 'スキル・ご経験', 'ご希望'],
-        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbwXS3UiaiHpiAoACIyTMWZ6DULvyD_-itm3PnOkSbFWSDv95BnV0BtJqDWTKbD-wqEU/exec',
+        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycby5MHyTzB6dgLUqOJ-hd24W-7NaM59of1gRItA2rmwTRhafonJjCxcZ8dVj9fJU4qtX/exec',
         jicooRedirectUrl: 'https://www.jicoo.com/t/helte/e/l18IvvwC9O_u',
         referralBaseUrl: 'https://sewakatsu.example.com/referral?code=ABC123XYZ',
         referralText: `日本のホテルで働きたいあなたへ！「世話カツ」が履歴書作成から面接まで、あなたの就職を無料でフルサポートします。まずは、下のリンクから詳細をチェック！`
