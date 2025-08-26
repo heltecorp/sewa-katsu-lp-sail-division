@@ -416,7 +416,7 @@
                         <div id="step-1" class="form-step active"><div class="space-y-6"><div><label for="name_katakana" class="form-label"><span class="required">必須</span>お名前 (カタカナ)/Name (Katakana)</label><input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="スズキ タロウ" required></div><div><label for="email" class="form-label"><span class="required">必須</span>メールアドレス/E-mail address</label><input type="email" id="email" name="email" class="form-input" placeholder="your_address @example.com" required></div><div><label for="age" class="form-label"><span class="required">必須</span>年齢/Age</label><input type="number" id="age" name="age" class="form-input" placeholder="例：25" required min="18" max="99"></div><div><label for="phone" class="form-label"><span class="optional">任意</span>電話番号/Phone number </label><input type="tel" id="phone" name="phone" class="form-input" placeholder="09012345678"></div></div></div>
                         <div id="step-2" class="form-step"><div class="space-y-6"><div><label for="japanese_level" class="form-label"><span class="required">必須</span>日本語の資格/Japanese language certifications</label><select id="japanese_level" name="japanese_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="JLPT N1">JLPT N1</option><option value="JLPT N2">JLPT N2</option><option value="JLPT N3">JLPT N3</option><option value="JLPT N4">JLPT N4</option><option value="JLPT N5">JLPT N5</option><option value="資格なし / Unqualified">資格なし</option></select></div><div><label for="english_level" class="form-label"><span class="required">必須</span>英語での会話レベル/English speaking level</label><select id="english_level" name="english_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="基礎レベル - Basic">基礎レベル</option><option value="会話レベル - Conversational">会話レベル</option><option value="ビジネスレベル - Business">ビジネスレベル</option><option value="流暢レベル - Fluent">流暢レベル</option><option value="母国語レベル - Native">母国語レベル</option><option value="話せない - Non-Speaker">話せない</option></select></div><div><label for="residence_status" class="form-label"><span class="required">必須</span>在留資格の種類/Japan resident status</label><select id="residence_status" name="residence_status" class="form-select" required><option value="" disabled selected>選択してください</option><option value="技術・人文知識・国際業務">技術・人文知識・国際業務</option><option value="特定技能">特定技能</option><option value="留学">留学</option><option value="特定活動/ワーキングホリデー">特定活動/ワーキングホリデー</option><option value="配偶者等">配偶者等</option><option value="永住者">永住者</option><option value="取得なし">取得なし</option><option value="その他">その他</option></select></div><div><label class="form-label"><span class="required">必須</span>お仕事の経験/Work Experience</label><div class="grid grid-cols-2 gap-3 mt-2"><label><input type="checkbox" name="workExperience" value="ホテル" class="hidden"><span class="form-checkbox-card">ホテル</span></label><label><input type="checkbox" name="workExperience" value="旅館" class="hidden"><span class="form-checkbox-card">旅館</span></label><label><input type="checkbox" name="workExperience" value="レストラン" class="hidden"><span class="form-checkbox-card">レストラン</span></label><label><input type="checkbox" name="workExperience" value="カフェ" class="hidden"><span class="form-checkbox-card">カフェ</span></label><label><input type="checkbox" name="workExperience" value="販売" class="hidden"><span class="form-checkbox-card">販売</span></label><label><input type="checkbox" name="workExperience" value="その他" class="hidden"><span class="form-checkbox-card">その他</span></label></div></div></div></div>
                         <div id="step-3" class="form-step"><div class="space-y-6"><div><label for="country_origin" class="form-label"><span class="required">必須</span>出身国・地域/Country/Region of Origin</label><input type="text" id="country_origin" name="country_origin" class="form-input" required></div><div><label for="country_current" class="form-label"><span class="required">必須</span>今住んでいる国・地域/Country/area where you live now</label><select id="country_current" name="country_current" class="form-select" required><option value="" disabled selected>選択してください</option><option value="日本国内">日本国内</option><option value="日本以外">日本以外</option></select></div><div><label for="desired_location" class="form-label"><span class="required">必須</span>希望する勤務地/Desired work location in Japan</label><input type="text" id="desired_location" name="desired_location" class="form-input" required></div><div><label for="education" class="form-label"><span class="required">必須</span>最終学歴/Educational background</label><select id="education" name="education" class="form-select" required><option value="" disabled selected>選択してください</option><option value="高校卒業">高校卒業</option><option value="在学中（専門学校卒業予定）">在学中（専門学校）</option><option value="専門学校卒業">専門学校卒業</option><option value="在学中（大学・大学院卒業予定）">在学中（大学・大学院）</option><option value="大学卒業">大学卒業</option><option value="大学院卒業">大学院卒業</option></select></div></div></div>
-                        <div id="consent-checkbox-container" class="mt-8 text-center">
+                        <div id="consent-checkbox-container" class="mt-8 text-center hidden">
                             <label class="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" id="consent-checkbox" class="form-checkbox h-5 w-5 text-sewa-blue rounded focus:ring-sewa-blue">
                                 <span class="ml-2 text-sm text-gray-700">
@@ -426,7 +426,7 @@
                                 </span>
                             </label>
                         </div>
-                        <div class="mt-8 flex justify-between items-center"><button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors">戻る</button><button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity glow-on-hover">次へ</button><button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover">同意して送信する</button></div>
+                        <div class="mt-8 flex justify-between items-center"><button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors">戻る</button><button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity glow-on-hover">次へ</button><button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover" disabled>同意して送信する</button></div>
                     </form>
                 </div>
                 <div id="form-redirect-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます！</h3><p>ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...</p></div>
@@ -534,7 +534,8 @@
             const currentStepSpan = document.getElementById('current-step');
             const stepNameSpan = document.getElementById('step-name');
             const stepNames = ['基本情報', 'スキル・ご経験', 'ご希望'];
-            const consentText = document.getElementById('consent-text');
+            const consentCheckboxContainer = document.getElementById('consent-checkbox-container'); // 変数名変更
+            const consentCheckbox = document.getElementById('consent-checkbox'); // 追加
             let currentStep = 0;
 
             function showStep(stepIndex) {
@@ -547,8 +548,17 @@
                 stepNameSpan.textContent = stepNames[stepIndex];
                 prevBtn.style.display = stepIndex === 0 ? 'none' : 'inline-block';
                 nextBtn.style.display = stepIndex === steps.length - 1 ? 'none' : 'inline-block';
+                
+                // 最終ステップでのみ同意チェックボックスコンテナを表示
+                if (stepIndex === steps.length - 1) {
+                    consentCheckboxContainer.classList.remove('hidden');
+                    // 最終ステップに到達したら、チェックボックスの状態に応じて送信ボタンのdisabledを更新
+                    submitBtn.disabled = !consentCheckbox.checked;
+                } else {
+                    consentCheckboxContainer.classList.add('hidden');
+                    submitBtn.disabled = true; // 最終ステップ以外ではボタンを無効化
+                }
                 submitBtn.style.display = stepIndex === steps.length - 1 ? 'inline-block' : 'none';
-                consentText.style.display = stepIndex === steps.length - 1 ? 'block' : 'none';
             }
 
             function validateStep(stepIndex) {
@@ -572,7 +582,13 @@
             }
             nextBtn.addEventListener('click', () => { if (validateStep(currentStep)) { currentStep++; showStep(currentStep); } });
             prevBtn.addEventListener('click', () => { currentStep--; showStep(currentStep); });
-            showStep(currentStep);
+            
+            // 同意チェックボックスのchangeイベントリスナーを追加
+            consentCheckbox.addEventListener('change', () => {
+                submitBtn.disabled = !consentCheckbox.checked;
+            });
+
+            showStep(currentStep); // showStepの呼び出しは最後に
 
             // Form Submission Logic
             const form = document.getElementById('sewakatsu-form');
