@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentStepSpan: document.getElementById('current-step'),
         stepNameSpan: document.getElementById('step-name'),
         form: document.getElementById('sewakatsu-form'),
+        consentCheckboxContainer: document.getElementById('consent-checkbox-container'),
         formContainer: document.getElementById('custom-form-container'),
         successMessage: document.getElementById('form-success-message'),
         redirectMessage: document.getElementById('form-redirect-message'),
@@ -67,9 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentStep === ELEMENTS.steps.length - 1) {
             showElement(ELEMENTS.submitBtn);
             setDisabled(ELEMENTS.submitBtn, false); // Always enable on the last step
+            showElement(ELEMENTS.consentCheckboxContainer);
         } else {
             hideElement(ELEMENTS.submitBtn);
             setDisabled(ELEMENTS.submitBtn, true);
+            hideElement(ELEMENTS.consentCheckboxContainer);
         }
     }
 
