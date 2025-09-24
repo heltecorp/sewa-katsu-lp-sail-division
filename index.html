@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWXZ4WCSZ8"></script>
@@ -12,7 +12,7 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ようこそ世話カツへ｜あなたの日本でのキャリアをサポートします</title>
+    <title data-i18n="meta.title">Welcome to sewa-katsu | Supporting Your Career in Japan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
@@ -201,8 +201,35 @@
             margin-bottom: 0.75rem;
         }
         .consent-error {
-            color: var(--sewa-accent); /* 赤色で強調 */
+            color: var(--sewa-accent); /* Highlight in red */
             font-weight: bold;
+        }
+        .language-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .language-toggle .lang-btn {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--sewa-dark-blue);
+            padding: 0.2rem 0.8rem;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .language-toggle .lang-btn.active {
+            background-color: var(--sewa-blue);
+            color: #fff;
+        }
+        .language-toggle .lang-btn:not(.active):hover {
+            background-color: rgba(0, 123, 255, 0.12);
         }
     </style>
     <!-- Microsoft Clarity tracking code -->
@@ -218,8 +245,14 @@
 
     <header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16">
-            <a href="#form-section" class="bg-sewa-blue text-white font-bold text-sm py-2 px-5 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover hidden md:inline-block">無料キャリア相談</a>
+            <img src="images/sewa_logo.png" alt="sewa-katsu logo" data-i18n-alt="header.logoAlt" class="h-16">
+            <div class="flex items-center gap-3">
+                <div class="language-toggle" role="group" aria-label="Language toggle" data-i18n-aria-label="languageToggle.ariaLabel">
+                    <button type="button" class="lang-btn" data-language="ja">日本語</button>
+                    <button type="button" class="lang-btn active" data-language="en">English</button>
+                </div>
+                <a href="#form-section" data-i18n="header.cta" class="bg-sewa-blue text-white font-bold text-sm py-2 px-5 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover hidden md:inline-block">Free Career Consultation</a>
+            </div>
         </div>
     </header>
 
@@ -228,19 +261,19 @@
             <div class="container mx-auto hero-content">
                 <p id="welcome-message" class="text-lg md:text-xl text-blue-200 font-bold mb-4 animated-item"></p>
                 <div class="mb-6 animated-item" style="transition-delay: 0.2s;">
-                    <span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2">無料</span>
-                    <span class="text-white font-bold text-xl md:text-2xl">日本語能力 N1・N2 の方限定</span>
+                    <span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2" data-i18n="hero.badgeFree">Free</span>
+                    <span class="text-white font-bold text-xl md:text-2xl" data-i18n="hero.badgeLimited">Exclusive to JLPT N1 &amp; N2 talent</span>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;">
-                    ホテル業界の外国人材採用を知り尽くしたプロが<br>あなたの最高のキャリア実現を徹底サポート
+                <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;" data-i18n-html="hero.title">
+                    Hospitality hiring experts for international talent<br>Fully committed to achieving your ideal career
                 </h1>
-                <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-3xl mx-auto animated-item" style="transition-delay: 0.6s;">
-                    N1/N2人材のホテル業界への就職に特化。私たちは、言葉の壁だけでなく、文化の壁も乗り越える転職を支援する唯一無二のパートナーです。
+                <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-3xl mx-auto animated-item" style="transition-delay: 0.6s;" data-i18n="hero.subtitle">
+                    We specialize in helping JLPT N1/N2 talent land roles in Japan's hotel industry. We are the unique partner who helps you overcome both language and cultural barriers.
                 </p>
                 <div class="animated-item" style="transition-delay: 0.8s;">
-                    <a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block glow-on-hover">まずは無料でキャリア相談</a>
+                    <a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block glow-on-hover" data-i18n="hero.primaryCta">Book a Free Career Consultation</a>
                     <div class="mt-6">
-                        <a href="#share" id="hero-share-link" class="share-link-secondary">または、お友達に紹介する →</a>
+                        <a href="#share" id="hero-share-link" class="share-link-secondary" data-i18n="hero.shareCta">Or share with your friends →</a>
                     </div>
                 </div>
             </div>
@@ -248,16 +281,16 @@
 
         <section class="py-16 bg-gray-50 scroll-animate">
             <div class="container mx-auto">
-                <h3 class="text-center text-base text-gray-500 font-bold mb-6">「世話カツ」がご紹介する信頼のホテルパートナー（一部）</h3>
-                <p class="text-center text-gray-600 text-sm mb-8">外資系ラグジュアリーホテルから全国展開のシティホテルチェーンまで、幅広い優良企業と提携しています。</p>
+                <h3 class="text-center text-base text-gray-500 font-bold mb-6" data-i18n="partners.heading">Trusted hotel partners introduced by sewa-katsu (selected)</h3>
+                <p class="text-center text-gray-600 text-sm mb-8" data-i18n="partners.description">From global luxury hotels to nationwide city hotel chains, we partner with a wide range of top-class employers.</p>
                 <div class="marquee">
                     <div class="marquee-content">
-                        <img src="images/CHM_logo.svg" alt="CHMロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/ESP_logo.png" alt="ESPロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/GV_logo.svg" alt="GVロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/RYU_logo.svg" alt="RYUロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/SFV_logo.svg" alt="SFVロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/TR&S_logo.svg" alt="TR&Sロゴ" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/CHM_logo.svg" alt="CHM logo" data-i18n-alt="partners.logos.chm" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/ESP_logo.png" alt="ESP logo" data-i18n-alt="partners.logos.esp" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/GV_logo.svg" alt="GV logo" data-i18n-alt="partners.logos.gv" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/RYU_logo.svg" alt="RYU logo" data-i18n-alt="partners.logos.ryu" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/SFV_logo.svg" alt="SFV logo" data-i18n-alt="partners.logos.sfv" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
+                        <img src="images/TR&S_logo.svg" alt="TR&S logo" data-i18n-alt="partners.logos.trs" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
                     </div>
                 </div>
             </div>
@@ -265,28 +298,28 @@
 
         <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-5xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">「世話カツ」のサービスを受けるメリット</h2>
-                <p class="text-gray-600 text-lg mb-16">「世話カツ」は、あなたが日本でのキャリアを成功に導くための、特別なサポートを提供します。</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="benefits.heading">Why Choose sewa-katsu</h2>
+                <p class="text-gray-600 text-lg mb-16" data-i18n="benefits.description">sewa-katsu delivers dedicated support that helps you build a successful career in Japan.</p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/limited_jobs.png" alt="限定非公開求人" class="w-12 h-12 object-contain"></div>
-                        <h3 class="text-2xl font-bold mb-2">限定非公開求人</h3>
-                        <p class="text-gray-600">一般には出回らない、優良ホテルの非公開求人へのアクセスを提供します。</p>
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/limited_jobs.png" alt="Exclusive hidden jobs icon" data-i18n-alt="benefits.icons.limitedJobs" class="w-12 h-12 object-contain"></div>
+                        <h3 class="text-2xl font-bold mb-2" data-i18n="benefits.cards.limitedJobs.title">Exclusive Hidden Jobs</h3>
+                        <p class="text-gray-600" data-i18n="benefits.cards.limitedJobs.body">Gain access to premium hotel openings that never appear on public job boards.</p>
                     </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/resume.png" alt="プロによる書類添削" class="w-12 h-12 object-contain"></div>
-                        <h3 class="text-2xl font-bold mb-2">プロによる書類添削</h3>
-                        <p class="text-gray-600">外国人材の強みを最大限に活かす履歴書・職務経歴書作成をサポートします。</p>
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/resume.png" alt="Resume support icon" data-i18n-alt="benefits.icons.resumeSupport" class="w-12 h-12 object-contain"></div>
+                        <h3 class="text-2xl font-bold mb-2" data-i18n="benefits.cards.resumeSupport.title">Professional Resume Coaching</h3>
+                        <p class="text-gray-600" data-i18n="benefits.cards.resumeSupport.body">We help you craft resumes and CVs that highlight the strengths of international talent.</p>
                     </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/interview.png" alt="徹底した面接対策" class="w-12 h-12 object-contain"></div>
-                        <h3 class="text-2xl font-bold mb-2">徹底した面接対策</h3>
-                        <p class="text-gray-600">日本のホテルならではの面接スタイルを熟知したコンサルタントによる模擬面接で自信をつけます。</p>
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/interview.png" alt="Interview preparation icon" data-i18n-alt="benefits.icons.interviewPreparation" class="w-12 h-12 object-contain"></div>
+                        <h3 class="text-2xl font-bold mb-2" data-i18n="benefits.cards.interviewPreparation.title">Thorough Interview Preparation</h3>
+                        <p class="text-gray-600" data-i18n="benefits.cards.interviewPreparation.body">Mock interviews with consultants who understand the hotel industry's expectations in Japan.</p>
                     </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/follow.png" alt="安心の入社後フォロー" class="w-12 h-12 object-contain"></div>
-                        <h3 class="text-2xl font-bold mb-2">安心の入社後フォロー</h3>
-                        <p class="text-gray-600">新しい環境で安心してスタートできるよう、入社後も定期的に連絡を取りサポートします。</p>
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/follow.png" alt="Post-start follow-up icon" data-i18n-alt="benefits.icons.aftercare" class="w-12 h-12 object-contain"></div>
+                        <h3 class="text-2xl font-bold mb-2" data-i18n="benefits.cards.aftercare.title">Post-Start Follow-up</h3>
+                        <p class="text-gray-600" data-i18n="benefits.cards.aftercare.body">We stay in touch after you join so you can settle into your new environment with confidence.</p>
                     </div>
                 </div>
             </div>
@@ -294,34 +327,34 @@
 
         <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-5xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">「世話カツ」で夢を叶えた先輩たちの声</h2>
-                <p class="text-gray-600 text-lg mb-16">実際に「世話カツ」を利用し、日本でのキャリアを掴んだ方々の生の声をお届けします。</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="testimonials.heading">Voices of Talent Who Achieved Their Dream with sewa-katsu</h2>
+                <p class="text-gray-600 text-lg mb-16" data-i18n="testimonials.description">Hear directly from people who used sewa-katsu to build their careers in Japan.</p>
                 <div class="grid md:grid-cols-3 gap-8 justify-items-center">
-                    <!-- Testimonial 1: シンさん -->
+                    <!-- Testimonial 1: Shin -->
                     <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
-                        <img src="images/Korea.png" alt="シンさん" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
-                        <p class="text-gray-700 italic mb-4">「日本で働きたい」と思い、インターネットで検索していた時に「世話カツ」を見つけました。他にもいくつか転職サイトはありましたが、ホームページのデザインがとても綺麗で、細部まで情報がしっかり載っていたので、「ここなら信頼できる」と感じて利用を決めました。</p>
-                        <p class="font-bold text-sewa-blue">シンさん (韓国出身)</p>
+                        <img src="images/Korea.png" alt="Portrait of Shin from South Korea" data-i18n-alt="testimonials.items.shin.imageAlt" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
+                        <p class="text-gray-700 italic mb-4" data-i18n="testimonials.items.shin.quote">“When I decided I wanted to work in Japan, I found sewa-katsu online. Other job sites existed, but their beautifully designed website packed with detailed information made me feel I could trust them.”</p>
+                        <p class="font-bold text-sewa-blue" data-i18n="testimonials.items.shin.name">Shin (from South Korea)</p>
                         <a href="https://note.com/helte/n/na975c6b92581" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
-                            noteで詳しく読む <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            <span data-i18n="testimonials.linkLabel">Read the full story on note</span> <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
-                    <!-- Testimonial 2: ルミアさん -->
+                    <!-- Testimonial 2: Lumia -->
                     <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
-                        <img src="images/Malaysia.png" alt="ルミアさん" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
-                        <p class="text-gray-700 italic mb-4">キャリアアドバイザーの方と何度も面接練習をしました。私は話が長くなる癖があったのですが、「ビジネスでは簡潔さが重要」だと、どこを短くすれば良いか具体的にアドバイスをいただけたのが本当に助かりました。自分一人では気づけないことだったので、とても勉強になりました。</p>
-                        <p class="font-bold text-sewa-blue">ルミアさん (マレーシア出身)</p>
+                        <img src="images/Malaysia.png" alt="Portrait of Lumia from Malaysia" data-i18n-alt="testimonials.items.lumia.imageAlt" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
+                        <p class="text-gray-700 italic mb-4" data-i18n="testimonials.items.lumia.quote">“I practiced interviews many times with my career advisor. I tend to talk too long, and they gave concrete advice on how to stay concise in business settings. It was incredibly helpful to receive feedback I could never have figured out alone.”</p>
+                        <p class="font-bold text-sewa-blue" data-i18n="testimonials.items.lumia.name">Lumia (from Malaysia)</p>
                         <a href="https://note.com/helte/n/n2245606aa43c" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
-                            noteで詳しく読む <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            <span data-i18n="testimonials.linkLabel">Read the full story on note</span> <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
-                    <!-- Testimonial 3: クラウディアさん -->
+                    <!-- Testimonial 3: Klaudia -->
                     <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
-                        <img src="images/Slovakia.png" alt="クラウディアさん" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
-                        <p class="text-gray-700 italic mb-4">初めての日本での就職活動で、何もかもが分かりませんでした。特にヨーロッパとは全く違う履歴書の書き方を丁寧に教えてもらえたのが心強かったです。入社後の住まい探しや手続きまでサポートしていただき、不安がどんどん解消されていきました。おかげで安心して就職活動に臨めました。</p>
-                        <p class="font-bold text-sewa-blue">クラウディアさん (スロバキア出身)</p>
+                        <img src="images/Slovakia.png" alt="Portrait of Klaudia from Slovakia" data-i18n-alt="testimonials.items.claudia.imageAlt" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
+                        <p class="text-gray-700 italic mb-4" data-i18n="testimonials.items.claudia.quote">“It was my first job hunt in Japan and I had no idea where to start. They patiently taught me how to write resumes, which is completely different from Europe. They even supported my housing search and paperwork after I received an offer, which really eased my anxiety.”</p>
+                        <p class="font-bold text-sewa-blue" data-i18n="testimonials.items.claudia.name">Klaudia (from Slovakia)</p>
                         <a href="https://note.com/helte/n/n537b7d4b5cb5" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
-                            noteで詳しく読む <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            <span data-i18n="testimonials.linkLabel">Read the full story on note</span> <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </div>
@@ -330,38 +363,38 @@
 
         <section class="py-16 md:py-24 bg-gray-50 scroll-animate">
             <div class="container mx-auto max-w-7xl text-center px-6">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">徹底サポートフロー</h2>
-                <p class="text-gray-600 text-lg mb-16">ご相談から内定、そして入社後まで、あなたのキャリアに光が差すまで伴走します。</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="flow.heading">End-to-End Support Flow</h2>
+                <p class="text-gray-600 text-lg mb-16" data-i18n="flow.description">We stay by your side from the initial consultation through your offer and onboarding, until your career truly takes off.</p>
                 <div class="flow-grid space-y-8 md:grid md:grid-cols-5 md:gap-12 md:space-y-0 justify-items-center">
                     <!-- Step 1 -->
                     <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
                         <span class="timeline-step">STEP 1</span>
-                        <h3 class="text-xl font-bold mb-2">オンライン相談</h3>
-                        <p class="text-gray-600 text-sm">まずはあなたの希望や経歴をヒアリング。最適なプランを一緒に考えます。</p>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step1.title">Online Consultation</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step1.body">We listen to your goals and background and plan the best strategy together.</p>
                     </div>
                     <!-- Step 2 -->
                     <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
                         <span class="timeline-step">STEP 2</span>
-                        <h3 class="text-xl font-bold mb-2">求人紹介・書類作成</h3>
-                        <p class="text-gray-600 text-sm">厳選した求人をご紹介。あなたの魅力が伝わる応募書類の作成もサポート。</p>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step2.title">Job Introductions &amp; Documents</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step2.body">We introduce carefully selected roles and support you in creating compelling application documents.</p>
                     </div>
                     <!-- Step 3 -->
                     <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
                         <span class="timeline-step">STEP 3</span>
-                        <h3 class="text-xl font-bold mb-2">面接練習・本番</h3>
-                        <p class="text-gray-600 text-sm">本番を想定した模擬面接で自信をつけます。当日は面接に同席も可能です。</p>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step3.title">Interview Coaching &amp; Day-of Support</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step3.body">Build confidence through mock interviews. We can even accompany you on the actual day.</p>
                     </div>
                     <!-- Step 4 -->
                     <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
                         <span class="timeline-step">STEP 4</span>
-                        <h3 class="text-xl font-bold mb-2">内定・入社手続き</h3>
-                        <p class="text-gray-600 text-sm">給与や待遇の交渉、複雑な入社手続きやビザのサポートまでお任せください。</p>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step4.title">Offer &amp; Onboarding Procedures</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step4.body">Leave salary negotiations, complex paperwork, and visa support to us.</p>
                     </div>
                     <!-- Step 5 -->
                     <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
                         <span class="timeline-step">STEP 5</span>
-                        <h3 class="text-xl font-bold mb-2">入社後のフォロー</h3>
-                        <p class="text-gray-600 text-sm">新しい環境で安心してスタートできるよう、入社後も定期的に連絡を取りサポートします。</p>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step5.title">Follow-up After You Start</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step5.body">We check in regularly after you join so you can thrive in your new environment.</p>
                     </div>
                 </div>
             </div>
@@ -369,16 +402,16 @@
 
         <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-5xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">あなたのキャリアを支えるプロフェッショナル</h2>
-                <p class="text-gray-600 text-lg mb-16">「世話カツ」のコンサルタントは、ホテル業界と外国人材のキャリア支援に情熱を燃やすプロフェッショナル集団です。</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="consultant.heading">Professionals Supporting Your Career</h2>
+                <p class="text-gray-600 text-lg mb-16" data-i18n="consultant.description">Our sewa-katsu consultants are passionate experts in both the hotel industry and supporting global talent.</p>
                 <div class="grid md:grid-cols-1 gap-8">
                     <!-- Consultant 1 -->
                     <div class="bg-white p-8 rounded-xl shadow-lg glow-on-hover border border-gray-100 flex flex-col md:flex-row items-center md:items-start text-center md:text-left mx-auto w-full md:w-1/2">
                         <img src="images/stuff.png" alt="Shingo Ono" class="rounded-full w-32 h-32 mb-6 md:mb-0 md:mr-6 object-cover flex-shrink-0">
                         <div class="flex-grow">
-                            <h3 class="text-2xl font-bold mb-2">Shingo Ono</h3>
-                            <p class="text-sewa-blue font-semibold mb-4">マネジャー</p>
-                            <p class="text-gray-600">グローバル企業で培った経験を活かし、あなたのキャリアを拓くお手伝いをします。<br><br>キャリアアドバイザーとして、日本語会話力向上プログラムの開発やキャリアカウンセリングを担当しています。<br><br>大手製薬会社での勤務経験は、私のキャリア形成の基盤です。営業職として、アレルギーやがん免疫療法といった分野で成果を上げ、その後は新規プロジェクトの立ち上げを主導しました。また、在職中に取得したMBA（経営学修士）は、論理的思考力とビジネスの全体像を捉える力を私に与えてくれました。<br><br>これらの経験と知識を活かし、あなたの強みを見出し、将来につながるキャリアプランを共に描きます。漠然とした不安を抱えている方から、具体的な目標を持つ方まで、一人ひとりに寄り添い、最適な道筋を提案します。</p>
+                            <h3 class="text-2xl font-bold mb-2" data-i18n="consultant.name">Shingo Ono</h3>
+                            <p class="text-sewa-blue font-semibold mb-4" data-i18n="consultant.title">Manager</p>
+                            <p class="text-gray-600" data-i18n-html="consultant.bio">I draw on my experience in global companies to help open up your career opportunities.<br><br>As a career advisor, I develop Japanese conversation programs and provide one-on-one counseling.<br><br>My years at a major pharmaceutical company laid the foundation for my career. I delivered results in allergy and cancer immunotherapy sales, then led new project launches. Earning an MBA while working strengthened my logical thinking and ability to see the full picture of business.<br><br>I use these experiences to uncover your strengths and co-create a career plan that leads to your future. Whether you feel uncertain or have a clear goal, I will stand beside you and propose the best path forward.</p>
                         </div>
                     </div>
                 </div>
@@ -387,33 +420,33 @@
 
         <section id="share" class="py-16 md:py-24 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-3xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">このチャンスを、ご友人にも</h2>
-                <p class="text-gray-600 text-lg mb-12">あなたの周りにも、日本でのキャリアを探している友人はいませんか？<br>ぜひ「世話カツ」の特別なサポートを教えてあげてください。</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="share.heading">Share this opportunity with your friends</h2>
+                <p class="text-gray-600 text-lg mb-12" data-i18n-html="share.description">Do you have friends who want to build a career in Japan?<br>Let them know about sewa-katsu's dedicated support.</p>
                 <div class="bg-gray-50 p-8 rounded-xl shadow-inner text-left max-w-2xl mx-auto border">
-                    <label for="referral-message" class="block text-sm font-bold text-gray-700 mb-2">紹介メッセージとリンク</label>
+                    <label for="referral-message" class="block text-sm font-bold text-gray-700 mb-2" data-i18n="share.label">Referral message and link</label>
                     <div class="flex gap-2">
                         <textarea id="referral-message" readonly class="form-input h-32 resize-none w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-sewa-blue focus:border-sewa-blue"></textarea>
-                        <button id="copy-button" class="bg-sewa-blue text-white font-bold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity self-start glow-on-hover">コピー</button>
+                        <button id="copy-button" class="bg-sewa-blue text-white font-bold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity self-start glow-on-hover" data-i18n="share.copyButton">Copy</button>
                     </div>
                     <p id="copy-feedback" class="text-sm text-green-600 mt-2 h-4"></p>
                     <div class="mt-6">
-                        <p class="text-sm font-bold text-gray-700 mb-3 text-center">または、SNSで直接シェア</p>
+                        <p class="text-sm font-bold text-gray-700 mb-3 text-center" data-i18n="share.or">Or share directly on social media</p>
                         <div class="flex justify-center gap-4">
                             <div class="flex flex-col items-center">
-                                <a id="line-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="LINEでシェア" class="transition-transform transform hover:scale-110"><img src="images/LINE_logo.png" alt="LINE" class="h-12 w-12"></a>
-                                <span class="text-xs text-gray-600 mt-1">LINE</span>
+                                <a id="line-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LINE" data-i18n-aria-label="share.lineAria" class="transition-transform transform hover:scale-110"><img src="images/LINE_logo.png" alt="LINE" class="h-12 w-12"></a>
+                                <span class="text-xs text-gray-600 mt-1" data-i18n="share.lineLabel">LINE</span>
                             </div>
                             <div class="flex flex-col items-center">
-                                <a id="email-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Eメールでシェア" class="transition-transform transform hover:scale-110"><img src="images/Eメール_logo.png" alt="Eメール" class="h-12 w-12"></a>
-                                <span class="text-xs text-gray-600 mt-1">メール</span>
+                                <a id="email-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share via email" data-i18n-aria-label="share.emailAria" class="transition-transform transform hover:scale-110"><img src="images/Eメール_logo.png" alt="Email" class="h-12 w-12"></a>
+                                <span class="text-xs text-gray-600 mt-1" data-i18n="share.emailLabel">Email</span>
                             </div>
                             <div class="flex flex-col items-center">
-                                <a id="messenger-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook Messengerでシェア" class="transition-transform transform hover:scale-110"><img src="images/Messenger_logo.png" alt="Messenger" class="h-12 w-12"></a>
-                                <span class="text-xs text-gray-600 mt-1">Messenger</span>
+                                <a id="messenger-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook Messenger" data-i18n-aria-label="share.messengerAria" class="transition-transform transform hover:scale-110"><img src="images/Messenger_logo.png" alt="Messenger" class="h-12 w-12"></a>
+                                <span class="text-xs text-gray-600 mt-1" data-i18n="share.messengerLabel">Messenger</span>
                             </div>
                             <div class="flex flex-col items-center">
-                                <a id="whatsapp-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsAppでシェア" class="transition-transform transform hover:scale-110"><img src="images/WhatsApp_logo.png" alt="WhatsApp" class="h-12 w-12"></a>
-                                <span class="text-xs text-gray-600 mt-1">WhatsApp</span>
+                                <a id="whatsapp-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" data-i18n-aria-label="share.whatsappAria" class="transition-transform transform hover:scale-110"><img src="images/WhatsApp_logo.png" alt="WhatsApp" class="h-12 w-12"></a>
+                                <span class="text-xs text-gray-600 mt-1" data-i18n="share.whatsappLabel">WhatsApp</span>
                             </div>
                         </div>
                     </div>
@@ -423,43 +456,213 @@
 
         <section id="form-section" class="bg-gray-50 py-16 md:py-24 px-6 scroll-animate">
             <div class="container mx-auto max-w-2xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800">さあ、未来への第一歩を</h2>
-                <p class="text-gray-600 text-lg mb-12">まずは下のフォームから、あなたのことを教えてください。<br>日本語能力 N1・N2の皆さんへホテル業界のお仕事を紹介します！</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="form.heading">Take the First Step Toward Your Future</h2>
+                <p class="text-gray-600 text-lg mb-12" data-i18n-html="form.description">Tell us about yourself in the form below.<br>We introduce hotel jobs in Japan to JLPT N1 and N2 talent!</p>
                 <div id="custom-form-container" class="bg-white p-8 rounded-xl shadow-2xl text-left border">
-                    <div class="mb-8"><div class="flex justify-between mb-2 text-sm font-bold text-gray-600"><p>ステップ <span id="current-step">1</span> / 3</p><p id="step-name">基本情報</p></div><div class="progress-bar-bg w-full h-2 rounded-full"><div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div></div></div>
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2 text-sm font-bold text-gray-600">
+                            <p><span data-i18n="form.stepLabel">Step</span> <span id="current-step">1</span> / 3</p>
+                            <p id="step-name"></p>
+                        </div>
+                        <div class="progress-bar-bg w-full h-2 rounded-full">
+                            <div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div>
+                        </div>
+                    </div>
                     <form id="sewakatsu-form">
                         <input type="hidden" id="ref_id" name="ref_id">
-                        <div id="step-1" class="form-step active"><div class="space-y-6"><div><label for="name_katakana" class="form-label"><span class="required">必須</span>お名前 (カタカナ)/Name (Katakana)</label><input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="スズキ タロウ" required></div><div><label for="email" class="form-label"><span class="required">必須</span>メールアドレス/E-mail address</label><input type="email" id="email" name="email" class="form-input" placeholder="your_address @example.com" required></div><div><label for="age" class="form-label"><span class="required">必須</span>年齢/Age</label><input type="number" id="age" name="age" class="form-input" placeholder="例：25" required min="18" max="99"></div><div><label for="phone" class="form-label"><span class="optional">任意</span>電話番号/Phone number </label><input type="tel" id="phone" name="phone" class="form-input" placeholder="09012345678"></div></div></div>
-                        <div id="step-2" class="form-step"><div class="space-y-6"><div><label for="japanese_level" class="form-label"><span class="required">必須</span>日本語の資格/Japanese language certifications</label><select id="japanese_level" name="japanese_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="JLPT N1">JLPT N1</option><option value="JLPT N2">JLPT N2</option><option value="JLPT N3">JLPT N3</option><option value="JLPT N4">JLPT N4</option><option value="JLPT N5">JLPT N5</option><option value="資格なし / Unqualified">資格なし</option></select></div><div><label for="english_level" class="form-label"><span class="required">必須</span>英語での会話レベル/English speaking level</label><select id="english_level" name="english_level" class="form-select" required><option value="" disabled selected>選択してください</option><option value="基礎レベル - Basic">基礎レベル</option><option value="会話レベル - Conversational">会話レベル</option><option value="ビジネスレベル - Business">ビジネスレベル</option><option value="流暢レベル - Fluent">流暢レベル</option><option value="母国語レベル - Native">母国語レベル</option><option value="話せない - Non-Speaker">話せない</option></select></div><div><label for="residence_status" class="form-label"><span class="required">必須</span>在留資格の種類/Japan resident status</label><select id="residence_status" name="residence_status" class="form-select" required><option value="" disabled selected>選択してください</option><option value="技術・人文知識・国際業務">技術・人文知識・国際業務</option><option value="特定技能">特定技能</option><option value="留学">留学</option><option value="特定活動/ワーキングホリデー">特定活動/ワーキングホリデー</option><option value="配偶者等">配偶者等</option><option value="永住者">永住者</option><option value="取得なし">取得なし</option><option value="その他">その他</option></select></div><div><label class="form-label"><span class="required">必須</span>お仕事の経験/Work Experience</label><div class="grid grid-cols-2 gap-3 mt-2"><label><input type="checkbox" name="workExperience" value="ホテル" class="hidden"><span class="form-checkbox-card">ホテル</span></label><label><input type="checkbox" name="workExperience" value="旅館" class="hidden"><span class="form-checkbox-card">旅館</span></label><label><input type="checkbox" name="workExperience" value="レストラン" class="hidden"><span class="form-checkbox-card">レストラン</span></label><label><input type="checkbox" name="workExperience" value="カフェ" class="hidden"><span class="form-checkbox-card">カフェ</span></label><label><input type="checkbox" name="workExperience" value="販売" class="hidden"><span class="form-checkbox-card">販売</span></label><label><input type="checkbox" name="workExperience" value="その他" class="hidden"><span class="form-checkbox-card">その他</span></label></div></div></div></div>
-                        <div id="step-3" class="form-step"><div class="space-y-6"><div><label for="country_origin" class="form-label"><span class="required">必須</span>出身国・地域/Country/Region of Origin</label><input type="text" id="country_origin" name="country_origin" class="form-input" required></div><div><label for="country_current" class="form-label"><span class="required">必須</span>今住んでいる国・地域/Country/area where you live now</label><input type="text" id="country_current" name="country_current" class="form-input" required></div><div><label for="desired_location" class="form-label"><span class="required">必須</span>希望する勤務地/Desired work location in Japan</label><input type="text" id="desired_location" name="desired_location" class="form-input" required></div><div><label for="education" class="form-label"><span class="required">必須</span>最終学歴/Educational background</label><select id="education" name="education" class="form-select" required><option value="" disabled selected>選択してください</option><option value="高校卒業">高校卒業</option><option value="在学中（専門学校卒業予定）">在学中（専門学校）</option><option value="専門学校卒業">専門学校卒業</option><option value="在学中（大学・大学院卒業予定）">在学中（大学・大学院）</option><option value="大学卒業">大学卒業</option><option value="大学院卒業">大学院卒業</option></select></div></div></div>
+                        <div id="step-1" class="form-step active">
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="name_katakana" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.nameKatakana.label">Name (Katakana)</span>
+                                    </label>
+                                    <input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="e.g., SUZUKI TARO" data-i18n-placeholder="form.fields.nameKatakana.placeholder" required>
+                                </div>
+                                <div>
+                                    <label for="email" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.email.label">Email address</span>
+                                    </label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="your_address@example.com" data-i18n-placeholder="form.fields.email.placeholder" required>
+                                </div>
+                                <div>
+                                    <label for="age" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.age.label">Age</span>
+                                    </label>
+                                    <input type="number" id="age" name="age" class="form-input" placeholder="e.g., 25" data-i18n-placeholder="form.fields.age.placeholder" required min="18" max="99">
+                                </div>
+                                <div>
+                                    <label for="phone" class="form-label">
+                                        <span class="optional" data-i18n="form.optional">Optional</span>
+                                        <span data-i18n="form.fields.phone.label">Phone number</span>
+                                    </label>
+                                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g., 09012345678" data-i18n-placeholder="form.fields.phone.placeholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step-2" class="form-step">
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="japanese_level" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.japaneseLevel.label">Japanese language certification</span>
+                                    </label>
+                                    <select id="japanese_level" name="japanese_level" class="form-select" required>
+                                        <option value="" disabled selected data-i18n="form.options.select">Please select</option>
+                                        <option value="JLPT N1">JLPT N1</option>
+                                        <option value="JLPT N2">JLPT N2</option>
+                                        <option value="JLPT N3">JLPT N3</option>
+                                        <option value="JLPT N4">JLPT N4</option>
+                                        <option value="JLPT N5">JLPT N5</option>
+                                        <option value="資格なし / Unqualified" data-i18n="form.options.japaneseLevel.none">No certification</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="english_level" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.englishLevel.label">English conversation level</span>
+                                    </label>
+                                    <select id="english_level" name="english_level" class="form-select" required>
+                                        <option value="" disabled selected data-i18n="form.options.select">Please select</option>
+                                        <option value="基礎レベル - Basic" data-i18n="form.options.englishLevel.basic">Basic</option>
+                                        <option value="会話レベル - Conversational" data-i18n="form.options.englishLevel.conversational">Conversational</option>
+                                        <option value="ビジネスレベル - Business" data-i18n="form.options.englishLevel.business">Business</option>
+                                        <option value="流暢レベル - Fluent" data-i18n="form.options.englishLevel.fluent">Fluent</option>
+                                        <option value="母国語レベル - Native" data-i18n="form.options.englishLevel.native">Native</option>
+                                        <option value="話せない - Non-Speaker" data-i18n="form.options.englishLevel.none">Do not speak</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="residence_status" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.residenceStatus.label">Residence status in Japan</span>
+                                    </label>
+                                    <select id="residence_status" name="residence_status" class="form-select" required>
+                                        <option value="" disabled selected data-i18n="form.options.select">Please select</option>
+                                        <option value="技術・人文知識・国際業務" data-i18n="form.options.residenceStatus.engineer">Engineer / Specialist in Humanities / International Services</option>
+                                        <option value="特定技能" data-i18n="form.options.residenceStatus.ssw">Specified Skilled Worker</option>
+                                        <option value="留学" data-i18n="form.options.residenceStatus.student">Student</option>
+                                        <option value="特定活動/ワーキングホリデー" data-i18n="form.options.residenceStatus.wh">Designated Activities / Working Holiday</option>
+                                        <option value="配偶者等" data-i18n="form.options.residenceStatus.spouse">Spouse or equivalent</option>
+                                        <option value="永住者" data-i18n="form.options.residenceStatus.permanent">Permanent Resident</option>
+                                        <option value="取得なし" data-i18n="form.options.residenceStatus.none">None</option>
+                                        <option value="その他" data-i18n="form.options.residenceStatus.other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.workExperience.label">Work experience</span>
+                                    </label>
+                                    <div class="grid grid-cols-2 gap-3 mt-2">
+                                        <label>
+                                            <input type="checkbox" name="workExperience" value="ホテル" class="hidden">
+                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.hotel">Hotel</span>
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="workExperience" value="旅館" class="hidden">
+                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.ryokan">Ryokan</span>
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="workExperience" value="レストラン" class="hidden">
+                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.restaurant">Restaurant</span>
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="workExperience" value="カフェ" class="hidden">
+                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.cafe">Cafe</span>
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="workExperience" value="販売" class="hidden">
+                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.retail">Retail</span>
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="workExperience" value="その他" class="hidden">
+                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.other">Other</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step-3" class="form-step">
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="country_origin" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.countryOrigin.label">Country/region of origin</span>
+                                    </label>
+                                    <input type="text" id="country_origin" name="country_origin" class="form-input" placeholder="e.g., Vietnam" data-i18n-placeholder="form.fields.countryOrigin.placeholder" required>
+                                </div>
+                                <div>
+                                    <label for="country_current" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.countryCurrent.label">Current country/region of residence</span>
+                                    </label>
+                                    <input type="text" id="country_current" name="country_current" class="form-input" placeholder="e.g., Japan" data-i18n-placeholder="form.fields.countryCurrent.placeholder" required>
+                                </div>
+                                <div>
+                                    <label for="desired_location" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.desiredLocation.label">Preferred work location in Japan</span>
+                                    </label>
+                                    <input type="text" id="desired_location" name="desired_location" class="form-input" placeholder="e.g., Tokyo" data-i18n-placeholder="form.fields.desiredLocation.placeholder" required>
+                                </div>
+                                <div>
+                                    <label for="education" class="form-label">
+                                        <span class="required" data-i18n="form.required">Required</span>
+                                        <span data-i18n="form.fields.education.label">Highest level of education</span>
+                                    </label>
+                                    <select id="education" name="education" class="form-select" required>
+                                        <option value="" disabled selected data-i18n="form.options.select">Please select</option>
+                                        <option value="高校卒業" data-i18n="form.options.education.highSchool">High school graduate</option>
+                                        <option value="在学中（専門学校卒業予定）" data-i18n="form.options.education.vocationalStudent">Currently enrolled (vocational school)</option>
+                                        <option value="専門学校卒業" data-i18n="form.options.education.vocationalGraduate">Vocational school graduate</option>
+                                        <option value="在学中（大学・大学院卒業予定）" data-i18n="form.options.education.universityStudent">Currently enrolled (university or graduate school)</option>
+                                        <option value="大学卒業" data-i18n="form.options.education.universityGraduate">University graduate</option>
+                                        <option value="大学院卒業" data-i18n="form.options.education.graduateSchool">Graduate school graduate</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div id="consent-checkbox-container" class="mt-8 text-center hidden">
-                            <p class="text-xs text-gray-600">
-                                「送信する」ボタンを押すことにより、<a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">利用規約</a>に同意したものとみなされます。
+                            <p class="text-xs text-gray-600" data-i18n-html="form.consentNotice">
+                                By clicking “Submit”, you agree to our <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">Terms of Service</a>.
                             </p>
                         </div>
-                         <div class="mt-8 flex justify-between items-center"><button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors">戻る</button><button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity glow-on-hover">次へ</button><button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover" disabled>利用規約に同意して送信</button></div>
+                        <div class="mt-8 flex justify-between items-center">
+                            <button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors" data-i18n="form.buttons.prev">Back</button>
+                            <button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity glow-on-hover" data-i18n="form.buttons.next">Next</button>
+                            <button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover" data-i18n="form.buttons.submit" disabled>Agree to the Terms and Submit</button>
+                        </div>
                     </form>
                 </div>
-                <div id="form-redirect-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます！</h3><p>ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...</p></div>
-                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center"><h3 class="text-2xl font-bold mb-4">ありがとうございます。</h3><p>ご応募を受け付けました。<br>内容を確認の上、担当者よりご連絡いたしますので、今しばらくお待ちください。</p></div>
+                <div id="form-redirect-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="form.redirectHeading">Thank you!</h3>
+                    <p data-i18n-html="form.redirectBody">We have received your application.<br>You will be redirected to the career consultation scheduling page shortly. Please wait a moment...</p>
+                </div>
+                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="form.successHeading">Thank you.</h3>
+                    <p data-i18n-html="form.successBody">We have received your application.<br>Our team will review the details and contact you soon.</p>
+                </div>
             </div>
         </section>
 
         <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-3xl">
-                <h2 class="text-4xl md:text-5xl font-black text-center mb-12 text-gray-800">よくあるご質問</h2>
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-12 text-gray-800" data-i18n="faq.heading">Frequently Asked Questions</h2>
                 <div class="space-y-4">
                     <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center">サービスの利用に料金はかかりますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
-                        <p class="mt-4 text-gray-600 border-t pt-4">いいえ、かかりません。キャリア相談から求人紹介、内定、入社後のサポートまで、すべてのサービスを無料でご利用いただけますので、ご安心ください。</p>
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q1">Is there any fee to use your service?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a1">No. Every service—from consultations to job introductions, offers, and post-hire support—is completely free, so please feel at ease.</p>
                     </details>
                     <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center">まだ転職するか決めていなくても、相談できますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
-                        <p class="mt-4 text-gray-600 border-t pt-4">はい、もちろんです。「まずは情報収集したい」「自分の市場価値を知りたい」といった段階でも大歓迎です。あなたのキャリアの可能性を一緒に探しましょう。</p>
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q2">Can I talk with you even if I'm not sure about changing jobs yet?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a2">Absolutely. Whether you simply want information or to understand your market value, we welcome you. Let’s explore your possibilities together.</p>
                     </details>
                     <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center">どんな仕事を紹介してもらえますか？<svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
-                        <p class="mt-4 text-gray-600 border-t pt-4">私たちは、ホテル・飲食業界を中心に、外国籍の方が安心して長く働ける優良企業の求人を多数扱っています。あなたの希望とスキルに合ったお仕事を一緒に見つけます。</p>
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q3">What kinds of jobs can you introduce?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a3">We mainly work with hotels and food &amp; beverage companies that provide supportive environments for international talent. We will find roles that match your goals and skills.</p>
                     </details>
                 </div>
             </div>
@@ -468,12 +671,12 @@
 
     <footer class="bg-gray-800 text-white text-center py-12 px-6">
         <div class="container mx-auto">
-            <img src="images/sewa_logo.png" alt="世話カツ ロゴ" class="h-16 mx-auto mb-6" style="filter: brightness(0) invert(1);">
-            <p class="mb-6">運営会社：株式会社Helte</p>
+            <img src="images/sewa_logo.png" alt="sewa-katsu logo" data-i18n-alt="footer.logoAlt" class="h-16 mx-auto mb-6" style="filter: brightness(0) invert(1);">
+            <p class="mb-6" data-i18n="footer.company">Operated by: Helte Co., Ltd.</p>
             <div class="flex justify-center gap-6 text-sm mb-8">
-                <a href="https://helte.jp/privacy-policy/" target="_blank" class="hover:underline">プライバシーポリシー</a>
-                <a href="https://sailjp.helte.jp/privacy/" target="_blank" class="hover:underline">クッキーポリシー</a>
-                <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="hover:underline">利用規約</a>
+                <a href="https://helte.jp/privacy-policy/" target="_blank" class="hover:underline" data-i18n="footer.privacy">Privacy Policy</a>
+                <a href="https://sailjp.helte.jp/privacy/" target="_blank" class="hover:underline" data-i18n="footer.cookie">Cookie Policy</a>
+                <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="hover:underline" data-i18n="footer.terms">Terms of Service</a>
             </div>
             <p class="text-xs text-gray-400">&copy; 2024 Helte Co., Ltd. All Rights Reserved.</p>
         </div>
@@ -481,7 +684,7 @@
 
     <a href="#form-section" id="floating-btn" class="fixed bottom-6 right-6 bg-sewa-accent text-white font-bold py-4 px-6 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 transform translate-y-4 pointer-events-none z-40 glow-on-hover">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-        <span>無料キャリア相談</span>
+        <span data-i18n="floatingCta">Free Career Consultation</span>
     </a>
     
     <script src="js/script.js" defer></script>
