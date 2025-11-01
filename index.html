@@ -257,23 +257,222 @@
     </header>
 
     <main>
-        <section class="hero-glow text-white text-center py-24 md:py-40 px-6">
-            <div class="container mx-auto hero-content">
-                <p id="welcome-message" class="text-lg md:text-xl text-blue-200 font-bold mb-4 animated-item"></p>
-                <div class="mb-6 animated-item" style="transition-delay: 0.2s;">
-                    <span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2" data-i18n="hero.badgeFree">Free</span>
-                    <span class="text-white font-bold text-xl md:text-2xl" data-i18n="hero.badgeLimited">Exclusive to JLPT N1 &amp; N2 talent</span>
-                </div>
-                <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;" data-i18n-html="hero.title">
-                    Hospitality hiring experts for international talent<br>Fully committed to achieving your ideal career
-                </h1>
-                <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-3xl mx-auto animated-item" style="transition-delay: 0.6s;" data-i18n="hero.subtitle">
-                    We specialize in helping JLPT N1/N2 talent land roles in Japan's hotel industry. We are the unique partner who helps you overcome both language and cultural barriers.
-                </p>
-                <div class="animated-item" style="transition-delay: 0.8s;">
-                    <a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block glow-on-hover" data-i18n="hero.primaryCta">Book a Free Career Consultation</a>
-                    <div class="mt-6">
-                        <a href="#share" id="hero-share-link" class="share-link-secondary" data-i18n="hero.shareCta">Or share with your friends →</a>
+        <section class="hero-glow text-white py-24 md:py-32 px-6">
+            <div class="container mx-auto">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="text-center md:text-left hero-content">
+                        <p id="welcome-message" class="text-lg md:text-xl text-blue-200 font-bold mb-4 animated-item"></p>
+                        <div class="mb-6 animated-item" style="transition-delay: 0.2s;">
+                            <span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2" data-i18n="hero.badgeFree">Free</span>
+                            <span class="text-white font-bold text-xl md:text-2xl" data-i18n="hero.badgeLimited">Exclusive to JLPT N1 &amp; N2 talent</span>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;" data-i18n-html="hero.title">
+                            Hospitality hiring experts for international talent<br>Fully committed to achieving your ideal career
+                        </h1>
+                        <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl animated-item" style="transition-delay: 0.6s;" data-i18n="hero.subtitle">
+                            We specialize in helping JLPT N1/N2 talent land roles in Japan's hotel industry. We are the unique partner who helps you overcome both language and cultural barriers.
+                        </p>
+                        <div class="animated-item" style="transition-delay: 0.8s;">
+                            <a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block glow-on-hover" data-i18n="hero.primaryCta">Book a Free Career Consultation</a>
+                            <div class="mt-6">
+                                <a href="#share" id="hero-share-link" class="share-link-secondary" data-i18n="hero.shareCta">Or share with your friends →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="hero-form-container" class="mt-12 md:mt-0">
+                        <div id="form-section" class="max-w-lg mx-auto">
+                            <div id="custom-form-container" class="hero-form bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl text-left border border-white/20">
+                                <div class="text-center mb-6">
+                                     <h2 class="text-3xl font-black mb-2 text-gray-800" data-i18n="form.heading">Take the First Step</h2>
+                                     <p class="text-gray-600" data-i18n-html="form.description">Tell us about yourself in the form below.</p>
+                                </div>
+                                <div class="mb-8">
+                                    <div class="flex justify-between mb-2 text-sm font-bold text-gray-600">
+                                        <p><span data-i18n="form.stepLabel">Step</span> <span id="current-step">1</span> / 3</p>
+                                        <p id="step-name"></p>
+                                    </div>
+                                    <div class="progress-bar-bg w-full h-2 rounded-full">
+                                        <div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div>
+                                    </div>
+                                </div>
+                                <form id="sewakatsu-form">
+                                    <input type="hidden" id="ref_id" name="ref_id">
+                                    <div id="step-1" class="form-step active">
+                                        <div class="space-y-6">
+                                            <div>
+                                                <label for="name_katakana" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.nameKatakana.label">Name (Katakana)</span>
+                                                </label>
+                                                <input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="e.g., SUZUKI TARO" data-i18n-placeholder="form.fields.nameKatakana.placeholder" required>
+                                            </div>
+                                            <div>
+                                                <label for="email" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.email.label">Email address</span>
+                                                </label>
+                                                <input type="email" id="email" name="email" class="form-input" placeholder="your_address@example.com" data-i18n-placeholder="form.fields.email.placeholder" required>
+                                            </div>
+                                            <div>
+                                                <label for="age" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.age.label">Age</span>
+                                                </label>
+                                                <input type="number" id="age" name="age" class="form-input" placeholder="e.g., 25" data-i18n-placeholder="form.fields.age.placeholder" required min="18" max="99">
+                                            </div>
+                                            <div>
+                                                <label for="phone" class="form-label">
+                                                    <span class="optional" data-i18n="form.optional">Optional</span>
+                                                    <span data-i18n="form.fields.phone.label">Phone number</span>
+                                                </label>
+                                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g., 09012345678" data-i18n-placeholder="form.fields.phone.placeholder">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="step-2" class="form-step">
+                                        <div class="space-y-6">
+                                            <div>
+                                                <label for="japanese_level" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.japaneseLevel.label">Japanese language certification</span>
+                                                </label>
+                                                <select id="japanese_level" name="japanese_level" class="form-select" required>
+                                                    <option value="" disabled selected data-i18n="form.options.select">Please select</option>
+                                                    <option value="JLPT N1">JLPT N1</option>
+                                                    <option value="JLPT N2">JLPT N2</option>
+                                                    <option value="JLPT N3">JLPT N3</option>
+                                                    <option value="JLPT N4">JLPT N4</option>
+                                                    <option value="JLPT N5">JLPT N5</option>
+                                                    <option value="資格なし / Unqualified" data-i18n="form.options.japaneseLevel.none">No certification</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="english_level" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.englishLevel.label">English conversation level</span>
+                                                </label>
+                                                <select id="english_level" name="english_level" class="form-select" required>
+                                                    <option value="" disabled selected data-i18n="form.options.select">Please select</option>
+                                                    <option value="基礎レベル - Basic" data-i18n="form.options.englishLevel.basic">Basic</option>
+                                                    <option value="会話レベル - Conversational" data-i18n="form.options.englishLevel.conversational">Conversational</option>
+                                                    <option value="ビジネスレベル - Business" data-i18n="form.options.englishLevel.business">Business</option>
+                                                    <option value="流暢レベル - Fluent" data-i18n="form.options.englishLevel.fluent">Fluent</option>
+                                                    <option value="母国語レベル - Native" data-i18n="form.options.englishLevel.native">Native</option>
+                                                    <option value="話せない - Non-Speaker" data-i18n="form.options.englishLevel.none">Do not speak</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="residence_status" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.residenceStatus.label">Residence status in Japan</span>
+                                                </label>
+                                                <select id="residence_status" name="residence_status" class="form-select" required>
+                                                    <option value="" disabled selected data-i18n="form.options.select">Please select</option>
+                                                    <option value="技術・人文知識・国際業務" data-i18n="form.options.residenceStatus.engineer">Engineer / Specialist in Humanities / International Services</option>
+                                                    <option value="特定技能" data-i18n="form.options.residenceStatus.ssw">Specified Skilled Worker</option>
+                                                    <option value="留学" data-i18n="form.options.residenceStatus.student">Student</option>
+                                                    <option value="特定活動/ワーキングホリデー" data-i18n="form.options.residenceStatus.wh">Designated Activities / Working Holiday</option>
+                                                    <option value="配偶者等" data-i18n="form.options.residenceStatus.spouse">Spouse or equivalent</option>
+                                                    <option value="永住者" data-i18n="form.options.residenceStatus.permanent">Permanent Resident</option>
+                                                    <option value="取得なし" data-i18n="form.options.residenceStatus.none">None</option>
+                                                    <option value="その他" data-i18n="form.options.residenceStatus.other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.workExperience.label">Work experience</span>
+                                                </label>
+                                                <div class="grid grid-cols-2 gap-3 mt-2">
+                                                    <label>
+                                                        <input type="checkbox" name="workExperience" value="ホテル" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.hotel">Hotel</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="workExperience" value="旅館" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.ryokan">Ryokan</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="workExperience" value="レストラン" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.restaurant">Restaurant</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="workExperience" value="カフェ" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.cafe">Cafe</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="workExperience" value="販売" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.retail">Retail</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="workExperience" value="その他" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.other">Other</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="step-3" class="form-step">
+                                        <div class="space-y-6">
+                                            <div>
+                                                <label for="country_origin" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.countryOrigin.label">Country/region of origin</span>
+                                                </label>
+                                                <input type="text" id="country_origin" name="country_origin" class="form-input" placeholder="e.g., Vietnam" data-i18n-placeholder="form.fields.countryOrigin.placeholder" required>
+                                            </div>
+                                            <div>
+                                                <label for="country_current" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.countryCurrent.label">Current country/region of residence</span>
+                                                </label>
+                                                <input type="text" id="country_current" name="country_current" class="form-input" placeholder="e.g., Japan" data-i18n-placeholder="form.fields.countryCurrent.placeholder" required>
+                                            </div>
+                                            <div>
+                                                <label for="desired_location" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.desiredLocation.label">Preferred work location in Japan</span>
+                                                </label>
+                                                <input type="text" id="desired_location" name="desired_location" class="form-input" placeholder="e.g., Tokyo" data-i18n-placeholder="form.fields.desiredLocation.placeholder" required>
+                                            </div>
+                                            <div>
+                                                <label for="education" class="form-label">
+                                                    <span class="required" data-i18n="form.required">Required</span>
+                                                    <span data-i18n="form.fields.education.label">Highest level of education</span>
+                                                </label>
+                                                <select id="education" name="education" class="form-select" required>
+                                                    <option value="" disabled selected data-i18n="form.options.select">Please select</option>
+                                                    <option value="高校卒業" data-i18n="form.options.education.highSchool">High school graduate</option>
+                                                    <option value="在学中（専門学校卒業予定）" data-i18n="form.options.education.vocationalStudent">Currently enrolled (vocational school)</option>
+                                                    <option value="専門学校卒業" data-i18n="form.options.education.vocationalGraduate">Vocational school graduate</option>
+                                                    <option value="在学中（大学・大学院卒業予定）" data-i18n="form.options.education.universityStudent">Currently enrolled (university or graduate school)</option>
+                                                    <option value="大学卒業" data-i18n="form.options.education.universityGraduate">University graduate</option>
+                                                    <option value="大学院卒業" data-i18n="form.options.education.graduateSchool">Graduate school graduate</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="consent-checkbox-container" class="mt-8 text-center hidden">
+                                        <p class="text-xs text-gray-600" data-i18n-html="form.consentNotice">
+                                            By clicking “Submit”, you agree to our <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">Terms of Service</a>.
+                                        </p>
+                                    </div>
+                                    <div class="mt-8 flex justify-between items-center">
+                                        <button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors" data-i18n="form.buttons.prev">Back</button>
+                                        <button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity glow-on-hover" data-i18n="form.buttons.next">Next</button>
+                                        <button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover" data-i18n="form.buttons.submit" disabled>Agree to the Terms and Submit</button>
+                                    </div>
+                                </form>
+                                <div id="form-redirect-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
+                                    <h3 class="text-2xl font-bold mb-4" data-i18n="form.redirectHeading">Thank you!</h3>
+                                    <p data-i18n-html="form.redirectBody">We have received your application.<br>You will be redirected to the career consultation scheduling page shortly. Please wait a moment...</p>
+                                </div>
+                                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
+                                    <h3 class="text-2xl font-bold mb-4" data-i18n="form.successHeading">Thank you.</h3>
+                                    <p data-i18n-html="form.successBody">We have received your application.<br>Our team will review the details and contact you soon.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -454,199 +653,7 @@
             </div>
         </section>
 
-        <section id="form-section" class="bg-gray-50 py-16 md:py-24 px-6 scroll-animate">
-            <div class="container mx-auto max-w-2xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="form.heading">Take the First Step Toward Your Future</h2>
-                <p class="text-gray-600 text-lg mb-12" data-i18n-html="form.description">Tell us about yourself in the form below.<br>We introduce hotel jobs in Japan to JLPT N1 and N2 talent!</p>
-                <div id="custom-form-container" class="bg-white p-8 rounded-xl shadow-2xl text-left border">
-                    <div class="mb-8">
-                        <div class="flex justify-between mb-2 text-sm font-bold text-gray-600">
-                            <p><span data-i18n="form.stepLabel">Step</span> <span id="current-step">1</span> / 3</p>
-                            <p id="step-name"></p>
-                        </div>
-                        <div class="progress-bar-bg w-full h-2 rounded-full">
-                            <div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div>
-                        </div>
-                    </div>
-                    <form id="sewakatsu-form">
-                        <input type="hidden" id="ref_id" name="ref_id">
-                        <div id="step-1" class="form-step active">
-                            <div class="space-y-6">
-                                <div>
-                                    <label for="name_katakana" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.nameKatakana.label">Name (Katakana)</span>
-                                    </label>
-                                    <input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="e.g., SUZUKI TARO" data-i18n-placeholder="form.fields.nameKatakana.placeholder" required>
-                                </div>
-                                <div>
-                                    <label for="email" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.email.label">Email address</span>
-                                    </label>
-                                    <input type="email" id="email" name="email" class="form-input" placeholder="your_address@example.com" data-i18n-placeholder="form.fields.email.placeholder" required>
-                                </div>
-                                <div>
-                                    <label for="age" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.age.label">Age</span>
-                                    </label>
-                                    <input type="number" id="age" name="age" class="form-input" placeholder="e.g., 25" data-i18n-placeholder="form.fields.age.placeholder" required min="18" max="99">
-                                </div>
-                                <div>
-                                    <label for="phone" class="form-label">
-                                        <span class="optional" data-i18n="form.optional">Optional</span>
-                                        <span data-i18n="form.fields.phone.label">Phone number</span>
-                                    </label>
-                                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g., 09012345678" data-i18n-placeholder="form.fields.phone.placeholder">
-                                </div>
-                            </div>
-                        </div>
-                        <div id="step-2" class="form-step">
-                            <div class="space-y-6">
-                                <div>
-                                    <label for="japanese_level" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.japaneseLevel.label">Japanese language certification</span>
-                                    </label>
-                                    <select id="japanese_level" name="japanese_level" class="form-select" required>
-                                        <option value="" disabled selected data-i18n="form.options.select">Please select</option>
-                                        <option value="JLPT N1">JLPT N1</option>
-                                        <option value="JLPT N2">JLPT N2</option>
-                                        <option value="JLPT N3">JLPT N3</option>
-                                        <option value="JLPT N4">JLPT N4</option>
-                                        <option value="JLPT N5">JLPT N5</option>
-                                        <option value="資格なし / Unqualified" data-i18n="form.options.japaneseLevel.none">No certification</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="english_level" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.englishLevel.label">English conversation level</span>
-                                    </label>
-                                    <select id="english_level" name="english_level" class="form-select" required>
-                                        <option value="" disabled selected data-i18n="form.options.select">Please select</option>
-                                        <option value="基礎レベル - Basic" data-i18n="form.options.englishLevel.basic">Basic</option>
-                                        <option value="会話レベル - Conversational" data-i18n="form.options.englishLevel.conversational">Conversational</option>
-                                        <option value="ビジネスレベル - Business" data-i18n="form.options.englishLevel.business">Business</option>
-                                        <option value="流暢レベル - Fluent" data-i18n="form.options.englishLevel.fluent">Fluent</option>
-                                        <option value="母国語レベル - Native" data-i18n="form.options.englishLevel.native">Native</option>
-                                        <option value="話せない - Non-Speaker" data-i18n="form.options.englishLevel.none">Do not speak</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="residence_status" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.residenceStatus.label">Residence status in Japan</span>
-                                    </label>
-                                    <select id="residence_status" name="residence_status" class="form-select" required>
-                                        <option value="" disabled selected data-i18n="form.options.select">Please select</option>
-                                        <option value="技術・人文知識・国際業務" data-i18n="form.options.residenceStatus.engineer">Engineer / Specialist in Humanities / International Services</option>
-                                        <option value="特定技能" data-i18n="form.options.residenceStatus.ssw">Specified Skilled Worker</option>
-                                        <option value="留学" data-i18n="form.options.residenceStatus.student">Student</option>
-                                        <option value="特定活動/ワーキングホリデー" data-i18n="form.options.residenceStatus.wh">Designated Activities / Working Holiday</option>
-                                        <option value="配偶者等" data-i18n="form.options.residenceStatus.spouse">Spouse or equivalent</option>
-                                        <option value="永住者" data-i18n="form.options.residenceStatus.permanent">Permanent Resident</option>
-                                        <option value="取得なし" data-i18n="form.options.residenceStatus.none">None</option>
-                                        <option value="その他" data-i18n="form.options.residenceStatus.other">Other</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.workExperience.label">Work experience</span>
-                                    </label>
-                                    <div class="grid grid-cols-2 gap-3 mt-2">
-                                        <label>
-                                            <input type="checkbox" name="workExperience" value="ホテル" class="hidden">
-                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.hotel">Hotel</span>
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" name="workExperience" value="旅館" class="hidden">
-                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.ryokan">Ryokan</span>
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" name="workExperience" value="レストラン" class="hidden">
-                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.restaurant">Restaurant</span>
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" name="workExperience" value="カフェ" class="hidden">
-                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.cafe">Cafe</span>
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" name="workExperience" value="販売" class="hidden">
-                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.retail">Retail</span>
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" name="workExperience" value="その他" class="hidden">
-                                            <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.other">Other</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="step-3" class="form-step">
-                            <div class="space-y-6">
-                                <div>
-                                    <label for="country_origin" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.countryOrigin.label">Country/region of origin</span>
-                                    </label>
-                                    <input type="text" id="country_origin" name="country_origin" class="form-input" placeholder="e.g., Vietnam" data-i18n-placeholder="form.fields.countryOrigin.placeholder" required>
-                                </div>
-                                <div>
-                                    <label for="country_current" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.countryCurrent.label">Current country/region of residence</span>
-                                    </label>
-                                    <input type="text" id="country_current" name="country_current" class="form-input" placeholder="e.g., Japan" data-i18n-placeholder="form.fields.countryCurrent.placeholder" required>
-                                </div>
-                                <div>
-                                    <label for="desired_location" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.desiredLocation.label">Preferred work location in Japan</span>
-                                    </label>
-                                    <input type="text" id="desired_location" name="desired_location" class="form-input" placeholder="e.g., Tokyo" data-i18n-placeholder="form.fields.desiredLocation.placeholder" required>
-                                </div>
-                                <div>
-                                    <label for="education" class="form-label">
-                                        <span class="required" data-i18n="form.required">Required</span>
-                                        <span data-i18n="form.fields.education.label">Highest level of education</span>
-                                    </label>
-                                    <select id="education" name="education" class="form-select" required>
-                                        <option value="" disabled selected data-i18n="form.options.select">Please select</option>
-                                        <option value="高校卒業" data-i18n="form.options.education.highSchool">High school graduate</option>
-                                        <option value="在学中（専門学校卒業予定）" data-i18n="form.options.education.vocationalStudent">Currently enrolled (vocational school)</option>
-                                        <option value="専門学校卒業" data-i18n="form.options.education.vocationalGraduate">Vocational school graduate</option>
-                                        <option value="在学中（大学・大学院卒業予定）" data-i18n="form.options.education.universityStudent">Currently enrolled (university or graduate school)</option>
-                                        <option value="大学卒業" data-i18n="form.options.education.universityGraduate">University graduate</option>
-                                        <option value="大学院卒業" data-i18n="form.options.education.graduateSchool">Graduate school graduate</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="consent-checkbox-container" class="mt-8 text-center hidden">
-                            <p class="text-xs text-gray-600" data-i18n-html="form.consentNotice">
-                                By clicking “Submit”, you agree to our <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">Terms of Service</a>.
-                            </p>
-                        </div>
-                        <div class="mt-8 flex justify-between items-center">
-                            <button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors" data-i18n="form.buttons.prev">Back</button>
-                            <button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity glow-on-hover" data-i18n="form.buttons.next">Next</button>
-                            <button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover" data-i18n="form.buttons.submit" disabled>Agree to the Terms and Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div id="form-redirect-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="form.redirectHeading">Thank you!</h3>
-                    <p data-i18n-html="form.redirectBody">We have received your application.<br>You will be redirected to the career consultation scheduling page shortly. Please wait a moment...</p>
-                </div>
-                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="form.successHeading">Thank you.</h3>
-                    <p data-i18n-html="form.successBody">We have received your application.<br>Our team will review the details and contact you soon.</p>
-                </div>
-            </div>
-        </section>
+        <!-- Form has been moved to the hero section -->
 
         <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-3xl">

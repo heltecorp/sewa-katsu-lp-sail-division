@@ -871,6 +871,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initForm() {
+        console.log("initForm called");
         updateWelcomeMessage();
         updateStepUI();
     }
