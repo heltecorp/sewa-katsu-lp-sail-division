@@ -1,8 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const CONFIG = {
-        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycby5MHyTzB6dgLUqOJ-hd24W-7NaM59of1gRItA2rmwTRhafonJjCxcZ8dVj9fJU4qtX/exec',
+        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbwMfa2GU2dViYplKsqHzLf_1_JkU_Qr9n7NDkr7zU95Xh28tCyrzUNZ4F7lUrpPrz5I/exec',
         jicooRedirectUrl: 'https://www.jicoo.com/t/helte/e/l18IvvwC9O_u',
         referralBaseUrl: 'https://sewa-katsu-lp-sd.helte.jp/?id=referral'
+    };
+
+    const COOKIE_STORAGE_KEY = 'sewakatsu-cookie-consent';
+    const ANALYTICS_CONFIG = {
+        googleTagId: 'G-FWXZ4WCSZ8',
+        microsoftClarityId: 't0pcptw5q1',
+        linkedinPartnerId: '8014244'
     };
 
     const TRANSLATIONS = {
@@ -18,126 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 ariaLabel: '言語の切替'
             },
             hero: {
-                badgeFree: '無料',
-                badgeLimited: '日本語能力 N1・N2 の方限定',
-                title: 'ホテル業界の外国人材採用を知り尽くしたプロが<br>あなたの最高のキャリア実現を徹底サポート',
-                subtitle: 'N1/N2人材のホテル業界への就職に特化。私たちは、言葉の壁だけでなく、文化の壁も乗り越える転職を支援する唯一無二のパートナーです。',
-                primaryCta: 'まずは無料でキャリア相談',
-                shareCta: 'または、お友達に紹介する →'
-            },
-            partners: {
-                heading: '「世話カツ」がご紹介する信頼のホテルパートナー（一部）',
-                description: '外資系ラグジュアリーホテルから全国展開のシティホテルチェーンまで、幅広い優良企業と提携しています。',
-                logos: {
-                    chm: 'CHMロゴ',
-                    esp: 'ESPロゴ',
-                    gv: 'GVロゴ',
-                    ryu: 'RYUロゴ',
-                    sfv: 'SFVロゴ',
-                    trs: 'TR&Sロゴ'
-                }
-            },
-            benefits: {
-                heading: '「世話カツ」のサービスを受けるメリット',
-                description: '「世話カツ」は、あなたが日本でのキャリアを成功に導くための、特別なサポートを提供します。',
-                icons: {
-                    limitedJobs: '限定非公開求人',
-                    resumeSupport: 'プロによる書類添削',
-                    interviewPreparation: '徹底した面接対策',
-                    aftercare: '安心の入社後フォロー'
-                },
-                cards: {
-                    limitedJobs: {
-                        title: '限定非公開求人',
-                        body: '一般には出回らない、優良ホテルの非公開求人へのアクセスを提供します。'
-                    },
-                    resumeSupport: {
-                        title: 'プロによる書類添削',
-                        body: '外国人材の強みを最大限に活かす履歴書・職務経歴書作成をサポートします。'
-                    },
-                    interviewPreparation: {
-                        title: '徹底した面接対策',
-                        body: '日本のホテルならではの面接スタイルを熟知したコンサルタントによる模擬面接で自信をつけます。'
-                    },
-                    aftercare: {
-                        title: '安心の入社後フォロー',
-                        body: '新しい環境で安心してスタートできるよう、入社後も定期的に連絡を取りサポートします。'
-                    }
-                }
-            },
-            testimonials: {
-                heading: '「世話カツ」で夢を叶えた先輩たちの声',
-                description: '実際に「世話カツ」を利用し、日本でのキャリアを掴んだ方々の生の声をお届けします。',
-                linkLabel: 'noteで詳しく読む',
-                items: {
-                    shin: {
-                        quote: '「日本で働きたい」と思い、インターネットで検索していた時に「世話カツ」を見つけました。他にもいくつか転職サイトはありましたが、ホームページのデザインがとても綺麗で、細部まで情報がしっかり載っていたので、「ここなら信頼できる」と感じて利用を決めました。',
-                        name: 'シンさん (韓国出身)',
-                        imageAlt: 'シンさん'
-                    },
-                    lumia: {
-                        quote: 'キャリアアドバイザーの方と何度も面接練習をしました。私は話が長くなる癖があったのですが、「ビジネスでは簡潔さが重要」だと、どこを短くすれば良いか具体的にアドバイスをいただけたのが本当に助かりました。自分一人では気づけないことだったので、とても勉強になりました。',
-                        name: 'ルミアさん (マレーシア出身)',
-                        imageAlt: 'ルミアさん'
-                    },
-                    claudia: {
-                        quote: '初めての日本での就職活動で、何もかもが分かりませんでした。特にヨーロッパとは全く違う履歴書の書き方を丁寧に教えてもらえたのが心強かったです。入社後の住まい探しや手続きまでサポートしていただき、不安がどんどん解消されていきました。おかげで安心して就職活動に臨めました。',
-                        name: 'クラウディアさん (スロバキア出身)',
-                        imageAlt: 'クラウディアさん'
-                    }
-                }
-            },
-            flow: {
-                heading: '徹底サポートフロー',
-                description: 'ご相談から内定、そして入社後まで、あなたのキャリアに光が差すまで伴走します。',
-                steps: {
-                    step1: {
-                        title: 'オンライン相談',
-                        body: 'まずはあなたの希望や経歴をヒアリング。最適なプランを一緒に考えます。'
-                    },
-                    step2: {
-                        title: '求人紹介・書類作成',
-                        body: '厳選した求人をご紹介。あなたの魅力が伝わる応募書類の作成もサポート。'
-                    },
-                    step3: {
-                        title: '面接練習・本番',
-                        body: '本番を想定した模擬面接で自信をつけます。当日は面接に同席も可能です。'
-                    },
-                    step4: {
-                        title: '内定・入社手続き',
-                        body: '給与や待遇の交渉、複雑な入社手続きやビザのサポートまでお任せください。'
-                    },
-                    step5: {
-                        title: '入社後のフォロー',
-                        body: '新しい環境で安心してスタートできるよう、入社後も定期的に連絡を取りサポートします。'
-                    }
-                }
-            },
-            consultant: {
-                heading: 'あなたのキャリアを支えるプロフェッショナル',
-                description: '「世話カツ」のコンサルタントは、ホテル業界と外国人材のキャリア支援に情熱を燃やすプロフェッショナル集団です。',
-                name: 'Shingo Ono',
-                title: 'マネジャー',
-                bio: 'グローバル企業で培った経験を活かし、あなたのキャリアを拓くお手伝いをします。<br><br>キャリアアドバイザーとして、日本語会話力向上プログラムの開発やキャリアカウンセリングを担当しています。<br><br>大手製薬会社での勤務経験は、私のキャリア形成の基盤です。営業職として、アレルギーやがん免疫療法といった分野で成果を上げ、その後は新規プロジェクトの立ち上げを主導しました。また、在職中に取得したMBA（経営学修士）は、論理的思考力とビジネスの全体像を捉える力を私に与えてくれました。<br><br>これらの経験と知識を活かし、あなたの強みを見出し、将来につながるキャリアプランを共に描きます。漠然とした不安を抱えている方から、具体的な目標を持つ方まで、一人ひとりに寄り添い、最適な道筋を提案します。'
-            },
-            share: {
-                heading: 'このチャンスを、ご友人にも',
-                description: 'あなたの周りにも、日本でのキャリアを探している友人はいませんか？<br>ぜひ「世話カツ」の特別なサポートを教えてあげてください。',
-                label: '紹介メッセージとリンク',
-                copyButton: 'コピー',
-                or: 'または、SNSで直接シェア',
-                lineLabel: 'LINE',
-                emailLabel: 'メール',
-                messengerLabel: 'Messenger',
-                whatsappLabel: 'WhatsApp',
-                lineAria: 'LINEでシェア',
-                emailAria: 'Eメールでシェア',
-                messengerAria: 'Facebook Messengerでシェア',
-                whatsappAria: 'WhatsAppでシェア',
-                copySuccess: 'コピーしました！',
-                copyFailure: 'コピーに失敗しました',
-                referralText: '日本のホテルで働きたいあなたへ！「世話カツ」が履歴書作成から面接まで、あなたの就職を無料でフルサポートします。まずは、下のリンクから詳細をチェック！',
-                emailSubject: '「世話カツ」のご紹介'
+                title: 'ビザも、仕事も、新生活も。<br>日本でのキャリア挑戦、もう一人で悩まない。',
+                badgeCombined: 'N1/N2 ホルダー専門のお仕事紹介',
+                benefit1: '<b>理想のキャリア:</b> 豊富な非公開求人から最適な仕事を提案',
+                benefit2: '<b>複雑なビザ:</b> 行政書士と連携し、申請をフルサポート',
+                benefit3: '<b>新生活の不安:</b> 住居探しや各種手続きもフォロー',
+                testimonialQuote: '「世話カツのスタッフの方に、履歴書や職務経歴書の書き方から丁寧に教えてもらったのが、本当に助かりました。」',
+                testimonialAuthor: '- クラウディアさん (スロバキア出身)'
             },
             form: {
                 heading: 'さあ、未来への第一歩を',
@@ -155,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 welcomeReferred: 'ご友人からのご紹介ですね！',
                 welcomeDefault: 'ようこそ、世話カツへ！',
                 workExperienceAlert: 'お仕事の経験を一つ以上選択してください。',
-                redirectHeading: 'ありがとうございます！',
+                redirectHeading: '申し込みありがとうございました',
                 redirectBody: 'ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...',
-                successHeading: 'ありがとうございます。',
+                successHeading: '申し込みありがとうございました',
                 successBody: 'ご応募を受け付けました。<br>内容を確認の上、担当者よりご連絡いたしますので、今しばらくお待ちください。',
                 consentNotice: '「送信する」ボタンを押すことにより、<a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">利用規約</a>に同意したものとみなされます。',
                 fields: {
@@ -246,6 +140,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             },
+            flow: {
+                heading: 'ご相談から入社後までの「まるごとサポート」の流れ',
+                description: '私たちは、あなたのキャリアのあらゆる段階に寄り添います。',
+                step1: '1. 無料相談',
+                step2: '2. 求人紹介',
+                step3: '3. 選考対策',
+                step4: '4. 内定・ビザ',
+                step5: '5. 入社後フォロー'
+            },
+            partners: {
+                newHeading: '信頼のパートナー企業',
+                subheading: '（提携企業の一部をご紹介します）'
+            },
             faq: {
                 heading: 'よくあるご質問',
                 q1: 'サービスの利用に料金はかかりますか？',
@@ -256,13 +163,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 a3: '私たちは、ホテル・飲食業界を中心に、外国籍の方が安心して長く働ける優良企業の求人を多数扱っています。あなたの希望とスキルに合ったお仕事を一緒に見つけます。'
             },
             footer: {
-                logoAlt: '世話カツ ロゴ',
-                company: '運営会社：株式会社Helte',
-                privacy: 'プライバシーポリシー',
-                cookie: 'クッキーポリシー',
-                terms: '利用規約'
+                logoAlt: '世話カツ ロゴ'
             },
-            floatingCta: '無料キャリア相談'
+            floatingCta: '無料キャリア相談',
+            share: {
+                copySuccess: 'コピーしました！',
+                copyFailure: 'コピーに失敗しました',
+                referralText: '日本のホテルで働きたいあなたへ！「世話カツ」が履歴書作成から面接まで、あなたの就職を無料でフルサポートします。まずは、下のリンクから詳細をチェック！',
+                emailSubject: '「世話カツ」のご紹介',
+                lineLabel: 'LINE',
+                emailLabel: 'メール',
+                messengerLabel: 'Messenger',
+                whatsappLabel: 'WhatsApp'
+            }
         },
         en: {
             meta: {
@@ -276,126 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 ariaLabel: 'Language toggle'
             },
             hero: {
-                badgeFree: 'Free',
-                badgeLimited: 'Exclusive to JLPT N1 & N2 talent',
-                title: 'Hospitality hiring experts for international talent<br>Fully committed to achieving your ideal career',
-                subtitle: "We specialize in helping JLPT N1/N2 talent land roles in Japan's hotel industry. We are the unique partner who helps you overcome both language and cultural barriers.",
-                primaryCta: 'Book a Free Career Consultation',
-                shareCta: 'Or share with your friends →'
-            },
-            partners: {
-                heading: 'Trusted hotel partners introduced by sewa-katsu (selected)',
-                description: 'From global luxury hotels to nationwide city hotel chains, we partner with a wide range of top-class employers.',
-                logos: {
-                    chm: 'CHM logo',
-                    esp: 'ESP logo',
-                    gv: 'GV logo',
-                    ryu: 'RYU logo',
-                    sfv: 'SFV logo',
-                    trs: 'TR&S logo'
-                }
-            },
-            benefits: {
-                heading: 'Why Choose sewa-katsu',
-                description: 'sewa-katsu delivers dedicated support that helps you build a successful career in Japan.',
-                icons: {
-                    limitedJobs: 'Exclusive hidden jobs icon',
-                    resumeSupport: 'Resume support icon',
-                    interviewPreparation: 'Interview preparation icon',
-                    aftercare: 'Post-start follow-up icon'
-                },
-                cards: {
-                    limitedJobs: {
-                        title: 'Exclusive Hidden Jobs',
-                        body: 'Gain access to premium hotel openings that never appear on public job boards.'
-                    },
-                    resumeSupport: {
-                        title: 'Professional Resume Coaching',
-                        body: 'We help you craft resumes and CVs that highlight the strengths of international talent.'
-                    },
-                    interviewPreparation: {
-                        title: 'Thorough Interview Preparation',
-                        body: "Mock interviews with consultants who understand the hotel industry's expectations in Japan."
-                    },
-                    aftercare: {
-                        title: 'Post-Start Follow-up',
-                        body: 'We stay in touch after you join to ensure you can settle into your new environment with confidence.'
-                    }
-                }
-            },
-            testimonials: {
-                heading: 'Voices of Talent Who Achieved Their Dream with sewa-katsu',
-                description: 'Hear directly from people who used sewa-katsu to build their careers in Japan.',
-                linkLabel: 'Read the full story on note',
-                items: {
-                    shin: {
-                        quote: '“When I decided I wanted to work in Japan, I found sewa-katsu online. Other job sites existed, but their beautifully designed website packed with detailed information made me feel I could trust them.”',
-                        name: 'Shin (from South Korea)',
-                        imageAlt: 'Portrait of Shin from South Korea'
-                    },
-                    lumia: {
-                        quote: '“I practiced interviews many times with my career advisor. I tend to talk too long, and they gave concrete advice on how to stay concise in business settings. It was incredibly helpful to receive feedback I could never have figured out alone.”',
-                        name: 'Lumia (from Malaysia)',
-                        imageAlt: 'Portrait of Lumia from Malaysia'
-                    },
-                    claudia: {
-                        quote: '“It was my first job hunt in Japan and I had no idea where to start. They patiently taught me how to write resumes, which is completely different from Europe. They even supported my housing search and paperwork after I received an offer, which really eased my anxiety.”',
-                        name: 'Klaudia (from Slovakia)',
-                        imageAlt: 'Portrait of Klaudia from Slovakia'
-                    }
-                }
-            },
-            flow: {
-                heading: 'End-to-End Support Flow',
-                description: 'We stay by your side from the initial consultation through your offer and onboarding, until your career truly takes off.',
-                steps: {
-                    step1: {
-                        title: 'Online Consultation',
-                        body: 'We listen to your goals and background and plan the best strategy together.'
-                    },
-                    step2: {
-                        title: 'Job Introductions & Documents',
-                        body: 'We introduce carefully selected roles and support you in creating compelling application documents.'
-                    },
-                    step3: {
-                        title: 'Interview Coaching & Day-of Support',
-                        body: 'Build confidence through mock interviews. We can even accompany you on the actual day.'
-                    },
-                    step4: {
-                        title: 'Offer & Onboarding Procedures',
-                        body: 'Leave salary negotiations, complex paperwork, and visa support to us.'
-                    },
-                    step5: {
-                        title: 'Follow-up After You Start',
-                        body: 'We check in regularly after you join so you can thrive in your new environment.'
-                    }
-                }
-            },
-            consultant: {
-                heading: 'Professionals Supporting Your Career',
-                description: 'Our sewa-katsu consultants are passionate experts in both the hotel industry and supporting global talent.',
-                name: 'Shingo Ono',
-                title: 'Manager',
-                bio: 'I draw on my experience in global companies to help open up your career opportunities.<br><br>As a career advisor, I develop Japanese conversation programs and provide one-on-one counseling.<br><br>My years at a major pharmaceutical company laid the foundation for my career. I delivered results in allergy and cancer immunotherapy sales, then led new project launches. Earning an MBA while working strengthened my logical thinking and ability to see the full picture of business.<br><br>I use these experiences to uncover your strengths and co-create a career plan that leads to your future. Whether you feel uncertain or have a clear goal, I will stand beside you and propose the best path forward.'
-            },
-            share: {
-                heading: 'Share this opportunity with your friends',
-                description: "Do you have friends who want to build a career in Japan?<br>Let them know about sewa-katsu's dedicated support.",
-                label: 'Referral message and link',
-                copyButton: 'Copy',
-                or: 'Or share directly on social media',
-                lineLabel: 'LINE',
-                emailLabel: 'Email',
-                messengerLabel: 'Messenger',
-                whatsappLabel: 'WhatsApp',
-                lineAria: 'Share on LINE',
-                emailAria: 'Share via email',
-                messengerAria: 'Share on Facebook Messenger',
-                whatsappAria: 'Share on WhatsApp',
-                copySuccess: 'Copied!',
-                copyFailure: 'Unable to copy',
-                referralText: 'Looking to work at a hotel in Japan? sewa-katsu offers free, end-to-end support from resumes to interviews. Check the details from the link below!',
-                emailSubject: 'Introducing sewa-katsu'
+                title: 'Visas, jobs, and new beginnings.<br>You don\'t have to navigate your career in Japan alone.',
+                badgeCombined: 'Exclusive Job Offers for N1/N2 Holders',
+                benefit1: '<b>Ideal Career:</b> We propose the best job from our many exclusive offers.',
+                benefit2: '<b>Complex Visas:</b> Full support for applications in collaboration with legal experts.',
+                benefit3: '<b>Anxieties about a New Life:</b> We also help with housing and other procedures.',
+                testimonialQuote: '"The Sewakatsu staff were a huge help, patiently teaching me everything from how to write my resume and CV."',
+                testimonialAuthor: '- Klaudia from Slovakia'
             },
             form: {
                 heading: 'Take the First Step Toward Your Future',
@@ -413,9 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 welcomeReferred: 'You were referred by a friend!',
                 welcomeDefault: 'Welcome to sewa-katsu!',
                 workExperienceAlert: 'Please select at least one work experience.',
-                redirectHeading: 'Thank you!',
+                redirectHeading: '申し込みありがとうございました',
                 redirectBody: 'We have received your application.<br>You will be redirected to the career consultation scheduling page shortly. Please wait a moment...',
-                successHeading: 'Thank you.',
+                successHeading: '申し込みありがとうございました',
                 successBody: 'We have received your application.<br>Our team will review the details and contact you soon.',
                 consentNotice: 'By clicking “Submit”, you agree to our <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">Terms of Service</a>.',
                 fields: {
@@ -504,23 +304,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             },
+            flow: {
+                heading: '"Total Support" Flow from Consultation to Post-employment',
+                description: 'We are with you every step of the way.',
+                step1: '1. Free Consultation',
+                step2: '2. Job Matching',
+                step3: '3. Interview Prep',
+                step4: '4. Offer & Visa',
+                step5: '5. After-care'
+            },
+            partners: {
+                newHeading: 'Our Trusted Partners',
+                subheading: '(A selection of our partner companies)'
+            },
             faq: {
                 heading: 'Frequently Asked Questions',
                 q1: 'Is there any fee to use your service?',
                 a1: 'No. Every service—from consultations to job introductions, offers, and post-hire support—is completely free, so please feel at ease.',
-                q2: "Can I talk with you even if I'm not sure about changing jobs yet?",
+                q2: 'Can I talk with you even if I\'m not sure about changing jobs yet?',
                 a2: 'Absolutely. Whether you simply want information or to understand your market value, we welcome you. Let’s explore your possibilities together.',
                 q3: 'What kinds of jobs can you introduce?',
                 a3: 'We mainly work with hotels and food & beverage companies that provide supportive environments for international talent. We will find roles that match your goals and skills.'
             },
             footer: {
-                logoAlt: 'sewa-katsu logo',
-                company: 'Operated by: Helte Co., Ltd.',
-                privacy: 'Privacy Policy',
-                cookie: 'Cookie Policy',
-                terms: 'Terms of Service'
+                logoAlt: 'sewa-katsu logo'
             },
-            floatingCta: 'Free Career Consultation'
+            floatingCta: 'Free Career Consultation',
+            share: {
+                copySuccess: 'Copied!',
+                copyFailure: 'Unable to copy',
+                referralText: 'Looking to work at a hotel in Japan? sewa-katsu offers free, end-to-end support from resumes to interviews. Check the details from the link below!',
+                emailSubject: 'Introducing sewa-katsu',
+                lineLabel: 'LINE',
+                emailLabel: 'Email',
+                messengerLabel: 'Messenger',
+                whatsappLabel: 'WhatsApp'
+            }
         }
     };
 
@@ -545,18 +364,22 @@ document.addEventListener('DOMContentLoaded', () => {
         formContainer: document.getElementById('custom-form-container'),
         successMessage: document.getElementById('form-success-message'),
         redirectMessage: document.getElementById('form-redirect-message'),
-        referralMessageTextarea: document.getElementById('referral-message'),
         copyButton: document.getElementById('copy-button'),
         copyFeedback: document.getElementById('copy-feedback'),
+        referralMessageTextarea: document.getElementById('referral-message'),
         lineShareLink: document.getElementById('line-share-link'),
         emailShareLink: document.getElementById('email-share-link'),
         messengerShareLink: document.getElementById('messenger-share-link'),
         whatsappShareLink: document.getElementById('whatsapp-share-link'),
         heroShareLink: document.getElementById('hero-share-link'),
-        languageToggleButtons: document.querySelectorAll('.lang-btn')
+        languageToggleButtons: document.querySelectorAll('.lang-btn'),
+        cookieBanner: document.getElementById('cookie-banner'),
+        cookieAcceptBtn: document.getElementById('cookie-accept'),
+        cookieDeclineBtn: document.getElementById('cookie-decline')
     };
 
     let currentStep = 0;
+    let analyticsLoaded = false;
 
     function getNestedTranslation(lang, key) {
         return key.split('.').reduce((value, part) => (value && value[part] !== undefined ? value[part] : undefined), TRANSLATIONS[lang]);
@@ -579,12 +402,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function showElement(element) {
         if (element) {
             element.classList.remove('hidden');
+            element.style.display = '';
         }
     }
 
     function hideElement(element) {
         if (element) {
             element.classList.add('hidden');
+            element.style.display = 'none';
         }
     }
 
@@ -603,35 +428,156 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('[data-i18n]').forEach((el) => {
             const key = el.dataset.i18n;
-            el.textContent = translate(key);
+            const translated = translate(key);
+            if (translated) {
+                el.textContent = translated;
+            }
         });
 
         document.querySelectorAll('[data-i18n-html]').forEach((el) => {
             const key = el.dataset.i18nHtml;
-            el.innerHTML = translate(key);
+            const translated = translate(key);
+            if (translated) {
+                el.innerHTML = translated;
+            }
         });
 
         document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
             const key = el.dataset.i18nPlaceholder;
-            el.setAttribute('placeholder', translate(key));
+            const translated = translate(key);
+            if (translated) {
+                el.setAttribute('placeholder', translated);
+            }
         });
 
         document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
             const key = el.dataset.i18nAlt;
-            el.setAttribute('alt', translate(key));
+            const translated = translate(key);
+            if (translated) {
+                el.setAttribute('alt', translated);
+            }
         });
 
         document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
             const key = el.dataset.i18nAriaLabel;
-            el.setAttribute('aria-label', translate(key));
-        });
-
-        const floatingCta = translate('floatingCta');
-        if (ELEMENTS.floatingBtn) {
-            const textSpan = ELEMENTS.floatingBtn.querySelector('span[data-i18n="floatingCta"]');
-            if (textSpan && floatingCta) {
-                textSpan.textContent = floatingCta;
+            const translated = translate(key);
+            if (translated) {
+                el.setAttribute('aria-label', translated);
             }
+        });
+    }
+
+    function showCookieBanner() {
+        if (ELEMENTS.cookieBanner) {
+            ELEMENTS.cookieBanner.classList.add('visible');
+        }
+    }
+
+    function hideCookieBanner() {
+        if (ELEMENTS.cookieBanner) {
+            ELEMENTS.cookieBanner.classList.remove('visible');
+        }
+    }
+
+    function setGoogleAnalyticsDisabled(disabled) {
+        if (ANALYTICS_CONFIG.googleTagId) {
+            window[`ga-disable-${ANALYTICS_CONFIG.googleTagId}`] = disabled;
+        }
+    }
+
+    function loadGoogleAnalytics() {
+        if (window.gtag || !ANALYTICS_CONFIG.googleTagId) {
+            return;
+        }
+        setGoogleAnalyticsDisabled(false);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', ANALYTICS_CONFIG.googleTagId);
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_CONFIG.googleTagId}`;
+        document.head.appendChild(script);
+    }
+
+    function loadMicrosoftClarity() {
+        if (typeof window.clarity === 'function' || !ANALYTICS_CONFIG.microsoftClarityId) {
+            return;
+        }
+        (function(c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments);
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = `https://www.clarity.ms/tag/${i}`;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, 'clarity', 'script', ANALYTICS_CONFIG.microsoftClarityId);
+    }
+
+    function loadLinkedInInsight() {
+        if (window.lintrk || !ANALYTICS_CONFIG.linkedinPartnerId) {
+            return;
+        }
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(ANALYTICS_CONFIG.linkedinPartnerId);
+        window.lintrk = function(a, b) {
+            window.lintrk.q.push([a, b]);
+        };
+        window.lintrk.q = [];
+
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+        document.head.appendChild(script);
+    }
+
+    function loadAnalyticsScripts() {
+        if (analyticsLoaded) {
+            return;
+        }
+        analyticsLoaded = true;
+        loadGoogleAnalytics();
+        loadMicrosoftClarity();
+        loadLinkedInInsight();
+    }
+
+    function initCookieBanner() {
+        if (!ELEMENTS.cookieBanner) {
+            return;
+        }
+        let consentValue = null;
+        try {
+            consentValue = localStorage.getItem(COOKIE_STORAGE_KEY);
+        } catch (error) {
+            consentValue = null;
+        }
+
+        if (!consentValue) {
+            setGoogleAnalyticsDisabled(true);
+            showCookieBanner();
+        } else if (consentValue === 'accepted') {
+            loadAnalyticsScripts();
+        } else {
+            setGoogleAnalyticsDisabled(true);
+        }
+    }
+
+    function handleCookieConsent(value) {
+        try {
+            localStorage.setItem(COOKIE_STORAGE_KEY, value);
+        } catch (error) {
+            console.warn('Unable to store cookie consent:', error);
+        }
+        hideCookieBanner();
+        if (value === 'accepted') {
+            loadAnalyticsScripts();
+        } else {
+            setGoogleAnalyticsDisabled(true);
         }
     }
 
@@ -644,6 +590,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateStepUI() {
+        if (!ELEMENTS.steps.length) {
+            return;
+        }
+
         ELEMENTS.steps.forEach((step, index) => {
             step.classList.toggle('active', index === currentStep);
         });
@@ -684,23 +634,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateWelcomeMessage() {
-        if (!ELEMENTS.welcomeMessage || !ELEMENTS.refIdInput) {
-            return;
-        }
+        let refId = 'N/A';
         try {
             const urlParams = new URLSearchParams(window.location.search);
-            const refId = urlParams.get('ref_id');
-            if (refId) {
-                ELEMENTS.welcomeMessage.textContent = translate('form.welcomeReferred');
-                ELEMENTS.refIdInput.value = refId;
-            } else {
-                ELEMENTS.welcomeMessage.textContent = translate('form.welcomeDefault');
-                ELEMENTS.refIdInput.value = 'N/A';
-            }
+            refId = urlParams.get('ref_id') || refId;
         } catch (error) {
             console.error('Error processing URL parameters:', error);
-            ELEMENTS.welcomeMessage.textContent = translate('form.welcomeDefault');
-            ELEMENTS.refIdInput.value = 'Error';
+            refId = 'Error';
+        }
+
+        if (ELEMENTS.refIdInput) {
+            ELEMENTS.refIdInput.value = refId;
+        }
+
+        if (ELEMENTS.welcomeMessage) {
+            ELEMENTS.welcomeMessage.textContent = refId && refId !== 'N/A' && refId !== 'Error'
+                ? translate('form.welcomeReferred')
+                : translate('form.welcomeDefault');
         }
     }
 
@@ -718,6 +668,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validateField(field) {
+        if (!field) {
+            return true;
+        }
         field.classList.remove('invalid');
         if (field.hasAttribute('required') && !field.value) {
             field.classList.add('invalid');
@@ -727,20 +680,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validateCurrentStep() {
-        const currentStepFields = ELEMENTS.steps[currentStep].querySelectorAll('[required]');
+        if (!ELEMENTS.steps.length) {
+            return true;
+        }
+
+        const currentStepElement = ELEMENTS.steps[currentStep];
+        if (!currentStepElement) {
+            return true;
+        }
+
+        const requiredFields = currentStepElement.querySelectorAll('[required]');
         let isValid = true;
-        currentStepFields.forEach((field) => {
+        requiredFields.forEach((field) => {
             if (!validateField(field)) {
                 isValid = false;
             }
         });
-        if (currentStep === 1) {
-            const expCheckboxes = ELEMENTS.steps[currentStep].querySelectorAll('input[name="workExperience"]:checked');
-            if (expCheckboxes.length === 0) {
-                isValid = false;
+
+        if (isValid && currentStep === 1) {
+            const expCheckboxes = currentStepElement.querySelectorAll('input[name="workExperience"]:checked');
+            if (!expCheckboxes.length) {
                 alert(translate('form.workExperienceAlert'));
+                isValid = false;
             }
         }
+
         return isValid;
     }
 
@@ -758,7 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleFormSubmission(event) {
         event.preventDefault();
-        if (!validateCurrentStep()) {
+        if (!validateCurrentStep() || !ELEMENTS.form) {
             return;
         }
 
@@ -787,42 +751,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const japaneseLevel = data.japanese_level;
         if (japaneseLevel === 'JLPT N1' || japaneseLevel === 'JLPT N2') {
-            hideElement(ELEMENTS.formContainer);
-            showElement(ELEMENTS.redirectMessage);
+        hideElement(ELEMENTS.form);
+        showElement(ELEMENTS.redirectMessage);
             setTimeout(() => {
                 window.location.href = CONFIG.jicooRedirectUrl;
             }, 1500);
         } else {
-            hideElement(ELEMENTS.formContainer);
-            showElement(ELEMENTS.successMessage);
+        hideElement(ELEMENTS.form);
+        showElement(ELEMENTS.successMessage);
         }
     }
 
     function handleCopyButtonClick() {
-        if (!ELEMENTS.referralMessageTextarea) {
+        if (!ELEMENTS.referralMessageTextarea || !navigator.clipboard) {
             return;
         }
         ELEMENTS.referralMessageTextarea.select();
         navigator.clipboard
             .writeText(ELEMENTS.referralMessageTextarea.value)
             .then(() => {
-                ELEMENTS.copyFeedback.textContent = translate('share.copySuccess');
-                ELEMENTS.copyFeedback.style.opacity = '1';
-                setTimeout(() => {
-                    ELEMENTS.copyFeedback.style.opacity = '0';
-                }, 2000);
+                if (ELEMENTS.copyFeedback) {
+                    ELEMENTS.copyFeedback.textContent = translate('share.copySuccess');
+                    ELEMENTS.copyFeedback.style.opacity = '1';
+                    setTimeout(() => {
+                        ELEMENTS.copyFeedback.style.opacity = '0';
+                    }, 2000);
+                }
             })
             .catch((err) => {
-                console.error('クリップボードへのコピーに失敗しました: ', err);
-                ELEMENTS.copyFeedback.textContent = translate('share.copyFailure');
-                ELEMENTS.copyFeedback.style.opacity = '1';
-                setTimeout(() => {
-                    ELEMENTS.copyFeedback.style.opacity = '0';
-                }, 2000);
+                console.error('Failed to copy text: ', err);
+                if (ELEMENTS.copyFeedback) {
+                    ELEMENTS.copyFeedback.textContent = translate('share.copyFailure');
+                    ELEMENTS.copyFeedback.style.opacity = '1';
+                    setTimeout(() => {
+                        ELEMENTS.copyFeedback.style.opacity = '0';
+                    }, 2000);
+                }
             });
     }
 
     function handleHeroShareLinkClick(event) {
+        if (!ELEMENTS.heroShareLink) {
+            return;
+        }
         event.preventDefault();
         const shareSection = document.getElementById('share');
         if (shareSection) {
@@ -834,6 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             ELEMENTS.animatedItems.forEach((el) => el.classList.add('is-visible'));
         }, 100);
+
         const scrollObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -842,20 +814,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, { threshold: 0.1 });
+
         ELEMENTS.scrollAnimateItems.forEach((el) => {
             scrollObserver.observe(el);
         });
     }
 
     function updateShareSection() {
+        if (!ELEMENTS.referralMessageTextarea) {
+            return;
+        }
         const referralText = translate('share.referralText');
         const message = `${referralText}\n${CONFIG.referralBaseUrl}`;
         const encodedMessage = encodeURIComponent(message);
         const emailSubject = encodeURIComponent(translate('share.emailSubject'));
 
-        if (ELEMENTS.referralMessageTextarea) {
-            ELEMENTS.referralMessageTextarea.value = message;
-        }
+        ELEMENTS.referralMessageTextarea.value = message;
         if (ELEMENTS.lineShareLink) {
             ELEMENTS.lineShareLink.href = `https://line.me/R/msg/text/?${encodedMessage}`;
         }
@@ -871,7 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initForm() {
-        console.log("initForm called");
+        currentStep = 0;
         updateWelcomeMessage();
         updateStepUI();
     }
@@ -884,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ELEMENTS.nextBtn) {
             ELEMENTS.nextBtn.addEventListener('click', handleNextButtonClick);
         }
-        if (ELEMENTS.submitBtn && ELEMENTS.form) {
+        if (ELEMENTS.form) {
             ELEMENTS.form.addEventListener('submit', handleFormSubmission);
         }
         if (ELEMENTS.copyButton) {
@@ -896,11 +870,18 @@ document.addEventListener('DOMContentLoaded', () => {
         ELEMENTS.languageToggleButtons.forEach((btn) => {
             btn.addEventListener('click', () => setLanguage(btn.dataset.language));
         });
+
+        if (ELEMENTS.cookieAcceptBtn) {
+            ELEMENTS.cookieAcceptBtn.addEventListener('click', () => handleCookieConsent('accepted'));
+        }
+        if (ELEMENTS.cookieDeclineBtn) {
+            ELEMENTS.cookieDeclineBtn.addEventListener('click', () => handleCookieConsent('declined'));
+        }
     }
 
     function setLanguage(lang, options = {}) {
         if (!TRANSLATIONS[lang]) {
-            lang = 'ja';
+            lang = 'en';
         }
         currentLanguage = lang;
         applyTranslations();
@@ -908,6 +889,25 @@ document.addEventListener('DOMContentLoaded', () => {
         updateWelcomeMessage();
         updateShareSection();
         updateLanguageToggleUI();
+        if (!options.skipSave) {
+            try {
+                localStorage.setItem('sewakatsu-lang', currentLanguage);
+            } catch (error) {
+                console.warn('Unable to persist language preference:', error);
+            }
+        }
+    }
+
+    const savedLanguage = (() => {
+        try {
+            return localStorage.getItem('sewakatsu-lang');
+        } catch (error) {
+            return null;
+        }
+    })();
+
+    if (savedLanguage && TRANSLATIONS[savedLanguage]) {
+        currentLanguage = savedLanguage;
     }
 
     initAnimations();
@@ -915,4 +915,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setupGlobalEventListeners();
     setLanguage(currentLanguage, { skipSave: true });
     updateFloatingButtonVisibility();
+    initCookieBanner();
 });

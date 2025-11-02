@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FWXZ4WCSZ8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-FWXZ4WCSZ8');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="meta.title">Welcome to sewa-katsu | Supporting Your Career in Japan</title>
@@ -18,34 +9,27 @@
     <link rel="preconnect" href="https://images.unsplash.com">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* === Ultimate Design Injection by UI/UX Alchemist === */
+        /* === 親しみと安心のデザイン注入 (Friendly & Supportive Design Injection) === */
         :root {
-            --sewa-blue: #007BFF; /* Primary action blue */
-            --sewa-accent: #FF6B6B; /* Secondary action/highlight red */
-            --sewa-dark-blue: #003366; /* Dark blue for main text/headings */
-            --sewa-light-gray: #F8F9FA; /* Light gray for subtle backgrounds */
-            --glow-color: rgba(0, 123, 255, 0.5);
+            --sewa-blue: #0085FF; /* A brighter, more friendly blue */
+            --sewa-accent: #F66748; /* The requested brand accent color */
+            --sewa-dark-gray: #333333; /* Softer than black for text */
+            --sewa-light-gray: #F8F9FA; /* Subtle backgrounds */
+            --glow-color: rgba(246, 103, 72, 0.5); /* Glow effect matching the accent color */
         }
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 16px; /* Base font size */
-            line-height: 1.6; /* Base line height */
-            color: var(--sewa-dark-blue); /* Default text color */
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif; /* Rounded font for friendliness */
+            font-size: 16px;
+            line-height: 1.7; /* Slightly more space for readability */
+            color: var(--sewa-dark-gray);
         }
-        h1 {
-            font-weight: 900; /* Ensure black weight */
-            line-height: 1.2;
-        }
-        h2 {
-            font-weight: 900; /* Ensure black weight */
+        h1, h2, h3 {
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+            font-weight: 900;
             line-height: 1.3;
-            color: var(--sewa-dark-blue); /* Ensure consistent color */
-        }
-        h3 {
-            font-weight: 700; /* Bold weight */
-            line-height: 1.4;
-            color: var(--sewa-dark-blue); /* Ensure consistent color */
+            color: var(--sewa-dark-gray);
         }
         .bg-sewa-blue { background-color: var(--sewa-blue); }
         .text-sewa-blue { color: var(--sewa-blue); }
@@ -54,7 +38,7 @@
         .font-black { font-weight: 900; }
         html { scroll-behavior: smooth; }
 
-        /* Animated Gradient Background */
+        /* Animated Gradient Background - Adjusted for a warmer feel */
         .hero-glow {
             position: relative;
             background-image: url('images/top-image.png');
@@ -66,7 +50,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(-45deg, rgba(0, 35, 71, 0.85), rgba(0, 72, 126, 0.8), rgba(0, 123, 255, 0.85), rgba(41, 164, 255, 0.8));
+            background: linear-gradient(-45deg, rgba(0, 90, 170, 0.85), rgba(0, 133, 255, 0.8), rgba(246, 103, 72, 0.85), rgba(255, 139, 113, 0.8));
             background-size: 400% 400%;
             animation: gradient-flow 15s ease infinite;
         }
@@ -95,115 +79,52 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Support Flow Connectors */
-        .flow-grid {
-            position: relative;
-        }
-        @media (min-width: 768px) {
-            .flow-grid-item {
-                position: relative;
-            }
-            .flow-grid-item:not(:last-child)::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                right: -27px; /* gap/2 */
-                transform: translateY(-50%);
-                width: 30px; /* gap - some padding */
-                height: 2px;
-                background: repeating-linear-gradient(90deg, var(--sewa-blue), var(--sewa-blue) 4px, transparent 4px, transparent 10px);
-                opacity: 0.5;
-            }
-        }
-        /* === End of Injection === */
+        
+        /* General UI Elements */
         .hero-content h1, .hero-content p {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for readability */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
         }
-        .marquee-content img {
-            object-fit: contain;
-            width: auto; /* Allow natural width based on height */
-            max-height: 48px; /* Max height for consistency, matching md:h-12 */
-        }
-        .grid > div.bg-white.p-8.rounded-xl {
-            min-height: 320px; /* Adjust as needed for content */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-        }
-        .grid > div.bg-white.p-8.rounded-xl p {
-            flex-grow: 1; /* Allow paragraphs to take available space */
-        }
-        .grid.md\:grid-cols-3 > div.bg-white.p-8.rounded-xl { /* Target testimonial cards */
-            text-align: center; /* Ensure all content is centered */
-        }
-        .grid.md\:grid-cols-3 > div.bg-white.p-8.rounded-xl p.italic {
-            text-align: left; /* Keep quote left-aligned for readability */
-        }
-
         .animated-item { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .animated-item.is-visible { opacity: 1; transform: translateY(0); }
         .hero-content { position: relative; z-index: 1; }
-        .marquee { overflow: hidden; position: relative; white-space: nowrap; }
-        .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .marquee-content > * { margin: 0 2rem; }
+        
+        /* Form Styles */
+        .hero-form { min-height: 520px; }
+        .form-label { font-weight: 700; color: #4a5568 !important; margin-bottom: 0.5rem; display: block; }
+        .form-label .required { background-color: var(--sewa-accent); color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
+        .form-label .optional { background-color: #a0aec0; color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
+        .form-input, .form-select { width: 100%; padding: 0.85rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.75rem; transition: border-color 0.2s, box-shadow 0.2s; }
+        .form-input:focus, .form-select:focus { outline: none; border-color: var(--sewa-accent); box-shadow: 0 0 0 3px rgba(246, 103, 72, 0.3); }
+        .form-input.invalid, .form-select.invalid { border-color: #f56565; }
         .form-step { display: none; transition: opacity 0.3s ease-in-out; }
         .form-step.active { display: block; }
         .progress-bar-bg { background-color: #e2e8f0; }
         .progress-bar-fill { background-color: var(--sewa-blue); transition: width 0.3s ease-in-out; }
-        .form-label { font-weight: 700; color: #4a5568; margin-bottom: 0.5rem; display: block; }
-        .form-label .required { background-color: var(--sewa-accent); color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
-        .form-label .optional { background-color: #a0aec0; color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
-        .form-input, .form-select { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: border-color 0.2s, box-shadow 0.2s; }
-        .form-input:focus, .form-select:focus { outline: none; border-color: var(--sewa-blue); box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); }
-        .form-input.invalid, .form-select.invalid { border-color: #f56565; }
-        .form-checkbox-card {
-            display: block;
-            padding: 0.75rem 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        input[type="checkbox"]:checked + .form-checkbox-card {
-            background-color: #ebf8ff;
-            border-color: var(--sewa-blue);
-            color: var(--sewa-blue);
-            font-weight: bold;
-        }
+        .form-checkbox-card { display: block; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; cursor: pointer; transition: all 0.2s; }
+        input[type="checkbox"]:checked + .form-checkbox-card { background-color: #ebf8ff; border-color: var(--sewa-blue); color: var(--sewa-blue); font-weight: bold; }
         #copy-button { flex-shrink: 0; }
         #copy-feedback { transition: opacity 0.5s ease-in-out; }
-        .share-link-secondary {
-            display: inline-block;
-            padding: 0.65rem 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 9999px;
-            color: white;
-            font-weight: bold;
-            opacity: 0.9;
-            transition: all 0.3s ease;
+
+        /* Cookie Consent Banner */
+        .cookie-banner {
+            position: fixed;
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 60;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            display: none;
         }
-        .share-link-secondary:hover {
-            opacity: 1;
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: scale(1.05);
-        }
-        .timeline-step {
-            display: inline-block;
-            font-size: 0.875rem;
-            font-weight: bold;
-            color: var(--sewa-blue);
-            background-color: #ebf8ff;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            margin-bottom: 0.75rem;
-        }
-        .consent-error {
-            color: var(--sewa-accent); /* Highlight in red */
-            font-weight: bold;
-        }
+        .cookie-banner.visible { display: flex; }
+        .cookie-banner p { color: #2d3748; }
+        .cookie-banner a { color: var(--sewa-blue); text-decoration: underline; }
+        .cookie-banner button { font-weight: 700; }
+
+        /* Language Toggle */
         .language-toggle {
             display: inline-flex;
             align-items: center;
@@ -216,7 +137,7 @@
         .language-toggle .lang-btn {
             font-size: 0.75rem;
             font-weight: 700;
-            color: var(--sewa-dark-blue);
+            color: var(--sewa-dark-gray);
             padding: 0.2rem 0.8rem;
             border-radius: 9999px;
             transition: all 0.2s ease;
@@ -229,59 +150,68 @@
             color: #fff;
         }
         .language-toggle .lang-btn:not(.active):hover {
-            background-color: rgba(0, 123, 255, 0.12);
+            background-color: rgba(0, 133, 255, 0.12);
         }
     </style>
-    <!-- Microsoft Clarity tracking code -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "t0pcptw5q1");
-    </script>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-sewa-light-gray text-sewa-dark-gray">
 
     <header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <img src="images/sewa_logo.png" alt="sewa-katsu logo" data-i18n-alt="header.logoAlt" class="h-16">
-            <div class="flex items-center gap-3">
+            <div class="flex items-center">
                 <div class="language-toggle" role="group" aria-label="Language toggle" data-i18n-aria-label="languageToggle.ariaLabel">
                     <button type="button" class="lang-btn" data-language="ja">日本語</button>
                     <button type="button" class="lang-btn active" data-language="en">English</button>
                 </div>
-                <a href="#form-section" data-i18n="header.cta" class="bg-sewa-blue text-white font-bold text-sm py-2 px-5 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover hidden md:inline-block">Free Career Consultation</a>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero-glow text-white py-24 md:py-32 px-6">
+        <!-- =============================================================== -->
+        <!-- HERO SECTION (Above the Fold) - NEWLY DESIGNED                 -->
+        <!-- =============================================================== -->
+        <section class="hero-glow text-white py-20 md:py-24 px-6">
             <div class="container mx-auto">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                    
+                    <!-- Left Column: Message Area -->
                     <div class="text-center md:text-left hero-content">
-                        <p id="welcome-message" class="text-lg md:text-xl text-blue-200 font-bold mb-4 animated-item"></p>
-                        <div class="mb-6 animated-item" style="transition-delay: 0.2s;">
-                            <span class="bg-white text-sewa-accent font-bold px-3 py-1 rounded-md text-sm mr-2" data-i18n="hero.badgeFree">Free</span>
-                            <span class="text-white font-bold text-xl md:text-2xl" data-i18n="hero.badgeLimited">Exclusive to JLPT N1 &amp; N2 talent</span>
+                        <div class="mb-4">
+                            <span class="bg-white text-sewa-accent font-bold px-3 py-2 rounded-md text-md" data-i18n="hero.badgeCombined">Exclusive Job Offers for N1/N2 Holders</span>
                         </div>
-                        <h1 class="text-4xl md:text-5xl font-black leading-tight mb-6 animated-item" style="transition-delay: 0.4s;" data-i18n-html="hero.title">
-                            Hospitality hiring experts for international talent<br>Fully committed to achieving your ideal career
+                        <h1 class="text-4xl md:text-5xl font-black leading-tight mb-8 animated-item" style="transition-delay: 0.2s;" data-i18n-html="hero.title">
+                            Visas, jobs, and new beginnings.<br>You don't have to navigate your career in Japan alone.
                         </h1>
-                        <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl animated-item" style="transition-delay: 0.6s;" data-i18n="hero.subtitle">
-                            We specialize in helping JLPT N1/N2 talent land roles in Japan's hotel industry. We are the unique partner who helps you overcome both language and cultural barriers.
-                        </p>
-                        <div class="animated-item" style="transition-delay: 0.8s;">
-                            <a href="#form-section" class="bg-sewa-accent text-white font-bold text-lg md:text-xl py-4 px-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block glow-on-hover" data-i18n="hero.primaryCta">Book a Free Career Consultation</a>
-                            <div class="mt-6">
-                                <a href="#share" id="hero-share-link" class="share-link-secondary" data-i18n="hero.shareCta">Or share with your friends →</a>
+                        
+                        <ul class="space-y-4 text-lg text-blue-100 mb-8 animated-item" style="transition-delay: 0.4s;">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span data-i18n-html="hero.benefit1"><b>Ideal Career:</b> We propose the best job from our many exclusive offers.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span data-i18n-html="hero.benefit2"><b>Complex Visas:</b> Full support for applications in collaboration with legal experts.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span data-i18n-html="hero.benefit3"><b>Anxieties about a New Life:</b> We also help with housing and other procedures.</span>
+                            </li>
+                        </ul>
+
+                        <div class="bg-white/20 p-4 rounded-lg flex items-center space-x-4 animated-item" style="transition-delay: 0.6s;">
+                            <img src="images/Slovakia.png" alt="Portrait of Klaudia" class="w-16 h-16 rounded-full object-cover border-2 border-white">
+                            <div class="text-left">
+                                <p class="text-white text-sm italic" data-i18n="hero.testimonialQuote">"The Sewakatsu staff were a huge help, patiently teaching me everything from how to write my resume and CV."</p>
+                                <p class="text-xs text-blue-200 font-bold mt-1" data-i18n="hero.testimonialAuthor">- Klaudia from Slovakia</p>
                             </div>
                         </div>
                     </div>
+                    
                     <div id="hero-form-container" class="mt-12 md:mt-0">
                         <div id="form-section" class="max-w-lg mx-auto">
-                            <div id="custom-form-container" class="hero-form bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl text-left border border-white/20">
+                            <div id="custom-form-container" class="hero-form bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl text-left text-gray-800 border border-white/20">
                                 <div class="text-center mb-6">
                                      <h2 class="text-3xl font-black mb-2 text-gray-800" data-i18n="form.heading">Take the First Step</h2>
                                      <p class="text-gray-600" data-i18n-html="form.description">Tell us about yourself in the form below.</p>
@@ -478,198 +408,90 @@
             </div>
         </section>
 
-        <section class="py-16 bg-gray-50 scroll-animate">
-            <div class="container mx-auto">
-                <h3 class="text-center text-base text-gray-500 font-bold mb-6" data-i18n="partners.heading">Trusted hotel partners introduced by sewa-katsu (selected)</h3>
-                <p class="text-center text-gray-600 text-sm mb-8" data-i18n="partners.description">From global luxury hotels to nationwide city hotel chains, we partner with a wide range of top-class employers.</p>
-                <div class="marquee">
-                    <div class="marquee-content">
-                        <img src="images/CHM_logo.svg" alt="CHM logo" data-i18n-alt="partners.logos.chm" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/ESP_logo.png" alt="ESP logo" data-i18n-alt="partners.logos.esp" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/GV_logo.svg" alt="GV logo" data-i18n-alt="partners.logos.gv" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/RYU_logo.svg" alt="RYU logo" data-i18n-alt="partners.logos.ryu" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/SFV_logo.svg" alt="SFV logo" data-i18n-alt="partners.logos.sfv" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                        <img src="images/TR&S_logo.svg" alt="TR&S logo" data-i18n-alt="partners.logos.trs" class="h-9 md:h-12 inline-block mx-8 hover:filter-none hover:opacity-100 transition-all duration-300">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
+        <!-- =============================================================== -->
+        <!-- SUPPORT FLOW SECTION (Below the Fold) - NEWLY DESIGNED          -->
+        <!-- =============================================================== -->
+        <section class="py-16 md:py-20 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-5xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="benefits.heading">Why Choose sewa-katsu</h2>
-                <p class="text-gray-600 text-lg mb-16" data-i18n="benefits.description">sewa-katsu delivers dedicated support that helps you build a successful career in Japan.</p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-                    <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/limited_jobs.png" alt="Exclusive hidden jobs icon" data-i18n-alt="benefits.icons.limitedJobs" class="w-12 h-12 object-contain"></div>
-                        <h3 class="text-2xl font-bold mb-2" data-i18n="benefits.cards.limitedJobs.title">Exclusive Hidden Jobs</h3>
-                        <p class="text-gray-600" data-i18n="benefits.cards.limitedJobs.body">Gain access to premium hotel openings that never appear on public job boards.</p>
+                <h2 class="text-3xl md:text-4xl font-black mb-4" data-i18n="flow.heading">"Total Support" Flow from Consultation to Post-employment</h2>
+                <p class="text-gray-600 text-lg mb-12" data-i18n="flow.description">We are with you every step of the way.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
+                    <div class="flex items-center flex-col p-4 text-center">
+                        <div class="text-3xl mb-2">🤝</div>
+                        <h3 class="font-bold" data-i18n="flow.step1">1. Free Consultation</h3>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/resume.png" alt="Resume support icon" data-i18n-alt="benefits.icons.resumeSupport" class="w-12 h-12 object-contain"></div>
-                        <h3 class="text-2xl font-bold mb-2" data-i18n="benefits.cards.resumeSupport.title">Professional Resume Coaching</h3>
-                        <p class="text-gray-600" data-i18n="benefits.cards.resumeSupport.body">We help you craft resumes and CVs that highlight the strengths of international talent.</p>
+                    <div class="text-2xl text-gray-300 font-light">→</div>
+                    <div class="flex items-center flex-col p-4 text-center">
+                        <div class="text-3xl mb-2">💼</div>
+                        <h3 class="font-bold" data-i18n="flow.step2">2. Job Matching</h3>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/interview.png" alt="Interview preparation icon" data-i18n-alt="benefits.icons.interviewPreparation" class="w-12 h-12 object-contain"></div>
-                        <h3 class="text-2xl font-bold mb-2" data-i18n="benefits.cards.interviewPreparation.title">Thorough Interview Preparation</h3>
-                        <p class="text-gray-600" data-i18n="benefits.cards.interviewPreparation.body">Mock interviews with consultants who understand the hotel industry's expectations in Japan.</p>
+                    <div class="text-2xl text-gray-300 font-light">→</div>
+                    <div class="flex items-center flex-col p-4 text-center">
+                        <div class="text-3xl mb-2">📝</div>
+                        <h3 class="font-bold" data-i18n="flow.step3">3. Interview Prep</h3>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg text-center glow-on-hover border border-gray-100">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-sewa-blue w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-6"><img src="images/follow.png" alt="Post-start follow-up icon" data-i18n-alt="benefits.icons.aftercare" class="w-12 h-12 object-contain"></div>
-                        <h3 class="text-2xl font-bold mb-2" data-i18n="benefits.cards.aftercare.title">Post-Start Follow-up</h3>
-                        <p class="text-gray-600" data-i18n="benefits.cards.aftercare.body">We stay in touch after you join so you can settle into your new environment with confidence.</p>
+                    <div class="text-2xl text-gray-300 font-light">→</div>
+                    <div class="flex items-center flex-col p-4 text-center">
+                        <div class="text-3xl mb-2">📄</div>
+                        <h3 class="font-bold" data-i18n="flow.step4">4. Offer & Visa</h3>
+                    </div>
+                    <div class="text-2xl text-gray-300 font-light">→</div>
+                    <div class="flex items-center flex-col p-4 text-center">
+                        <div class="text-3xl mb-2">🤗</div>
+                        <h3 class="font-bold" data-i18n="flow.step5">5. After-care</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- =============================================================== -->
+        <!-- TRUST WALL SECTION (Below the Fold) - NEWLY DESIGNED            -->
+        <!-- =============================================================== -->
+        <section class="py-16 bg-gray-100 scroll-animate">
+            <div class="container mx-auto px-6">
+                <h2 class="text-center text-3xl font-black text-gray-800 mb-4" data-i18n="partners.newHeading">Our Trusted Partners</h2>
+                <p class="text-center text-gray-500 mb-12" data-i18n="partners.subheading">(A selection of our partner companies)</p>
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-x-8 gap-y-10 items-center">
+                    <div class="transition-transform transform hover:-translate-y-2">
+                        <img src="images/CHM_logo.svg" alt="CHM logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="transition-transform transform hover:-translate-y-2">
+                        <img src="images/ESP_logo.png" alt="ESP logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="transition-transform transform hover:-translate-y-2">
+                        <img src="images/GV_logo.svg" alt="GV logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="transition-transform transform hover:-translate-y-2">
+                        <img src="images/RYU_logo.svg" alt="RYU logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="transition-transform transform hover:-translate-y-2">
+                        <img src="images/SFV_logo.svg" alt="SFV logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="transition-transform transform hover:-translate-y-2">
+                        <img src="images/TR&S_logo.svg" alt="TR&S logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
-            <div class="container mx-auto max-w-5xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="testimonials.heading">Voices of Talent Who Achieved Their Dream with sewa-katsu</h2>
-                <p class="text-gray-600 text-lg mb-16" data-i18n="testimonials.description">Hear directly from people who used sewa-katsu to build their careers in Japan.</p>
-                <div class="grid md:grid-cols-3 gap-8 justify-items-center">
-                    <!-- Testimonial 1: Shin -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
-                        <img src="images/Korea.png" alt="Portrait of Shin from South Korea" data-i18n-alt="testimonials.items.shin.imageAlt" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
-                        <p class="text-gray-700 italic mb-4" data-i18n="testimonials.items.shin.quote">“When I decided I wanted to work in Japan, I found sewa-katsu online. Other job sites existed, but their beautifully designed website packed with detailed information made me feel I could trust them.”</p>
-                        <p class="font-bold text-sewa-blue" data-i18n="testimonials.items.shin.name">Shin (from South Korea)</p>
-                        <a href="https://note.com/helte/n/na975c6b92581" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
-                            <span data-i18n="testimonials.linkLabel">Read the full story on note</span> <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                    <!-- Testimonial 2: Lumia -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
-                        <img src="images/Malaysia.png" alt="Portrait of Lumia from Malaysia" data-i18n-alt="testimonials.items.lumia.imageAlt" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
-                        <p class="text-gray-700 italic mb-4" data-i18n="testimonials.items.lumia.quote">“I practiced interviews many times with my career advisor. I tend to talk too long, and they gave concrete advice on how to stay concise in business settings. It was incredibly helpful to receive feedback I could never have figured out alone.”</p>
-                        <p class="font-bold text-sewa-blue" data-i18n="testimonials.items.lumia.name">Lumia (from Malaysia)</p>
-                        <a href="https://note.com/helte/n/n2245606aa43c" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
-                            <span data-i18n="testimonials.linkLabel">Read the full story on note</span> <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                    <!-- Testimonial 3: Klaudia -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg text-left glow-on-hover border border-gray-100">
-                        <img src="images/Slovakia.png" alt="Portrait of Klaudia from Slovakia" data-i18n-alt="testimonials.items.claudia.imageAlt" class="rounded-full w-20 h-20 mx-auto mb-4 object-cover">
-                        <p class="text-gray-700 italic mb-4" data-i18n="testimonials.items.claudia.quote">“It was my first job hunt in Japan and I had no idea where to start. They patiently taught me how to write resumes, which is completely different from Europe. They even supported my housing search and paperwork after I received an offer, which really eased my anxiety.”</p>
-                        <p class="font-bold text-sewa-blue" data-i18n="testimonials.items.claudia.name">Klaudia (from Slovakia)</p>
-                        <a href="https://note.com/helte/n/n537b7d4b5cb5" target="_blank" rel="noopener noreferrer" class="bg-sewa-accent text-white font-bold text-sm flex items-center justify-center py-2 px-4 rounded-full transition-all duration-300 hover:opacity-90">
-                            <span data-i18n="testimonials.linkLabel">Read the full story on note</span> <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 md:py-24 bg-gray-50 scroll-animate">
-            <div class="container mx-auto max-w-7xl text-center px-6">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="flow.heading">End-to-End Support Flow</h2>
-                <p class="text-gray-600 text-lg mb-16" data-i18n="flow.description">We stay by your side from the initial consultation through your offer and onboarding, until your career truly takes off.</p>
-                <div class="flow-grid space-y-8 md:grid md:grid-cols-5 md:gap-12 md:space-y-0 justify-items-center">
-                    <!-- Step 1 -->
-                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
-                        <span class="timeline-step">STEP 1</span>
-                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step1.title">Online Consultation</h3>
-                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step1.body">We listen to your goals and background and plan the best strategy together.</p>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
-                        <span class="timeline-step">STEP 2</span>
-                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step2.title">Job Introductions &amp; Documents</h3>
-                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step2.body">We introduce carefully selected roles and support you in creating compelling application documents.</p>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
-                        <span class="timeline-step">STEP 3</span>
-                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step3.title">Interview Coaching &amp; Day-of Support</h3>
-                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step3.body">Build confidence through mock interviews. We can even accompany you on the actual day.</p>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
-                        <span class="timeline-step">STEP 4</span>
-                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step4.title">Offer &amp; Onboarding Procedures</h3>
-                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step4.body">Leave salary negotiations, complex paperwork, and visa support to us.</p>
-                    </div>
-                    <!-- Step 5 -->
-                    <div class="flow-grid-item bg-white p-6 rounded-lg text-left shadow-md h-full border-t-4 border-sewa-blue">
-                        <span class="timeline-step">STEP 5</span>
-                        <h3 class="text-xl font-bold mb-2" data-i18n="flow.steps.step5.title">Follow-up After You Start</h3>
-                        <p class="text-gray-600 text-sm" data-i18n="flow.steps.step5.body">We check in regularly after you join so you can thrive in your new environment.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
-            <div class="container mx-auto max-w-5xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="consultant.heading">Professionals Supporting Your Career</h2>
-                <p class="text-gray-600 text-lg mb-16" data-i18n="consultant.description">Our sewa-katsu consultants are passionate experts in both the hotel industry and supporting global talent.</p>
-                <div class="grid md:grid-cols-1 gap-8">
-                    <!-- Consultant 1 -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg glow-on-hover border border-gray-100 flex flex-col md:flex-row items-center md:items-start text-center md:text-left mx-auto w-full md:w-1/2">
-                        <img src="images/stuff.png" alt="Shingo Ono" class="rounded-full w-32 h-32 mb-6 md:mb-0 md:mr-6 object-cover flex-shrink-0">
-                        <div class="flex-grow">
-                            <h3 class="text-2xl font-bold mb-2" data-i18n="consultant.name">Shingo Ono</h3>
-                            <p class="text-sewa-blue font-semibold mb-4" data-i18n="consultant.title">Manager</p>
-                            <p class="text-gray-600" data-i18n-html="consultant.bio">I draw on my experience in global companies to help open up your career opportunities.<br><br>As a career advisor, I develop Japanese conversation programs and provide one-on-one counseling.<br><br>My years at a major pharmaceutical company laid the foundation for my career. I delivered results in allergy and cancer immunotherapy sales, then led new project launches. Earning an MBA while working strengthened my logical thinking and ability to see the full picture of business.<br><br>I use these experiences to uncover your strengths and co-create a career plan that leads to your future. Whether you feel uncertain or have a clear goal, I will stand beside you and propose the best path forward.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="share" class="py-16 md:py-24 px-6 bg-white scroll-animate">
-            <div class="container mx-auto max-w-3xl text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-800" data-i18n="share.heading">Share this opportunity with your friends</h2>
-                <p class="text-gray-600 text-lg mb-12" data-i18n-html="share.description">Do you have friends who want to build a career in Japan?<br>Let them know about sewa-katsu's dedicated support.</p>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-inner text-left max-w-2xl mx-auto border">
-                    <label for="referral-message" class="block text-sm font-bold text-gray-700 mb-2" data-i18n="share.label">Referral message and link</label>
-                    <div class="flex gap-2">
-                        <textarea id="referral-message" readonly class="form-input h-32 resize-none w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-sewa-blue focus:border-sewa-blue"></textarea>
-                        <button id="copy-button" class="bg-sewa-blue text-white font-bold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity self-start glow-on-hover" data-i18n="share.copyButton">Copy</button>
-                    </div>
-                    <p id="copy-feedback" class="text-sm text-green-600 mt-2 h-4"></p>
-                    <div class="mt-6">
-                        <p class="text-sm font-bold text-gray-700 mb-3 text-center" data-i18n="share.or">Or share directly on social media</p>
-                        <div class="flex justify-center gap-4">
-                            <div class="flex flex-col items-center">
-                                <a id="line-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LINE" data-i18n-aria-label="share.lineAria" class="transition-transform transform hover:scale-110"><img src="images/LINE_logo.png" alt="LINE" class="h-12 w-12"></a>
-                                <span class="text-xs text-gray-600 mt-1" data-i18n="share.lineLabel">LINE</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <a id="email-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share via email" data-i18n-aria-label="share.emailAria" class="transition-transform transform hover:scale-110"><img src="images/Eメール_logo.png" alt="Email" class="h-12 w-12"></a>
-                                <span class="text-xs text-gray-600 mt-1" data-i18n="share.emailLabel">Email</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <a id="messenger-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook Messenger" data-i18n-aria-label="share.messengerAria" class="transition-transform transform hover:scale-110"><img src="images/Messenger_logo.png" alt="Messenger" class="h-12 w-12"></a>
-                                <span class="text-xs text-gray-600 mt-1" data-i18n="share.messengerLabel">Messenger</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <a id="whatsapp-share-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" data-i18n-aria-label="share.whatsappAria" class="transition-transform transform hover:scale-110"><img src="images/WhatsApp_logo.png" alt="WhatsApp" class="h-12 w-12"></a>
-                                <span class="text-xs text-gray-600 mt-1" data-i18n="share.whatsappLabel">WhatsApp</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Form has been moved to the hero section -->
-
+        <!-- =============================================================== -->
+        <!-- FAQ SECTION (Below the Fold) - RETAINED & RESTYLED              -->
+        <!-- =============================================================== -->
         <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
             <div class="container mx-auto max-w-3xl">
-                <h2 class="text-4xl md:text-5xl font-black text-center mb-12 text-gray-800" data-i18n="faq.heading">Frequently Asked Questions</h2>
+                <h2 class="text-3xl md:text-4xl font-black text-center mb-12" data-i18n="faq.heading">Frequently Asked Questions</h2>
                 <div class="space-y-4">
                     <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q1">Is there any fee to use your service?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q1">Is there any fee to use your service?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
                         <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a1">No. Every service—from consultations to job introductions, offers, and post-hire support—is completely free, so please feel at ease.</p>
                     </details>
                     <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q2">Can I talk with you even if I'm not sure about changing jobs yet?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q2">Can I talk with you even if I'm not sure about changing jobs yet?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
                         <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a2">Absolutely. Whether you simply want information or to understand your market value, we welcome you. Let’s explore your possibilities together.</p>
                     </details>
                     <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q3">What kinds of jobs can you introduce?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
-                        <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a3">We mainly work with hotels and food &amp; beverage companies that provide supportive environments for international talent. We will find roles that match your goals and skills.</p>
+                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q3">What kinds of jobs can you introduce?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
+                        <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a3">We mainly work with hotels and food & beverage companies that provide supportive environments for international talent. We will find roles that match your goals and skills.</p>
                     </details>
                 </div>
             </div>
@@ -679,15 +501,28 @@
     <footer class="bg-gray-800 text-white text-center py-12 px-6">
         <div class="container mx-auto">
             <img src="images/sewa_logo.png" alt="sewa-katsu logo" data-i18n-alt="footer.logoAlt" class="h-16 mx-auto mb-6" style="filter: brightness(0) invert(1);">
-            <p class="mb-6" data-i18n="footer.company">Operated by: Helte Co., Ltd.</p>
             <div class="flex justify-center gap-6 text-sm mb-8">
-                <a href="https://helte.jp/privacy-policy/" target="_blank" class="hover:underline" data-i18n="footer.privacy">Privacy Policy</a>
-                <a href="https://sailjp.helte.jp/privacy/" target="_blank" class="hover:underline" data-i18n="footer.cookie">Cookie Policy</a>
-                <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="hover:underline" data-i18n="footer.terms">Terms of Service</a>
+                <a href="https://helte.jp/" target="_blank" class="hover:underline">運営会社</a>
+                <a href="https://helte.jp/privacy-policy/" target="_blank" class="hover:underline">プライバシーポリシー</a>
+                <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="hover:underline">利用規約</a>
             </div>
-            <p class="text-xs text-gray-400">&copy; 2024 Helte Co., Ltd. All Rights Reserved.</p>
+            <div class="text-xs text-gray-400 space-y-2">
+                <p>事業者：株式会社Helte（許可番号：12-ユ-300978）</p>
+                <p>&copy; 2024 Helte Co., Ltd. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <div id="cookie-banner" class="cookie-banner items-start md:items-center gap-4 md:gap-6">
+        <p class="text-sm md:text-base leading-relaxed">
+            このサイトではサービス向上のためクッキーを利用しています。
+            <a href="https://helte.jp/privacy-policy/" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>
+        </p>
+        <div class="flex gap-3 flex-shrink-0">
+            <button id="cookie-decline" type="button" class="px-4 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100 transition-colors text-sm md:text-base">拒否</button>
+            <button id="cookie-accept" type="button" class="px-4 py-2 rounded-full bg-sewa-accent text-white hover:opacity-90 transition-opacity text-sm md:text-base">承諾</button>
+        </div>
+    </div>
 
     <a href="#form-section" id="floating-btn" class="fixed bottom-6 right-6 bg-sewa-accent text-white font-bold py-4 px-6 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 transform translate-y-4 pointer-events-none z-40 glow-on-hover">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
@@ -695,22 +530,6 @@
     </a>
     
     <script src="js/script.js" defer></script>
-<script type="text/javascript">
-_linkedin_partner_id = "8014244";
-window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-</script><script type="text/javascript">
-(function(l) {
-if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-window.lintrk.q=[]}
-var s = document.getElementsByTagName("script")[0];
-var b = document.createElement("script");
-b.type = "text/javascript";b.async = true;
-b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-s.parentNode.insertBefore(b, s);})(window.lintrk);
-</script>
-<noscript>
-<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=8014244&fmt=gif" />
-</noscript>
+    
 </body>
 </html>
