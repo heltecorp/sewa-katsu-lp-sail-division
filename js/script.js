@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             form: {
                 heading: 'さあ、未来への第一歩を',
-                description: 'まずは下のフォームから、あなたのことを教えてください。<br>日本語能力 N1・N2の皆さんへホテル業界のお仕事を紹介します！',
+                description: 'まずは下のフォームから、あなたのことを教えてください。<br>日本語能力 N1・N2の皆さんへ日本のITエンジニアのお仕事を紹介します！',
                 stepLabel: 'ステップ',
                 required: '必須',
                 optional: '任意',
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             form: {
                 heading: 'Take the First Step Toward Your Future',
-                description: 'Tell us about yourself in the form below.<br>We introduce hotel jobs in Japan to JLPT N1 and N2 talent!',
+                description: 'Tell us about yourself in the form below.<br>We introduce IT engineer jobs in Japan to JLPT N1 and N2 talent!',
                 stepLabel: 'Step',
                 required: 'Required',
                 optional: 'Optional',
