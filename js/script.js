@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const CONFIG = {
-        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbwMfa2GU2dViYplKsqHzLf_1_JkU_Qr9n7NDkr7zU95Xh28tCyrzUNZ4F7lUrpPrz5I/exec',
+        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbzpx2d70uuyH2KReJPgc4sCCyL85-aGSQLJDXwnIKfQV-qnORkPjnf4BiNecPshUTqG/exec',
         jicooRedirectUrl: 'https://www.jicoo.com/t/helte/e/l18IvvwC9O_u',
         referralBaseUrl: 'https://sewa-katsu-lp-sd.helte.jp/?id=referral'
     };
@@ -53,14 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     prev: '戻る',
                     next: '次へ',
                     submit: '利用規約に同意して送信',
-                    submitting: '送信中...'
+                    submitting: '送信中...',
+                    addLanguage: '+ 言語と経験を追加'
                 },
                 stepNames: ['基本情報', 'スキル・ご経験', 'ご希望'],
                 welcomeReferred: 'ご友人からのご紹介ですね！',
                 welcomeDefault: 'ようこそ、世話カツへ！',
                 workExperienceAlert: 'お仕事の経験を一つ以上選択してください。',
                 redirectHeading: '申し込みありがとうございました',
-                redirectBody: 'ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...',
+                redirectBody: 'ご応募を受け付けました。<br>キャリア面談の日程調整ページへ自動的に移動します。しばらくお待ちください...', 
                 successHeading: '申し込みありがとうございました',
                 successBody: 'ご応募を受け付けました。<br>内容を確認の上、担当者よりご連絡いたしますので、今しばらくお待ちください。',
                 consentNotice: '「送信する」ボタンを押すことにより、<a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">利用規約</a>に同意したものとみなされます。',
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         label: '在留資格の種類'
                     },
                     workExperience: {
-                        label: 'お仕事の経験',
+                        label: 'お仕事の経験（年数）',
                         options: {
                             frontend: 'Web開発 (フロントエンド)',
                             backend: 'Web開発 (バックエンド)',
@@ -229,14 +230,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     prev: 'Back',
                     next: 'Next',
                     submit: 'Agree to the Terms and Submit',
-                    submitting: 'Submitting...'
+                    submitting: 'Submitting...',
+                    addLanguage: '+ Add Language & Experience'
                 },
                 stepNames: ['Basic Information', 'Skills & Experience', 'Preferences'],
                 welcomeReferred: 'You were referred by a friend!',
                 welcomeDefault: 'Welcome to sewa-katsu!',
                 workExperienceAlert: 'Please select at least one work experience.',
                 redirectHeading: '申し込みありがとうございました',
-                redirectBody: 'We have received your application.<br>You will be redirected to the career consultation scheduling page shortly. Please wait a moment...',
+                redirectBody: 'We have received your application.<br>You will be redirected to the career consultation scheduling page shortly. Please wait a moment...', 
                 successHeading: '申し込みありがとうございました',
                 successBody: 'We have received your application.<br>Our team will review the details and contact you soon.',
                 consentNotice: 'By clicking “Submit”, you agree to our <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">Terms of Service</a>.',
@@ -267,15 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         label: 'Residence status in Japan'
                     },
                     workExperience: {
-                        label: 'Work experience',
-                        options: {
-                            frontend: 'Web Development (Frontend)',
-                            backend: 'Web Development (Backend)',
-                            mobile: 'Mobile App Development',
-                            cloud: 'Infrastructure/Cloud',
-                            datascience: 'Data Science',
-                            other: 'Other'
-                        }
+                        label: 'Work experience (years)'
                     },
                     countryOrigin: {
                         label: 'Country/region of origin',
@@ -399,7 +393,9 @@ document.addEventListener('DOMContentLoaded', () => {
         languageToggleButtons: document.querySelectorAll('.lang-btn'),
         cookieBanner: document.getElementById('cookie-banner'),
         cookieAcceptBtn: document.getElementById('cookie-accept'),
-        cookieDeclineBtn: document.getElementById('cookie-decline')
+        cookieDeclineBtn: document.getElementById('cookie-decline'),
+        languageExperienceContainer: document.getElementById('language-experience-container'),
+        addLanguageBtn: document.getElementById('add-language-btn')
     };
 
     let currentStep = 0;
@@ -713,8 +709,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return true;
         }
 
-        const requiredFields = currentStepElement.querySelectorAll('[required]');
         let isValid = true;
+        const requiredFields = currentStepElement.querySelectorAll('[required]:not(.language-experience-row [required])');
         requiredFields.forEach((field) => {
             if (!validateField(field)) {
                 isValid = false;
@@ -722,11 +718,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (isValid && currentStep === 1) {
-            const expCheckboxes = currentStepElement.querySelectorAll('input[name="workExperience"]:checked');
-            if (!expCheckboxes.length) {
+            const langRows = ELEMENTS.languageExperienceContainer.querySelectorAll('.language-experience-row');
+            if (langRows.length === 0) {
                 alert(translate('form.workExperienceAlert'));
-                isValid = false;
+                return false;
             }
+            langRows.forEach(row => {
+                const langSelect = row.querySelector('select');
+                const yearsInput = row.querySelector('input');
+                if (!validateField(langSelect) || !validateField(yearsInput)) {
+                    isValid = false;
+                }
+            });
         }
 
         return isValid;
@@ -755,11 +758,21 @@ document.addEventListener('DOMContentLoaded', () => {
             ELEMENTS.submitBtn.textContent = translate('form.buttons.submitting');
         }
 
-        const workExperienceCheckboxes = ELEMENTS.form.querySelectorAll('input[name="workExperience"]:checked');
-        const workExperienceValues = Array.from(workExperienceCheckboxes).map((cb) => cb.value);
         const formData = new FormData(ELEMENTS.form);
         const data = Object.fromEntries(formData.entries());
-        data.workExperience = workExperienceValues;
+        
+        const languages = [];
+        const langSelects = document.querySelectorAll('.language-experience-row select');
+        const yearsInputs = document.querySelectorAll('.language-experience-row input');
+        langSelects.forEach((select, index) => {
+            if(select.value) {
+                languages.push({
+                    language: select.value,
+                    years: yearsInputs[index].value || 0
+                });
+            }
+        });
+        data.workExperience = languages;
         data.formType = 'referred';
 
         fetch(CONFIG.gasWebAppUrl, {
@@ -825,6 +838,58 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function setupLanguageExperienceForm() {
+        if (!ELEMENTS.languageExperienceContainer || !ELEMENTS.addLanguageBtn) return;
+
+        const languages = ["Java", "Python", "JavaScript", "TypeScript", "PHP", "Ruby", "Go", "Swift", "Kotlin", "C++", "C#", "HTML", "CSS", "SQL", "Other"];
+
+        const createLanguageRow = () => {
+            const row = document.createElement('div');
+            row.className = 'language-experience-row';
+
+            const select = document.createElement('select');
+            select.name = 'language[]';
+            select.className = 'form-select';
+            select.setAttribute('required', '');
+            
+            let optionsHtml = `<option value="" disabled selected>${translate('options.select')}</option>`;
+            languages.forEach(lang => {
+                optionsHtml += `<option value="${lang}">${lang}</option>`;
+            });
+            select.innerHTML = optionsHtml;
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.name = 'years[]';
+            input.className = 'form-input';
+            input.placeholder = translate('form.fields.age.placeholder');
+            input.min = '0';
+            input.setAttribute('required', '');
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'remove-language-btn';
+            removeBtn.textContent = '×';
+
+            row.appendChild(select);
+            row.appendChild(input);
+            row.appendChild(removeBtn);
+
+            ELEMENTS.languageExperienceContainer.appendChild(row);
+        };
+
+        ELEMENTS.addLanguageBtn.addEventListener('click', createLanguageRow);
+
+        ELEMENTS.languageExperienceContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-language-btn')) {
+                e.target.closest('.language-experience-row').remove();
+            }
+        });
+
+        // Add one row initially
+        createLanguageRow();
+    }
+
     function initAnimations() {
         setTimeout(() => {
             ELEMENTS.animatedItems.forEach((el) => el.classList.add('is-visible'));
@@ -872,6 +937,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentStep = 0;
         updateWelcomeMessage();
         updateStepUI();
+        setupLanguageExperienceForm();
     }
 
     function setupGlobalEventListeners() {

@@ -240,6 +240,35 @@
         .cookie-banner .cookie-decline-btn:hover {
             color: var(--theme-text-primary);
         }
+
+        /* Language Experience Form */
+        .language-experience-row {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .language-experience-row .form-select {
+            flex: 1;
+        }
+        .language-experience-row .form-input {
+            width: 80px; /* Fixed width for years */
+        }
+        .language-experience-row .remove-language-btn {
+            background-color: #4A5568; /* gray-600 */
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 9999px;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+        .language-experience-row .remove-language-btn:hover {
+            background-color: #f56565; /* red-500 */
+        }
     </style>
 </head>
 <body class="text-sewa-dark-gray">
@@ -431,32 +460,10 @@
                                                     <span class="required" data-i18n="form.required">Required</span>
                                                     <span data-i18n="form.fields.workExperience.label">Work experience</span>
                                                 </label>
-                                                <div class="grid grid-cols-2 gap-3 mt-2">
-                                                    <label>
-                                                        <input type="checkbox" name="workExperience" value="Frontend" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.frontend"></span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="checkbox" name="workExperience" value="Backend" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.backend"></span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="checkbox" name="workExperience" value="Mobile" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.mobile"></span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="checkbox" name="workExperience" value="Cloud" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.cloud"></span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="checkbox" name="workExperience" value="DataScience" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.datascience"></span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="checkbox" name="workExperience" value="Other" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.other"></span>
-                                                    </label>
+                                                <div id="language-experience-container" class="space-y-3">
+                                                    <!-- Dynamic rows will be inserted here -->
                                                 </div>
+                                                <button type="button" id="add-language-btn" class="mt-3 text-sm font-bold text-sewa-accent hover:text-cyan-300 transition-colors" data-i18n="form.buttons.addLanguage">+ Add Language & Experience</button>
                                             </div>
                                         </div>
                                     </div>
