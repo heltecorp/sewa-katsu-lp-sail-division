@@ -25,11 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 ariaLabel: '言語の切替'
             },
             hero: {
-                title: 'ビザも、仕事も、新生活も。<br>日本でのキャリア挑戦、もう一人で悩まない。',
+                title: '日本で働きたいITエンジニアのための転職サポート！',
                 badgeCombined: 'N1/N2 ホルダー専門のお仕事紹介',
-                benefit1: '<b>理想のキャリア:</b> 豊富な非公開求人から最適な仕事を提案',
-                benefit2: '<b>複雑なビザ:</b> 行政書士と連携し、申請をフルサポート',
-                benefit3: '<b>新生活の不安:</b> 住居探しや各種手続きもフォロー',
+                benefit1: 'お仕事のマッチング',
+                benefit2: '書類チェック＆面接の対策',
+                benefit3: '就労ビザの取得',
+                benefit4: '入社後のサポート',
+                requirements: {
+                    title: '募集要件',
+                    req1: 'プログラミングスキルと3年以上の開発経験',
+                    req1_details: '（次のいずれか：PHP、Java、HTML、CSS、JavaScript（TypeScript）、Python）',
+                    req2: 'データベースの知識（SQL）',
+                    req3: 'Linux/Unixの知識',
+                    req4: 'コンピュータネットワークの知識',
+                    req5: '4年制大学卒業していること'
+                },
                 testimonialQuote: '「世話カツのスタッフの方に、履歴書や職務経歴書の書き方から丁寧に教えてもらったのが、本当に助かりました。」',
                 testimonialAuthor: '- クラウディアさん (スロバキア出身)'
             },
@@ -83,11 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     workExperience: {
                         label: 'お仕事の経験',
                         options: {
-                            hotel: 'ホテル',
-                            ryokan: '旅館',
-                            restaurant: 'レストラン',
-                            cafe: 'カフェ',
-                            retail: '販売',
+                            frontend: 'Web開発 (フロントエンド)',
+                            backend: 'Web開発 (バックエンド)',
+                            mobile: 'モバイルアプリ開発',
+                            cloud: 'インフラ/クラウド',
+                            datascience: 'データサイエンス',
                             other: 'その他'
                         }
                     },
@@ -149,10 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 step4: '4. 内定・ビザ',
                 step5: '5. 入社後フォロー'
             },
-            partners: {
-                newHeading: '信頼のパートナー企業',
-                subheading: '（提携企業の一部をご紹介します）'
-            },
             faq: {
                 heading: 'よくあるご質問',
                 q1: 'サービスの利用に料金はかかりますか？',
@@ -160,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 q2: 'まだ転職するか決めていなくても、相談できますか？',
                 a2: 'はい、もちろんです。「まずは情報収集したい」「自分の市場価値を知りたい」といった段階でも大歓迎です。あなたのキャリアの可能性を一緒に探しましょう。',
                 q3: 'どんな仕事を紹介してもらえますか？',
-                a3: '私たちは、ホテル・飲食業界を中心に、外国籍の方が安心して長く働ける優良企業の求人を多数扱っています。あなたの希望とスキルに合ったお仕事を一緒に見つけます。'
+                a3: '私たちは、IT業界を中心に、外国籍の方が安心して長く働ける優良企業の求人を多数扱っています。あなたの希望とスキルに合ったお仕事を一緒に見つけます。'
             },
             footer: {
                 logoAlt: '世話カツ ロゴ'
@@ -175,6 +181,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 emailLabel: 'メール',
                 messengerLabel: 'Messenger',
                 whatsappLabel: 'WhatsApp'
+            },
+            cookie: {
+                title: 'クッキーの利用について',
+                text: '当サイトでは、最高の体験を提供するためにクッキーを使用しています。<a href="https://helte.jp/privacy-policy/" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>をご確認ください。',
+                accept: '承諾する',
+                decline: '拒否する'
             }
         },
         en: {
@@ -189,11 +201,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 ariaLabel: 'Language toggle'
             },
             hero: {
-                title: 'Visas, jobs, and new beginnings.<br>You don\'t have to navigate your career in Japan alone.',
+                title: 'Recruitment support for IT engineers who want to work in Japan!',
                 badgeCombined: 'Exclusive Job Offers for N1/N2 Holders',
-                benefit1: '<b>Ideal Career:</b> We propose the best job from our many exclusive offers.',
-                benefit2: '<b>Complex Visas:</b> Full support for applications in collaboration with legal experts.',
-                benefit3: '<b>Anxieties about a New Life:</b> We also help with housing and other procedures.',
+                benefit1: 'Job Matching',
+                benefit2: 'Resume Check & Interview Prep',
+                benefit3: 'Work Visa Acquisition',
+                benefit4: 'Post-Hire Support',
+                requirements: {
+                    title: 'Recruitment Requirements',
+                    req1: 'Programming skills and 3+ years of development experience',
+                    req1_details: '(Any of the following: PHP, Java, HTML, CSS, JavaScript (TypeScript), Python)',
+                    req2: 'Database knowledge (SQL)',
+                    req3: 'Knowledge of Linux/Unix',
+                    req4: 'Knowledge of computer networks',
+                    req5: 'Graduation from a 4-year university'
+                },
                 testimonialQuote: '"The Sewakatsu staff were a huge help, patiently teaching me everything from how to write my resume and CV."',
                 testimonialAuthor: '- Klaudia from Slovakia'
             },
@@ -247,11 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     workExperience: {
                         label: 'Work experience',
                         options: {
-                            hotel: 'Hotel',
-                            ryokan: 'Ryokan',
-                            restaurant: 'Restaurant',
-                            cafe: 'Cafe',
-                            retail: 'Retail',
+                            frontend: 'Web Development (Frontend)',
+                            backend: 'Web Development (Backend)',
+                            mobile: 'Mobile App Development',
+                            cloud: 'Infrastructure/Cloud',
+                            datascience: 'Data Science',
                             other: 'Other'
                         }
                     },
@@ -313,10 +335,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 step4: '4. Offer & Visa',
                 step5: '5. After-care'
             },
-            partners: {
-                newHeading: 'Our Trusted Partners',
-                subheading: '(A selection of our partner companies)'
-            },
             faq: {
                 heading: 'Frequently Asked Questions',
                 q1: 'Is there any fee to use your service?',
@@ -324,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 q2: 'Can I talk with you even if I\'m not sure about changing jobs yet?',
                 a2: 'Absolutely. Whether you simply want information or to understand your market value, we welcome you. Let’s explore your possibilities together.',
                 q3: 'What kinds of jobs can you introduce?',
-                a3: 'We mainly work with hotels and food & beverage companies that provide supportive environments for international talent. We will find roles that match your goals and skills.'
+                a3: 'We primarily handle job openings from excellent companies in the IT industry where foreign nationals can thrive. We will find roles that match your goals and skills.'
             },
             footer: {
                 logoAlt: 'sewa-katsu logo'
@@ -339,6 +357,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 emailLabel: 'Email',
                 messengerLabel: 'Messenger',
                 whatsappLabel: 'WhatsApp'
+            },
+            cookie: {
+                title: 'About Cookies',
+                text: 'We use cookies to ensure you get the best experience on our website. Please review our <a href="https://helte.jp/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.',
+                accept: 'Accept',
+                decline: 'Decline'
             }
         }
     };

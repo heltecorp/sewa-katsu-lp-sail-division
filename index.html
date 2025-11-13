@@ -11,25 +11,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* === 親しみと安心のデザイン注入 (Friendly & Supportive Design Injection) === */
+        /* === Tech-focused Dark Theme for Japan-loving Engineers === */
         :root {
-            --sewa-blue: #0085FF; /* A brighter, more friendly blue */
-            --sewa-accent: #F66748; /* The requested brand accent color */
-            --sewa-dark-gray: #333333; /* Softer than black for text */
-            --sewa-light-gray: #F8F9FA; /* Subtle backgrounds */
-            --glow-color: rgba(246, 103, 72, 0.5); /* Glow effect matching the accent color */
+            --theme-bg-primary: #1A1A2E;      /* Dark navy/charcoal */
+            --theme-bg-secondary: #1F2937;   /* Lighter dark gray (Tailwind gray-800) */
+            --theme-primary: #8A2BE2;         /* A vibrant purple (BlueViolet) */
+            --theme-accent: #00F2FE;          /* Bright cyan */
+            --theme-text-primary: #E0E0E0;    /* Light gray for text */
+            --theme-text-secondary: #A0A0A0;  /* Dimmer gray for secondary text */
+            --glow-color: rgba(0, 242, 254, 0.5); /* Cyan glow */
         }
+        
+        /* Redefine old variables for compatibility */
+        :root {
+            --sewa-blue: var(--theme-primary);
+            --sewa-accent: var(--theme-accent);
+            --sewa-dark-gray: var(--theme-text-primary);
+            --sewa-light-gray: var(--theme-bg-primary);
+        }
+
         body {
-            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif; /* Rounded font for friendliness */
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
             font-size: 16px;
-            line-height: 1.7; /* Slightly more space for readability */
-            color: var(--sewa-dark-gray);
+            line-height: 1.7;
+            color: var(--theme-text-primary);
+            background-color: var(--theme-bg-primary);
         }
         h1, h2, h3 {
             font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
             font-weight: 900;
             line-height: 1.3;
-            color: var(--sewa-dark-gray);
+            color: var(--theme-text-primary);
         }
         .bg-sewa-blue { background-color: var(--sewa-blue); }
         .text-sewa-blue { color: var(--sewa-blue); }
@@ -38,10 +50,10 @@
         .font-black { font-weight: 900; }
         html { scroll-behavior: smooth; }
 
-        /* Animated Gradient Background - Adjusted for a warmer feel */
+        /* Hero Section */
         .hero-glow {
             position: relative;
-            background-image: url('images/top-image.png');
+            background-image: url('images/IT_1st_view.svg');
             background-size: cover;
             background-position: center;
             overflow: hidden;
@@ -50,14 +62,17 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(-45deg, rgba(0, 90, 170, 0.85), rgba(0, 133, 255, 0.8), rgba(246, 103, 72, 0.85), rgba(255, 139, 113, 0.8));
-            background-size: 400% 400%;
-            animation: gradient-flow 15s ease infinite;
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.85), rgba(74, 0, 224, 0.7), rgba(26, 26, 46, 0.95));
+            background-size: 200% 200%;
+            animation: gradient-flow 12s ease infinite;
         }
         @keyframes gradient-flow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+        .hero-content h1, .hero-content p {
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
         }
 
         /* Glow Effects */
@@ -66,7 +81,7 @@
         }
         .glow-on-hover:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 0 25px var(--glow-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px var(--glow-color);
         }
 
         /* Scroll Animation */
@@ -80,83 +95,156 @@
             transform: translateY(0);
         }
         
-        /* General UI Elements */
-        .hero-content h1, .hero-content p {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-        }
         .animated-item { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .animated-item.is-visible { opacity: 1; transform: translateY(0); }
         .hero-content { position: relative; z-index: 1; }
         
-        /* Form Styles */
+        /* Form Styles - Dark Mode */
         .hero-form { min-height: 520px; }
-        .form-label { font-weight: 700; color: #4a5568 !important; margin-bottom: 0.5rem; display: block; }
-        .form-label .required { background-color: var(--sewa-accent); color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
-        .form-label .optional { background-color: #a0aec0; color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 8px; }
-        .form-input, .form-select { width: 100%; padding: 0.85rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.75rem; transition: border-color 0.2s, box-shadow 0.2s; }
-        .form-input:focus, .form-select:focus { outline: none; border-color: var(--sewa-accent); box-shadow: 0 0 0 3px rgba(246, 103, 72, 0.3); }
+        #custom-form-container {
+            background-color: rgba(10, 10, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+        .form-label { font-weight: 700; color: var(--theme-text-secondary) !important; margin-bottom: 0.5rem; display: block; }
+        .form-label .required { background-color: var(--theme-primary); color: white; }
+        .form-label .optional { background-color: #4A5568; color: white; }
+        .form-input, .form-select { 
+            width: 100%; 
+            padding: 0.85rem 1rem; 
+            border: 1px solid #4A5568; 
+            border-radius: 0.75rem; 
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: var(--theme-bg-secondary);
+            color: var(--theme-text-primary);
+        }
+        .form-input::placeholder { color: #718096; }
+        .form-input:focus, .form-select:focus { 
+            outline: none; 
+            border-color: var(--theme-accent); 
+            box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.3); 
+        }
         .form-input.invalid, .form-select.invalid { border-color: #f56565; }
         .form-step { display: none; transition: opacity 0.3s ease-in-out; }
         .form-step.active { display: block; }
-        .progress-bar-bg { background-color: #e2e8f0; }
-        .progress-bar-fill { background-color: var(--sewa-blue); transition: width 0.3s ease-in-out; }
-        .form-checkbox-card { display: block; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; cursor: pointer; transition: all 0.2s; }
-        input[type="checkbox"]:checked + .form-checkbox-card { background-color: #ebf8ff; border-color: var(--sewa-blue); color: var(--sewa-blue); font-weight: bold; }
-        #copy-button { flex-shrink: 0; }
-        #copy-feedback { transition: opacity 0.5s ease-in-out; }
-
-        /* Cookie Consent Banner */
-        .cookie-banner {
-            position: fixed;
-            left: 1rem;
-            right: 1rem;
-            bottom: 1rem;
-            z-index: 60;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 1rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            padding: 1.5rem;
-            display: none;
+        .progress-bar-bg { background-color: #4A5568; }
+        .progress-bar-fill { background-color: var(--theme-accent); transition: width 0.3s ease-in-out; }
+        
+        .form-checkbox-card { 
+            display: block; 
+            padding: 0.75rem 1rem; 
+            border: 1px solid #4A5568; 
+            border-radius: 0.5rem; 
+            cursor: pointer; 
+            transition: all 0.2s;
+            background-color: var(--theme-bg-secondary);
+            color: var(--theme-text-primary);
         }
-        .cookie-banner.visible { display: flex; }
-        .cookie-banner p { color: #2d3748; }
-        .cookie-banner a { color: var(--sewa-blue); text-decoration: underline; }
-        .cookie-banner button { font-weight: 700; }
+        input[type="checkbox"]:checked + .form-checkbox-card { 
+            background-color: rgba(0, 242, 254, 0.1); 
+            border-color: var(--theme-accent); 
+            color: var(--theme-accent); 
+            font-weight: bold; 
+        }
+
+        /* Header & Footer */
+        header {
+            background-color: rgba(26, 26, 46, 0.8); /* --theme-bg-primary with transparency */
+        }
+        footer {
+            background-color: #11111E; /* Slightly darker than primary bg */
+        }
+
+        /* Other Sections */
+        .bg-white { background-color: var(--theme-bg-secondary) !important; }
+        .text-gray-800 { color: var(--theme-text-primary) !important; }
+        .text-gray-600 { color: var(--theme-text-secondary) !important; }
+        .text-gray-500 { color: var(--theme-text-secondary) !important; }
+        .text-gray-300 { color: #4A5568 !important; }
+        details {
+            background-color: var(--theme-bg-secondary) !important;
+            border-color: #4A5568 !important;
+        }
+        details p {
+            border-color: #4A5568 !important;
+        }
 
         /* Language Toggle */
         .language-toggle {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            padding: 0.25rem;
-            border-radius: 9999px;
-            background-color: rgba(255, 255, 255, 0.7);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background-color: rgba(0, 0, 0, 0.3);
         }
         .language-toggle .lang-btn {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--sewa-dark-gray);
-            padding: 0.2rem 0.8rem;
-            border-radius: 9999px;
-            transition: all 0.2s ease;
-            background: transparent;
-            border: none;
-            cursor: pointer;
+            color: var(--theme-text-primary);
         }
         .language-toggle .lang-btn.active {
-            background-color: var(--sewa-blue);
-            color: #fff;
+            background-color: var(--theme-accent);
+            color: #1A1A2E;
         }
         .language-toggle .lang-btn:not(.active):hover {
-            background-color: rgba(0, 133, 255, 0.12);
+            background-color: rgba(0, 242, 254, 0.1);
+        }
+
+        /* Cookie Consent Banner - Redesigned */
+        .cookie-banner {
+            position: fixed;
+            left: 1rem;
+            bottom: 1rem;
+            z-index: 60;
+            max-width: 380px;
+            background: rgba(31, 41, 55, 0.7); /* --theme-bg-secondary with transparency */
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 1.5rem;
+            display: none;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .cookie-banner.visible { 
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .cookie-banner p { color: var(--theme-text-primary); }
+        .cookie-banner a { color: var(--theme-accent); text-decoration: underline; }
+        .cookie-banner .cookie-buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .cookie-banner .cookie-accept-btn {
+            flex-grow: 1;
+            background-color: var(--theme-accent);
+            color: var(--theme-bg-primary);
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .cookie-banner .cookie-accept-btn:hover {
+            transform: scale(1.05);
+        }
+        .cookie-banner .cookie-decline-btn {
+            font-size: 0.875rem;
+            color: var(--theme-text-secondary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .cookie-banner .cookie-decline-btn:hover {
+            color: var(--theme-text-primary);
         }
     </style>
 </head>
-<body class="bg-sewa-light-gray text-sewa-dark-gray">
+<body class="text-sewa-dark-gray">
 
-    <header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+    <header class="backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <img src="images/sewa_logo.png" alt="sewa-katsu logo" data-i18n-alt="header.logoAlt" class="h-16">
             <div class="flex items-center">
@@ -182,29 +270,59 @@
                             <span class="bg-white text-sewa-accent font-bold px-3 py-2 rounded-md text-md" data-i18n="hero.badgeCombined">Exclusive Job Offers for N1/N2 Holders</span>
                         </div>
                         <h1 class="text-4xl md:text-5xl font-black leading-tight mb-8 animated-item" style="transition-delay: 0.2s;" data-i18n-html="hero.title">
-                            Visas, jobs, and new beginnings.<br>You don't have to navigate your career in Japan alone.
                         </h1>
                         
                         <ul class="space-y-4 text-lg text-blue-100 mb-8 animated-item" style="transition-delay: 0.4s;">
                             <li class="flex items-start">
-                                <svg class="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span data-i18n-html="hero.benefit1"><b>Ideal Career:</b> We propose the best job from our many exclusive offers.</span>
+                                <svg class="w-6 h-6 text-sewa-accent mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span data-i18n-html="hero.benefit1"></span>
                             </li>
                             <li class="flex items-start">
-                                <svg class="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span data-i18n-html="hero.benefit2"><b>Complex Visas:</b> Full support for applications in collaboration with legal experts.</span>
+                                <svg class="w-6 h-6 text-sewa-accent mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span data-i18n-html="hero.benefit2"></span>
                             </li>
                             <li class="flex items-start">
-                                <svg class="w-6 h-6 text-green-300 mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span data-i18n-html="hero.benefit3"><b>Anxieties about a New Life:</b> We also help with housing and other procedures.</span>
+                                <svg class="w-6 h-6 text-sewa-accent mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span data-i18n-html="hero.benefit3"></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-sewa-accent mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span data-i18n-html="hero.benefit4"></span>
                             </li>
                         </ul>
+
+                        <div class="bg-white/10 p-4 rounded-lg border border-white/20 mt-8 animated-item" style="transition-delay: 0.5s;">
+                            <h3 class="font-bold text-lg mb-3 text-center" data-i18n="hero.requirements.title"></h3>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                                    <span data-i18n="hero.requirements.req1"></span>
+                                </li>
+                                <li class="pl-6 text-xs text-gray-200" data-i18n="hero.requirements.req1_details"></li>
+                                <li class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                                    <span data-i18n="hero.requirements.req2"></span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                                    <span data-i18n="hero.requirements.req3"></span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                                    <span data-i18n="hero.requirements.req4"></span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                                    <span data-i18n="hero.requirements.req5"></span>
+                                </li>
+                            </ul>
+                        </div>
 
                         <div class="bg-white/20 p-4 rounded-lg flex items-center space-x-4 animated-item" style="transition-delay: 0.6s;">
                             <img src="images/Slovakia.png" alt="Portrait of Klaudia" class="w-16 h-16 rounded-full object-cover border-2 border-white">
                             <div class="text-left">
                                 <p class="text-white text-sm italic" data-i18n="hero.testimonialQuote">"The Sewakatsu staff were a huge help, patiently teaching me everything from how to write my resume and CV."</p>
-                                <p class="text-xs text-blue-200 font-bold mt-1" data-i18n="hero.testimonialAuthor">- Klaudia from Slovakia</p>
+                                <p class="text-xs text-sewa-accent font-bold mt-1" data-i18n="hero.testimonialAuthor">- Klaudia from Slovakia</p>
                             </div>
                         </div>
                     </div>
@@ -315,28 +433,28 @@
                                                 </label>
                                                 <div class="grid grid-cols-2 gap-3 mt-2">
                                                     <label>
-                                                        <input type="checkbox" name="workExperience" value="ホテル" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.hotel">Hotel</span>
+                                                        <input type="checkbox" name="workExperience" value="Frontend" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.frontend"></span>
                                                     </label>
                                                     <label>
-                                                        <input type="checkbox" name="workExperience" value="旅館" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.ryokan">Ryokan</span>
+                                                        <input type="checkbox" name="workExperience" value="Backend" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.backend"></span>
                                                     </label>
                                                     <label>
-                                                        <input type="checkbox" name="workExperience" value="レストラン" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.restaurant">Restaurant</span>
+                                                        <input type="checkbox" name="workExperience" value="Mobile" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.mobile"></span>
                                                     </label>
                                                     <label>
-                                                        <input type="checkbox" name="workExperience" value="カフェ" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.cafe">Cafe</span>
+                                                        <input type="checkbox" name="workExperience" value="Cloud" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.cloud"></span>
                                                     </label>
                                                     <label>
-                                                        <input type="checkbox" name="workExperience" value="販売" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.retail">Retail</span>
+                                                        <input type="checkbox" name="workExperience" value="DataScience" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.datascience"></span>
                                                     </label>
                                                     <label>
-                                                        <input type="checkbox" name="workExperience" value="その他" class="hidden">
-                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.other">Other</span>
+                                                        <input type="checkbox" name="workExperience" value="Other" class="hidden">
+                                                        <span class="form-checkbox-card" data-i18n="form.fields.workExperience.options.other"></span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -445,36 +563,6 @@
         </section>
         
         <!-- =============================================================== -->
-        <!-- TRUST WALL SECTION (Below the Fold) - NEWLY DESIGNED            -->
-        <!-- =============================================================== -->
-        <section class="py-16 bg-gray-100 scroll-animate">
-            <div class="container mx-auto px-6">
-                <h2 class="text-center text-3xl font-black text-gray-800 mb-4" data-i18n="partners.newHeading">Our Trusted Partners</h2>
-                <p class="text-center text-gray-500 mb-12" data-i18n="partners.subheading">(A selection of our partner companies)</p>
-                <div class="grid grid-cols-3 md:grid-cols-6 gap-x-8 gap-y-10 items-center">
-                    <div class="transition-transform transform hover:-translate-y-2">
-                        <img src="images/CHM_logo.svg" alt="CHM logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                    </div>
-                    <div class="transition-transform transform hover:-translate-y-2">
-                        <img src="images/ESP_logo.png" alt="ESP logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                    </div>
-                    <div class="transition-transform transform hover:-translate-y-2">
-                        <img src="images/GV_logo.svg" alt="GV logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                    </div>
-                    <div class="transition-transform transform hover:-translate-y-2">
-                        <img src="images/RYU_logo.svg" alt="RYU logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                    </div>
-                    <div class="transition-transform transform hover:-translate-y-2">
-                        <img src="images/SFV_logo.svg" alt="SFV logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                    </div>
-                    <div class="transition-transform transform hover:-translate-y-2">
-                        <img src="images/TR&S_logo.svg" alt="TR&S logo" class="h-10 md:h-12 mx-auto grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =============================================================== -->
         <!-- FAQ SECTION (Below the Fold) - RETAINED & RESTYLED              -->
         <!-- =============================================================== -->
         <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
@@ -513,14 +601,12 @@
         </div>
     </footer>
 
-    <div id="cookie-banner" class="cookie-banner items-start md:items-center gap-4 md:gap-6">
-        <p class="text-sm md:text-base leading-relaxed">
-            このサイトではサービス向上のためクッキーを利用しています。
-            <a href="https://helte.jp/privacy-policy/" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>
-        </p>
-        <div class="flex gap-3 flex-shrink-0">
-            <button id="cookie-decline" type="button" class="px-4 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100 transition-colors text-sm md:text-base">拒否</button>
-            <button id="cookie-accept" type="button" class="px-4 py-2 rounded-full bg-sewa-accent text-white hover:opacity-90 transition-opacity text-sm md:text-base">承諾</button>
+    <div id="cookie-banner" class="cookie-banner">
+        <p class="text-lg font-bold">🍪 <span data-i18n="cookie.title"></span></p>
+        <p class="text-sm mt-2" data-i18n-html="cookie.text"></p>
+        <div class="cookie-buttons">
+            <button id="cookie-accept" type="button" class="cookie-accept-btn" data-i18n="cookie.accept"></button>
+            <button id="cookie-decline" type="button" class="cookie-decline-btn" data-i18n="cookie.decline"></button>
         </div>
     </div>
 
@@ -529,7 +615,7 @@
         <span data-i18n="floatingCta">Free Career Consultation</span>
     </a>
     
-    <script src="js/script.js" defer></script>
+    <script src="js/script.js" defer charset="UTF-8"></script>
     
 </body>
 </html>
