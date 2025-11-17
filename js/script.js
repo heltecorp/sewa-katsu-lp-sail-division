@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const CONFIG = {
         gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbyRrAO86nduBbYTVOE9DP87gcoNXfY6N8P-Jo8ZR3bWzu1FgtTkqYFvZ_67V0p8r4_w/exec',
-        jicooRedirectUrl: 'https://www.jicoo.com/t/helte/e/l18IvvwC9O_u',
         referralBaseUrl: 'https://sewa-katsu-lp-sd.helte.jp/?id=referral'
     };
 
@@ -381,7 +380,6 @@ document.addEventListener('DOMContentLoaded', () => {
         consentCheckboxContainer: document.getElementById('consent-checkbox-container'),
         formContainer: document.getElementById('custom-form-container'),
         successMessage: document.getElementById('form-success-message'),
-        redirectMessage: document.getElementById('form-redirect-message'),
         copyButton: document.getElementById('copy-button'),
         copyFeedback: document.getElementById('copy-feedback'),
         referralMessageTextarea: document.getElementById('referral-message'),
@@ -786,17 +784,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Fire-and-forget fetch failed:', error);
         });
 
-        const japaneseLevel = data.japanese_level;
-        if (japaneseLevel === 'JLPT N1' || japaneseLevel === 'JLPT N2') {
-        hideElement(ELEMENTS.form);
-        showElement(ELEMENTS.redirectMessage);
-            setTimeout(() => {
-                window.location.href = CONFIG.jicooRedirectUrl;
-            }, 1500);
-        } else {
         hideElement(ELEMENTS.form);
         showElement(ELEMENTS.successMessage);
-        }
     }
 
     function handleCopyButtonClick() {
