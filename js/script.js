@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const CONFIG = {
-        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbyRrAO86nduBbYTVOE9DP87gcoNXfY6N8P-Jo8ZR3bWzu1FgtTkqYFvZ_67V0p8r4_w/exec',
+        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbxoSulvXS5dOKUukPxpPwm5D49dDkzdogSysjFvQnoivbo1byK4WjyH3uev6F6CmOdU/exec',
         referralBaseUrl: 'https://sewa-katsu-lp-sd.helte.jp/?id=referral'
     };
 
