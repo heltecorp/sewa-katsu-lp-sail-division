@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const CONFIG = {
-        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbzpx2d70uuyH2KReJPgc4sCCyL85-aGSQLJDXwnIKfQV-qnORkPjnf4BiNecPshUTqG/exec',
+        gasWebAppUrl: 'https://script.google.com/macros/s/AKfycbznVRQfOvH5YOx9jynPCp1OxO2PLmM1PgJuF7ldGU9bZAjnAZrio8hbgbIhQ_QJ8Swk/exec',
         jicooRedirectUrl: 'https://www.jicoo.com/t/helte/e/l18IvvwC9O_u',
         referralBaseUrl: 'https://sewa-katsu-lp-sd.helte.jp/?id=referral'
     };
