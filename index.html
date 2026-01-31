@@ -1,528 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="meta.title">Welcome to sewa-katsu | Supporting Your Career in Japan</title>
+    <title>世話カツ - 日本での就職・ビザ・キャリアをプロがサポート</title>
+    <meta name="description" content="日本での就職・ビザ・キャリア、プロがすべてお世話します。書類のチェックから面接の対策、在留資格の手続きまで完全無料。">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://images.unsplash.com">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* === Tech-focused Dark Theme for Japan-loving Engineers === */
-        :root {
-            --theme-bg-primary: #1A1A2E;      /* Dark navy/charcoal */
-            --theme-bg-secondary: #1F2937;   /* Lighter dark gray (Tailwind gray-800) */
-            --theme-primary: #8A2BE2;         /* A vibrant purple (BlueViolet) */
-            --theme-accent: #00F2FE;          /* Bright cyan */
-            --theme-text-primary: #E0E0E0;    /* Light gray for text */
-            --theme-text-secondary: #A0A0A0;  /* Dimmer gray for secondary text */
-            --glow-color: rgba(0, 242, 254, 0.5); /* Cyan glow */
-        }
-        
-        /* Redefine old variables for compatibility */
-        :root {
-            --sewa-blue: var(--theme-primary);
-            --sewa-accent: var(--theme-accent);
-            --sewa-dark-gray: var(--theme-text-primary);
-            --sewa-light-gray: var(--theme-bg-primary);
-        }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@500;700;900&display=swap"
+        rel="stylesheet">
 
-        body {
-            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--theme-text-primary);
-            background-color: var(--theme-bg-primary);
-        }
-        h1, h2, h3 {
-            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-            font-weight: 900;
-            line-height: 1.3;
-            color: var(--theme-text-primary);
-        }
-        .bg-sewa-blue { background-color: var(--sewa-blue); }
-        .text-sewa-blue { color: var(--sewa-blue); }
-        .bg-sewa-accent { background-color: var(--sewa-accent); }
-        .text-sewa-accent { color: var(--sewa-accent); }
-        .font-black { font-weight: 900; }
-        html { scroll-behavior: smooth; }
-
-        /* Hero Section */
-        .hero-glow {
-            position: relative;
-            background-image: url('images/IT_1st_view.svg');
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
-        }
-        .hero-glow::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(145deg, rgba(26, 26, 46, 0.85), rgba(74, 0, 224, 0.7), rgba(26, 26, 46, 0.95));
-            background-size: 200% 200%;
-            animation: gradient-flow 12s ease infinite;
-        }
-        @keyframes gradient-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .hero-content h1, .hero-content p {
-            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
-        }
-
-        /* Glow Effects */
-        .glow-on-hover {
-            transition: all 0.3s ease;
-        }
-        .glow-on-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px var(--glow-color);
-        }
-
-        /* Scroll Animation */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .scroll-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .animated-item { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .animated-item.is-visible { opacity: 1; transform: translateY(0); }
-        .hero-content { position: relative; z-index: 1; }
-        
-        /* Form Styles - Dark Mode */
-        .hero-form { min-height: 520px; }
-        #custom-form-container {
-            background-color: rgba(10, 10, 20, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 242, 254, 0.2);
-        }
-        .form-label { font-weight: 700; color: var(--theme-text-secondary) !important; margin-bottom: 0.5rem; display: block; }
-        .form-label .required { background-color: var(--theme-primary); color: white; }
-        .form-label .optional { background-color: #4A5568; color: white; }
-        .form-input, .form-select { 
-            width: 100%; 
-            padding: 0.85rem 1rem; 
-            border: 1px solid #4A5568; 
-            border-radius: 0.75rem; 
-            transition: border-color 0.2s, box-shadow 0.2s;
-            background-color: var(--theme-bg-secondary);
-            color: var(--theme-text-primary);
-        }
-        .form-input::placeholder { color: #718096; }
-        .form-input:focus, .form-select:focus { 
-            outline: none; 
-            border-color: var(--theme-accent); 
-            box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.3); 
-        }
-        .form-input.invalid, .form-select.invalid { border-color: #f56565; }
-        .form-step { display: none; transition: opacity 0.3s ease-in-out; }
-        .form-step.active { display: block; }
-        .progress-bar-bg { background-color: #4A5568; }
-        .progress-bar-fill { background-color: var(--theme-accent); transition: width 0.3s ease-in-out; }
-        
-        .form-checkbox-card { 
-            display: block; 
-            padding: 0.75rem 1rem; 
-            border: 1px solid #4A5568; 
-            border-radius: 0.5rem; 
-            cursor: pointer; 
-            transition: all 0.2s;
-            background-color: var(--theme-bg-secondary);
-            color: var(--theme-text-primary);
-        }
-        input[type="checkbox"]:checked + .form-checkbox-card { 
-            background-color: rgba(0, 242, 254, 0.1); 
-            border-color: var(--theme-accent); 
-            color: var(--theme-accent); 
-            font-weight: bold; 
-        }
-
-        /* Header & Footer */
-        header {
-            background-color: rgba(26, 26, 46, 0.8); /* --theme-bg-primary with transparency */
-        }
-        footer {
-            background-color: #11111E; /* Slightly darker than primary bg */
-        }
-
-        /* Other Sections */
-        .bg-white { background-color: var(--theme-bg-secondary) !important; }
-        .text-gray-800 { color: var(--theme-text-primary) !important; }
-        .text-gray-600 { color: var(--theme-text-secondary) !important; }
-        .text-gray-500 { color: var(--theme-text-secondary) !important; }
-        .text-gray-300 { color: #4A5568 !important; }
-        details {
-            background-color: var(--theme-bg-secondary) !important;
-            border-color: #4A5568 !important;
-        }
-        details p {
-            border-color: #4A5568 !important;
-        }
-
-        /* Language Toggle */
-        .language-toggle {
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-        .language-toggle .lang-btn {
-            color: var(--theme-text-primary);
-        }
-        .language-toggle .lang-btn.active {
-            background-color: var(--theme-accent);
-            color: #1A1A2E;
-        }
-        .language-toggle .lang-btn:not(.active):hover {
-            background-color: rgba(0, 242, 254, 0.1);
-        }
-
-        /* Cookie Consent Banner - Redesigned */
-        .cookie-banner {
-            position: fixed;
-            left: 1rem;
-            bottom: 1rem;
-            z-index: 60;
-            max-width: 380px;
-            background: rgba(31, 41, 55, 0.7); /* --theme-bg-secondary with transparency */
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 242, 254, 0.2);
-            padding: 1.5rem;
-            display: none;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-        .cookie-banner.visible { 
-            display: block;
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .cookie-banner p { color: var(--theme-text-primary); }
-        .cookie-banner a { color: var(--theme-accent); text-decoration: underline; }
-        .cookie-banner .cookie-buttons {
-            margin-top: 1rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-        .cookie-banner .cookie-accept-btn {
-            flex-grow: 1;
-            background-color: var(--theme-accent);
-            color: var(--theme-bg-primary);
-            font-weight: 700;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .cookie-banner .cookie-accept-btn:hover {
-            transform: scale(1.05);
-        }
-        .cookie-banner .cookie-decline-btn {
-            font-size: 0.875rem;
-            color: var(--theme-text-secondary);
-            background: none;
-            border: none;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        .cookie-banner .cookie-decline-btn:hover {
-            color: var(--theme-text-primary);
-        }
-
-        /* Language Experience Form */
-        .language-experience-row {
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-        }
-        .language-experience-row .form-select {
-            flex: 1;
-        }
-        .language-experience-row .form-input {
-            width: 80px; /* Fixed width for years */
-        }
-        .language-experience-row .remove-language-btn {
-            background-color: #4A5568; /* gray-600 */
-            color: white;
-            font-size: 0.75rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 9999px;
-            width: 2rem;
-            height: 2rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            flex-shrink: 0;
-        }
-        .language-experience-row .remove-language-btn:hover {
-            background-color: #f56565; /* red-500 */
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="text-sewa-dark-gray">
 
-    <header class="backdrop-blur-md shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <img src="images/sewa_logo.png" alt="sewa-katsu logo" data-i18n-alt="header.logoAlt" class="h-16">
-            <div class="flex items-center">
-                <div class="language-toggle" role="group" aria-label="Language toggle" data-i18n-aria-label="languageToggle.ariaLabel">
-                    <button type="button" class="lang-btn" data-language="ja">日本語</button>
-                    <button type="button" class="lang-btn active" data-language="en">English</button>
-                </div>
-            </div>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo">
+                <img src="images/sewa_logo.png" alt="世話カツ">
+            </h1>
+            <a href="#contact" class="btn btn-primary header-btn">まずはプロに就職相談（無料）</a>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
-        <!-- =============================================================== -->
-        <!-- HERO SECTION (Above the Fold) - NEWLY DESIGNED                 -->
-        <!-- =============================================================== -->
-        <section class="hero-glow text-white py-20 md:py-24 px-6">
-            <div class="container mx-auto">
-                <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-                    
-                    <!-- Left Column: Message Area -->
-                    <div class="text-center md:text-left hero-content">
-                        <div class="mb-4">
-                            <span class="bg-white text-sewa-accent font-bold px-3 py-2 rounded-md text-md" data-i18n="hero.badgeCombined">Exclusive Job Offers for N1/N2 Holders</span>
-                        </div>
-                        <h1 class="text-4xl md:text-5xl font-black leading-tight mb-8 animated-item" style="transition-delay: 0.2s;" data-i18n-html="hero.title">
-                        </h1>
-                        
-                        <ul class="space-y-4 text-lg text-blue-100 mb-8 animated-item" style="transition-delay: 0.4s;">
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-sewa-accent mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span data-i18n-html="hero.benefit1"></span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-sewa-accent mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span data-i18n-html="hero.benefit2"></span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-sewa-accent mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span data-i18n-html="hero.benefit3"></span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-sewa-accent mr-3 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span data-i18n-html="hero.benefit4"></span>
-                            </li>
-                        </ul>
+        <!-- Section 01: KV (Key Visual) -->
+        <section class="section-mv">
+            <div class="mv-bg-mesh"></div>
+            <div class="mv-decor-circle circle-1"></div>
+            <div class="mv-decor-circle circle-2"></div>
 
-                        <div class="bg-white/10 p-4 rounded-lg border border-white/20 mt-8 animated-item" style="transition-delay: 0.5s;">
-                            <h3 class="font-bold text-lg mb-3 text-center" data-i18n="hero.requirements.title"></h3>
-                            <ul class="space-y-2 text-sm">
-                                <li class="flex items-start">
-                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                                    <span data-i18n="hero.requirements.req1"></span>
-                                </li>
-                                <li class="pl-6 text-xs text-gray-200" data-i18n="hero.requirements.req1_details"></li>
-                                <li class="flex items-start">
-                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                                    <span data-i18n="hero.requirements.req2"></span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                                    <span data-i18n="hero.requirements.req3"></span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                                    <span data-i18n="hero.requirements.req4"></span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-4 h-4 text-cyan-300 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zM9 11a1 1 0 11-2 0 1 1 0 012 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                                    <span data-i18n="hero.requirements.req5"></span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white/20 p-4 rounded-lg flex items-center space-x-4 animated-item" style="transition-delay: 0.6s;">
-                            <img src="images/Slovakia.png" alt="Portrait of Klaudia" class="w-16 h-16 rounded-full object-cover border-2 border-white">
-                            <div class="text-left">
-                                <p class="text-white text-sm italic" data-i18n="hero.testimonialQuote">"The Sewakatsu staff were a huge help, patiently teaching me everything from how to write my resume and CV."</p>
-                                <p class="text-xs text-sewa-accent font-bold mt-1" data-i18n="hero.testimonialAuthor">- Klaudia from Slovakia</p>
-                            </div>
-                        </div>
+            <div class="container mv-container">
+                <div class="mv-content fade-up">
+                    <span class="mv-tagline">Global Talent Solutions</span>
+                    <h2 class="mv-catchphrase">
+                        <span class="d-block line-1">日本での就職・ビザ・キャリア、</span>
+                        <span class="d-block line-2 text-gradient">プロがすべてお世話します。</span>
+                    </h2>
+                    <p class="mv-sub">
+                        書類のチェックから面接の対策、<br class="sp-only">在留資格の手続きまで完全無料。<br>
+                        あなたの日本での「働く」をサポートします！
+                    </p>
+                    <div class="mv-btn-wrapper">
+                        <a href="#contact" class="btn btn-primary mv-btn">
+                            <span class="btn-text">まずはプロに就職相談（無料）</span>
+                            <span class="btn-icon">→</span>
+                        </a>
                     </div>
-                    
-                    <div id="hero-form-container" class="mt-12 md:mt-0">
-                        <div id="form-section" class="max-w-lg mx-auto">
-                            <div id="custom-form-container" class="hero-form bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl text-left text-gray-800 border border-white/20">
-                                <div class="text-center mb-6">
-                                     <h2 class="text-3xl font-black mb-2 text-gray-800" data-i18n="form.heading">Take the First Step</h2>
-                                     <p class="text-gray-600" data-i18n-html="form.description">Tell us about yourself in the form below.</p>
-                                </div>
-                                <div class="mb-8">
-                                    <div class="flex justify-between mb-2 text-sm font-bold text-gray-600">
-                                        <p><span data-i18n="form.stepLabel">Step</span> <span id="current-step">1</span> / 3</p>
-                                        <p id="step-name"></p>
-                                    </div>
-                                    <div class="progress-bar-bg w-full h-2 rounded-full">
-                                        <div id="progress-bar" class="progress-bar-fill h-2 rounded-full" style="width: 33%;"></div>
-                                    </div>
-                                </div>
-                                <form id="sewakatsu-form">
-                                    <input type="hidden" id="ref_id" name="ref_id">
-                                    <div id="step-1" class="form-step active">
-                                        <div class="space-y-6">
-                                            <div>
-                                                <label for="name_katakana" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.nameKatakana.label">Name (Katakana)</span>
-                                                </label>
-                                                <input type="text" id="name_katakana" name="name_katakana" class="form-input" placeholder="e.g., SUZUKI TARO" data-i18n-placeholder="form.fields.nameKatakana.placeholder" required>
-                                            </div>
-                                            <div>
-                                                <label for="email" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.email.label">Email address</span>
-                                                </label>
-                                                <input type="email" id="email" name="email" class="form-input" placeholder="your_address@example.com" data-i18n-placeholder="form.fields.email.placeholder" required>
-                                            </div>
-                                            <div>
-                                                <label for="age" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.age.label">Age</span>
-                                                </label>
-                                                <input type="number" id="age" name="age" class="form-input" placeholder="e.g., 25" data-i18n-placeholder="form.fields.age.placeholder" required min="18" max="99">
-                                            </div>
-                                            <div>
-                                                <label for="phone" class="form-label">
-                                                    <span class="optional" data-i18n="form.optional">Optional</span>
-                                                    <span data-i18n="form.fields.phone.label">Phone number</span>
-                                                </label>
-                                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g., 09012345678" data-i18n-placeholder="form.fields.phone.placeholder">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="step-2" class="form-step">
-                                        <div class="space-y-6">
-                                            <div>
-                                                <label for="japanese_level" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.japaneseLevel.label">Japanese language certification</span>
-                                                </label>
-                                                <select id="japanese_level" name="japanese_level" class="form-select" required>
-                                                    <option value="" disabled selected data-i18n="form.options.select">Please select</option>
-                                                    <option value="JLPT N1">JLPT N1</option>
-                                                    <option value="JLPT N2">JLPT N2</option>
-                                                    <option value="JLPT N3">JLPT N3</option>
-                                                    <option value="JLPT N4">JLPT N4</option>
-                                                    <option value="JLPT N5">JLPT N5</option>
-                                                    <option value="資格なし / Unqualified" data-i18n="form.options.japaneseLevel.none">No certification</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="english_level" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.englishLevel.label">English conversation level</span>
-                                                </label>
-                                                <select id="english_level" name="english_level" class="form-select" required>
-                                                    <option value="" disabled selected data-i18n="form.options.select">Please select</option>
-                                                    <option value="基礎レベル - Basic" data-i18n="form.options.englishLevel.basic">Basic</option>
-                                                    <option value="会話レベル - Conversational" data-i18n="form.options.englishLevel.conversational">Conversational</option>
-                                                    <option value="ビジネスレベル - Business" data-i18n="form.options.englishLevel.business">Business</option>
-                                                    <option value="流暢レベル - Fluent" data-i18n="form.options.englishLevel.fluent">Fluent</option>
-                                                    <option value="母国語レベル - Native" data-i18n="form.options.englishLevel.native">Native</option>
-                                                    <option value="話せない - Non-Speaker" data-i18n="form.options.englishLevel.none">Do not speak</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="residence_status" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.residenceStatus.label">Residence status in Japan</span>
-                                                </label>
-                                                <select id="residence_status" name="residence_status" class="form-select" required>
-                                                    <option value="" disabled selected data-i18n="form.options.select">Please select</option>
-                                                    <option value="技術・人文知識・国際業務" data-i18n="form.options.residenceStatus.engineer">Engineer / Specialist in Humanities / International Services</option>
-                                                    <option value="特定技能" data-i18n="form.options.residenceStatus.ssw">Specified Skilled Worker</option>
-                                                    <option value="留学" data-i18n="form.options.residenceStatus.student">Student</option>
-                                                    <option value="特定活動/ワーキングホリデー" data-i18n="form.options.residenceStatus.wh">Designated Activities / Working Holiday</option>
-                                                    <option value="配偶者等" data-i18n="form.options.residenceStatus.spouse">Spouse or equivalent</option>
-                                                    <option value="永住者" data-i18n="form.options.residenceStatus.permanent">Permanent Resident</option>
-                                                    <option value="取得なし" data-i18n="form.options.residenceStatus.none">None</option>
-                                                    <option value="その他" data-i18n="form.options.residenceStatus.other">Other</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.workExperience.label">Work experience</span>
-                                                </label>
-                                                <div id="language-experience-container" class="space-y-3">
-                                                    <!-- Dynamic rows will be inserted here -->
-                                                </div>
-                                                <button type="button" id="add-language-btn" class="mt-3 text-sm font-bold text-sewa-accent hover:text-cyan-300 transition-colors" data-i18n="form.buttons.addLanguage">+ Add Language & Experience</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="step-3" class="form-step">
-                                        <div class="space-y-6">
-                                            <div>
-                                                <label for="country_origin" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.countryOrigin.label">Country/region of origin</span>
-                                                </label>
-                                                <input type="text" id="country_origin" name="country_origin" class="form-input" placeholder="e.g., Vietnam" data-i18n-placeholder="form.fields.countryOrigin.placeholder" required>
-                                            </div>
-                                            <div>
-                                                <label for="country_current" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.countryCurrent.label">Current country/region of residence</span>
-                                                </label>
-                                                <input type="text" id="country_current" name="country_current" class="form-input" placeholder="e.g., Japan" data-i18n-placeholder="form.fields.countryCurrent.placeholder" required>
-                                            </div>
-                                            <div>
-                                                <label for="desired_location" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.desiredLocation.label">Preferred work location in Japan</span>
-                                                </label>
-                                                <input type="text" id="desired_location" name="desired_location" class="form-input" placeholder="e.g., Tokyo" data-i18n-placeholder="form.fields.desiredLocation.placeholder" required>
-                                            </div>
-                                            <div>
-                                                <label for="education" class="form-label">
-                                                    <span class="required" data-i18n="form.required">Required</span>
-                                                    <span data-i18n="form.fields.education.label">Highest level of education</span>
-                                                </label>
-                                                <select id="education" name="education" class="form-select" required>
-                                                    <option value="" disabled selected data-i18n="form.options.select">Please select</option>
-                                                    <option value="高校卒業" data-i18n="form.options.education.highSchool">High school graduate</option>
-                                                    <option value="在学中（専門学校卒業予定）" data-i18n="form.options.education.vocationalStudent">Currently enrolled (vocational school)</option>
-                                                    <option value="専門学校卒業" data-i18n="form.options.education.vocationalGraduate">Vocational school graduate</option>
-                                                    <option value="在学中（大学・大学院卒業予定）" data-i18n="form.options.education.universityStudent">Currently enrolled (university or graduate school)</option>
-                                                    <option value="大学卒業" data-i18n="form.options.education.universityGraduate">University graduate</option>
-                                                    <option value="大学院卒業" data-i18n="form.options.education.graduateSchool">Graduate school graduate</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="consent-checkbox-container" class="mt-8 text-center hidden">
-                                        <p class="text-xs text-gray-600" data-i18n-html="form.consentNotice">
-                                            By clicking “Submit”, you agree to our <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="underline hover:text-sewa-blue">Terms of Service</a>.
-                                        </p>
-                                    </div>
-                                    <div class="mt-8 flex justify-between items-center">
-                                        <button type="button" id="prev-btn" class="text-gray-600 font-bold py-2 px-4 rounded-md hover:bg-gray-100 transition-colors" data-i18n="form.buttons.prev">Back</button>
-                                        <button type="button" id="next-btn" class="bg-sewa-accent text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-opacity glow-on-hover" data-i18n="form.buttons.next">Next</button>
-                                        <button type="submit" id="submit-btn" class="hidden w-full bg-sewa-accent text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 glow-on-hover" data-i18n="form.buttons.submit" disabled>Agree to the Terms and Submit</button>
-                                    </div>
-                                </form>
-                                
-                                <div id="form-success-message" class="hidden bg-blue-50 border border-sewa-blue text-sewa-blue px-6 py-8 rounded-xl text-center">
-                                    <h3 class="text-2xl font-bold mb-4" data-i18n="form.successHeading">Thank you.</h3>
-                                    <p data-i18n-html="form.successBody">We have received your application.<br>Our team will review the details and contact you soon.</p>
-                                </div>
+                </div>
+                <div class="mv-visual fade-up stagger-delay-2">
+                    <div class="visual-card-wrapper">
+                        <!-- Using top-image.png as the main visual -->
+                        <img src="images/top-image.png" alt="就職相談の様子" class="main-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span>SCROLL</span>
+            </div>
+        </section>
+
+        <!-- Section 04: Trust/Authority (Moved to Top) -->
+        <section class="section-trust">
+            <div class="container">
+                <div class="trust-content text-center fade-up">
+                    <h2 class="trust-title">外国籍の方に特化した求人ネットワーク</h2>
+                    <div class="trust-numbers">
+                        <p class="trust-label">紹介可能求人数</p>
+                        <p class="trust-count"><span class="count-up" data-target="6479">6,479</span><span
+                                class="unit">件以上</span></p>
+                        <p class="trust-sub">※パートナー企業求人含む</p>
+                    </div>
+
+                    <div class="trust-logos">
+                        <p class="logos-label">圧倒的な選択肢と、大手企業との提携</p>
+
+                        <!-- Marquee Container -->
+                        <div class="logo-marquee">
+                            <div class="marquee-content">
+                                <!-- Original Set -->
+                                <img src="images/CHM_logo.svg" alt="Partner Logo">
+                                <img src="images/SFV_logo.svg" alt="Partner Logo">
+                                <img src="images/RYU_logo.svg" alt="Partner Logo">
+                                <img src="images/TR&S_logo.svg" alt="Partner Logo">
+                                <img src="images/GV_logo.svg" alt="Partner Logo">
+                                <!-- Duplicate Set for Infinite Loop -->
+                                <img src="images/CHM_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <img src="images/SFV_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <img src="images/RYU_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <img src="images/TR&S_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <img src="images/GV_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <!-- Triplicate Set for Safety on large screens -->
+                                <img src="images/CHM_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <img src="images/SFV_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <img src="images/RYU_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <img src="images/TR&S_logo.svg" alt="Partner Logo" aria-hidden="true">
+                                <img src="images/GV_logo.svg" alt="Partner Logo" aria-hidden="true">
                             </div>
                         </div>
                     </div>
@@ -530,96 +111,125 @@
             </div>
         </section>
 
-        <!-- =============================================================== -->
-        <!-- SUPPORT FLOW SECTION (Below the Fold) - NEWLY DESIGNED          -->
-        <!-- =============================================================== -->
-        <section class="py-16 md:py-20 px-6 bg-white scroll-animate">
-            <div class="container mx-auto max-w-5xl text-center">
-                <h2 class="text-3xl md:text-4xl font-black mb-4" data-i18n="flow.heading">"Total Support" Flow from Consultation to Post-employment</h2>
-                <p class="text-gray-600 text-lg mb-12" data-i18n="flow.description">We are with you every step of the way.</p>
-                <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
-                    <div class="flex items-center flex-col p-4 text-center">
-                        <div class="text-3xl mb-2">🤝</div>
-                        <h3 class="font-bold" data-i18n="flow.step1">1. Free Consultation</h3>
+        <!-- Section 02: 4 Features -->
+        <section class="section-features">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-tag">Our Strengths</span>
+                    <h2 class="section-title">就職活動のすべてを<span class="text-gradient">「プロ」</span>が解決</h2>
+                    <p class="section-subtitle">専門スタッフがあなたの就職活動を全力サポート</p>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-card glass-card fade-up stagger-delay-1">
+                        <div class="feature-icon-wrapper">
+                            <img src="images/limited_jobs.png" alt="求人紹介" class="feature-icon-img">
+                        </div>
+                        <h3 class="feature-title">厳選された求人紹介</h3>
+                        <p class="feature-desc">非公開求人を含む、最適な企業マッチング。（楽天グループ、大手ホテル等）</p>
                     </div>
-                    <div class="text-2xl text-gray-300 font-light">→</div>
-                    <div class="flex items-center flex-col p-4 text-center">
-                        <div class="text-3xl mb-2">💼</div>
-                        <h3 class="font-bold" data-i18n="flow.step2">2. Job Matching</h3>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-card glass-card fade-up stagger-delay-2">
+                        <div class="feature-icon-wrapper">
+                            <img src="images/resume.png" alt="書類作成" class="feature-icon-img">
+                        </div>
+                        <h3 class="feature-title">通過する書類作成</h3>
+                        <p class="feature-desc">内定率を高める「合格しやすい履歴書・職務経歴書」のマンツーマン支援。</p>
                     </div>
-                    <div class="text-2xl text-gray-300 font-light">→</div>
-                    <div class="flex items-center flex-col p-4 text-center">
-                        <div class="text-3xl mb-2">📝</div>
-                        <h3 class="font-bold" data-i18n="flow.step3">3. Interview Prep</h3>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-card glass-card fade-up stagger-delay-3">
+                        <div class="feature-icon-wrapper">
+                            <img src="images/interview.png" alt="面接対策" class="feature-icon-img">
+                        </div>
+                        <h3 class="feature-title">実践的・面接対策</h3>
+                        <p class="feature-desc">マナーから企業別の想定質問まで、自信がつくまで徹底トレーニング。</p>
                     </div>
-                    <div class="text-2xl text-gray-300 font-light">→</div>
-                    <div class="flex items-center flex-col p-4 text-center">
-                        <div class="text-3xl mb-2">📄</div>
-                        <h3 class="font-bold" data-i18n="flow.step4">4. Offer & Visa</h3>
-                    </div>
-                    <div class="text-2xl text-gray-300 font-light">→</div>
-                    <div class="flex items-center flex-col p-4 text-center">
-                        <div class="text-3xl mb-2">🤗</div>
-                        <h3 class="font-bold" data-i18n="flow.step5">5. After-care</h3>
+
+                    <!-- Feature 4 -->
+                    <div class="feature-card glass-card fade-up stagger-delay-4">
+                        <div class="feature-icon-wrapper">
+                            <img src="images/follow.png" alt="ビザサポート" class="feature-icon-img">
+                        </div>
+                        <h3 class="feature-title">安心のビザサポート</h3>
+                        <p class="feature-desc">「技人国」や「特定技能」の煩雑な申請・更新をフォロー。</p>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- =============================================================== -->
-        <!-- FAQ SECTION (Below the Fold) - RETAINED & RESTYLED              -->
-        <!-- =============================================================== -->
-        <section class="py-16 md:py-24 px-6 bg-white scroll-animate">
-            <div class="container mx-auto max-w-3xl">
-                <h2 class="text-3xl md:text-4xl font-black text-center mb-12" data-i18n="faq.heading">Frequently Asked Questions</h2>
-                <div class="space-y-4">
-                    <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q1">Is there any fee to use your service?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
-                        <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a1">No. Every service—from consultations to job introductions, offers, and post-hire support—is completely free, so please feel at ease.</p>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q2">Can I talk with you even if I'm not sure about changing jobs yet?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
-                        <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a2">Absolutely. Whether you simply want information or to understand your market value, we welcome you. Let’s explore your possibilities together.</p>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-md group transition-all duration-300 hover:shadow-xl border">
-                        <summary class="font-bold text-lg cursor-pointer flex justify-between items-center"><span data-i18n="faq.q3">What kinds of jobs can you introduce?</span><svg class="w-6 h-6 transform transition-transform duration-300 group-open:rotate-45 text-sewa-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></summary>
-                        <p class="mt-4 text-gray-600 border-t pt-4" data-i18n="faq.a3">We mainly work with hotels and food & beverage companies that provide supportive environments for international talent. We will find roles that match your goals and skills.</p>
-                    </details>
+
+        <!-- Section 03: Process -->
+        <section class="section-process">
+            <div class="container">
+                <div class="section-header text-center fade-up">
+                    <span class="section-tag">Flow</span>
+                    <h2 class="section-title">内定獲得までの<br class="sp-only"><span class="text-gradient">「ロードマップ」</span>
+                    </h2>
+                    <p class="section-subtitle">入社まで徹底的に寄り添うサポート体制</p>
                 </div>
+
+                <div class="process-flow">
+                    <!-- Step 1 -->
+                    <div class="process-step">
+                        <div class="step-card">
+                            <div class="step-number">01</div>
+                            <h3 class="step-title">キャリアカウンセリング</h3>
+                            <p class="step-desc">ビジョンの理解</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step">
+                        <div class="step-card">
+                            <div class="step-number">02</div>
+                            <h3 class="step-title">企業の選定・紹介</h3>
+                            <p class="step-desc">現場の生の情報に基づく提案</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step">
+                        <div class="step-card">
+                            <div class="step-number">03</div>
+                            <h3 class="step-title">徹底的な選考対策</h3>
+                            <p class="step-desc">書類と面接のブラッシュアップ</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="process-step">
+                        <div class="step-card">
+                            <div class="step-number">04</div>
+                            <h3 class="step-title">内定・ビザ申請・入社</h3>
+                            <p class="step-desc">入社まで並走</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- CTA Section (Bottom) -->
+        <section class="section-cta" id="contact">
+            <div class="container text-center fade-up">
+                <h2 class="cta-title">まずはプロに就職相談</h2>
+                <p class="cta-sub">完全無料・秘密厳守</p>
+                <a href="#" class="btn btn-primary btn-large">無料相談を予約する</a>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white text-center py-12 px-6">
-        <div class="container mx-auto">
-            <img src="images/sewa_logo.png" alt="sewa-katsu logo" data-i18n-alt="footer.logoAlt" class="h-16 mx-auto mb-6" style="filter: brightness(0) invert(1);">
-            <div class="flex justify-center gap-6 text-sm mb-8">
-                <a href="https://helte.jp/" target="_blank" class="hover:underline">運営会社</a>
-                <a href="https://helte.jp/privacy-policy/" target="_blank" class="hover:underline">プライバシーポリシー</a>
-                <a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank" class="hover:underline">利用規約</a>
-            </div>
-            <div class="text-xs text-gray-400 space-y-2">
-                <p>事業者：株式会社Helte（許可番号：12-ユ-300978）</p>
-                <p>&copy; 2024 Helte Co., Ltd. All Rights Reserved.</p>
-            </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="copyright">&copy; 2026 Sewa Katsu. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <div id="cookie-banner" class="cookie-banner">
-        <p class="text-lg font-bold">🍪 <span data-i18n="cookie.title"></span></p>
-        <p class="text-sm mt-2" data-i18n-html="cookie.text"></p>
-        <div class="cookie-buttons">
-            <button id="cookie-accept" type="button" class="cookie-accept-btn" data-i18n="cookie.accept"></button>
-            <button id="cookie-decline" type="button" class="cookie-decline-btn" data-i18n="cookie.decline"></button>
-        </div>
-    </div>
-
-    <a href="#form-section" id="floating-btn" class="fixed bottom-6 right-6 bg-sewa-accent text-white font-bold py-4 px-6 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 transform translate-y-4 pointer-events-none z-40 glow-on-hover">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-        <span data-i18n="floatingCta">Free Career Consultation</span>
-    </a>
-    
-    <script src="js/script.js" defer charset="UTF-8"></script>
-    
+    <script src="js/script.js"></script>
 </body>
+
 </html>
