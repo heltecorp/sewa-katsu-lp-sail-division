@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
         referralBaseUrl: 'https://sewa-katsu-lp-sd.helte.jp/?id=referral'
     };
 
+
+    // 0. Tracking Setup: Pass current URL to iframe as inflow_url
+    const iframe = document.getElementById('sewa-embed-frame');
+    if (iframe) {
+        const currentUrl = iframe.src;
+        const separator = currentUrl.indexOf('?') > -1 ? '&' : '?';
+        iframe.src = currentUrl + separator + 'inflow_url=' + encodeURIComponent(window.location.href);
+    }
+
     // 1. Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -103,4 +112,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLanguage, { skipSave: true });
     updateFloatingButtonVisibility();
     initCookieBanner();
+});
+
+// 5. Iframe Resizer (Global Listener)
+window.addEventListener('message', function (e) {
+    // Verify origin for security (optional but recommended)
+    // if (e.origin !== "https://sewa-katsu-crm-staging.web.app") return; 
+
+    if (e.data.type === 'SEWA_EMBED_RESIZE') {
+        var iframe = document.getElementById('sewa-embed-frame');
+        if (iframe) {
+            // Ensure height is treated as a number
+            var newHeight = parseInt(e.data.height);
+            if (!isNaN(newHeight)) {
+                iframe.style.height = newHeight + 'px';
+            }
+        }
+    }
 });
