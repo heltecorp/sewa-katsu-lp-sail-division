@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求人詳細 | Sewa-Katsu</title>
+    <meta name="description" content="Sewa-Katsuのプレミアム求人詳細ページです。">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Outfit:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Dynamic Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Header / Nav -->
+    <header class="glass-header scrolled">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/sewa_logo.png" alt="Sewa-Katsu Logo"
+                    style="height: 36px; width: auto; object-fit: contain;">
+            </a>
+            <nav class="main-nav">
+                <a href="index.html#jobs" class="btn btn-secondary btn-sm">← 求人一覧へ戻る</a>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: 100px;">
+        <!-- Job Details Section (Dynamic) -->
+        <section id="job-detail-section" class="section view-section is-visible">
+            <div class="container">
+                <div id="job-detail-content">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>求人情報を読み込んでいます...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Form Section (Now specific to the job) -->
+        <section id="apply-form" class="view-section section is-visible" style="padding-top: 0;">
+            <div class="container">
+                <style>
+                    /* Container Styles for Premium Look */
+                    .sewakatsu-form-wrapper {
+                        background: #ffffff;
+                        padding: 24px;
+                        border-radius: 24px;
+                        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+                        /* Premium Shadow */
+                        max-width: 800px;
+                        margin: 40px auto;
+                        /* Centered with vertical spacing */
+                        width: 100%;
+                        position: relative;
+                        box-sizing: border-box;
+                        font-family: sans-serif;
+                        /* Fallback font */
+                    }
+
+                    /* Responsive Adjustments for Mobile */
+                    @media (max-width: 600px) {
+                        .sewakatsu-form-wrapper {
+                            padding: 16px;
+                            border-radius: 16px;
+                            margin: 20px auto;
+                        }
+                    }
+                </style>
+                <div class="sewakatsu-form-wrapper">
+                    <div id="sewa-embed-container" style="width: 100%; min-width: 320px;">
+                        <iframe src="https://sewa-katsu-crm-staging.web.app/entry/embed?source=YOUR_SOURCE_HERE"
+                            id="sewa-embed-frame" width="100%" style="border: none; min-height: 600px; display: block;"
+                            scrolling="no" title="SewaKatsu Registration Form"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sticky Bottom CTA (Mobile/Desktop) -->
+    <div id="sticky-cta" class="sticky-cta glass-panel hidden-cta">
+        <div class="container sticky-cta-container">
+            <div class="sticky-info">
+                <p class="sticky-title" id="sticky-job-title">求人を読み込み中...</p>
+                <p class="sticky-salary" id="sticky-job-salary">-</p>
+            </div>
+            <button class="btn btn-primary btn-glow" id="sticky-apply-btn">今すぐ応募する</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/sewa_logo.png" alt="Sewa-Katsu Logo"
+                        style="height: 36px; width: auto; object-fit: contain;">
+                </a>
+                <p class="footer-desc">外国人材のための次世代求人プラットフォーム</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Helte Corporation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/job-detail.js"></script>
+</body>
+
+</html>

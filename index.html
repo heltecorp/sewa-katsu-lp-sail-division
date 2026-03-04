@@ -4,239 +4,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>世話カツ - 日本での就職・ビザ・キャリアをプロがサポート</title>
-    <meta name="description" content="日本での就職・ビザ・キャリア、プロがすべてお世話します。書類のチェックから面接の対策、在留資格の手続きまで完全無料。">
+    <title>Sewa-Katsu | 究極のグローバル人材ネットワーク</title>
+    <meta name="description" content="外国人材に特化した日本最大級のジョブネットワーク。最先端の求人プラットフォームで、あなたの可能性を最大限に引き出します。">
 
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@500;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Outfit:wght@400;600;800;900&display=swap"
         rel="stylesheet">
 
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header">
+
+    <!-- Dynamic Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Header / Nav -->
+    <header class="glass-header">
         <div class="container header-container">
-            <h1 class="logo">
-                <img src="images/sewa_logo.png" alt="世話カツ">
-            </h1>
-            <a href="#contact" class="btn btn-primary header-btn">まずはプロに就職相談（無料）</a>
+            <a href="#" class="logo">
+                <img src="assets/images/sewa_logo.png" alt="Sewa-Katsu Logo"
+                    style="height: 36px; width: auto; object-fit: contain;">
+            </a>
+            <nav class="main-nav">
+                <a href="#jobs">プレミアム求人</a>
+                <a href="#features">選ばれる理由</a>
+                <a href="#jobs" class="btn btn-primary btn-sm">求人を探す</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Section 01: KV (Key Visual) -->
-        <section class="section-mv">
-            <div class="mv-bg-mesh"></div>
-            <div class="mv-decor-circle circle-1"></div>
-            <div class="mv-decor-circle circle-2"></div>
-
-            <div class="container mv-container">
-                <div class="mv-content fade-up">
-                    <span class="mv-tagline">Global Talent Solutions</span>
-                    <h2 class="mv-catchphrase">
-                        <span class="d-block line-1">日本での就職・ビザ・キャリア、</span>
-                        <span class="d-block line-2 text-gradient">プロがすべてお世話します。</span>
-                    </h2>
-                    <p class="mv-sub">
-                        書類のチェックから面接の対策、<br class="sp-only">在留資格の手続きまで完全無料。<br>
-                        あなたの日本での「働く」をサポートします！
+        <!-- Hero Section -->
+        <section class="hero view-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge-animated">
+                        <span class="badge-dot"></span>
+                        GLOBAL JOB NETWORK
+                    </div>
+                    <h1 class="hero-title">
+                        あなたの可能性を<br>
+                        <span class="text-gradient">世界レベル</span>へ。
+                    </h1>
+                    <p class="hero-subtitle">
+                        外国人材に特化した次世代の求人プラットフォーム。<br>
+                        直感的な操作と圧倒的なマッチング力で、理想のキャリアを実現します。
                     </p>
-                    <div class="mv-btn-wrapper">
-                        <a href="#contact" class="btn btn-primary mv-btn">
-                            <span class="btn-text">まずはプロに就職相談（無料）</span>
-                            <span class="btn-icon">→</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="mv-visual fade-up stagger-delay-2">
-                    <div class="visual-card-wrapper">
-                        <!-- Using top-image.png as the main visual -->
-                        <img src="images/top-image.png" alt="就職相談の様子" class="main-img">
-                    </div>
-                </div>
-            </div>
-
-            <div class="scroll-indicator">
-                <div class="scroll-line"></div>
-                <span>SCROLL</span>
-            </div>
-        </section>
-
-        <!-- Section 04: Trust/Authority (Moved to Top) -->
-        <section class="section-trust">
-            <div class="container">
-                <div class="trust-content text-center fade-up">
-                    <h2 class="trust-title">外国籍の方に特化した求人ネットワーク</h2>
-                    <div class="trust-numbers">
-                        <p class="trust-label">紹介可能求人数</p>
-                        <p class="trust-count"><span class="count-up" data-target="6479">6,479</span><span
-                                class="unit">件以上</span></p>
-                        <p class="trust-sub">※パートナー企業求人含む</p>
+                    <div class="hero-actions">
+                        <a href="#jobs" class="btn btn-primary btn-glow btn-lg">最新の求人を見る</a>
+                        <a href="#features" class="btn btn-secondary btn-lg">選ばれる理由</a>
                     </div>
 
-                    <div class="trust-logos">
-                        <p class="logos-label">圧倒的な選択肢と、大手企業との提携</p>
-
-                        <!-- Marquee Container -->
-                        <div class="logo-marquee">
-                            <div class="marquee-content">
-                                <!-- Original Set -->
-                                <img src="images/CHM_logo.svg" alt="Partner Logo">
-                                <img src="images/SFV_logo.svg" alt="Partner Logo">
-                                <img src="images/RYU_logo.svg" alt="Partner Logo">
-                                <img src="images/TR&S_logo.svg" alt="Partner Logo">
-                                <img src="images/GV_logo.svg" alt="Partner Logo">
-                                <!-- Duplicate Set for Infinite Loop -->
-                                <img src="images/CHM_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <img src="images/SFV_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <img src="images/RYU_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <img src="images/TR&S_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <img src="images/GV_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <!-- Triplicate Set for Safety on large screens -->
-                                <img src="images/CHM_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <img src="images/SFV_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <img src="images/RYU_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <img src="images/TR&S_logo.svg" alt="Partner Logo" aria-hidden="true">
-                                <img src="images/GV_logo.svg" alt="Partner Logo" aria-hidden="true">
-                            </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">50,000+</span>
+                            <span class="stat-label">登録メンバー</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-value">98%</span>
+                            <span class="stat-label">マッチング満足度</span>
                         </div>
                     </div>
                 </div>
+
+                <div class="hero-visual">
+                    <img src="assets/images/top-image.png" alt="Sewa-Katsu Hero Image"
+                        style="width: 100%; max-width: 600px; height: auto; animation: float 6s ease-in-out infinite;">
+                </div>
+            </div>
+
+            <!-- Marquee Scroller -->
+            <div class="scroller-wrapper">
+                <div class="scroller">
+                    <ul class="scroller-inner">
+                        <li>TRUSTED BY GLOBAL ENTERPRISES</li>
+                        <li>•</li>
+                        <li>JAPAN'S FASTEST GROWING NETWORK</li>
+                        <li>•</li>
+                        <li>NO.1 SUPPORT FOR FOREIGN TALENT</li>
+                        <li>•</li>
+                        <li>TRUSTED BY GLOBAL ENTERPRISES</li>
+                        <li>•</li>
+                        <li>JAPAN'S FASTEST GROWING NETWORK</li>
+                        <li>•</li>
+                        <li>NO.1 SUPPORT FOR FOREIGN TALENT</li>
+                        <li>•</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- Section 02: 4 Features -->
-        <section class="section-features">
+        <!-- Premium Jobs & Search Section -->
+        <section id="jobs" class="section glass-section">
             <div class="container">
-                <div class="section-header text-center fade-up">
-                    <span class="section-tag">Our Strengths</span>
-                    <h2 class="section-title">就職活動のすべてを<span class="text-gradient">「プロ」</span>が解決</h2>
-                    <p class="section-subtitle">専門スタッフがあなたの就職活動を全力サポート</p>
+                <div class="section-header text-center reveal">
+                    <h2 class="section-title">Premium <span class="text-gradient">Jobs</span></h2>
+                    <p class="section-subtitle">あなたを待っている、最新の非公開求人情報</p>
+                </div>
+
+                <!-- Premium Search Bar -->
+                <div class="search-container reveal glass-panel"
+                    style="margin-bottom: 3rem; padding: 1.5rem; border-radius: 20px;">
+                    <form id="job-search-form" class="search-form" onsubmit="return false;"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; align-items: end;">
+                        <div class="search-group">
+                            <label for="searchKeyword"
+                                style="font-size: 0.875rem; color: var(--clr-text-muted); margin-bottom: 0.5rem; display: block; font-weight: 600;">キーワード</label>
+                            <div class="search-input-wrapper" style="position: relative;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2"
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--clr-text-muted);">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                <input type="text" id="searchKeyword" class="form-control" placeholder="職種、スキル..."
+                                    style="padding-left: 3rem;">
+                            </div>
+                        </div>
+
+                        <div class="search-group">
+                            <label for="searchLocation"
+                                style="font-size: 0.875rem; color: var(--clr-text-muted); margin-bottom: 0.5rem; display: block; font-weight: 600;">勤務地（フリーワード）</label>
+                            <div class="search-input-wrapper" style="position: relative;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2"
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--clr-text-muted);">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <input type="text" id="searchLocation" class="form-control" placeholder="例：東京、大阪、リモート"
+                                    style="padding-left: 3rem;">
+                            </div>
+                        </div>
+
+                        <div class="search-group">
+                            <label for="searchLanguage"
+                                style="font-size: 0.875rem; color: var(--clr-text-muted); margin-bottom: 0.5rem; display: block; font-weight: 600;">日本語レベル</label>
+                            <div class="search-input-wrapper">
+                                <select id="searchLanguage" class="form-control select-control">
+                                    <option value="All">すべてのレベル</option>
+                                    <option value="N1">N1</option>
+                                    <option value="N2">N2</option>
+                                    <option value="N3">N3</option>
+                                    <option value="N4">N4</option>
+                                    <option value="None">不問 (None)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Dynamic Job Cards Container -->
+                <div class="jobs-grid" id="jobs-container">
+                    <!-- Cards will be injected here via JavaScript -->
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Loading premium jobs...</p>
+                    </div>
+                </div>
+
+                <div class="jobs-action text-center mt-4">
+                    <p class="section-subtitle">気になる求人をクリックして詳細と応募フォームへお進みください</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="view-section section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why <span class="text-gradient">Sewa-Katsu?</span></h2>
+                    <p class="section-subtitle">圧倒的な実績と、選ばれる3つの理由</p>
                 </div>
 
                 <div class="features-grid">
-                    <!-- Feature 1 -->
-                    <div class="feature-card glass-card fade-up stagger-delay-1">
-                        <div class="feature-icon-wrapper">
-                            <img src="images/limited_jobs.png" alt="求人紹介" class="feature-icon-img">
+                    <!-- Feature Card 1 -->
+                    <div class="feature-card glass-panel" data-tilt>
+                        <div class="feature-icon icon-glow-primary">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
                         </div>
-                        <h3 class="feature-title">厳選された求人紹介</h3>
-                        <p class="feature-desc">非公開求人を含む、最適な企業マッチング。（楽天グループ、大手ホテル等）</p>
+                        <h3 class="feature-title">圧倒的な優良求人数</h3>
+                        <p class="feature-desc">独自のネットワークにより、他にはない非公開の高待遇プレミアム求人を多数保有しています。</p>
+                        <div class="feature-bg-shape bg-shape-1"></div>
                     </div>
 
-                    <!-- Feature 2 -->
-                    <div class="feature-card glass-card fade-up stagger-delay-2">
-                        <div class="feature-icon-wrapper">
-                            <img src="images/resume.png" alt="書類作成" class="feature-icon-img">
+                    <!-- Feature Card 2 -->
+                    <div class="feature-card glass-panel" data-tilt>
+                        <div class="feature-icon icon-glow-accent">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
                         </div>
-                        <h3 class="feature-title">通過する書類作成</h3>
-                        <p class="feature-desc">内定率を高める「合格しやすい履歴書・職務経歴書」のマンツーマン支援。</p>
+                        <h3 class="feature-title">多言語専任サポート</h3>
+                        <p class="feature-desc">日英対応のプロフェッショナルコンサルタントが、面接対策から内定後のフォローまで徹底的にサポート。</p>
+                        <div class="feature-bg-shape bg-shape-2"></div>
                     </div>
 
-                    <!-- Feature 3 -->
-                    <div class="feature-card glass-card fade-up stagger-delay-3">
-                        <div class="feature-icon-wrapper">
-                            <img src="images/interview.png" alt="面接対策" class="feature-icon-img">
+                    <!-- Feature Card 3 -->
+                    <div class="feature-card glass-panel" data-tilt>
+                        <div class="feature-icon icon-glow-primary">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
                         </div>
-                        <h3 class="feature-title">実践的・面接対策</h3>
-                        <p class="feature-desc">マナーから企業別の想定質問まで、自信がつくまで徹底トレーニング。</p>
-                    </div>
-
-                    <!-- Feature 4 -->
-                    <div class="feature-card glass-card fade-up stagger-delay-4">
-                        <div class="feature-icon-wrapper">
-                            <img src="images/follow.png" alt="ビザサポート" class="feature-icon-img">
-                        </div>
-                        <h3 class="feature-title">安心のビザサポート</h3>
-                        <p class="feature-desc">「技人国」や「特定技能」の煩雑な申請・更新をフォロー。</p>
+                        <h3 class="feature-title">最速のマッチング</h3>
+                        <p class="feature-desc">AI技術と独自のアルゴリズムを活用し、あなたのスキルと希望に最適な企業を最短でマッチング。</p>
+                        <div class="feature-bg-shape bg-shape-3"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 03: Process -->
-        <section class="section-process">
-            <div class="container">
-                <div class="section-header text-center fade-up">
-                    <span class="section-tag">Flow</span>
-                    <h2 class="section-title">内定獲得までの<br class="sp-only"><span class="text-gradient">「ロードマップ」</span>
-                    </h2>
-                    <p class="section-subtitle">入社まで徹底的に寄り添うサポート体制</p>
-                </div>
-
-                <div class="process-flow">
-                    <!-- Step 1 -->
-                    <div class="process-step">
-                        <div class="step-card">
-                            <div class="step-number">01</div>
-                            <h3 class="step-title">キャリアカウンセリング</h3>
-                            <p class="step-desc">ビジョンの理解</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="process-step">
-                        <div class="step-card">
-                            <div class="step-number">02</div>
-                            <h3 class="step-title">企業の選定・紹介</h3>
-                            <p class="step-desc">現場の生の情報に基づく提案</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="process-step">
-                        <div class="step-card">
-                            <div class="step-number">03</div>
-                            <h3 class="step-title">徹底的な選考対策</h3>
-                            <p class="step-desc">書類と面接のブラッシュアップ</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="process-step">
-                        <div class="step-card">
-                            <div class="step-number">04</div>
-                            <h3 class="step-title">内定・ビザ申請・入社</h3>
-                            <p class="step-desc">入社まで並走</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- CTA Section (Bottom) -->
-        <section class="section-cta" id="contact">
-            <div class="container text-center fade-up">
-                <h2 class="cta-title">まずはプロに就職相談</h2>
-                <p class="cta-sub">完全無料・秘密厳守</p>
-                <!-- Form Embed Wrapper -->
-                <div class="sewakatsu-form-wrapper">
-                    <div id="sewa-embed-container" style="width: 100%; min-width: 320px;">
-                        <iframe src="https://sewa-katsu-crm-staging.web.app/entry/embed?source=sewakatsu_lp_202601"
-                            id="sewa-embed-frame" width="100%" style="border: none; min-height: 600px; display: block;"
-                            scrolling="no" title="SewaKatsu Registration Form"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container text-center">
-            <p class="copyright">&copy; 2026 Sewa Katsu. All Rights Reserved.</p>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="assets/images/sewa_logo.png" alt="Sewa-Katsu Logo"
+                        style="height: 36px; width: auto; object-fit: contain;">
+                </a>
+                <p class="footer-desc">外国人材のための次世代求人プラットフォーム</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">運営会社 (Helte)</a></li>
+                        <li><a href="#">Sailについて</a></li>
+                    </ul>
+                </div>
+                <div class="link-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Helte Corporation. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- App Scripts -->
+    <script src="js/app.js"></script>
 </body>
 
 </html>
