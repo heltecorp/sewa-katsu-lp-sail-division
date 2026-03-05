@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (jobId && detailContainer) {
-        fetch(`data/jobs.csv?v=${Date.now()}`)
+        fetch(`https://docs.google.com/spreadsheets/d/e/2PACX-1vQibVl5joDPY00upwFI2r4YppfF0JILIDEZs9yyXGSAQgrYax0Mj3BlAFdv21sRgD_RDTm73UcVgtRd/pub?gid=627519988&single=true&output=csv&t=${Date.now()}`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.text();
