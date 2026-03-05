@@ -29,7 +29,7 @@
         <div class="container header-container">
             <a href="#" class="logo">
                 <img src="assets/images/sewa_logo.png" alt="Sewa-Katsu Logo"
-                    style="height: 36px; width: auto; object-fit: contain;">
+                    style="height: 55px; width: auto; object-fit: contain;">
             </a>
             <nav class="main-nav">
                 <a href="#jobs">プレミアム求人</a>
@@ -41,62 +41,113 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero view-section">
-            <div class="container hero-container">
-                <div class="hero-content">
-                    <div class="badge-animated">
-                        <span class="badge-dot"></span>
-                        GLOBAL JOB NETWORK
-                    </div>
-                    <h1 class="hero-title">
-                        あなたの可能性を<br>
-                        <span class="text-gradient">世界レベル</span>へ。
-                    </h1>
-                    <p class="hero-subtitle">
-                        外国人材に特化した次世代の求人プラットフォーム。<br>
-                        直感的な操作と圧倒的なマッチング力で、理想のキャリアを実現します。
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#jobs" class="btn btn-primary btn-glow btn-lg">最新の求人を見る</a>
-                        <a href="#features" class="btn btn-secondary btn-lg">選ばれる理由</a>
-                    </div>
+        <section class="hero view-section"
+            style="position: relative; overflow: hidden; padding-top: 140px; padding-bottom: 80px; min-height: 100vh; display: flex; align-items: center; background: url('assets/images/mv-img.jpg') center right/cover no-repeat;">
 
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-value">50,000+</span>
-                            <span class="stat-label">登録メンバー</span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-value">98%</span>
-                            <span class="stat-label">マッチング満足度</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <img src="assets/images/top-image.png" alt="Sewa-Katsu Hero Image"
-                        style="width: 100%; max-width: 600px; height: auto; animation: float 6s ease-in-out infinite;">
-                </div>
+            <!-- Mobile/Left Gradient for readability on smaller screens -->
+            <div class="hero-overlay-mobile"
+                style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%); z-index: 1;">
             </div>
 
-            <!-- Marquee Scroller -->
-            <div class="scroller-wrapper">
-                <div class="scroller">
-                    <ul class="scroller-inner">
-                        <li>TRUSTED BY GLOBAL ENTERPRISES</li>
-                        <li>•</li>
-                        <li>JAPAN'S FASTEST GROWING NETWORK</li>
-                        <li>•</li>
-                        <li>NO.1 SUPPORT FOR FOREIGN TALENT</li>
-                        <li>•</li>
-                        <li>TRUSTED BY GLOBAL ENTERPRISES</li>
-                        <li>•</li>
-                        <li>JAPAN'S FASTEST GROWING NETWORK</li>
-                        <li>•</li>
-                        <li>NO.1 SUPPORT FOR FOREIGN TALENT</li>
-                        <li>•</li>
+            <div class="container hero-container"
+                style="position: relative; z-index: 10; width: 100%; max-width: 1200px; margin: 0 auto; text-align: left;">
+                <div class="hero-content"
+                    style="max-width: 650px; display: flex; flex-direction: column; align-items: flex-start;">
+
+                    <!-- Solid Block Badge -->
+                    <div class="hero-badge"
+                        style="background: #2B3A5A; color: #ffffff; padding: 0.6rem 1.2rem; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1.5rem; display: inline-block;">
+                        日本語力を活かして働く
+                    </div>
+
+                    <!-- Main Title -->
+                    <h1 class="hero-title"
+                        style="color: #2B3A5A; font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 1rem;">
+                        <span style="position: relative; display: inline-block;">
+                            N1・N2
+                            <span
+                                style="position: absolute; bottom: 8px; left: 0; width: 100%; height: 4px; background-color: #3b82f6; z-index: -1;"></span>
+                        </span>レベル <span style="font-size: 0.7em; font-weight: 400; margin: 0 0.2rem;">×</span><br>
+                        ビジネス英語 <span style="font-size: 0.7em; font-weight: 400; margin: 0 0.2rem;">×</span> 大学卒業
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="hero-subtitle"
+                        style="color: #2B3A5A; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 700; line-height: 1.5; margin-bottom: 2rem;">
+                        20代の欧米、台湾、韓国、香港の<br>方が活躍中
+                    </p>
+
+                    <!-- Features List -->
+                    <ul class="hero-features-list"
+                        style="list-style: none; padding: 0; margin: 0 0 3rem 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li
+                            style="display: flex; align-items: center; gap: 0.6rem; font-size: 1.15rem; color: #2B3A5A; font-weight: 700;">
+                            <span
+                                style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: #3b82f6; color: #ffffff; border-radius: 50%;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            書類作成・面接の練習
+                        </li>
+                        <li
+                            style="display: flex; align-items: center; gap: 0.6rem; font-size: 1.15rem; color: #2B3A5A; font-weight: 700;">
+                            <span
+                                style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: #3b82f6; color: #ffffff; border-radius: 50%;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            就労ビザの取得サポート
+                        </li>
+                        <li
+                            style="display: flex; align-items: center; gap: 0.6rem; font-size: 1.15rem; color: #2B3A5A; font-weight: 700;">
+                            <span
+                                style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: #3b82f6; color: #ffffff; border-radius: 50%;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            お住い探しのサポート
+                        </li>
                     </ul>
+
+                    <!-- CTA Button matching the reference -->
+                    <div class="hero-actions" style="margin-bottom: 3rem;">
+                        <a href="#jobs" class="btn"
+                            style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem; background: #fb923c; color: #fff; padding: 1rem 1rem 1rem 2.5rem; border-radius: 100px; font-weight: 700; font-size: 1.3rem; box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4); text-decoration: none; transition: transform 0.3s ease;">
+                            最新の求人を見る
+                            <span
+                                style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: #ffffff; color: #fb923c; border-radius: 50%;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Subtle Stats for context (kept but styled dark) -->
+                    <div class="hero-stats"
+                        style="display: flex; gap: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(43, 58, 90, 0.1);">
+                        <div class="stat-item">
+                            <span class="stat-value"
+                                style="color: #2B3A5A; font-size: 2rem; font-weight: 800;">50,000<span
+                                    style="color: #fb923c;">+</span></span>
+                            <span class="stat-label"
+                                style="display: block; font-size: 0.85rem; color: #4b5563; font-weight: 600; margin-top: 0.2rem;">登録メンバー</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" style="color: #2B3A5A; font-size: 2rem; font-weight: 800;">98<span
+                                    style="color: #fb923c;">%</span></span>
+                            <span class="stat-label"
+                                style="display: block; font-size: 0.85rem; color: #4b5563; font-weight: 600; margin-top: 0.2rem;">マッチング満足度</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -112,53 +163,13 @@
                 <!-- Premium Search Bar -->
                 <div class="search-container reveal glass-panel"
                     style="margin-bottom: 3rem; padding: 1.5rem; border-radius: 20px;">
-                    <form id="job-search-form" class="search-form" onsubmit="return false;"
-                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; align-items: end;">
-                        <div class="search-group">
-                            <label for="searchKeyword"
-                                style="font-size: 0.875rem; color: var(--clr-text-muted); margin-bottom: 0.5rem; display: block; font-weight: 600;">キーワード</label>
-                            <div class="search-input-wrapper" style="position: relative;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2"
-                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--clr-text-muted);">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
-                                <input type="text" id="searchKeyword" class="form-control" placeholder="職種、スキル..."
-                                    style="padding-left: 3rem;">
-                            </div>
-                        </div>
+                    <!-- Search Form Removed as per request -->
 
-                        <div class="search-group">
-                            <label for="searchLocation"
-                                style="font-size: 0.875rem; color: var(--clr-text-muted); margin-bottom: 0.5rem; display: block; font-weight: 600;">勤務地（フリーワード）</label>
-                            <div class="search-input-wrapper" style="position: relative;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2"
-                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--clr-text-muted);">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                </svg>
-                                <input type="text" id="searchLocation" class="form-control" placeholder="例：東京、大阪、リモート"
-                                    style="padding-left: 3rem;">
-                            </div>
-                        </div>
-
-                        <div class="search-group">
-                            <label for="searchLanguage"
-                                style="font-size: 0.875rem; color: var(--clr-text-muted); margin-bottom: 0.5rem; display: block; font-weight: 600;">日本語レベル</label>
-                            <div class="search-input-wrapper">
-                                <select id="searchLanguage" class="form-control select-control">
-                                    <option value="All">すべてのレベル</option>
-                                    <option value="N1">N1</option>
-                                    <option value="N2">N2</option>
-                                    <option value="N3">N3</option>
-                                    <option value="N4">N4</option>
-                                    <option value="None">不問 (None)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </form>
+                    <!-- Dynamic Filter Tags Container -->
+                    <div id="dynamic-filter-tags"
+                        style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                        <!-- Tags injected by JS -->
+                    </div>
                 </div>
 
                 <!-- Dynamic Job Cards Container -->
@@ -202,15 +213,14 @@
                     <div class="feature-card glass-panel" data-tilt>
                         <div class="feature-icon icon-glow-accent">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
                             </svg>
                         </div>
-                        <h3 class="feature-title">多言語専任サポート</h3>
-                        <p class="feature-desc">日英対応のプロフェッショナルコンサルタントが、面接対策から内定後のフォローまで徹底的にサポート。</p>
+                        <h3 class="feature-title">最適なマッチング</h3>
+                        <p class="feature-desc">プロのキャリアアドバイザーが、あなたのスキルや経験を伺い、最適なキャリアと仕事をアドバイス。</p>
                         <div class="feature-bg-shape bg-shape-2"></div>
                     </div>
 
@@ -218,12 +228,15 @@
                     <div class="feature-card glass-panel" data-tilt>
                         <div class="feature-icon icon-glow-primary">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                </path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                <polyline points="9 14 11 16 15 11"></polyline>
                             </svg>
                         </div>
-                        <h3 class="feature-title">最速のマッチング</h3>
-                        <p class="feature-desc">AI技術と独自のアルゴリズムを活用し、あなたのスキルと希望に最適な企業を最短でマッチング。</p>
+                        <h3 class="feature-title">充実した選考サポート</h3>
+                        <p class="feature-desc">書類作成や面接の練習もしっかりサポート！希望の会社に合格できるよう全力でサポートします。</p>
                         <div class="feature-bg-shape bg-shape-3"></div>
                     </div>
                 </div>
@@ -236,26 +249,30 @@
     <footer class="site-footer">
         <div class="container footer-container">
             <div class="footer-brand">
-                <a href="#" class="logo">
+                <a href="index.html" class="logo">
                     <img src="assets/images/sewa_logo.png" alt="Sewa-Katsu Logo"
                         style="height: 36px; width: auto; object-fit: contain;">
                 </a>
                 <p class="footer-desc">外国人材のための次世代求人プラットフォーム</p>
+                <p class="footer-desc" style="font-size: 0.85rem; margin-top: 1rem;">事業者：株式会社Helte（許可番号：12-ユ-300978）</p>
             </div>
 
             <div class="footer-links">
                 <div class="link-col">
                     <h4>About</h4>
                     <ul>
-                        <li><a href="#">運営会社 (Helte)</a></li>
-                        <li><a href="#">Sailについて</a></li>
+                        <li><a href="https://helte.jp/" target="_blank" rel="noopener noreferrer">運営会社 (Helte)</a></li>
                     </ul>
                 </div>
                 <div class="link-col">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#">利用規約</a></li>
-                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank"
+                                rel="noopener noreferrer">利用規約</a></li>
+                        <li><a href="https://sailjp.helte.jp/privacy/" target="_blank"
+                                rel="noopener noreferrer">プライバシーポリシー</a></li>
+                        <li><a href="https://sailjp.helte.jp/privacy/" target="_blank"
+                                rel="noopener noreferrer">クッキーポリシー</a></li>
                     </ul>
                 </div>
             </div>

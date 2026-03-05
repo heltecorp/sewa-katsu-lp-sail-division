@@ -96,8 +96,15 @@
             <div class="sticky-info">
                 <p class="sticky-title" id="sticky-job-title">求人を読み込み中...</p>
                 <p class="sticky-salary" id="sticky-job-salary">-</p>
+                <button class="btn" id="sticky-apply-btn">
+                    今すぐ応募する
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.25rem;">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
             </div>
-            <button class="btn btn-primary btn-glow" id="sticky-apply-btn">今すぐ応募する</button>
         </div>
     </div>
 
@@ -110,14 +117,36 @@
                         style="height: 36px; width: auto; object-fit: contain;">
                 </a>
                 <p class="footer-desc">外国人材のための次世代求人プラットフォーム</p>
+                <p class="footer-desc" style="font-size: 0.85rem; margin-top: 1rem;">事業者：株式会社Helte（許可番号：12-ユ-300978）
+                </p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Helte Corporation. All rights reserved.</p>
+
+            <div class="footer-links">
+                <div class="link-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="https://helte.jp/" target="_blank" rel="noopener noreferrer">運営会社 (Helte)</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="link-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://sewa-katsu.helte.jp/ja/terms/" target="_blank"
+                                rel="noopener noreferrer">利用規約</a></li>
+                        <li><a href="https://sailjp.helte.jp/privacy/" target="_blank"
+                                rel="noopener noreferrer">プライバシーポリシー</a></li>
+                        <li><a href="https://sailjp.helte.jp/privacy/" target="_blank"
+                                rel="noopener noreferrer">クッキーポリシー</a></li>
+                    </ul>
+                </div>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Helte Corporation. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="js/job-detail.js"></script>
 </body>
 

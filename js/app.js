@@ -63,7 +63,7 @@ let allJobs = [];
 
 if (jobsContainer) {
     // Fetch and parse the CSV data
-    fetch('data/jobs_preview_export.csv')
+    fetch('data/jobs.csv')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -81,38 +81,92 @@ if (jobsContainer) {
         });
 }
 
-function setupSearchFilters() {
-    const searchForm = document.getElementById('job-search-form');
-    const inputKeyword = document.getElementById('searchKeyword');
-    const selectLocation = document.getElementById('searchLocation');
-    const selectLanguage = document.getElementById('searchLanguage');
+/* =========================================
+   DYNAMIC TAG GENERATION & FILTERING
+========================================= */
+let activeFilters = {
+    '在留資格': [],
+    '雇用形態': [],
+    '業界': [],
+    '勤務エリア（カード用）': []
+};
 
-    if (!searchForm) return;
+function setupSearchFilters() {
+    const filterContainer = document.getElementById('dynamic-filter-tags');
+
+    // Generate unique tags from data
+    const filterCategories = ['在留資格', '雇用形態', '業界', '勤務エリア（カード用）'];
+    const uniqueTagsData = {};
+
+    filterCategories.forEach(cat => {
+        uniqueTagsData[cat] = [...new Set(allJobs.map(job => job[cat]).filter(val => val && val.trim() !== ''))];
+    });
+
+    // Render filter UI
+    if (filterContainer) {
+        let filterHtml = '';
+        filterCategories.forEach(cat => {
+            if (uniqueTagsData[cat].length > 0) {
+                const displayName = cat === '勤務エリア（カード用）' ? '勤務エリア' : cat;
+                filterHtml += `
+                <div class="filter-group" style="display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--clr-text); white-space: nowrap; padding-top: 0.4rem; min-width: 80px;">${displayName}</span>
+                    <div class="filter-tags" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        ${uniqueTagsData[cat].map(tag => `
+                            <button type="button" class="filter-tag-btn" data-category="${cat}" data-value="${tag}" 
+                                style="background: rgba(43,58,90,0.05); color: #2B3A5A; border: 1px solid rgba(43,58,90,0.1); padding: 0.4rem 1.2rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
+                                ${tag}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>`;
+            }
+        });
+        filterContainer.innerHTML = filterHtml;
+
+        // Attach event listeners to newly created tag buttons
+        document.querySelectorAll('.filter-tag-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const cat = this.getAttribute('data-category');
+                const val = this.getAttribute('data-value');
+
+                const index = activeFilters[cat].indexOf(val);
+                if (index > -1) {
+                    activeFilters[cat].splice(index, 1);
+                    this.style.background = 'rgba(43,58,90,0.05)';
+                    this.style.color = '#2B3A5A';
+                    this.style.borderColor = 'rgba(43,58,90,0.1)';
+                } else {
+                    activeFilters[cat].push(val);
+                    this.style.background = '#F66748';
+                    this.style.color = '#fff';
+                    this.style.borderColor = '#F66748';
+                }
+
+                filterJobs();
+            });
+        });
+    }
 
     function filterJobs() {
-        // Add fade out effect
         const cards = document.querySelectorAll('.job-card');
         cards.forEach(card => card.style.opacity = '0');
 
         setTimeout(() => {
-            const keyword = inputKeyword.value.toLowerCase();
-            const location = selectLocation.value.trim();
-            const language = selectLanguage.value;
-
             const filtered = allJobs.filter(job => {
-                const matchKeyword = !keyword ||
-                    (job['求人名'] && job['求人名'].toLowerCase().includes(keyword)) ||
-                    (job['企業名(参照)'] && job['企業名(参照)'].toLowerCase().includes(keyword)) ||
-                    (job['概要'] && job['概要'].toLowerCase().includes(keyword)) ||
-                    (job['仕事内容'] && job['仕事内容'].toLowerCase().includes(keyword));
+                let matchTags = true;
+                filterCategories.forEach(cat => {
+                    if (activeFilters[cat].length > 0) {
+                        // For string match
+                        if (!activeFilters[cat].includes(job[cat])) {
+                            matchTags = false;
+                        }
+                    }
+                });
 
-                const matchLocation = !location || (job['勤務地'] && job['勤務地'].includes(location)) || (job['勤務地詳細'] && job['勤務地詳細'].includes(location));
-                const matchLanguage = language === 'All' || (job['言語要件'] && job['言語要件'].includes(language));
-
-                return matchKeyword && matchLocation && matchLanguage;
+                return matchTags;
             });
 
-            // If empty wait, otherwise render
             if (filtered.length === 0) {
                 jobsContainer.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: rgba(255,255,255,0.5); border-radius: 20px;">
@@ -125,14 +179,9 @@ function setupSearchFilters() {
             } else {
                 renderJobs(filtered);
             }
-        }, 300); // Wait for fade out
+        }, 300);
     }
-
-    inputKeyword.addEventListener('input', filterJobs);
-    selectLocation.addEventListener('input', filterJobs);
-    selectLanguage.addEventListener('change', filterJobs);
 }
-
 
 // Robust CSV Parser (Handles quotes, commas inside quotes, and newlines inside quotes)
 function parseCSV(text) {
@@ -203,43 +252,29 @@ function renderJobs(jobsToRender) {
     jobsContainer.innerHTML = '';
 
     jobsToRender.forEach(job => {
-        // Smart Tag Generation: If Tags column doesn't exist, we create some from employment type and language
-        let tagsHtml = '';
-        if (job['雇用形態']) {
-            tagsHtml += `<span class="job-tag">${job['雇用形態']}</span>`;
-        }
-        if (job['言語要件']) {
-            // Extract just the JLPT level if possible, or show a snippet
-            const langStr = job['言語要件'].includes('N1') ? 'N1' :
-                job['言語要件'].includes('N2') ? 'N2' :
-                    job['言語要件'].includes('N3') ? 'N3' :
-                        job['言語要件'].includes('N4') ? 'N4' : '語学不問';
-            tagsHtml += `<span class="job-tag">JLPT ${langStr}</span>`;
-        }
+        // Collect tags for this specific card
+        const cardTags = [
+            job['在留資格'],
+            job['雇用形態'],
+            job['業界'],
+            job['勤務エリア（カード用）']
+        ].filter(tag => tag && tag.trim() !== '');
 
-        // Badge logic: Use 'IsNew' if exists, otherwise assume new if ID is present
+        const uniqueCardTags = [...new Set(cardTags)];
+        const tagsHtml = uniqueCardTags.length > 0
+            ? `<div class="job-card-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem;">
+                ${uniqueCardTags.map(tag => `<span style="background: rgba(246, 103, 72, 0.08); color: #DF4F33; padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(246, 103, 72, 0.15);">#${tag}</span>`).join('')}
+               </div>`
+            : '';
+
         const badgeHtml = '<span class="job-badge new">NEW</span>';
 
-        // Smarter company name extraction
-        let companyName = job['企業名(参照)'] || job['求人企業名'] || '非公開企業';
+        const isConfidential = true;
+        const logoContent = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
+        const logoClass = 'company-logo confidential';
 
-        // If it's a confidential / placeholder, try to extract from Title (many have "Position / Visa / Company" format)
-        if (companyName === '非公開企業' && job['求人名'] && job['求人名'].includes('/')) {
-            const parts = job['求人名'].split('/');
-            companyName = parts[parts.length - 1].trim();
-        }
-
-        const isConfidential = companyName === '非公開企業';
-        const logoContent = isConfidential
-            ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>'
-            : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>';
-        const logoClass = isConfidential ? 'company-logo confidential' : 'company-logo';
-
-        // Clean up salary string length for card preview
-        let salaryPreview = job['給与'] || '';
-        if (salaryPreview.length > 20) {
-            salaryPreview = salaryPreview.substring(0, 20) + '...';
-        }
+        const title = job['ポジション / おすすめポイント（カード用）'] || '求人タイトル未設定';
+        const formattedTitle = title.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
         const cardHtml = `
                 <div class="job-card glass-panel" data-tilt>
@@ -247,42 +282,39 @@ function renderJobs(jobsToRender) {
                         <div class="${logoClass}">${logoContent}</div>
                         ${badgeHtml}
                     </div>
-                    <h3 class="job-title">${job['求人名']}</h3>
-                    <p class="job-company">${companyName}</p>
+                    <h3 class="job-title" style="margin-bottom: 0.5rem;">${formattedTitle}</h3>
+                    <p class="job-company" style="color: var(--clr-text-muted); font-size: 0.875rem; margin-bottom: 1.2rem;">非公開企業</p>
+                    
+                    ${tagsHtml}
                     
                     <div class="job-details">
                         <div class="detail-item">
-                            <span class="detail-icon">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span class="detail-icon" style="color: var(--clr-primary);">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </span>
-                            ${job['勤務地'] || '-'}
+                            ${job['勤務エリア（カード用）'] || '-'}
                         </div>
                         <div class="detail-item">
-                            <span class="detail-icon">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            <span class="detail-icon" style="color: var(--clr-primary);">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                             </span>
-                            ${salaryPreview || '-'}
+                            ${job['年収（カード用）'] || '-'}
                         </div>
                         <div class="detail-item">
-                            <span class="detail-icon">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            <span class="detail-icon" style="color: var(--clr-primary);">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                             </span>
-                            ${job['言語要件'] && (job['言語要件'].includes('N') || job['言語要件'].includes('日本語')) ? '語学要件あり' : '不問'}
+                            ${job['こんな人におすすめ（カード用）'] || '-'}
                         </div>
                     </div>
                     
-                    <div class="job-tags">
-                        ${tagsHtml}
-                    </div>
-                    
-                    <a href="job-detail.html?id=${job['求人ID']}" class="btn btn-secondary job-action">詳細を見る</a>
+                    <a href="job-detail.html?id=${job['求人ID']}" class="btn job-action">詳細を見る</a>
                 </div>
             `;
 
         jobsContainer.insertAdjacentHTML('beforeend', cardHtml);
     });
 
-    // Re-attach hover effects to new cards
     attachCardInteractions();
 }
 

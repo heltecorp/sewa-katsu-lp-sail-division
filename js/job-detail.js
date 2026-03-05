@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (jobId && detailContainer) {
-        fetch('data/jobs_preview_export.csv')
+        fetch('data/jobs.csv')
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.text();
@@ -58,37 +58,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderJobDetail(job) {
-        // Smart Tag Generation: If Tags column doesn't exist, we create some from employment type and language
-        let tagsHtml = '';
-        if (job['雇用形態']) {
-            tagsHtml += `<span class="job-tag">${job['雇用形態']}</span>`;
-        }
-        if (job['言語要件']) {
-            const langStr = job['言語要件'].includes('N1') ? 'N1' :
-                job['言語要件'].includes('N2') ? 'N2' :
-                    job['言語要件'].includes('N3') ? 'N3' :
-                        job['言語要件'].includes('N4') ? 'N4' : '語学不問';
-            tagsHtml += `<span class="job-tag">JLPT ${langStr}</span>`;
-        }
-        if (job['年齢要件']) {
-            tagsHtml += `<span class="job-tag">${job['年齢要件']}</span>`;
-        }
+        const detailTags = [
+            job['在留資格'],
+            job['雇用形態'],
+            job['業界'],
+            job['勤務エリア（カード用）']
+        ].filter(tag => tag && tag.trim() !== '');
+
+        const uniqueDetailTags = [...new Set(detailTags)];
+        const tagsHtml = uniqueDetailTags.length > 0
+            ? `<div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+                ${uniqueDetailTags.map(tag => `<span style="background: rgba(246, 103, 72, 0.08); color: #DF4F33; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(246, 103, 72, 0.15);">#${tag}</span>`).join('')}
+               </div>`
+            : '';
 
         const badgeHtml = '<span class="job-badge new">NEW</span>';
-        // Smarter company name extraction
-        let companyName = job['企業名(参照)'] || job['求人企業名'] || '非公開企業';
 
-        // If it's a confidential / placeholder, try to extract from Title (many have "Position / Visa / Company" format)
-        if (companyName === '非公開企業' && job['求人名'] && job['求人名'].includes('/')) {
-            const parts = job['求人名'].split('/');
-            companyName = parts[parts.length - 1].trim();
-        }
-
-        const isConfidential = companyName === '非公開企業';
-        const logoContent = isConfidential
-            ? '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>'
-            : '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>';
-        const logoClass = isConfidential ? 'company-logo confidential' : 'company-logo';
+        // Smarter company name extraction is now replaced by constant "非公開企業" with lock icon (confidential)
+        const companyName = '非公開企業';
+        const isConfidential = true;
+        const logoContent = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
+        const logoClass = 'company-logo confidential';
 
         // Helper function to render text with newlines as HTML breaks
         const nl2br = (str) => {
@@ -96,127 +86,98 @@ document.addEventListener('DOMContentLoaded', () => {
             return str.replace(/(?:\r\n|\r|\n)/g, '<br>');
         };
 
+        // Extract Title
+        const title = job['ポジション / おすすめポイント（カード用）'] || '求人タイトル未設定';
+        // Cleanup title if it contains line breaks
+        const formattedTitle = title.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+        const getRowHtml = (label, content) => {
+            if (!content || content.trim() === '') return '';
+            return `
+            <div class="job-detail-row">
+                <div class="job-detail-label">${label}</div>
+                <div class="job-detail-content">${nl2br(content)}</div>
+            </div>`;
+        };
+
         const html = `
-            <div class="glass-panel" style="padding: 3rem; margin-bottom: 3rem;">
-                <div class="job-header" style="margin-bottom: 2rem;">
-                    <div style="display: flex; align-items: center; gap: 1.5rem;">
-                        <div class="${logoClass}" style="width: 80px; height: 80px; font-size: 2rem;">${logoContent}</div>
-                        <div>
-                            ${badgeHtml}
-                            <h1 class="job-title" style="font-size: 2rem; margin-top: 0.5rem; margin-bottom: 0.5rem; line-height: 1.3;">${job['求人名']}</h1>
-                            <p class="job-company" style="font-size: 1.125rem;">${companyName}</p>
+            <div class="glass-panel job-detail-panel">
+                <!-- Header Section -->
+                <div class="job-header">
+                    <div class="job-header-flex">
+                        <div class="${logoClass} job-detail-logo">${logoContent}</div>
+                        <div class="job-header-info">
+                            <div class="job-badge-wrapper">${badgeHtml}</div>
+                            <h1 class="job-title-main">${formattedTitle}</h1>
+                            <p class="job-company">${companyName}</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="job-details" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2.5rem; background: var(--clr-bg-surface-lighter); padding: 2rem; border-radius: 16px; border: 1px solid var(--clr-border);">
-                    <div class="detail-item" style="flex-direction: column; align-items: flex-start;">
-                        <span class="detail-icon" style="margin-bottom: 0.5rem; color: var(--clr-text-muted); font-size: 0.875rem;">勤務地</span>
-                        <div style="font-size: 1.125rem; font-weight: 600; line-height: 1.4;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--clr-primary)" stroke-width="2" style="margin-right: 0.5rem; vertical-align: middle; flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            ${nl2br(job['勤務地'])}
-                        </div>
-                        ${job['勤務地詳細'] ? `<div style="font-size: 0.875rem; color: var(--clr-text-muted); margin-top: 0.5rem;">${nl2br(job['勤務地詳細'])}</div>` : ''}
-                    </div>
-                    <div class="detail-item" style="flex-direction: column; align-items: flex-start;">
-                        <span class="detail-icon" style="margin-bottom: 0.5rem; color: var(--clr-text-muted); font-size: 0.875rem;">想定給与</span>
-                        <div style="font-size: 1.125rem; font-weight: 600; line-height: 1.4;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--clr-primary)" stroke-width="2" style="margin-right: 0.5rem; vertical-align: middle; flex-shrink: 0;"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                            ${nl2br(job['給与'])}
-                        </div>
-                    </div>
-                    <div class="detail-item" style="flex-direction: column; align-items: flex-start;">
-                        <span class="detail-icon" style="margin-bottom: 0.5rem; color: var(--clr-text-muted); font-size: 0.875rem;">必須日本語レベル</span>
-                        <div style="font-size: 1.125rem; font-weight: 600; line-height: 1.4;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--clr-primary)" stroke-width="2" style="margin-right: 0.5rem; vertical-align: middle; flex-shrink: 0;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                            ${job['言語要件'] && (job['言語要件'].includes('N') || job['言語要件'].includes('日本語')) ? nl2br(job['言語要件']) : '不問'}
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="job-tags" style="margin-bottom: 3rem;">
+                <div class="job-tags" style="margin-bottom: 3rem; display: flex; justify-content: flex-start;">
                     ${tagsHtml}
                 </div>
 
-                <!-- Ultimate Segmented Content Layout -->
-                <div class="job-description-segments">
+                <!-- En-Japan Style Highlights Section -->
+                ${job['おすすめポイント（詳細画面）'] || job['担当者からひとこと（詳細画面）'] ? `
+                <div class="job-detail-segment review-segment">
+                    <h2 class="segment-title-review">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--clr-primary)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        プロフェッショナルレビュー
+                    </h2>
                     
-                    ${job['概要'] ? `
-                    <div class="segment" style="margin-bottom: 2.5rem;">
-                        <h3 style="margin-bottom: 1rem; font-size: 1.25rem; color: var(--clr-primary); display: flex; align-items: center; gap: 0.5rem;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                            概要
-                        </h3>
-                        <p style="white-space: pre-wrap; color: var(--clr-text); line-height: 1.8;">${job['概要']}</p>
+                    ${job['おすすめポイント（詳細画面）'] ? `
+                    <div class="review-block">
+                        <h3 class="review-block-title">【おすすめポイント】</h3>
+                        <p class="review-block-text">${nl2br(job['おすすめポイント（詳細画面）'])}</p>
                     </div>` : ''}
-
-                    ${job['仕事内容'] ? `
-                    <div class="segment" style="margin-bottom: 2.5rem;">
-                        <h3 style="margin-bottom: 1rem; font-size: 1.25rem; color: var(--clr-primary); display: flex; align-items: center; gap: 0.5rem;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                            仕事内容
-                        </h3>
-                        <p style="white-space: pre-wrap; color: var(--clr-text); line-height: 1.8;">${job['仕事内容']}</p>
+                    
+                    ${job['担当者からひとこと（詳細画面）'] ? `
+                    <div class="review-block">
+                        <h3 class="review-block-title">【担当者からの一言】</h3>
+                        <p class="review-block-text">${nl2br(job['担当者からひとこと（詳細画面）'])}</p>
                     </div>` : ''}
+                </div>` : ''}
 
-                    ${job['応募要件'] ? `
-                    <div class="segment" style="margin-bottom: 2.5rem; background: rgba(246, 103, 72, 0.05); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--clr-primary);">
-                        <h3 style="margin-bottom: 1rem; font-size: 1.25rem; color: var(--clr-primary); display: flex; align-items: center; gap: 0.5rem;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                            応募要件
-                        </h3>
-                        <p style="white-space: pre-wrap; color: var(--clr-text); line-height: 1.8;">${job['応募要件']}</p>
-                    </div>` : ''}
+                <!-- Recommended For Section -->
+                ${job['こんな人におすすめ（詳細画面）'] ? `
+                <div class="job-detail-segment recommend-segment">
+                    <h3 class="segment-title-recommend">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-primary)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        こんな人におすすめ
+                    </h3>
+                    <p class="recommend-text">${nl2br(job['こんな人におすすめ（詳細画面）'])}</p>
+                </div>` : ''}
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                        ${job['勤務時間'] ? `
-                        <div class="segment">
-                            <h3 style="margin-bottom: 1rem; font-size: 1.25rem; color: var(--clr-primary); display: flex; align-items: center; gap: 0.5rem;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                勤務時間
-                            </h3>
-                            <p style="white-space: pre-wrap; color: var(--clr-text); line-height: 1.8;">${job['勤務時間']}</p>
-                        </div>` : ''}
+                <!-- Prominent Application Requirements (応募資格) -->
+                ${job['応募資格（詳細画面）'] ? `
+                <div class="job-detail-segment require-segment">
+                    <h3 class="segment-title-require">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        【必須】応募資格（必ずご確認ください）
+                    </h3>
+                    <p class="require-text">${nl2br(job['応募資格（詳細画面）'])}</p>
+                </div>` : ''}
 
-                        ${job['休日休暇'] ? `
-                        <div class="segment">
-                            <h3 style="margin-bottom: 1rem; font-size: 1.25rem; color: var(--clr-primary); display: flex; align-items: center; gap: 0.5rem;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                休日休暇
-                            </h3>
-                            <p style="white-space: pre-wrap; color: var(--clr-text); line-height: 1.8;">${job['休日休暇']}</p>
-                        </div>` : ''}
+                <!-- En-Japan Style Detailed Requirements Table (List) -->
+                <div class="job-description-segments">
+                    <h2 class="segment-title-main">募集要項</h2>
+                    
+                    <div class="job-detail-table">
+                        ${getRowHtml('仕事内容', job['仕事内容（詳細画面）'])}
+                        ${getRowHtml('募集背景', job['募集背景（詳細画面）'])}
+                        ${getRowHtml('雇用条件', job['雇用条件（詳細画面）'])}
+                        ${getRowHtml('勤務地', job['勤務地（詳細画面）'])}
+                        ${getRowHtml('勤務時間', job['勤務時間（詳細画面）'])}
+                        ${getRowHtml('給与', job['給与（詳細画面）'])}
+                        ${getRowHtml('休日休暇', job['休日（詳細画面）'])}
+                        ${getRowHtml('福利厚生', job['福利厚生（詳細画面）'])}
                     </div>
-
-                    ${job['福利厚生'] || job['保険'] || job['住宅サポート'] ? `
-                    <div class="segment" style="margin-top: 2.5rem; margin-bottom: 2.5rem; padding-top: 2.5rem; border-top: 1px dashed var(--clr-border);">
-                        <h3 style="margin-bottom: 1rem; font-size: 1.25rem; color: var(--clr-primary); display: flex; align-items: center; gap: 0.5rem;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                            福利厚生・サポート
-                        </h3>
-                        <ul style="color: var(--clr-text); line-height: 1.8; list-style-type: none; padding: 0;">
-                            ${job['保険'] ? `<li style="margin-bottom: 0.5rem;"><strong>社会保険:</strong> ${job['保険']}</li>` : ''}
-                            ${job['福利厚生'] ? `<li style="margin-bottom: 0.5rem;"><strong>福利厚生:</strong><br>${nl2br(job['福利厚生'])}</li>` : ''}
-                            ${job['住宅サポート'] ? `<li style="margin-bottom: 0.5rem;"><strong>住宅サポート:</strong> ${job['住宅サポート']}<br>${job['住宅サポート詳細'] ? nl2br(job['住宅サポート詳細']) : ''}</li>` : ''}
-                            ${job['引越サポート'] ? `<li style="margin-bottom: 0.5rem;"><strong>引越サポート:</strong> ${job['引越サポート']}<br>${job['引越サポート詳細'] ? nl2br(job['引越サポート詳細']) : ''}</li>` : ''}
-                            ${job['ビザサポート有無'] ? `<li style="margin-bottom: 0.5rem;"><strong>ビザサポート:</strong> ${job['ビザサポート有無']}</li>` : ''}
-                        </ul>
-                    </div>` : ''}
-
-                    ${job['選考プロセス'] ? `
-                    <div class="segment" style="margin-top: 2.5rem; background: var(--clr-bg-surface-lighter); padding: 1.5rem; border-radius: 12px;">
-                        <h3 style="margin-bottom: 1rem; font-size: 1.125rem; color: var(--clr-text); display: flex; align-items: center; gap: 0.5rem;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                            選考プロセス
-                        </h3>
-                        <p style="white-space: pre-wrap; color: var(--clr-text); line-height: 1.8;">${job['選考プロセス']}</p>
-                    </div>` : ''}
-
                 </div>
             </div>
             
-            <div class="text-center">
-                <a href="#apply-form" class="btn btn-primary btn-glow btn-lg" style="margin-bottom: 2rem; font-size: 1.125rem; padding: 1rem 3rem;">この求人に応募する</a>
+            <div class="text-center apply-btn-container">
+                <a href="#apply-form" class="btn btn-primary btn-glow btn-lg apply-btn-inner">この求人に応募する</a>
             </div>
         `;
 
@@ -235,10 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (stickyTitle && stickySalary) {
-            stickyTitle.textContent = job['求人名'];
+            stickyTitle.textContent = formattedTitle.replace(/<br>/g, ' ');
 
             // Shorten salary for the sticky bar
-            let stickySalaryPreview = job['給与'] || '';
+            let stickySalaryPreview = job['給与（詳細画面）'] || job['年収（カード用）'] || '';
             if (stickySalaryPreview.length > 30) {
                 stickySalaryPreview = stickySalaryPreview.substring(0, 30) + '...';
             }
