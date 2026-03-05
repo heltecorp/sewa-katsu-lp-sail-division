@@ -190,10 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const stickyApplyBtn = document.getElementById('sticky-apply-btn');
         const applyFormSection = document.getElementById('apply-form');
 
-        const iframe = document.getElementById('sewa-embed-frame');
-        if (iframe) {
-            iframe.src = `https://sewa-katsu-crm-staging.web.app/entry/embed?source=${job['求人ID']}&inflow_url=${encodeURIComponent(window.location.href)}`;
-        }
+
+        // Note: iframe src and resize are now managed by the portable embed code in job-detail.html
 
         if (stickyTitle && stickySalary) {
             stickyTitle.textContent = formattedTitle.replace(/<br>/g, ' ');
