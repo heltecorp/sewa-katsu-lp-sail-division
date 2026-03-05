@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (jobId && detailContainer) {
-        fetch('data/jobs.csv')
+        fetch(`data/jobs.csv?v=${Date.now()}`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.text();
