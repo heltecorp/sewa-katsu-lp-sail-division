@@ -90,14 +90,20 @@
                 </div>
                 <script>
                     (function () {
-                        // Append parent page URL to iframe src
+                        // Append parent page URL and Job ID to iframe src
                         var iframe = document.getElementById('sewa-embed-frame');
                         if (iframe) {
                             var currentUrl = iframe.src;
                             var separator = currentUrl.indexOf('?') > -1 ? '&' : '?';
-                            iframe.src = currentUrl + separator + 'inflow_url=' + encodeURIComponent(window.location.href);
+                            
+                            // Extract jobId from parent URL
+                            var urlParams = new URLSearchParams(window.location.search);
+                            var jobId = urlParams.get('jobId') || urlParams.get('job_id') || urlParams.get('id');
+                            var jobIdParam = jobId ? '&jobId=' + encodeURIComponent(jobId) : '';
+                            
+                            iframe.src = currentUrl + separator + 'inflow_url=' + encodeURIComponent(window.location.href) + jobIdParam;
                         }
-
+                        
                         // Iframe Resizer and Scroller Listener
                         window.addEventListener('message', function (e) {
                             // Optional: Uncomment to restrict origin for security
