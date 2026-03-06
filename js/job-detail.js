@@ -319,6 +319,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('message', function (e) {
         // Optional: Uncomment to restrict origin for security
         // if (e.origin !== "https://sewa-katsu-crm-staging.web.app") return; 
+
+        if (!e.data) return;
+
+        // ① Auto-resize iframe height
         if (e.data.type === 'SEWA_EMBED_RESIZE') {
             var iframe = document.getElementById('sewa-embed-frame');
             if (iframe) {
@@ -326,6 +330,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!isNaN(newHeight)) {
                     iframe.style.height = newHeight + 'px';
                 }
+            }
+        }
+
+        // ② Auto-scroll to top or error field on step change
+        if (e.data.type === 'SEWA_EMBED_SCROLL_TOP') {
+            var iframe = document.getElementById('sewa-embed-frame');
+            if (iframe) {
+                var offset = e.data.offset || 0;
+                var iframeRect = iframe.getBoundingClientRect();
+                var targetY = iframeRect.top + window.scrollY + offset;
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
             }
         }
     });
