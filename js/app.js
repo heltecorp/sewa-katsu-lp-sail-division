@@ -283,7 +283,7 @@ function renderJobs(jobsToRender) {
                         ${badgeHtml}
                     </div>
                     <h3 class="job-title" style="margin-bottom: 0.5rem;">${formattedTitle}</h3>
-                    <p class="job-company" style="color: var(--clr-text-muted); font-size: 0.875rem; margin-bottom: 1.2rem;">非公開企業</p>
+                    <p class="job-company" style="color: var(--clr-text-muted); font-size: 0.875rem; margin-bottom: 1.2rem;">求人ID: ${job['求人ID'] || job.ID}</p>
                     
                     ${tagsHtml}
                     

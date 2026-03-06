@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const badgeHtml = '<span class="job-badge new">NEW</span>';
 
-        // Smarter company name extraction is now replaced by constant "非公開企業" with lock icon (confidential)
-        const companyName = '非公開企業';
+        // Company name is replaced by Job ID at user request
+        const companyName = `求人ID: ${job['求人ID'] || job.ID}`;
         const isConfidential = true;
         const logoContent = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
         const logoClass = 'company-logo confidential';
