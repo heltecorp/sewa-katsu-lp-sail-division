@@ -253,7 +253,13 @@ function renderJobs(jobsToRender) {
 
     jobsToRender.forEach(job => {
         // Collect tags for this specific card
+        const rawTagsData = job['タグ'] || '';
+        const rawTags = rawTagsData.split(',').map(t => t.trim());
+        const hasNewTag = rawTags.includes('NEW!');
+        const textTags = rawTags.filter(t => t !== 'NEW!' && t !== '');
+
         const cardTags = [
+            ...textTags,
             job['在留資格'],
             job['雇用形態'],
             job['業界'],
@@ -263,48 +269,43 @@ function renderJobs(jobsToRender) {
         const uniqueCardTags = [...new Set(cardTags)];
         const tagsHtml = uniqueCardTags.length > 0
             ? `<div class="job-card-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem;">
-                ${uniqueCardTags.map(tag => `<span style="background: rgba(246, 103, 72, 0.08); color: #DF4F33; padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(246, 103, 72, 0.15);">#${tag}</span>`).join('')}
+                ${uniqueCardTags.map(tag => `<span class="job-tag-styled">#${tag}</span>`).join('')}
                </div>`
             : '';
 
-        const badgeHtml = '<span class="job-badge new">NEW</span>';
-
-        const isConfidential = true;
-        const logoContent = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
-        const logoClass = 'company-logo confidential';
+        const badgeHtml = hasNewTag ? '<span class="job-badge new">NEW</span>' : '';
 
         const title = job['ポジション / おすすめポイント（カード用）'] || '求人タイトル未設定';
         const formattedTitle = title.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
         const cardHtml = `
                 <div class="job-card glass-panel" data-tilt>
-                    <div class="job-header">
-                        <div class="${logoClass}">${logoContent}</div>
+                    <div class="job-header-updated">
                         ${badgeHtml}
                     </div>
-                    <h3 class="job-title" style="margin-bottom: 0.5rem;">${formattedTitle}</h3>
-                    <p class="job-company" style="color: var(--clr-text-muted); font-size: 0.875rem; margin-bottom: 1.2rem;">求人ID: ${job['求人ID'] || job.ID}</p>
+                    <h3 class="job-title-updated">${formattedTitle}</h3>
+                    <p class="job-id-updated">求人ID: ${job['求人ID'] || job.ID}</p>
                     
                     ${tagsHtml}
                     
-                    <div class="job-details">
+                    <div class="job-details-list">
                         <div class="detail-item">
-                            <span class="detail-icon" style="color: var(--clr-primary);">
+                            <span class="detail-icon">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </span>
                             ${job['勤務エリア（カード用）'] || '-'}
                         </div>
                         <div class="detail-item">
-                            <span class="detail-icon" style="color: var(--clr-primary);">
+                            <span class="detail-icon">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                             </span>
                             ${job['年収（カード用）'] || '-'}
                         </div>
                         <div class="detail-item">
-                            <span class="detail-icon" style="color: var(--clr-primary);">
+                            <span class="detail-icon">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                             </span>
-                            ${job['こんな人におすすめ（カード用）'] || '-'}
+                            <span class="recommended-text">${job['こんな人におすすめ（カード用）'] || '-'}</span>
                         </div>
                     </div>
                     
