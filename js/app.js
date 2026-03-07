@@ -280,6 +280,7 @@ function renderJobs(jobsToRender) {
 
         const cardHtml = `
                 <div class="job-card glass-panel" data-tilt>
+                    <div class="job-card-glow"></div>
                     <div class="job-header-updated">
                         ${badgeHtml}
                     </div>
@@ -315,6 +316,10 @@ function renderJobs(jobsToRender) {
 
         jobsContainer.insertAdjacentHTML('beforeend', cardHtml);
     });
+
+    if (typeof attachCardGlowObserver === 'function') {
+        attachCardGlowObserver();
+    }
 }
 
 /* =========================================
@@ -344,4 +349,22 @@ setTimeout(() => {
     const hero = document.querySelector('.hero.view-section');
     if (hero) hero.classList.add('is-visible');
 }, 100);
+
+/* =========================================
+   GLOWING BORDER SCROLL REVEAL (MOBILE & DESKTOP INTRO)
+========================================= */
+function attachCardGlowObserver() {
+    const cards = document.querySelectorAll('.job-card');
+    const borderObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add class to trigger the once-off sparkle animation
+                entry.target.classList.add('flash-glow');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+
+    cards.forEach(card => borderObserver.observe(card));
+}
 

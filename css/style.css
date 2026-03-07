@@ -705,8 +705,8 @@ h6 {
 }
 
 .job-card {
-    background: #ffffff;
-    border: 1px solid rgba(246, 103, 72, 0.1);
+    background: transparent;
+    border: none;
     border-radius: 20px;
     padding: 2.5rem 2rem;
     display: flex;
@@ -714,21 +714,109 @@ h6 {
     height: 100%;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
+    z-index: 1;
+    /* Establishes stacking context */
 }
 
+/* Default subtle outline fallback base */
+.job-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: rgba(246, 103, 72, 0.1);
+    z-index: -3;
+    /* Absolute back */
+}
+
+/* The solid inner background masking the gradient */
+.job-card::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    /* Thickness of the glowing border */
+    background: #ffffff;
+    border-radius: 19px;
+    z-index: -1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Make sure all actual card content sits on top of the mask */
+.job-card>*:not(.job-card-glow) {
+    position: relative;
+    z-index: 2;
+}
+
+/* The spinning glow layer */
+.job-card-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    /* Gradient: transparent -> primary -> bright accent yellow tip */
+    background: conic-gradient(from 180deg at 50% 50%,
+            transparent 0%,
+            transparent 75%,
+            var(--clr-primary) 95%,
+            var(--clr-accent) 100%);
+    transform: translate(-50%, -50%) rotate(0deg);
+    z-index: -2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* Hover States */
 .job-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(246, 103, 72, 0.08);
-    border-color: rgba(246, 103, 72, 0.2);
 }
 
-.job-card:hover .job-action {
-    background: #e55638;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(246, 103, 72, 0.3);
+.job-card:hover::after {
+    box-shadow: 0 12px 30px rgba(246, 103, 72, 0.08);
+}
+
+.job-card:hover .job-card-glow {
+    opacity: 1;
+    animation: spin-glow 3s linear infinite;
+}
+
+/* Mobile & First-Render Scroll Reveal (Flash) */
+.job-card.flash-glow .job-card-glow {
+    animation: spin-glow-once 2.5s ease-out forwards;
+}
+
+@keyframes spin-glow {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes spin-glow-once {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 .job-card.is-hidden {
