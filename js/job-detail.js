@@ -58,7 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderJobDetail(job) {
+        const rawTagsData = job['タグ'] || '';
+        const rawTags = rawTagsData.split(',').map(t => t.trim());
+        const hasNewTag = rawTags.includes('NEW!');
+        const textTags = rawTags.filter(t => t !== 'NEW!' && t !== '');
+
         const detailTags = [
+            ...textTags,
             job['在留資格'],
             job['雇用形態'],
             job['業界'],
@@ -68,17 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const uniqueDetailTags = [...new Set(detailTags)];
         const tagsHtml = uniqueDetailTags.length > 0
             ? `<div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
-                ${uniqueDetailTags.map(tag => `<span style="background: rgba(246, 103, 72, 0.08); color: #DF4F33; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(246, 103, 72, 0.15);">#${tag}</span>`).join('')}
+                ${uniqueDetailTags.map(tag => `<span class="job-tag-styled">#${tag}</span>`).join('')}
                </div>`
             : '';
 
-        const badgeHtml = '<span class="job-badge new">NEW</span>';
+        const badgeHtml = hasNewTag ? '<span class="job-badge new">NEW</span>' : '';
 
         // Company name is replaced by Job ID at user request
         const companyName = `求人ID: ${job['求人ID'] || job.ID}`;
-        const isConfidential = true;
-        const logoContent = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
-        const logoClass = 'company-logo confidential';
 
         // Helper function to render text with newlines as HTML breaks
         const nl2br = (str) => {
@@ -104,13 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="glass-panel job-detail-panel">
                 <!-- Header Section -->
                 <div class="job-header">
-                    <div class="job-header-flex">
-                        <div class="${logoClass} job-detail-logo">${logoContent}</div>
-                        <div class="job-header-info">
-                            <div class="job-badge-wrapper">${badgeHtml}</div>
-                            <h1 class="job-title-main">${formattedTitle}</h1>
-                            <p class="job-company">${companyName}</p>
-                        </div>
+                    <div class="job-header-info">
+                        ${hasNewTag ? `<div class="job-badge-wrapper" style="margin-bottom: 0.5rem;">${badgeHtml}</div>` : ''}
+                        <h1 class="job-title-main">${formattedTitle}</h1>
+                        <p class="job-company">${companyName}</p>
                     </div>
                 </div>
                 
