@@ -702,7 +702,6 @@ h6 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    perspective: 1000px;
 }
 
 .job-card {
@@ -715,40 +714,21 @@ h6 {
     height: 100%;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
 }
 
-/* Magnetic Glow Hover Effect */
-.job-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(246, 103, 72, 0.05) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.job-card>* {
-    position: relative;
-    z-index: 1;
-}
-
 .job-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(246, 103, 72, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(246, 103, 72, 0.08);
     border-color: rgba(246, 103, 72, 0.2);
 }
 
-.job-card:hover::before {
-    opacity: 1;
+.job-card:hover .job-action {
+    background: #e55638;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(246, 103, 72, 0.3);
 }
 
 .job-card.is-hidden {
@@ -839,13 +819,23 @@ h6 {
 .job-action {
     width: 100%;
     margin-top: auto;
-    border: none !important;
+    font-size: 1rem;
     font-weight: 700;
-    box-shadow: 0 4px 15px rgba(246, 103, 72, 0.2);
+    padding: 0.9rem;
+    background: var(--clr-primary);
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(246, 103, 72, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.job-action:hover {
+    background: #e55638;
 }
 
 .job-card:hover .job-action {
-    background: #E5573B !important;
+    background: #E5573B;
     /* Slightly darker orange on hover */
     box-shadow: 0 6px 20px rgba(246, 103, 72, 0.4);
     transform: translateY(-2px);

@@ -315,8 +315,6 @@ function renderJobs(jobsToRender) {
 
         jobsContainer.insertAdjacentHTML('beforeend', cardHtml);
     });
-
-    attachCardInteractions();
 }
 
 /* =========================================
@@ -347,50 +345,3 @@ setTimeout(() => {
     if (hero) hero.classList.add('is-visible');
 }, 100);
 
-/* =========================================
-   3D TILT & MAGNETIC HOVER FOR CARDS
-========================================= */
-function attachCardInteractions() {
-    const cards = document.querySelectorAll('.job-card');
-
-    cards.forEach(card => {
-        // Remove old listeners to avoid duplicates if re-rendered
-        card.removeEventListener('mousemove', handleTiltAndGlow);
-        card.removeEventListener('mouseleave', resetTiltAndGlow);
-
-        card.addEventListener('mousemove', handleTiltAndGlow);
-        card.addEventListener('mouseleave', resetTiltAndGlow);
-    });
-}
-
-function handleTiltAndGlow(e) {
-    const card = this;
-    const cardRect = card.getBoundingClientRect();
-
-    // Calculate mouse position relative to card
-    const x = e.clientX - cardRect.left;
-    const y = e.clientY - cardRect.top;
-
-    // Set CSS variables for the magnetic glow effect
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
-
-    // Calculate mouse position relative to card center for 3D tilt
-    const centerX = cardRect.width / 2;
-    const centerY = cardRect.height / 2;
-
-    const mouseX = x - centerX;
-    const mouseY = y - centerY;
-
-    // Calculate tilt amounts (max 8 degrees for a softer feel)
-    const rotateX = (mouseY / centerY) * -8;
-    const rotateY = (mouseX / centerX) * 8;
-
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-}
-
-function resetTiltAndGlow() {
-    this.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
-}
-
-// Initial attachment handled in renderJobs()
