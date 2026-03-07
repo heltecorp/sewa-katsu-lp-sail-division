@@ -182,6 +182,83 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         detailContainer.innerHTML = html;
+        updateDynamicSEO(job, formattedTitle);
+
+        /* =========================================
+           DYNAMIC SEO & JSON-LD
+        ========================================= */
+        function updateDynamicSEO(job, formattedTitle) {
+            const cleanTitle = formattedTitle.replace(/<br>/g, ' ');
+            const pageTitle = `${cleanTitle} | Sewa-Katsu (世話カツ)`;
+            const description = `${job['給与（詳細画面）'] || ''} ${job['勤務地（詳細画面）'] || ''} ${job['仕事内容（詳細画面）'] || ''}`.substring(0, 150) + '...';
+            const pageUrl = window.location.href;
+
+            // Update Title & Meta
+            document.title = pageTitle;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', description);
+
+            // Update OGP
+            const ogTitle = document.getElementById('og-title');
+            const ogDesc = document.getElementById('og-description');
+            const ogUrl = document.getElementById('og-url');
+            const canonical = document.getElementById('canonical-link');
+
+            if (ogTitle) ogTitle.setAttribute('content', pageTitle);
+            if (ogDesc) ogDesc.setAttribute('content', description);
+            if (ogUrl) ogUrl.setAttribute('content', pageUrl);
+            if (canonical) canonical.setAttribute('href', pageUrl);
+
+            // Inject JobPosting JSON-LD for Google Job Search
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+
+            const jobPosting = {
+                "@context": "https://schema.org/",
+                "@type": "JobPosting",
+                "title": cleanTitle,
+                "description": `
+                    <h3>仕事内容</h3><p>${job['仕事内容（詳細画面）'] || ''}</p>
+                    <h3>応募資格</h3><p>${job['応募資格（詳細画面）'] || ''}</p>
+                    <h3>雇用条件</h3><p>${job['雇用条件（詳細画面）'] || ''}</p>
+                `.replace(/\n/g, '<br>'),
+                "identifier": {
+                    "@type": "PropertyValue",
+                    "name": "Sewa-Katsu",
+                    "value": job['求人ID'] || job.ID
+                },
+                "datePosted": new Date().toISOString().split('T')[0],
+                "validThrough": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 90 days from now
+                "employmentType": job['雇用形態'] || "FULL_TIME",
+                "hiringOrganization": {
+                    "@type": "Organization",
+                    "name": "Sewa-Katsu (世話カツ)",
+                    "sameAs": "https://sewa-katsu.helte.jp/",
+                    "logo": "https://sewa-katsu.helte.jp/assets/images/sewa_logo.png"
+                },
+                "jobLocation": {
+                    "@type": "Place",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": job['勤務地（詳細画面）'] || "日本",
+                        "addressRegion": job['勤務エリア（カード用）'] || "",
+                        "addressCountry": "JP"
+                    }
+                },
+                "baseSalary": {
+                    "@type": "MonetaryAmount",
+                    "currency": "JPY",
+                    "value": {
+                        "@type": "QuantitativeValue",
+                        "value": job['年収（カード用）'] || "",
+                        "unitText": "YEAR"
+                    }
+                }
+            };
+
+            script.text = JSON.stringify(jobPosting);
+            document.head.appendChild(script);
+        }
 
         // Setup Sticky CTA
         const stickyTitle = document.getElementById('sticky-job-title');
