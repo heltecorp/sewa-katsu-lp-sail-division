@@ -850,7 +850,7 @@ h6 {
     margin-top: 0;
     margin-bottom: 0.2rem;
     font-weight: 800;
-    padding-right: 60px;
+    padding-right: 75px;
     line-height: 1.4;
 }
 
@@ -899,6 +899,7 @@ h6 {
 .recommended-text {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
