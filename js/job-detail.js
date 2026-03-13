@@ -59,9 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderJobDetail(job) {
         const rawTagsData = job['タグ'] || '';
-        const rawTags = rawTagsData.split(',').map(t => t.trim());
+        const rawTags = rawTagsData.split(/[,\s+]/).map(t => t.trim()).filter(t => t !== '');
+        
         const hasNewTag = rawTags.includes('NEW!');
-        const textTags = rawTags.filter(t => t !== 'NEW!' && t !== '');
+        const hasUrgentTag = rawTags.includes('急募');
+        
+        const textTags = rawTags.filter(t => t !== 'NEW!' && t !== '急募');
 
         const detailTags = [
             ...textTags,
@@ -78,7 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
                </div>`
             : '';
 
-        const badgeHtml = hasNewTag ? '<span class="job-badge new">NEW</span>' : '';
+        let badgeHtml = '';
+        if (hasNewTag) badgeHtml += '<span class="job-badge new">NEW</span>';
+        if (hasUrgentTag) badgeHtml += '<span class="job-badge urgent">急募</span>';
 
         // Company name is replaced by Job ID at user request
         const companyName = `求人ID: ${job['求人ID'] || job.ID}`;
@@ -108,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- Header Section -->
                 <div class="job-header">
                     <div class="job-header-info">
-                        ${hasNewTag ? `<div class="job-badge-wrapper" style="margin-bottom: 0.5rem;">${badgeHtml}</div>` : ''}
+                        ${badgeHtml !== '' ? `<div class="job-badge-wrapper" style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem;">${badgeHtml}</div>` : ''}
                         <h1 class="job-title-main">${formattedTitle}</h1>
                         <p class="job-company">${companyName}</p>
                     </div>

@@ -275,9 +275,14 @@ function renderJobs(jobsToRender) {
     jobsToRender.forEach(job => {
         // Collect tags for this specific card
         const rawTagsData = job['タグ'] || '';
-        const rawTags = rawTagsData.split(',').map(t => t.trim());
+        // Split by comma or space and filter out empty strings
+        const rawTags = rawTagsData.split(/[,\s+]/).map(t => t.trim()).filter(t => t !== '');
+        
         const hasNewTag = rawTags.includes('NEW!');
-        const textTags = rawTags.filter(t => t !== 'NEW!' && t !== '');
+        const hasUrgentTag = rawTags.includes('急募');
+        
+        // Filter out the special header badges from the tag list below the title
+        const textTags = rawTags.filter(t => t !== 'NEW!' && t !== '急募');
 
         const cardTags = [
             ...textTags,
@@ -294,7 +299,9 @@ function renderJobs(jobsToRender) {
                </div>`
             : '';
 
-        const badgeHtml = hasNewTag ? '<span class="job-badge new">NEW</span>' : '';
+        let badgeHtml = '';
+        if (hasNewTag) badgeHtml += '<span class="job-badge new">NEW</span>';
+        if (hasUrgentTag) badgeHtml += '<span class="job-badge urgent">急募</span>';
 
         const title = job['ポジション / おすすめポイント（カード用）'] || '求人タイトル未設定';
         const formattedTitle = title.replace(/(?:\r\n|\r|\n)/g, '<br>');
