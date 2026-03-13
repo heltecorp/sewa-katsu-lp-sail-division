@@ -422,4 +422,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    /* =========================================
+       COOKIE CONSENT BANNER LOGIC
+    ========================================= */
+    const cookieBanner = document.getElementById('cookie-consent-banner');
+    const cookieAcceptBtn = document.getElementById('cookie-accept-btn');
+
+    if (cookieBanner && cookieAcceptBtn) {
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1000);
+        }
+
+        cookieAcceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            cookieBanner.classList.remove('show');
+        });
+    }
 });

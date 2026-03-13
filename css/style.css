@@ -1691,3 +1691,103 @@ h6 {
         font-size: 1rem;
     }
 }
+
+/* =========================================
+   COOKIE CONSENT BANNER (PREMIUM GLASS)
+========================================= */
+.cookie-consent {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(150%);
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(246, 103, 72, 0.2);
+    border-radius: 20px;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cookie-consent.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cookie-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.cookie-text {
+    font-size: 0.9rem;
+    color: var(--clr-text);
+    line-height: 1.5;
+}
+
+.cookie-text a {
+    color: var(--clr-primary);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.btn-cookie-accept {
+    background: var(--clr-primary);
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-cookie-accept:hover {
+    background: #e5563a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(246, 103, 72, 0.3);
+}
+
+@media (max-width: 768px) {
+    .cookie-consent {
+        bottom: 1rem;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+        text-align: center;
+    }
+
+    .cookie-content {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .cookie-actions {
+        width: 100%;
+    }
+
+    .btn-cookie-accept {
+        width: 100%;
+    }
+}
