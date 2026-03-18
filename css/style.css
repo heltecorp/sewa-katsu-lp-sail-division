@@ -21,13 +21,13 @@
     --clr-border: rgba(246, 103, 72, 0.15);
     --clr-border-highlight: rgba(246, 103, 72, 0.3);
 
-    /* Typography */
-    --font-heading: 'M PLUS Rounded 1c', 'Inter', sans-serif;
-    --font-body: 'M PLUS Rounded 1c', 'Inter', sans-serif;
+    /* Typography - Clean sans-serif like Ikyu.com */
+    --font-heading: 'Noto Sans JP', 'Inter', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+    --font-body: 'Noto Sans JP', 'Inter', 'Hiragino Sans', 'Yu Gothic', sans-serif;
 
     /* Spacing & Layout */
     --container-width: 1200px;
-    --section-y: 6rem;
+    --section-y: 8rem; /* Increased for luxury feel */
 
     /* Effects */
     --glass-blur: blur(12px);
@@ -478,13 +478,26 @@ h6 {
 ========================================= */
 @media (max-width: 992px) {
     .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 3rem;
+        padding: 0 1.5rem;
     }
 
-    .hero-subtitle {
-        margin: 0 auto 2.5rem;
+    .hero-content {
+        align-items: center !important;
+        margin: 0 auto;
+    }
+
+    .ikyu-search-card {
+        margin: 0 1rem;
+        padding: 1.5rem !important;
+        bottom: -80px;
+    }
+
+    .hero {
+        margin-bottom: 120px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important;
     }
 
     .hero-actions {
@@ -657,9 +670,10 @@ h6 {
 }
 
 /* =========================================
-   SEARCH & FILTER BAR
+   SEARCH & FILTER BAR (Legacy - Hidden in new layout)
 ========================================= */
 .search-container {
+    display: none; /* Hide old search bar in favor of Hero Card */
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid var(--clr-border);
     backdrop-filter: blur(12px);
