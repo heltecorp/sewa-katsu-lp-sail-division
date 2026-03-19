@@ -103,91 +103,210 @@ if (jobsContainer) {
 }
 
 /* =========================================
-   DYNAMIC TAG GENERATION & FILTERING
+   IKYU-STYLE SEARCH & FILTERING
 ========================================= */
-let activeFilters = {
-    '在留資格': [],
-    '雇用形態': [],
-    '業界': [],
-    '勤務エリア（カード用）': []
+let searchState = {
+    freeword: '',
+    areas: [],
+    industry: '',
+    checks: {} // e.g. { '在留資格_技術・人文知識・国際業務': true, ... }
 };
 
 function setupSearchFilters() {
-    const filterContainer = document.getElementById('dynamic-filter-tags');
+    // Gather unique values from CSV data
+    // Harcoded 47 prefectures
+    const prefectures = [
+        "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
+        "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県",
+        "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県",
+        "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県",
+        "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県",
+        "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県",
+        "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
+    ];
+    const areas = prefectures;
+    const industries = [...new Set(allJobs.map(j => j['業界']).filter(v => v && v.trim()))];
+    const visaTypes = [...new Set(allJobs.map(j => j['在留資格']).filter(v => v && v.trim()))];
+    const employTypes = [...new Set(allJobs.map(j => j['雇用形態']).filter(v => v && v.trim()))];
 
-    // Generate unique tags from data
-    const filterCategories = ['在留資格', '雇用形態', '業界', '勤務エリア（カード用）'];
-    const uniqueTagsData = {};
-
-    filterCategories.forEach(cat => {
-        uniqueTagsData[cat] = [...new Set(allJobs.map(job => job[cat]).filter(val => val && val.trim() !== ''))];
-    });
-
-    // Render filter UI
-    if (filterContainer) {
-        let filterHtml = '';
-        filterCategories.forEach(cat => {
-            if (uniqueTagsData[cat].length > 0) {
-                const displayName = cat === '勤務エリア（カード用）' ? '勤務エリア' : cat;
-                filterHtml += `
-                <div class="filter-group" style="display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
-                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--clr-text); white-space: nowrap; padding-top: 0.4rem; min-width: 80px;">${displayName}</span>
-                    <div class="filter-tags" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        ${uniqueTagsData[cat].map(tag => `
-                            <button type="button" class="filter-tag-btn" data-category="${cat}" data-value="${tag}" 
-                                style="background: rgba(43,58,90,0.05); color: #2B3A5A; border: 1px solid rgba(43,58,90,0.1); padding: 0.4rem 1.2rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
-                                ${tag}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>`;
-            }
+    // --- Populate Industry <select> ---
+    const industrySelect = document.getElementById('search-industry');
+    if (industrySelect) {
+        industries.forEach(ind => {
+            const opt = document.createElement('option');
+            opt.value = ind;
+            opt.textContent = ind;
+            industrySelect.appendChild(opt);
         });
-        filterContainer.innerHTML = filterHtml;
-
-        // Attach event listeners to newly created tag buttons
-        document.querySelectorAll('.filter-tag-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const cat = this.getAttribute('data-category');
-                const val = this.getAttribute('data-value');
-
-                const index = activeFilters[cat].indexOf(val);
-                if (index > -1) {
-                    activeFilters[cat].splice(index, 1);
-                    this.style.background = 'rgba(43,58,90,0.05)';
-                    this.style.color = '#2B3A5A';
-                    this.style.borderColor = 'rgba(43,58,90,0.1)';
-                } else {
-                    activeFilters[cat].push(val);
-                    this.style.background = '#F66748';
-                    this.style.color = '#fff';
-                    this.style.borderColor = '#F66748';
-                }
-
-                filterJobs();
-            });
+        industrySelect.addEventListener('change', function() {
+            this.style.color = this.value ? '#2B3A5A' : '#94a3b8';
         });
     }
 
-    function filterJobs() {
+    // --- Area Multi-Select Dropdown ---
+    const areaWrapper = document.getElementById('area-select-wrapper');
+    const areaDropdown = document.getElementById('area-dropdown');
+    const areaDisplay = document.getElementById('area-select-display');
+
+    if (areaDropdown && areaWrapper) {
+        // Populate area checkboxes in dropdown
+        let areaHtml = '';
+        areas.forEach(area => {
+            areaHtml += `
+                <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; cursor: pointer; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #2B3A5A; transition: background 0.15s;"
+                       onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                    <input type="checkbox" class="area-checkbox" value="${area}" style="accent-color: #0077c0; width: 16px; height: 16px;">
+                    ${area}
+                </label>`;
+        });
+        areaDropdown.innerHTML = areaHtml;
+
+        // Toggle dropdown
+        areaWrapper.addEventListener('click', function(e) {
+            if (e.target.type === 'checkbox' || e.target.tagName === 'LABEL') return;
+            areaDropdown.style.display = areaDropdown.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!areaWrapper.contains(e.target)) {
+                areaDropdown.style.display = 'none';
+            }
+        });
+
+        // Update display text when checkboxes change
+        areaDropdown.addEventListener('change', function() {
+            const checked = Array.from(areaDropdown.querySelectorAll('.area-checkbox:checked')).map(cb => cb.value);
+            searchState.areas = checked;
+            if (checked.length === 0) {
+                areaDisplay.textContent = '勤務エリアを選択';
+                areaDisplay.style.color = '#94a3b8';
+            } else if (checked.length <= 2) {
+                areaDisplay.textContent = checked.join(', ');
+                areaDisplay.style.color = '#2B3A5A';
+            } else {
+                areaDisplay.textContent = checked.slice(0, 2).join(', ') + ` 他${checked.length - 2}件`;
+                areaDisplay.style.color = '#2B3A5A';
+            }
+        });
+    }
+
+    // --- Checkbox Filters Row (visa types, employment types, etc.) ---
+    const checkboxContainer = document.getElementById('checkbox-filters');
+    if (checkboxContainer) {
+        let checkHtml = '';
+
+        // Visa types
+        visaTypes.forEach(v => {
+            checkHtml += `
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; white-space: nowrap;">
+                    <input type="checkbox" class="filter-check" data-field="在留資格" data-value="${v}" style="accent-color: #0077c0; width: 15px; height: 15px;">
+                    ${v}
+                </label>`;
+        });
+
+        // Employment types
+        employTypes.forEach(v => {
+            checkHtml += `
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; white-space: nowrap;">
+                    <input type="checkbox" class="filter-check" data-field="雇用形態" data-value="${v}" style="accent-color: #0077c0; width: 15px; height: 15px;">
+                    ${v}
+                </label>`;
+        });
+
+        // Separator + "絞り込み" icon (like Ikyu)
+        checkHtml += `
+            <span style="display: flex; align-items: center; gap: 0.3rem; margin-left: auto; color: #94a3b8; cursor: pointer; font-size: 0.8rem;" id="filter-more-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line></svg>
+                絞り込み
+            </span>`;
+
+        checkboxContainer.innerHTML = checkHtml;
+    }
+
+    // --- Search Button Handler ---
+    const searchBtn = document.getElementById('search-btn');
+    const freewordInput = document.getElementById('search-freeword');
+
+    if (searchBtn) {
+        searchBtn.addEventListener('click', executeSearch);
+    }
+
+    // Enter key on freeword
+    if (freewordInput) {
+        freewordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                executeSearch();
+            }
+        });
+    }
+
+    function executeSearch() {
+        // Gather state
+        searchState.freeword = (freewordInput ? freewordInput.value.trim() : '');
+        searchState.industry = (industrySelect ? industrySelect.value : '');
+        
+        // Gather area checkboxes
+        if (areaDropdown) {
+            searchState.areas = Array.from(areaDropdown.querySelectorAll('.area-checkbox:checked')).map(cb => cb.value);
+        }
+
+        // Gather other checkboxes
+        searchState.checks = {};
+        document.querySelectorAll('.filter-check:checked').forEach(cb => {
+            const field = cb.getAttribute('data-field');
+            const val = cb.getAttribute('data-value');
+            if (!searchState.checks[field]) searchState.checks[field] = [];
+            searchState.checks[field].push(val);
+        });
+
+        // Filter
+        const filtered = allJobs.filter(job => {
+            // Freeword match (search across multiple fields)
+            if (searchState.freeword) {
+                const q = searchState.freeword.toLowerCase();
+                const searchableFields = ['ポジション / おすすめポイント（カード用）', '業界', '勤務エリア（カード用）', '在留資格', '仕事内容（詳細画面）', 'こんな人におすすめ（カード用）'];
+                const found = searchableFields.some(f => (job[f] || '').toLowerCase().includes(q));
+                if (!found) return false;
+            }
+
+            // Area match (multi-select, LIKE search, OR logic within areas)
+            if (searchState.areas.length > 0) {
+                const jobAreaStr = job['勤務エリア（カード用）'] || '';
+                const matchFound = searchState.areas.some(selectedArea => jobAreaStr.includes(selectedArea));
+                if (!matchFound) return false;
+            }
+
+            // Industry match
+            if (searchState.industry) {
+                if (job['業界'] !== searchState.industry) return false;
+            }
+
+            // Checkbox matches (per field, OR logic within group)
+            for (const [field, values] of Object.entries(searchState.checks)) {
+                if (values.length > 0) {
+                    if (!values.includes(job[field])) return false;
+                }
+            }
+
+            return true;
+        });
+
+        // Update URL
+        const newUrl = new URL(window.location);
+        if (searchState.freeword) newUrl.searchParams.set('q', searchState.freeword);
+        else newUrl.searchParams.delete('q');
+        if (searchState.areas.length > 0) newUrl.searchParams.set('area', searchState.areas.join(','));
+        else newUrl.searchParams.delete('area');
+        if (searchState.industry) newUrl.searchParams.set('industry', searchState.industry);
+        else newUrl.searchParams.delete('industry');
+        window.history.pushState({}, '', newUrl);
+
+        // Render results
         const cards = document.querySelectorAll('.job-card');
         cards.forEach(card => card.style.opacity = '0');
 
         setTimeout(() => {
-            const filtered = allJobs.filter(job => {
-                let matchTags = true;
-                filterCategories.forEach(cat => {
-                    if (activeFilters[cat].length > 0) {
-                        // For string match
-                        if (!activeFilters[cat].includes(job[cat])) {
-                            matchTags = false;
-                        }
-                    }
-                });
-
-                return matchTags;
-            });
-
             if (filtered.length === 0) {
                 jobsContainer.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: rgba(255,255,255,0.5); border-radius: 20px;">
@@ -199,6 +318,12 @@ function setupSearchFilters() {
                     </div>`;
             } else {
                 renderJobs(filtered);
+            }
+
+            // Scroll to jobs
+            const jobsEl = document.getElementById('jobs');
+            if (jobsEl) {
+                jobsEl.scrollIntoView({ behavior: 'smooth' });
             }
         }, 300);
     }

@@ -30,11 +30,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Outfit:wght@400;600;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;800;900&display=swap"
         rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=2.1">
+    <link rel="stylesheet" href="css/style.css?v=2.2">
 
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
@@ -188,15 +188,44 @@
                     <p class="section-subtitle">あなたを待っている、最新の非公開求人情報</p>
                 </div>
 
-                <!-- Premium Search Bar -->
-                <div class="search-container reveal glass-panel"
-                    style="margin-bottom: 3rem; padding: 1.5rem; border-radius: 20px;">
-                    <!-- Search Form Removed as per request -->
+                <!-- Ikyu-style Search Card -->
+                <div class="ikyu-search-card reveal" style="background: #ffffff; border-radius: 12px; padding: 1.5rem 2rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0,0,0,0.06); margin-bottom: 2.5rem; position: relative;">
+                    
+                    <!-- Row 1: Input fields + Search Button -->
+                    <div class="ikyu-search-grid">
+                        
+                        <!-- Freeword -->
+                        <div class="ikyu-search-field">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <input type="text" id="search-freeword" placeholder="フリーワード・職種名 など" style="border: none; outline: none; width: 100%; font-size: 0.9rem; color: #2B3A5A; font-family: inherit;">
+                        </div>
 
-                    <!-- Dynamic Filter Tags Container -->
-                    <div id="dynamic-filter-tags"
-                        style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-                        <!-- Tags injected by JS -->
+                        <!-- Area Select -->
+                        <div class="ikyu-search-field area-wrapper" id="area-select-wrapper">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <div id="area-select-display" style="font-size: 0.9rem; color: #94a3b8; flex: 1; user-select: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">勤務エリアを選択</div>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" class="arrow-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <!-- Dropdown -->
+                            <div id="area-dropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 0 0 8px 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); max-height: 280px; overflow-y: auto; z-index: 100;">
+                                <!-- JS will populate -->
+                            </div>
+                        </div>
+
+                        <!-- Industry Select -->
+                        <div class="ikyu-search-field">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            <select id="search-industry" style="border: none; outline: none; width: 100%; font-size: 0.9rem; color: #94a3b8; font-family: inherit; background: transparent; cursor: pointer; -webkit-appearance: none; appearance: none;">
+                                <option value="">業界を選択</option>
+                            </select>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+
+                        <!-- Search Button -->
+                        <button type="button" id="search-btn" class="ikyu-search-button">検索する</button>
+                    </div>
+
+                    <!-- Row 2: Checkbox filters -->
+                    <div id="checkbox-filters" class="ikyu-checkbox-filters">
                     </div>
                 </div>
 
