@@ -1812,3 +1812,92 @@ h6 {
         width: 100%;
     }
 }
+/* =========================================
+   Ikyu Search Card Responsive Styles
+========================================= */
+.ikyu-search-card {
+    padding: 1.5rem 2rem;
+}
+
+.ikyu-search-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 0;
+    align-items: stretch;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.ikyu-search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1rem;
+    border-right: 1px solid #e2e8f0;
+}
+
+.ikyu-search-field.area-wrapper {
+    cursor: pointer;
+    position: relative;
+}
+
+.ikyu-search-button {
+    background: #0077c0;
+    color: #fff;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: background 0.2s;
+    border-radius: 0 8px 8px 0;
+}
+
+.ikyu-checkbox-filters {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.2rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* Mobile Responsiveness for Search Card */
+@media (max-width: 900px) {
+    .ikyu-search-card {
+        padding: 1.2rem 1rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    .ikyu-search-grid {
+        grid-template-columns: 1fr;
+        border-radius: 8px;
+    }
+    .ikyu-search-field {
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .ikyu-search-button {
+        border-radius: 0 0 8px 8px;
+        padding: 1rem 2rem;
+    }
+    .ikyu-checkbox-filters {
+        gap: 0.8rem;
+        padding-top: 1rem;
+    }
+    .ikyu-checkbox-filters label {
+        width: 48%; /* 2 columns on mobile */
+        margin: 0;
+    }
+    #filter-more-btn {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+    }
+}
