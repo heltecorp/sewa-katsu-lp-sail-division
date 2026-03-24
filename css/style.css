@@ -865,6 +865,58 @@ h6 {
     border: 1px solid #FFD8D0;
 }
 
+/* =========================================
+   SPEECH-BUBBLE TAG BADGES (B Column)
+========================================= */
+.bubble-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 10;
+}
+
+.bubble-badge {
+    position: relative;
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 12px 12px 12px 2px;
+    line-height: 1.3;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* NEW! → warm yellow/gold */
+.bubble-badge.bubble-new {
+    background: linear-gradient(135deg, #FFF7E1, #FFF0C8);
+    color: #B8860B;
+    border: 1px solid #FFE4A0;
+}
+
+/* 急募 → coral red */
+.bubble-badge.bubble-urgent {
+    background: linear-gradient(135deg, #FFF0ED, #FFE4DF);
+    color: #D94F2B;
+    border: 1px solid #FFCFC5;
+}
+
+/* Default info → teal/green (trustworthy, friendly) */
+.bubble-badge.bubble-info {
+    background: linear-gradient(135deg, #E8F8F5, #D1F2EB);
+    color: #0E8C6E;
+    border: 1px solid #B2EBDA;
+}
+
+@media (max-width: 480px) {
+    .bubble-badge {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.7rem;
+    }
+}
+
 .job-title-updated {
     font-size: 1.25rem;
     color: #333;
@@ -1899,5 +1951,108 @@ h6 {
         width: 100%;
         justify-content: flex-end;
         margin-top: 0.5rem;
+    }
+}
+
+/* =========================================
+   MOBILE DESIGN FIXES
+========================================= */
+
+/* --- Hero Section Mobile Fix --- */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto !important;
+        padding-top: 100px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        padding: 0 1rem !important;
+    }
+
+    .hero-content {
+        max-width: 100% !important;
+        align-items: flex-start !important;
+    }
+
+    /* Hero badge */
+    .hero-badge {
+        font-size: 0.85rem !important;
+        padding: 0.4rem 0.9rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Hero title - prevent overflow */
+    .hero-title,
+    .hero h1 {
+        font-size: 1.6rem !important;
+        line-height: 1.4 !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* Hero subtitle */
+    .hero-subtitle,
+    .hero .hero-subtitle {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Hero features list */
+    .hero-features-list,
+    .hero ul {
+        margin-bottom: 2rem !important;
+        gap: 0.6rem !important;
+    }
+
+    .hero-features-list li,
+    .hero ul li {
+        font-size: 0.95rem !important;
+    }
+
+    /* Hero CTA button */
+    .hero-actions .btn,
+    .hero .hero-actions a {
+        font-size: 1rem !important;
+        padding: 0.8rem 1.5rem !important;
+    }
+
+    /* Hero stats */
+    .hero-stats {
+        gap: 2rem !important;
+        flex-direction: row !important;
+        padding-top: 1rem !important;
+    }
+
+    .hero-stats .stat-value {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-stats .stat-label {
+        font-size: 0.75rem !important;
+    }
+
+    /* Overlay gradient - stronger on mobile for readability */
+    .hero-overlay-mobile {
+        background: linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 60%, rgba(255,255,255,0.3) 100%) !important;
+    }
+}
+
+/* --- Checkbox Filter Overflow Fix --- */
+@media (max-width: 900px) {
+    .ikyu-checkbox-filters label {
+        white-space: normal !important;
+        word-break: break-all;
+        line-height: 1.4;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ikyu-checkbox-filters label {
+        width: 100% !important;
     }
 }
