@@ -74,24 +74,18 @@
                 <!-- SewaKatsu Portable Embed Code -->
                 <!-- Copy and paste this code block into the HTML of any website -->
                 <style>
-                    /* Container Styles for Premium Look */
                     .sewakatsu-form-wrapper {
                         background: #ffffff;
                         padding: 24px;
                         border-radius: 24px;
                         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-                        /* Premium Shadow */
                         max-width: 800px;
                         margin: 40px auto;
-                        /* Centered with vertical spacing */
                         width: 100%;
                         position: relative;
                         box-sizing: border-box;
                         font-family: sans-serif;
-                        /* Fallback font */
                     }
-
-                    /* Responsive Adjustments for Mobile */
                     @media (max-width: 600px) {
                         .sewakatsu-form-wrapper {
                             padding: 16px;
@@ -102,9 +96,9 @@
                 </style>
                 <div class="sewakatsu-form-wrapper">
                     <div id="sewa-embed-container" style="width: 100%; min-width: 320px;">
-                        <iframe src="https://sewa-katsu-crm.web.app/entry/embed?source=SEWA_JOB_OPENINGS_WEB"
-                            id="sewa-embed-frame" width="100%" style="border: none; min-height: 600px; display: block;"
-                            scrolling="no" title="SewaKatsu Registration Form"></iframe>
+                        <iframe src="https://sewa-katsu-crm.web.app/entry/embed?source=SEWA_JOB_OPENINGS_WEB" id="sewa-embed-frame"
+                            width="100%" style="border: none; min-height: 600px; display: block;" scrolling="no"
+                            title="SewaKatsu Registration Form"></iframe>
                     </div>
                 </div>
                 <script>
@@ -114,23 +108,15 @@
                         if (iframe) {
                             var currentUrl = iframe.src;
                             var separator = currentUrl.indexOf('?') > -1 ? '&' : '?';
-
-                            // Extract jobId from parent URL
                             var urlParams = new URLSearchParams(window.location.search);
                             var jobId = urlParams.get('jobId') || urlParams.get('job_id') || urlParams.get('id');
                             var jobIdParam = jobId ? '&jobId=' + encodeURIComponent(jobId) : '';
-
                             iframe.src = currentUrl + separator + 'inflow_url=' + encodeURIComponent(window.location.href) + jobIdParam;
                         }
-
-                        // Iframe Resizer and Scroller Listener
+                        // Iframe message listener
                         window.addEventListener('message', function (e) {
-                            // Optional: Uncomment to restrict origin for security
-                            // if (e.origin !== "https://sewa-katsu-crm.web.app") return; 
-
                             if (!e.data) return;
-
-                            // ① Auto-resize iframe height
+                            // Auto-resize iframe height
                             if (e.data.type === 'SEWA_EMBED_RESIZE') {
                                 var iframe = document.getElementById('sewa-embed-frame');
                                 if (iframe) {
@@ -140,8 +126,7 @@
                                     }
                                 }
                             }
-
-                            // ② Auto-scroll to top or error field on step change
+                            // Auto-scroll to top on step change
                             if (e.data.type === 'SEWA_EMBED_SCROLL_TOP') {
                                 var iframe = document.getElementById('sewa-embed-frame');
                                 if (iframe) {
@@ -150,6 +135,11 @@
                                     var targetY = iframeRect.top + window.scrollY + offset;
                                     window.scrollTo({ top: targetY, behavior: 'smooth' });
                                 }
+                            }
+                            // Form submission complete -> redirect to Thanks page
+                            if (e.data.type === 'sewakatsu-form-submitted') {
+                                var thanksType = e.data.thanksType; // 'interview' or 'complete'
+                                window.location.href = '/thanks/' + thanksType;
                             }
                         });
                     })();
