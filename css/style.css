@@ -1901,3 +1901,106 @@ h6 {
         margin-top: 0.5rem;
     }
 }
+
+/* =========================================
+   MOBILE DESIGN FIXES
+========================================= */
+
+/* --- Hero Section Mobile Fix --- */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto !important;
+        padding-top: 100px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        padding: 0 1rem !important;
+    }
+
+    .hero-content {
+        max-width: 100% !important;
+        align-items: flex-start !important;
+    }
+
+    /* Hero badge */
+    .hero-badge {
+        font-size: 0.85rem !important;
+        padding: 0.4rem 0.9rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Hero title - prevent overflow */
+    .hero-title,
+    .hero h1 {
+        font-size: 1.6rem !important;
+        line-height: 1.4 !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* Hero subtitle */
+    .hero-subtitle,
+    .hero .hero-subtitle {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Hero features list */
+    .hero-features-list,
+    .hero ul {
+        margin-bottom: 2rem !important;
+        gap: 0.6rem !important;
+    }
+
+    .hero-features-list li,
+    .hero ul li {
+        font-size: 0.95rem !important;
+    }
+
+    /* Hero CTA button */
+    .hero-actions .btn,
+    .hero .hero-actions a {
+        font-size: 1rem !important;
+        padding: 0.8rem 1.5rem !important;
+    }
+
+    /* Hero stats */
+    .hero-stats {
+        gap: 2rem !important;
+        flex-direction: row !important;
+        padding-top: 1rem !important;
+    }
+
+    .hero-stats .stat-value {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-stats .stat-label {
+        font-size: 0.75rem !important;
+    }
+
+    /* Overlay gradient - stronger on mobile for readability */
+    .hero-overlay-mobile {
+        background: linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 60%, rgba(255,255,255,0.3) 100%) !important;
+    }
+}
+
+/* --- Checkbox Filter Overflow Fix --- */
+@media (max-width: 900px) {
+    .ikyu-checkbox-filters label {
+        white-space: normal !important;
+        word-break: break-all;
+        line-height: 1.4;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ikyu-checkbox-filters label {
+        width: 100% !important;
+    }
+}
