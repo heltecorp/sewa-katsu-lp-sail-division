@@ -265,8 +265,7 @@ function setupSearchFilters() {
             // Freeword match (search across multiple fields)
             if (searchState.freeword) {
                 const q = searchState.freeword.toLowerCase();
-                const searchableFields = ['ポジション / おすすめポイント（カード用）', '業界', '勤務エリア（カード用）', '在留資格', '仕事内容（詳細画面）', 'こんな人におすすめ（カード用）'];
-                const found = searchableFields.some(f => (job[f] || '').toLowerCase().includes(q));
+                const found = Object.values(job).some(v => (v || '').toLowerCase().includes(q));
                 if (!found) return false;
             }
 
