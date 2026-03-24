@@ -865,6 +865,58 @@ h6 {
     border: 1px solid #FFD8D0;
 }
 
+/* =========================================
+   SPEECH-BUBBLE TAG BADGES (B Column)
+========================================= */
+.bubble-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 10;
+}
+
+.bubble-badge {
+    position: relative;
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 12px 12px 12px 2px;
+    line-height: 1.3;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* NEW! → warm yellow/gold */
+.bubble-badge.bubble-new {
+    background: linear-gradient(135deg, #FFF7E1, #FFF0C8);
+    color: #B8860B;
+    border: 1px solid #FFE4A0;
+}
+
+/* 急募 → coral red */
+.bubble-badge.bubble-urgent {
+    background: linear-gradient(135deg, #FFF0ED, #FFE4DF);
+    color: #D94F2B;
+    border: 1px solid #FFCFC5;
+}
+
+/* Default info → teal/green (trustworthy, friendly) */
+.bubble-badge.bubble-info {
+    background: linear-gradient(135deg, #E8F8F5, #D1F2EB);
+    color: #0E8C6E;
+    border: 1px solid #B2EBDA;
+}
+
+@media (max-width: 480px) {
+    .bubble-badge {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.7rem;
+    }
+}
+
 .job-title-updated {
     font-size: 1.25rem;
     color: #333;

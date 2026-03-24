@@ -402,14 +402,19 @@ function renderJobs(jobsToRender) {
         // Split by comma or space and filter out empty strings
         const rawTags = rawTagsData.split(/[,\s+]/).map(t => t.trim()).filter(t => t !== '');
         
-        const hasNewTag = rawTags.includes('NEW!');
-        const hasUrgentTag = rawTags.includes('急募');
-        
-        // Filter out the special header badges from the tag list below the title
-        const textTags = rawTags.filter(t => t !== 'NEW!' && t !== '急募');
+        // B column tags → speech-bubble badges (top-left)
+        const bubbleBadgesHtml = rawTags.length > 0
+            ? rawTags.map(tag => {
+                let cls = 'bubble-badge';
+                if (tag === 'NEW!') cls += ' bubble-new';
+                else if (tag === '急募') cls += ' bubble-urgent';
+                else cls += ' bubble-info';
+                return `<span class="${cls}">${tag}</span>`;
+            }).join('')
+            : '';
 
+        // Other metadata tags (visa, employment, industry, area)
         const cardTags = [
-            ...textTags,
             job['在留資格'],
             job['雇用形態'],
             job['業界'],
@@ -423,18 +428,14 @@ function renderJobs(jobsToRender) {
                </div>`
             : '';
 
-        let badgeHtml = '';
-        if (hasNewTag) badgeHtml += '<span class="job-badge new">NEW</span>';
-        if (hasUrgentTag) badgeHtml += '<span class="job-badge urgent">急募</span>';
-
         const title = job['ポジション / おすすめポイント（カード用）'] || '求人タイトル未設定';
         const formattedTitle = title.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
         const cardHtml = `
                 <div class="job-card glass-panel" data-tilt>
                     <div class="job-card-glow"></div>
-                    <div class="job-header-updated">
-                        ${badgeHtml}
+                    <div class="bubble-badges-row">
+                        ${bubbleBadgesHtml}
                     </div>
                     <h3 class="job-title-updated">${formattedTitle}</h3>
                     <p class="job-id-updated">求人ID: ${job['求人ID'] || job.ID}</p>
