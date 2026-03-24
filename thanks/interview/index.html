@@ -51,8 +51,8 @@
 
         body {
             font-family: 'Noto Sans JP', 'Inter', sans-serif;
-            background: #FFFDF8;
-            color: #1a1a2e;
+            background: #0f172a;
+            color: #f1f5f9;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
@@ -63,55 +63,77 @@
             top: 0;
             z-index: 50;
             padding: 0.875rem 1.25rem;
-            background: rgba(255,253,248,0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.07);
+            background: rgba(15,23,42,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             display: flex;
             justify-content: center;
         }
 
-        header img { height: 40px; }
+        header img { height: 40px; filter: brightness(0) invert(1); }
 
         /* ── Hero ── */
         .hero {
-            padding: 36px 20px 28px;
+            padding: 48px 20px 40px;
             text-align: center;
-            background: linear-gradient(180deg, #fff8f6 0%, #FFFDF8 100%);
+            background: linear-gradient(170deg, #1e293b 0%, #0f172a 50%, #172033 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(ellipse at 40% 30%, rgba(56,189,248,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 70%, rgba(246,103,72,0.06) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .step-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: #ecfdf5;
-            border: 1.5px solid rgba(5,150,105,0.3);
+            gap: 8px;
+            background: rgba(16,185,129,0.12);
+            border: 1.5px solid rgba(16,185,129,0.3);
             border-radius: 100px;
-            padding: 5px 14px;
-            font-size: 0.72rem;
+            padding: 6px 16px;
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
-            color: #059669;
-            margin-bottom: 20px;
+            letter-spacing: 0.06em;
+            color: #34d399;
+            margin-bottom: 24px;
+            position: relative;
         }
 
         .step-badge-dot {
-            width: 7px; height: 7px;
-            background: #059669;
+            width: 8px; height: 8px;
+            background: #34d399;
             border-radius: 50%;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(52,211,153,0); }
         }
 
         .hero-heading {
-            font-size: 1.45rem;
+            font-size: 1.5rem;
             font-weight: 900;
-            line-height: 1.55;
-            color: #1a1a2e;
-            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #ffffff;
+            margin-bottom: 12px;
             letter-spacing: -0.01em;
+            position: relative;
         }
 
         .hero-heading .accent {
-            color: #F66748;
+            color: #38bdf8;
         }
 
         .hero-heading .line {
@@ -120,17 +142,18 @@
 
         .hero-heading .line-sub {
             display: block;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            color: #374151;
-            margin-top: 6px;
+            color: #94a3b8;
+            margin-top: 8px;
         }
 
         .hero-en {
             font-size: 0.8rem;
-            color: #9ca3af;
+            color: #64748b;
             line-height: 1.6;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
+            position: relative;
         }
 
         /* ── Scroll CTA Button ── */
@@ -138,15 +161,15 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #F66748;
+            background: linear-gradient(135deg, #F66748, #ef4444);
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 700;
-            padding: 14px 28px;
-            border-radius: 12px;
+            padding: 16px 32px;
+            border-radius: 14px;
             border: none;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(246,103,72,0.35);
+            box-shadow: 0 8px 28px rgba(246,103,72,0.4), 0 0 0 1px rgba(246,103,72,0.2);
             -webkit-tap-highlight-color: transparent;
             transition: transform 0.15s, box-shadow 0.15s;
             text-decoration: none;
@@ -163,7 +186,7 @@
             left: -100%;
             width: 60%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
             animation: shimmer 2.5s ease-in-out infinite;
         }
 
@@ -173,13 +196,13 @@
         }
 
         @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 6px 20px rgba(246,103,72,0.35); }
-            50% { box-shadow: 0 8px 32px rgba(246,103,72,0.55), 0 0 16px rgba(246,103,72,0.2); }
+            0%, 100% { box-shadow: 0 8px 28px rgba(246,103,72,0.4), 0 0 0 1px rgba(246,103,72,0.2); }
+            50% { box-shadow: 0 10px 40px rgba(246,103,72,0.55), 0 0 20px rgba(246,103,72,0.15), 0 0 0 1px rgba(246,103,72,0.3); }
         }
 
         .scroll-cta:active {
             transform: scale(0.97);
-            box-shadow: 0 3px 12px rgba(246,103,72,0.3);
+            box-shadow: 0 4px 16px rgba(246,103,72,0.3);
             animation: none;
         }
 
@@ -198,21 +221,21 @@
             flex-direction: column;
             align-items: center;
             padding: 0 0 8px;
-            background: linear-gradient(180deg, #FFFDF8 0%, #FFFDF8 100%);
+            background: #0f172a;
         }
 
         .divider-line {
             width: 2px;
-            height: 36px;
-            background: linear-gradient(180deg, rgba(246,103,72,0.35), rgba(246,103,72,0.12));
+            height: 40px;
+            background: linear-gradient(180deg, rgba(56,189,248,0.3), rgba(56,189,248,0.08));
             border-radius: 1px;
         }
 
         .divider-arrow {
-            width: 36px;
-            height: 36px;
-            background: #fff2ef;
-            border: 1.5px solid rgba(246,103,72,0.2);
+            width: 40px;
+            height: 40px;
+            background: rgba(56,189,248,0.08);
+            border: 1.5px solid rgba(56,189,248,0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -222,13 +245,13 @@
         }
 
         @keyframes pulseArrow {
-            0%, 100% { transform: translateY(0); box-shadow: 0 0 0 0 rgba(246,103,72,0.15); }
-            50% { transform: translateY(3px); box-shadow: 0 0 0 8px rgba(246,103,72,0); }
+            0%, 100% { transform: translateY(0); box-shadow: 0 0 0 0 rgba(56,189,248,0.15); }
+            50% { transform: translateY(3px); box-shadow: 0 0 0 10px rgba(56,189,248,0); }
         }
 
         .divider-arrow svg {
             width: 16px; height: 16px;
-            stroke: #F66748;
+            stroke: #38bdf8;
             stroke-width: 2.5;
             fill: none;
             stroke-linecap: round;
@@ -237,14 +260,14 @@
 
         /* ── Calendar Section ── */
         .calendar-section {
-            padding: 24px 16px 64px;
+            padding: 28px 16px 64px;
             max-width: 860px;
             margin: 0 auto;
         }
 
         .calendar-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .calendar-header-label {
@@ -255,57 +278,34 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #F66748;
-            background: #fff2ef;
+            color: #38bdf8;
+            background: rgba(56,189,248,0.1);
+            border: 1px solid rgba(56,189,248,0.15);
             border-radius: 100px;
-            padding: 4px 12px;
-            margin-bottom: 10px;
+            padding: 5px 14px;
+            margin-bottom: 12px;
         }
 
         .calendar-header-title {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 900;
-            color: #1a1a2e;
-            margin-bottom: 6px;
+            color: #f1f5f9;
+            margin-bottom: 8px;
         }
 
         .calendar-header-sub {
-            font-size: 0.78rem;
-            color: #9ca3af;
+            font-size: 0.8rem;
+            color: #64748b;
             line-height: 1.6;
         }
 
-        .calendar-chips {
-            display: flex;
-            gap: 6px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #6b7280;
-            background: white;
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 100px;
-            padding: 4px 10px;
-        }
-
-        .chip-icon {
-            font-size: 0.8rem;
-        }
-
         .calendar-card {
-            border: 1px solid rgba(0,0,0,0.09);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
             position: relative;
+            background: #ffffff;
         }
 
         .calendar-card::before {
@@ -313,7 +313,7 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #F66748, #FFD166);
+            background: linear-gradient(90deg, #38bdf8, #F66748);
             z-index: 1;
         }
 
@@ -321,22 +321,22 @@
         footer {
             text-align: center;
             padding: 1.75rem 1.25rem;
-            border-top: 1px solid rgba(0,0,0,0.06);
+            border-top: 1px solid rgba(255,255,255,0.06);
             font-size: 0.75rem;
-            color: #9ca3af;
+            color: #475569;
         }
 
-        footer a { color: #9ca3af; text-decoration: none; margin: 0 0.6rem; }
-        footer a:hover { color: #F66748; }
+        footer a { color: #475569; text-decoration: none; margin: 0 0.6rem; }
+        footer a:hover { color: #38bdf8; }
 
         /* ── Desktop ── */
         @media (min-width: 600px) {
-            .hero { padding: 52px 32px 36px; }
-            .hero-heading { font-size: 1.75rem; }
-            .hero-heading .line-sub { font-size: 1.3rem; }
-            .scroll-cta { border-radius: 100px; padding: 14px 36px; }
-            .calendar-section { padding: 32px 24px 80px; }
-            .calendar-header-title { font-size: 1.35rem; }
+            .hero { padding: 64px 32px 48px; }
+            .hero-heading { font-size: 1.85rem; }
+            .hero-heading .line-sub { font-size: 1.25rem; }
+            .scroll-cta { border-radius: 100px; padding: 16px 40px; font-size: 1.05rem; }
+            .calendar-section { padding: 36px 24px 80px; }
+            .calendar-header-title { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -350,11 +350,11 @@
     <div class="hero">
         <div class="step-badge">
             <span class="step-badge-dot"></span>
-            応募完了 — Application Received
+            STEP 1 完了 — Application Received
         </div>
 
         <h1 class="hero-heading">
-            <span class="line">次のステップ！</span>
+            <span class="line">あと1ステップ！</span>
             <span class="line"><span class="accent">キャリアアドバイザー</span>との</span>
             <span class="line">オンライン面談を予約してください。</span>
             <span class="line-sub">あなたにあった仕事を紹介します！</span>
@@ -387,21 +387,16 @@
     <div class="calendar-section" id="calendar">
         <div class="calendar-header">
             <div class="calendar-header-label">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#F66748" stroke-width="1.5" stroke-linecap="round">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round">
                     <rect x="1.5" y="2.5" width="9" height="8" rx="1.5"/>
                     <line x1="1.5" y1="5" x2="10.5" y2="5"/>
                     <line x1="4" y1="1" x2="4" y2="4"/>
                     <line x1="8" y1="1" x2="8" y2="4"/>
                 </svg>
-                面談予約
+                STEP 2 — 面談予約
             </div>
             <h2 class="calendar-header-title">ご希望の日時をお選びください</h2>
             <p class="calendar-header-sub">下のカレンダーから空いている日時をタップして予約できます。</p>
-            <div class="calendar-chips">
-                <span class="chip"><span class="chip-icon">🌐</span>オンライン対応</span>
-                <span class="chip"><span class="chip-icon">🗣</span>日本語 &amp; English</span>
-                <span class="chip"><span class="chip-icon">⏱</span>30〜60分</span>
-            </div>
         </div>
 
         <div class="calendar-card">
@@ -413,7 +408,7 @@
     </div>
 
     <footer>
-        <p>© 2026 sewa-katsu (世話カツ) by Helte Inc.</p>
+        <p>&copy; 2026 sewa-katsu (世話カツ) by Helte Inc.</p>
         <p style="margin-top:0.4rem;">
             <a href="/">Top</a>
             <a href="/#contact">Contact</a>
