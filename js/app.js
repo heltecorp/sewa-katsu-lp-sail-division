@@ -463,7 +463,7 @@ function renderJobs(jobsToRender) {
                         </div>
                     </div>
                     
-                    <a href="job-detail.html?id=${job['求人ID']}" class="btn job-action">詳細を見る</a>
+                    <a href="job-detail.html?id=${job['求人ID']}${(() => { const p = new URLSearchParams(window.location.search); p.delete('id'); const s = p.toString(); return s ? '&' + s : ''; })()}" class="btn job-action">詳細を見る</a>
                 </div>
             `;
 
