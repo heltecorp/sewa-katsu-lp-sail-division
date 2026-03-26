@@ -428,6 +428,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* =========================================
+       PRESERVE URL PARAMS ON BACK LINKS
+    ========================================= */
+    if (typeof getStoredParamString === 'function') {
+        const extraParams = getStoredParamString();
+        if (extraParams) {
+            document.querySelectorAll('a[href^="index.html"]').forEach(a => {
+                const href = a.getAttribute('href');
+                const separator = href.includes('?') ? '&' : '?';
+                a.setAttribute('href', href + separator + extraParams.substring(1));
+            });
+        }
+    }
+
+    /* =========================================
        COOKIE CONSENT BANNER LOGIC
     ========================================= */
     const cookieBanner = document.getElementById('cookie-consent-banner');
