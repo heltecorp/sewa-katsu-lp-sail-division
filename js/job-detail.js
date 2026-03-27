@@ -49,10 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showError(message) {
+        const backHref = typeof appendStoredParams === 'function'
+            ? appendStoredParams('index.html#jobs')
+            : 'index.html#jobs';
         detailContainer.innerHTML = `
             <div class="loading-state">
                 <p>${message}</p>
-                <a href="index.html#jobs" class="btn btn-primary mt-4">求人一覧に戻る</a>
+                <a href="${backHref}" class="btn btn-primary mt-4">求人一覧に戻る</a>
             </div>
         `;
     }
@@ -430,15 +433,10 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        PRESERVE URL PARAMS ON BACK LINKS
     ========================================= */
-    if (typeof getStoredParamString === 'function') {
-        const extraParams = getStoredParamString();
-        if (extraParams) {
-            document.querySelectorAll('a[href^="index.html"]').forEach(a => {
-                const href = a.getAttribute('href');
-                const separator = href.includes('?') ? '&' : '?';
-                a.setAttribute('href', href + separator + extraParams.substring(1));
-            });
-        }
+    if (typeof appendStoredParams === 'function') {
+        document.querySelectorAll('a[href^="index.html"]').forEach(a => {
+            a.setAttribute('href', appendStoredParams(a.getAttribute('href')));
+        });
     }
 
     /* =========================================
