@@ -326,6 +326,44 @@ function setupSearchFilters() {
             }
         }, 300);
     }
+
+    // --- Restore search state from URL query parameters on page load ---
+    const urlParams = new URLSearchParams(window.location.search);
+    let hasUrlSearch = false;
+
+    // Restore freeword
+    const urlQ = urlParams.get('q');
+    if (urlQ && freewordInput) {
+        freewordInput.value = urlQ;
+        hasUrlSearch = true;
+    }
+
+    // Restore area (comma-separated)
+    const urlArea = urlParams.get('area');
+    if (urlArea && areaDropdown) {
+        const areaValues = urlArea.split(',');
+        areaDropdown.querySelectorAll('.area-checkbox').forEach(cb => {
+            if (areaValues.includes(cb.value)) {
+                cb.checked = true;
+            }
+        });
+        // Trigger the change event to update display text
+        areaDropdown.dispatchEvent(new Event('change'));
+        hasUrlSearch = true;
+    }
+
+    // Restore industry
+    const urlIndustry = urlParams.get('industry');
+    if (urlIndustry && industrySelect) {
+        industrySelect.value = urlIndustry;
+        industrySelect.style.color = urlIndustry ? '#2B3A5A' : '#94a3b8';
+        hasUrlSearch = true;
+    }
+
+    // If any URL params were present, auto-execute search
+    if (hasUrlSearch) {
+        executeSearch();
+    }
 }
 
 // Robust CSV Parser (Handles quotes, commas inside quotes, and newlines inside quotes)
