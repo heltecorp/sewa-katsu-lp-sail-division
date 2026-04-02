@@ -8,14 +8,14 @@
     <meta name="description" content="Sewa-Katsuのプレミアム求人詳細ページです。外国人材に特化した最新のキャリアチャンスをご確認ください。">
 
     <!-- Canonical URL (Placeholder, will be set by JS) -->
-    <link id="canonical-link" rel="canonical" href="https://sewa-katsu.helte.jp/job-detail.html">
+    <link id="canonical-link" rel="canonical" href="https://sewa-katsu-lp-sd.helte.jp/job-detail.html">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta id="og-url" property="og:url" content="https://sewa-katsu.helte.jp/job-detail.html">
+    <meta id="og-url" property="og:url" content="https://sewa-katsu-lp-sd.helte.jp/job-detail.html">
     <meta id="og-title" property="og:title" content="求人詳細 | Sewa-Katsu (世話カツ)">
     <meta id="og-description" property="og:description" content="外国人材に特化した最新のプレミアム求人情報。">
-    <meta property="og:image" content="https://sewa-katsu.helte.jp/assets/images/ogp-main.jpg">
+    <meta property="og:image" content="https://sewa-katsu-lp-sd.helte.jp/assets/images/ogp-main.jpg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,8 +89,18 @@
                 <div id="job-detail-content">
                     <div class="loading-state">
                         <div class="spinner"></div>
-                        <p>求人情報を読み込んでいます...</p>
+                        <p>求人情報を読み込み中...</p>
                     </div>
+
+                    <!-- クローラー用フォールバック -->
+                    <noscript>
+                        <div style="padding: 2rem; text-align: center;">
+                            <h2>求人詳細 | Sewa-Katsu（世話カツ）</h2>
+                            <p>外国人材に特化したプレミアム求人情報です。</p>
+                            <p>求人の詳細を確認するにはJavaScriptを有効にしてください。</p>
+                            <p><a href="index.html">求人一覧に戻る</a></p>
+                        </div>
+                    </noscript>
                 </div>
             </div>
         </section>
